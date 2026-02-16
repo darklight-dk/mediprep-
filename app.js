@@ -193,15 +193,12 @@ function navTo(screenId, navId) {
 function refreshHomeStats() {
     const s = getStats();
     const el = id => document.getElementById(id);
-    if (el('homeStatCorrectas')) el('homeStatCorrectas').textContent = s.totalCorrect || 0;
-    if (el('homeStatRacha'))     el('homeStatRacha').textContent     = s.maxStreak   || 0;
-    if (el('homeStatTotal'))     el('homeStatTotal').textContent     = s.totalAnswered|| 0;
-
-    // Header streak
+    
+    // Header streak (siempre visible si hay racha)
     const streak = s.currentStreak || 0;
     const hStreak = el('headerStreak');
     if (hStreak) {
-        hStreak.style.display = streak >= 3 ? 'flex' : 'none';
+        hStreak.style.display = streak >= 1 ? 'flex' : 'none';
         const sv = el('headerStreakVal');
         if (sv) sv.textContent = streak;
     }
@@ -1125,6 +1122,9 @@ function volverALecciones() {
 
 // Inicializar módulos cuando se carga la página
 window.addEventListener('load', () => {
+    checkFirstVisit();
+    initOnboardingDots();
+    initOnboardingSwipe();
     if (typeof MODULOS_PREMEDICINA !== 'undefined') {
         cargarModulos();
     }
@@ -1135,6 +1135,124 @@ window.addEventListener('load', () => {
 // ══════════════════════════════════════════════
 let juegoTarjetas = [];
 let juegoIndex = 0;
+
+// ─── ONBOARDING ──────────────────────────────────────────────
+let currentOnboardingSlide = 0;
+const totalOnboardingSlides = 7;
+
+function checkFirstVisit() {
+    const visited = localStorage.getItem('mediprep_visited');
+    console.log('🔍 Primera visita:', !visited);
+    
+    if (!visited) {
+        // Primera vez - mostrar onboarding
+        setTimeout(() => {
+            showScreen('onboardingScreen');
+            initOnboardingDots();
+            initOnboardingSwipe();
+        }, 100);
+    } else {
+        // Ya visitó antes - ir al home
+        setTimeout(() => {
+            navTo('homeScreen', 'nav-home');
+        }, 100);
+    }
+}
+
+function nextOnboardingSlide() {
+    if (currentOnboardingSlide < totalOnboardingSlides - 1) {
+        goToOnboardingSlide(currentOnboardingSlide + 1);
+    }
+}
+
+function goToOnboardingSlide(n) {
+    const slides = document.querySelectorAll('.onboarding-slide');
+    const dots = document.querySelectorAll('.onb-dot');
+    
+    slides[currentOnboardingSlide].classList.remove('active');
+    dots[currentOnboardingSlide].classList.remove('active');
+    
+    currentOnboardingSlide = n;
+    
+    slides[currentOnboardingSlide].classList.add('active');
+    dots[currentOnboardingSlide].classList.add('active');
+    
+    // Mostrar botón "Comenzar" en último slide
+    const btnNext = document.getElementById('onbNext');
+    const btnStart = document.getElementById('onbStart');
+    const btnSkip = document.getElementById('onbSkip');
+    
+    if (currentOnboardingSlide === totalOnboardingSlides - 1) {
+        btnNext.style.display = 'none';
+        btnStart.style.display = 'flex';
+        btnSkip.style.display = 'none';
+    } else {
+        btnNext.style.display = 'flex';
+        btnStart.style.display = 'none';
+        btnSkip.style.display = 'flex';
+    }
+}
+
+function skipOnboarding() {
+    finishOnboarding();
+}
+
+function finishOnboarding() {
+    localStorage.setItem('mediprep_visited', 'true');
+    navTo('homeScreen', 'nav-home');
+}
+
+function showOnboardingAgain() {
+    currentOnboardingSlide = 0;
+    goToOnboardingSlide(0);
+    showScreen('onboardingScreen');
+}
+
+
+// Hacer que los dots sean clickeables
+function initOnboardingDots() {
+    const dots = document.querySelectorAll('.onb-dot');
+    dots.forEach((dot, i) => {
+        dot.onclick = () => goToOnboardingSlide(i);
+    });
+}
+
+// Swipe support para móvil
+function initOnboardingSwipe() {
+    const container = document.getElementById('onboardingSlides');
+    if (!container) return;
+    
+    let startX = 0;
+    let isDragging = false;
+    
+    container.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    container.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    container.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0 && currentOnboardingSlide < totalOnboardingSlides - 1) {
+                nextOnboardingSlide();
+            } else if (diff < 0 && currentOnboardingSlide > 0) {
+                goToOnboardingSlide(currentOnboardingSlide - 1);
+            }
+        }
+    });
+}
+
+
 let juegoCorrectas = 0;
 let juegoIncorrectas = 0;
 let juegoRacha = 0;
@@ -1473,7 +1591,7 @@ const Animations = {
                 border-radius: ${isCircle ? '50%' : '2px'};
                 pointer-events: none;
                 z-index: 9999;
-                animation: confetti-fall ${duration}s ${delay}s linear forwards;
+                animation: confettiFall ${duration}s ${delay}s linear forwards;
             `;
             document.body.appendChild(p);
             setTimeout(() => p.remove(), (duration + delay) * 1000 + 100);
