@@ -559,6 +559,16 @@ function endQuiz() {
     document.getElementById('incorrectCount').textContent = incorrectAnswers;
     document.getElementById('timeUsed').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
 
+    // Guardar nota del módulo si fue evaluación de módulo
+    if (currentMode === 'evaluacion-modulo' && moduloActual) {
+        localStorage.setItem('mediprep_nota_' + moduloActual.id, JSON.stringify({
+            pct: percentage,
+            correctas: correctAnswers,
+            total: total,
+            fecha: new Date().toLocaleDateString('es-MX')
+        }));
+    }
+
     // Actualizar estadísticas y revisar logros
     const prevStats = AchievementSystem.getStats();
     const newStats = {
@@ -933,12 +943,36 @@ function abrirLeccion(moduloId, leccionIndex) {
         btnSig.style.pointerEvents = esUltima ? 'none' : 'auto';
     }
 
-    // Mensaje + botón Evaluación solo en última lección del módulo con evaluación
-    const modulosConEval = ['conceptos-salud', 'planimetria', 'sistema-nervioso'];
+    // Mensaje + botón Evaluación solo en última lección
+    // Detecta dinámicamente si el módulo tiene evaluación (interna o archivo externo)
+    const modulosEvalExterna = ['conceptos-salud', 'planimetria', 'sistema-nervioso', 'sistema-endocrino', 'sistema-cardiovascular', 'sistema-respiratorio', 'aparato-digestivo'];
+    const tieneEvalInterna  = moduloActual && Array.isArray(moduloActual.evaluacion) && moduloActual.evaluacion.length > 0;
+    const tieneEvalExterna  = modulosEvalExterna.includes(moduloActual ? moduloActual.id : '');
+    const tieneEvaluacion   = tieneEvalInterna || tieneEvalExterna;
+
     const msgUltima = document.getElementById('msgUltimaLeccion');
-    const btnEval = document.getElementById('btnEvaluacion');
+    const btnEval   = document.getElementById('btnEvaluacion');
     if (msgUltima) msgUltima.style.display = esUltima ? 'block' : 'none';
-    if (btnEval) btnEval.style.display = (esUltima && modulosConEval.includes(moduloActual.id)) ? 'flex' : 'none';
+    if (btnEval)   btnEval.style.display   = (esUltima && tieneEvaluacion) ? 'flex' : 'none';
+
+    // Mostrar nota previa si ya evaluó este módulo
+    const notaCard = document.getElementById('notaModuloCard');
+    const notaTexto = document.getElementById('notaModuloTexto');
+    if (notaCard && notaTexto && esUltima && moduloActual) {
+        const notaGuardada = localStorage.getItem('mediprep_nota_' + moduloActual.id);
+        if (notaGuardada) {
+            const nota = JSON.parse(notaGuardada);
+            const emoji = nota.pct >= 80 ? '🏆' : nota.pct >= 60 ? '👍' : '📚';
+            notaTexto.textContent = `${nota.pct}% — ${nota.correctas}/${nota.total} correctas ${emoji}`;
+            notaCard.style.display = 'block';
+            // Ocultar el mensaje de "realiza la evaluación" si ya tiene nota
+            if (msgUltima) msgUltima.style.display = 'none';
+        } else {
+            notaCard.style.display = 'none';
+        }
+    } else if (notaCard) {
+        notaCard.style.display = 'none';
+    }
 
     // Scroll al tope
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -956,22 +990,43 @@ function navegarLeccion(direccion) {
 
 // Lanzar evaluación del módulo conceptos-salud
 function iniciarEvaluacionModulo() {
-    // Detectar qué módulo se está evaluando
     const moduloId = moduloActual ? moduloActual.id : 'conceptos-salud';
 
     let banco = [];
-    let minutos = 70;
+    let minutos = 60;
 
-    if (moduloId === 'planimetria') {
+    // ── Primero: usar la evaluación integrada en el módulo (nuevos módulos)
+    if (moduloActual && moduloActual.evaluacion && moduloActual.evaluacion.length > 0) {
+        banco = moduloActual.evaluacion;
+        minutos = Math.max(30, Math.ceil(banco.length * 2.5));
+
+    // ── Segundo: archivos de evaluación separados (módulos antiguos)
+    } else if (moduloId === 'planimetria') {
         banco = (typeof EVALUACION_PLANIMETRIA !== 'undefined') ? EVALUACION_PLANIMETRIA : [];
         minutos = 55;
     } else if (moduloId === 'sistema-nervioso') {
         banco = (typeof EVALUACION_SISTEMA_NERVIOSO !== 'undefined') ? EVALUACION_SISTEMA_NERVIOSO : [];
         minutos = 60;
+    } else if (moduloId === 'sistema-endocrino') {
+        banco = (typeof EVALUACION_SISTEMA_ENDOCRINO !== 'undefined') ? EVALUACION_SISTEMA_ENDOCRINO : [];
+        minutos = 75;
+    } else if (moduloId === 'sistema-cardiovascular') {
+        banco = (typeof EVALUACION_SISTEMA_CARDIOVASCULAR !== 'undefined') ? EVALUACION_SISTEMA_CARDIOVASCULAR : [];
+        minutos = 75;
+    } else if (moduloId === 'sistema-respiratorio') {
+        banco = (typeof EVALUACION_SISTEMA_RESPIRATORIO !== 'undefined') ? EVALUACION_SISTEMA_RESPIRATORIO : [];
+        minutos = 75;
+    } else if (moduloId === 'aparato-digestivo') {
+        banco = (typeof EVALUACION_APARATO_DIGESTIVO !== 'undefined') ? EVALUACION_APARATO_DIGESTIVO : [];
+        minutos = 75;
     } else {
-        // Default: conceptos de salud
         banco = (typeof EVALUACION_CONCEPTOS_SALUD !== 'undefined') ? EVALUACION_CONCEPTOS_SALUD : PREGUNTAS.medicina || [];
         minutos = 70;
+    }
+
+    if (banco.length === 0) {
+        alert('No hay preguntas disponibles para este módulo.');
+        return;
     }
 
     currentMode = 'evaluacion-modulo';
@@ -984,6 +1039,7 @@ function iniciarEvaluacionModulo() {
 
     document.getElementById('totalQ').textContent = currentQuestions.length;
     timeRemaining = minutos * 60;
+    startTime = Date.now();
     startTimer();
 
     showScreen('quizScreen');

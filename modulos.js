@@ -1,19 +1,16 @@
 // ============================================
 // ÍNDICE DE MÓDULOS - MEDIPREP SMART
 // ============================================
-// Este archivo combina todos los módulos individuales
-
-// Los módulos individuales se cargan desde /modulos/*.js
-// y se combinan en el array MODULOS_PREMEDICINA
-
-// IMPORTANTE: Asegúrate de que todos los archivos estén cargados en index.html ANTES de este archivo
 
 const MODULOS_PREMEDICINA = [
-    MODULO_CONCEPTOS_SALUD,      // modulos/conceptos-salud.js
-    MODULO_PLANIMETRIA,          // modulos/planimetria.js
-    MODULO_SISTEMA_NERVIOSO,     // modulos/sistema-nervioso.js
-    MODULO_SISTEMA_ENDOCRINO,    // modulos/sistema-endocrino.js
-    MODULO_BIOLOGIA_CELULAR      // modulos/biologia-celular.js
+    MODULO_CONCEPTOS_SALUD,           // conceptos-salud.js
+    MODULO_PLANIMETRIA,               // planimetria.js
+    MODULO_SISTEMA_NERVIOSO,          // sistema-nervioso.js
+    MODULO_SISTEMA_ENDOCRINO,         // sistema-endocrino.js
+    MODULO_BIOLOGIA_CELULAR,          // biologia-celular.js
+    MODULO_SISTEMA_CARDIOVASCULAR,    // sistema-cardiovascular.js
+    MODULO_SISTEMA_RESPIRATORIO,      // sistema-respiratorio.js
+    MODULO_APARATO_DIGESTIVO,         // aparato-digestivo.js
 ];
 
 console.log("✅ Módulos de Premedicina cargados:", MODULOS_PREMEDICINA.length);

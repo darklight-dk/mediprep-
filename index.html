@@ -1212,10 +1212,31 @@
                 <!-- ─── NAVEGACIÓN ESTILO EXANIGO ─── -->
                 <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
 
+                    <!-- Tarjeta nota del módulo (solo si ya evaluó) -->
+                    <div id="notaModuloCard" style="display:none; background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(6,182,212,0.08)); border:1px solid rgba(16,185,129,0.3); border-radius:14px; padding:1rem 1.25rem;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;">
+                            <div style="display:flex;align-items:center;gap:0.6rem;">
+                                <span style="font-size:1.5rem;">🏅</span>
+                                <div>
+                                    <div style="color:#6ee7b7;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;">Tu nota en evaluación</div>
+                                    <div id="notaModuloTexto" style="color:#f1f5f9;font-weight:800;font-size:1.1rem;"></div>
+                                </div>
+                            </div>
+                            <button onclick="iniciarEvaluacionModulo()" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);color:#6ee7b7;padding:0.45rem 0.9rem;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer;">
+                                Reintentar
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Mensaje si es última lección -->
                     <div id="msgUltimaLeccion" style="display: none; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 1rem; color: #a78bfa; font-size: 0.9rem; text-align: center;">
-                        ¡Has completado el tema! Realiza la evaluación para continuar.
+                        ¡Has completado el tema! Realiza la evaluación para consolidar lo aprendido.
                     </div>
+
+                    <!-- Ir a Evaluación (solo última lección si tiene evaluación) -->
+                    <button id="btnEvaluacion" onclick="iniciarEvaluacionModulo()" style="display:none; width:100%; background:linear-gradient(135deg,#10b981 0%,#059669 100%); color:white; border:none; padding:1rem; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; align-items:center; justify-content:center; gap:0.75rem;">
+                        📝 Iniciar Evaluación del módulo
+                    </button>
 
                     <!-- Fila Volver al temario -->
                     <button onclick="volverALecciones()" style="width: 100%; background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.3); color: #94a3b8; padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
@@ -1232,10 +1253,6 @@
                         </button>
                     </div>
 
-                    <!-- Ir a Evaluación (solo en última lección o módulo conceptos-salud) -->
-                    <button id="btnEvaluacion" onclick="iniciarEvaluacionModulo()" style="display: none; width: 100%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-                        Ir a Evaluación →
-                    </button>
                 </div>
                 <!-- ─────────────────────────────────── -->
 
@@ -1317,6 +1334,10 @@
     <script src="evaluacion-conceptos-salud.js"></script>
     <script src="evaluacion-planimetria.js"></script>
     <script src="evaluacion-sistema-nervioso.js"></script>
+    <script src="evaluacion-sistema-endocrino.js"></script>
+    <script src="evaluacion-sistema-cardiovascular.js"></script>
+    <script src="evaluacion-sistema-respiratorio.js"></script>
+    <script src="evaluacion-aparato-digestivo.js"></script>
     <script src="signos-sintomas-data.js"></script>
     <script src="diagnosticos-data.js"></script>
     <script src="preguntas-comprension.js"></script>
@@ -1332,6 +1353,9 @@
     <script src="sistema-nervioso.js"></script>
     <script src="sistema-endocrino.js"></script>
     <script src="biologia-celular.js"></script>
+    <script src="sistema-cardiovascular.js"></script>
+    <script src="sistema-respiratorio.js"></script>
+    <script src="aparato-digestivo.js"></script>
 
     <!-- Índice de módulos (después de cargar todos) -->
     <script src="modulos.js"></script>
