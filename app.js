@@ -177,8 +177,36 @@ function showScreen(screenId) {
     }
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
+    if (screenId === 'homeScreen') refreshHomeStats();
     if (screenId === 'logrosScreen') renderLogros();
 }
+
+// ─── NAVEGACIÓN CON BOTTOM NAV ──────────────────────────────
+function navTo(screenId, navId) {
+    showScreen(screenId);
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const el = document.getElementById(navId);
+    if (el) el.classList.add('active');
+}
+
+// Actualizar stats del home en cada visita
+function refreshHomeStats() {
+    const s = getStats();
+    const el = id => document.getElementById(id);
+    if (el('homeStatCorrectas')) el('homeStatCorrectas').textContent = s.totalCorrect || 0;
+    if (el('homeStatRacha'))     el('homeStatRacha').textContent     = s.maxStreak   || 0;
+    if (el('homeStatTotal'))     el('homeStatTotal').textContent     = s.totalAnswered|| 0;
+
+    // Header streak
+    const streak = s.currentStreak || 0;
+    const hStreak = el('headerStreak');
+    if (hStreak) {
+        hStreak.style.display = streak >= 3 ? 'flex' : 'none';
+        const sv = el('headerStreakVal');
+        if (sv) sv.textContent = streak;
+    }
+}
+
 
 function showSection(section) {
     const screens = {
@@ -248,6 +276,15 @@ function startQuizFlash() {
     incorrectAnswers = 0;
 
     document.getElementById('totalQ').textContent = currentQuestions.length;
+    // progress bar
+    const pBar = document.getElementById('quizProgressBar');
+    if (pBar) {
+        const pct = currentQuestions.length > 0 ? Math.round((currentQuestionIndex / currentQuestions.length) * 100) : 0;
+        pBar.style.width = pct + '%';
+    }
+    // label pregunta
+    const qLabel = document.getElementById('questionLabel');
+    if (qLabel) qLabel.textContent = 'Pregunta ' + (currentQuestionIndex + 1) + ' de ' + currentQuestions.length;
     timeRemaining = 300; // 5 minutos fijos
     startTimer();
 
@@ -956,17 +993,26 @@ function abrirLeccion(moduloId, leccionIndex) {
     if (btnEval)   btnEval.style.display   = (esUltima && tieneEvaluacion) ? 'flex' : 'none';
 
     // Mostrar nota previa si ya evaluó este módulo
-    const notaCard = document.getElementById('notaModuloCard');
+    const notaCard  = document.getElementById('notaModuloCard');
     const notaTexto = document.getElementById('notaModuloTexto');
     if (notaCard && notaTexto && esUltima && moduloActual) {
         const notaGuardada = localStorage.getItem('mediprep_nota_' + moduloActual.id);
         if (notaGuardada) {
             const nota = JSON.parse(notaGuardada);
-            const emoji = nota.pct >= 80 ? '🏆' : nota.pct >= 60 ? '👍' : '📚';
-            notaTexto.textContent = `${nota.pct}% — ${nota.correctas}/${nota.total} correctas ${emoji}`;
-            notaCard.style.display = 'block';
-            // Ocultar el mensaje de "realiza la evaluación" si ya tiene nota
-            if (msgUltima) msgUltima.style.display = 'none';
+            // Nota vieja (<40 preguntas) → borrar y pedir re-evaluar
+            if (nota.total < 40) {
+                localStorage.removeItem('mediprep_nota_' + moduloActual.id);
+                notaCard.style.display = 'none';
+                if (msgUltima) {
+                    msgUltima.style.display = 'block';
+                    msgUltima.textContent = '🔄 La evaluación fue actualizada a 60 preguntas. ¡Vuelve a evaluarte!';
+                }
+            } else {
+                const emoji = nota.pct >= 80 ? '🏆' : nota.pct >= 60 ? '👍' : '📚';
+                notaTexto.textContent = `${nota.pct}% — ${nota.correctas}/${nota.total} correctas ${emoji}`;
+                notaCard.style.display = 'block';
+                if (msgUltima) msgUltima.style.display = 'none';
+            }
         } else {
             notaCard.style.display = 'none';
         }
