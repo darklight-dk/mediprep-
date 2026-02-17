@@ -1183,6 +1183,7 @@ function checkFirstVisit() {
             if (dots[0])   dots[0].classList.add('active');
             currentOnboardingSlide = 0;
             showScreen('onboardingScreen');
+            playAudioFile('entrar_primera_pregunta.ogg');
             initOnboardingDots();
             initOnboardingSwipe();
         }, 100);
@@ -1260,6 +1261,7 @@ function showOnboardingAgain() {
     if (btnSkip)  { btnSkip.style.display  = 'flex'; }
     
     showScreen('onboardingScreen');
+    playAudioFile('entrar_primera_pregunta.ogg');
 }
 
 
@@ -1569,6 +1571,21 @@ function getAudioCtx() {
     return audioCtx;
 }
 
+
+// ═══════════════════════════════════════
+// REPRODUCIR ARCHIVOS DE AUDIO (.ogg)
+// ═══════════════════════════════════════
+function playAudioFile(filename) {
+    if (!CONFIG.SOUNDS.enabled) return;
+    try {
+        const audio = new Audio(filename);
+        audio.volume = 0.5;
+        audio.play().catch(err => console.log('Audio play error:', err));
+    } catch (err) {
+        console.log('Audio error:', err);
+    }
+}
+
 function playSound(tipo) {
     if (!CONFIG.SOUNDS.enabled) return;
     try {
@@ -1748,7 +1765,7 @@ const AchievementSystem = {
                 <div style="font-size:0.8rem;color:#94a3b8;">${ach.description}</div>
             </div>`;
         document.body.appendChild(popup);
-        playSound('achievement');
+        playAudioFile('subir-de-nivel_.ogg');
         setTimeout(() => popup.classList.add('show'), 50);
         setTimeout(() => {
             popup.classList.remove('show');
