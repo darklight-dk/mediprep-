@@ -979,7 +979,7 @@ function abrirLeccion(moduloId, leccionIndex) {
 
     // Mensaje + botón Evaluación solo en última lección
     // Detecta dinámicamente si el módulo tiene evaluación (interna o archivo externo)
-    const modulosEvalExterna = ['conceptos-salud', 'planimetria', 'sistema-nervioso', 'sistema-endocrino', 'sistema-cardiovascular', 'sistema-respiratorio', 'aparato-digestivo'];
+    const modulosEvalExterna = ['conceptos-salud', 'planimetria', 'sistema-nervioso', 'sistema-endocrino', 'sistema-cardiovascular', 'sistema-respiratorio', 'aparato-digestivo', 'carbohidratos'];
     const tieneEvalInterna  = moduloActual && Array.isArray(moduloActual.evaluacion) && moduloActual.evaluacion.length > 0;
     const tieneEvalExterna  = modulosEvalExterna.includes(moduloActual ? moduloActual.id : '');
     const tieneEvaluacion   = tieneEvalInterna || tieneEvalExterna;
@@ -1062,6 +1062,14 @@ function iniciarEvaluacionModulo() {
     } else if (moduloId === 'aparato-digestivo') {
         banco = (typeof EVALUACION_APARATO_DIGESTIVO !== 'undefined') ? EVALUACION_APARATO_DIGESTIVO : [];
         minutos = 75;
+    } else if (moduloId === 'carbohidratos') {
+        // Evaluación de 100 preguntas distribuidas en bloques
+        if (typeof EVALUACION_CARBOHIDRATOS !== 'undefined' && EVALUACION_CARBOHIDRATOS.bloques) {
+            banco = EVALUACION_CARBOHIDRATOS.bloques.flatMap(b => b.preguntas);
+        } else {
+            banco = [];
+        }
+        minutos = 90;
     } else {
         banco = (typeof EVALUACION_CONCEPTOS_SALUD !== 'undefined') ? EVALUACION_CONCEPTOS_SALUD : PREGUNTAS.medicina || [];
         minutos = 70;
@@ -1147,6 +1155,14 @@ function checkFirstVisit() {
     if (!visited) {
         // Primera vez - mostrar onboarding
         setTimeout(() => {
+            // Asegurar estado limpio
+            const slides = document.querySelectorAll('.onboarding-slide');
+            const dots   = document.querySelectorAll('.onb-dot');
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            if (slides[0]) slides[0].classList.add('active');
+            if (dots[0])   dots[0].classList.add('active');
+            currentOnboardingSlide = 0;
             showScreen('onboardingScreen');
             initOnboardingDots();
             initOnboardingSwipe();
@@ -1203,8 +1219,27 @@ function finishOnboarding() {
 }
 
 function showOnboardingAgain() {
+    // Resetear TODOS los slides a estado inactivo antes de mostrar
+    const slides = document.querySelectorAll('.onboarding-slide');
+    const dots   = document.querySelectorAll('.onb-dot');
+    
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    
     currentOnboardingSlide = 0;
-    goToOnboardingSlide(0);
+    
+    // Activar solo el primero
+    if (slides[0]) slides[0].classList.add('active');
+    if (dots[0])   dots[0].classList.add('active');
+    
+    // Resetear botones
+    const btnNext  = document.getElementById('onbNext');
+    const btnStart = document.getElementById('onbStart');
+    const btnSkip  = document.getElementById('onbSkip');
+    if (btnNext)  { btnNext.style.display  = 'flex'; }
+    if (btnStart) { btnStart.style.display = 'none'; }
+    if (btnSkip)  { btnSkip.style.display  = 'flex'; }
+    
     showScreen('onboardingScreen');
 }
 
