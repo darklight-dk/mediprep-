@@ -1,1779 +1,673 @@
+// ============================================
+// MÓDULO: CARBOHIDRATOS — Estilo visual correcto
+// ============================================
+
 const CARBOHIDRATOS = {
     id: 'carbohidratos',
     titulo: 'Carbohidratos',
+    descripcion: 'Estructura, clasificación, metabolismo y funciones biológicas',
     icono: '🍞',
-    descripcion: 'Bioquímica de carbohidratos: estructura, clasificación y metabolismo',
-    color: '#f59e0b',
-    
+    progreso: 0,
     lecciones: [
+
         {
-            id: 1,
+            id: 'intro-carbohidratos',
             titulo: 'Introducción a los Carbohidratos',
-            tiempo: '6 min',
+            tiempo: '4 min',
             completada: false,
             contenido: `
-                <h1>🍞 Introducción a los Carbohidratos</h1>
-                
-                <h2>¿Qué son los Carbohidratos?</h2>
-                <p>Los <strong>carbohidratos</strong> (también llamados glúcidos o sacáridos) son compuestos orgánicos formados por <strong>carbono (C), hidrógeno (H) y oxígeno (O)</strong>. Son la principal fuente de energía para el organismo.</p>
-                
-                <div class="dato-clave">
-                    <h3>📌 Fórmula General</h3>
-                    <p><strong>(CH₂O)ₙ</strong> donde n ≥ 3</p>
-                    <p>Esta fórmula indica que por cada carbono hay dos hidrógenos y un oxígeno, como si fueran "hidratos de carbono".</p>
+                <div style="background:rgba(245,158,11,0.12);border-left:4px solid #f59e0b;padding:1.25rem;border-radius:10px;margin-bottom:1.25rem;">
+                    <h4 style="color:#f59e0b;margin:0 0 0.5rem;">¿Qué son los Carbohidratos?</h4>
+                    <p style="margin:0;line-height:1.6;">Compuestos orgánicos formados por <strong>C, H y O</strong>. Principal fuente de energía. Fórmula general: <strong style="color:#fcd34d;">(CH₂O)ₙ  donde n ≥ 3</strong>. Son de carácter <strong>hidrofílico</strong>.</p>
                 </div>
-                
-                <h2>Características Generales</h2>
-                <ul>
-                    <li><strong>Hidrofílicos:</strong> Se disuelven bien en agua debido a sus grupos hidroxilo (-OH)</li>
-                    <li><strong>Energéticos:</strong> Aportan 4 kcal por gramo</li>
-                    <li><strong>Abundantes:</strong> Son las moléculas orgánicas más abundantes en la naturaleza</li>
-                    <li><strong>Versátiles:</strong> Tienen funciones energéticas, estructurales y de reconocimiento celular</li>
-                </ul>
-                
-                <h2>Clasificación General</h2>
-                <p>Los carbohidratos se clasifican según el número de unidades básicas (monómeros):</p>
-                
-                <div class="concepto">
-                    <h3>1️⃣ Monosacáridos (1 unidad)</h3>
-                    <p>La unidad básica, no se pueden hidrolizar a moléculas más simples.</p>
-                    <p><em>Ejemplos:</em> Glucosa, fructuosa, galactosa, ribosa</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Características Generales</h3>
+                <div style="display:grid;gap:0.6rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">💧 Hidrofílicos</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">Sus grupos -OH forman puentes de hidrógeno con el agua → alta solubilidad.</p>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">⚡ Energéticos — 4 kcal/gramo</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">Fuente más rápida y eficiente. Deben representar <strong>50-60%</strong> de las calorías diarias.</p>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">🌿 Más abundantes de la naturaleza</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">Celulosa y almidón son los compuestos orgánicos más abundantes del planeta.</p>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>2️⃣ Disacáridos (2 unidades)</h3>
-                    <p>Formados por la unión de dos monosacáridos mediante un enlace glucosídico.</p>
-                    <p><em>Ejemplos:</em> Sacarosa, lactosa, maltosa</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Clasificación por Número de Unidades</h3>
+                <div style="display:grid;gap:0.55rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);padding:0.9rem;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong style="color:#fbbf24;">Monosacáridos</strong><p style="margin:0.2rem 0 0;color:#94a3b8;font-size:0.85rem;">Glucosa, fructuosa, galactosa</p></div>
+                        <span style="background:rgba(245,158,11,0.25);color:#fcd34d;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:700;white-space:nowrap;">1 unidad</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.25);padding:0.9rem;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong style="color:#fcd34d;">Disacáridos</strong><p style="margin:0.2rem 0 0;color:#94a3b8;font-size:0.85rem;">Sacarosa, lactosa, maltosa</p></div>
+                        <span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:700;white-space:nowrap;">2 unidades</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong style="color:#fcd34d;">Oligosacáridos</strong><p style="margin:0.2rem 0 0;color:#94a3b8;font-size:0.85rem;">Rafinosa, estaquiosa</p></div>
+                        <span style="background:rgba(245,158,11,0.1);color:#f59e0b;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:700;white-space:nowrap;">3–10</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+                        <div><strong style="color:#fcd34d;">Polisacáridos</strong><p style="margin:0.2rem 0 0;color:#94a3b8;font-size:0.85rem;">Almidón, glucógeno, celulosa</p></div>
+                        <span style="background:rgba(245,158,11,0.1);color:#f59e0b;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:700;white-space:nowrap;">&gt;10</span>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>3️⃣ Oligosacáridos (3-10 unidades)</h3>
-                    <p>Cadenas cortas de monosacáridos, importantes en reconocimiento celular.</p>
-                    <p><em>Ejemplos:</em> Rafinosa, estaquiosa</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Grupos Funcionales</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <div style="font-size:1.5rem;margin-bottom:0.4rem;">🔶</div>
+                        <strong style="color:#fcd34d;">Carbonilo (C=O)</strong>
+                        <p style="color:#94a3b8;font-size:0.82rem;margin:0.4rem 0 0;line-height:1.5;">En C1 → <strong style="color:#fbbf24;">Aldehído</strong> = Aldosa<br>En C2 → <strong style="color:#fbbf24;">Cetona</strong> = Cetosa</p>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <div style="font-size:1.5rem;margin-bottom:0.4rem;">💧</div>
+                        <strong style="color:#fcd34d;">Hidroxilo (-OH)</strong>
+                        <p style="color:#94a3b8;font-size:0.82rem;margin:0.4rem 0 0;line-height:1.5;">Múltiples grupos<br>Dan solubilidad y reactividad</p>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>4️⃣ Polisacáridos (>10 unidades)</h3>
-                    <p>Polímeros largos de monosacáridos con funciones de reserva o estructurales.</p>
-                    <p><em>Ejemplos:</em> Almidón, glucógeno, celulosa</p>
-                </div>
-                
-                <h2>Importancia Biológica</h2>
-                <div class="nota-importante">
-                    <p><strong>💡 Los carbohidratos son esenciales para:</strong></p>
-                    <ul>
-                        <li>Obtención rápida de energía (glucosa)</li>
-                        <li>Almacenamiento energético (glucógeno en animales, almidón en plantas)</li>
-                        <li>Estructura celular (celulosa en plantas, quitina en hongos)</li>
-                        <li>Comunicación celular (glucoproteínas, glucolípidos)</li>
-                        <li>Síntesis de ácidos nucleicos (ribosa, desoxirribosa)</li>
-                    </ul>
-                </div>
-                
-                <h2>Grupos Funcionales</h2>
-                <p>Los carbohidratos contienen dos grupos funcionales principales:</p>
-                
-                <div class="ejemplo">
-                    <h3>🔸 Grupo Carbonilo (C=O)</h3>
-                    <p>Puede estar en dos posiciones:</p>
-                    <ul>
-                        <li><strong>Aldehído (C1):</strong> Forma <em>aldosas</em> (ej: glucosa)</li>
-                        <li><strong>Cetona (C2):</strong> Forma <em>cetosas</em> (ej: fructuosa)</li>
-                    </ul>
-                </div>
-                
-                <div class="ejemplo">
-                    <h3>🔸 Grupos Hidroxilo (-OH)</h3>
-                    <p>Múltiples grupos OH hacen a los carbohidratos solubles en agua y reactivos.</p>
-                </div>
-                
-                <h2>Carbohidratos en la Dieta</h2>
-                <p>Los carbohidratos deben representar el <strong>50-60% de las calorías diarias</strong>. Se dividen en:</p>
-                
-                <table>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Características</th>
-                        <th>Fuentes</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Simples</strong></td>
-                        <td>Absorción rápida, sabor dulce</td>
-                        <td>Frutas, miel, azúcar</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Complejos</strong></td>
-                        <td>Absorción lenta, sin sabor dulce</td>
-                        <td>Cereales, legumbres, tubérculos</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> Los carbohidratos complejos son preferibles porque proporcionan energía sostenida y contienen fibra.</p>
+
+                <div style="background:rgba(245,158,11,0.08);border-radius:10px;padding:1rem;">
+                    <p style="margin:0;color:#fcd34d;font-size:0.88rem;">💡 <strong>Recuerda:</strong> Los carbohidratos tienen funciones energéticas, estructurales, de reconocimiento celular y como precursores biosintéticos.</p>
                 </div>
             `
         },
-        
+
         {
-            id: 2,
-            titulo: 'Monosacáridos - Estructura y Clasificación',
-            tiempo: '7 min',
+            id: 'monosacáridos-estructura',
+            titulo: 'Monosacáridos — Estructura y Clasificación',
+            tiempo: '5 min',
             completada: false,
             contenido: `
-                <h1>🔬 Monosacáridos - Estructura y Clasificación</h1>
-                
-                <h2>Definición</h2>
-                <p>Los <strong>monosacáridos</strong> son los carbohidratos más simples. Son las unidades básicas que no pueden hidrolizarse en moléculas más pequeñas.</p>
-                
-                <div class="dato-clave">
-                    <h3>📌 Características Principales</h3>
-                    <ul>
-                        <li>Sólidos cristalinos, blancos y solubles en agua</li>
-                        <li>Sabor dulce</li>
-                        <li>Fórmula general: (CH₂O)ₙ donde n = 3-7</li>
-                        <li>Pueden ciclarse formando anillos</li>
-                    </ul>
+                <div style="background:rgba(245,158,11,0.12);border-left:4px solid #f59e0b;padding:1.25rem;border-radius:10px;margin-bottom:1.25rem;">
+                    <h4 style="color:#f59e0b;margin:0 0 0.5rem;">Monosacáridos</h4>
+                    <p style="margin:0;line-height:1.6;">Unidades básicas que <strong>no se pueden hidrolizar</strong> en moléculas más simples. Sólidos cristalinos, blancos, dulces y solubles en agua. Fórmula: (CH₂O)ₙ donde <strong style="color:#fcd34d;">n = 3–7</strong>.</p>
                 </div>
-                
-                <h2>Clasificación según Número de Carbonos</h2>
-                
-                <div class="concepto">
-                    <h3>3 carbonos - TRIOSAS</h3>
-                    <p>Los monosacáridos más simples.</p>
-                    <p><strong>Ejemplos:</strong></p>
-                    <ul>
-                        <li><em>Gliceraldehído</em> (aldosa)</li>
-                        <li><em>Dihidroxiacetona</em> (cetosa)</li>
-                    </ul>
-                    <p>Son intermediarios metabólicos importantes en la glucólisis.</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Clasificación por Número de Carbonos</h3>
+                <div style="display:grid;gap:0.55rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;">
+                        <span><strong style="color:#fcd34d;">Triosas (3C)</strong> — Gliceraldehído, Dihidroxiacetona</span>
+                        <span style="color:#94a3b8;font-size:0.8rem;">Glucólisis</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;">
+                        <span><strong style="color:#fcd34d;">Tetrosas (4C)</strong> — Eritrosa</span>
+                        <span style="color:#94a3b8;font-size:0.8rem;">Vía pentosas</span>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;">
+                        <span><strong style="color:#fbbf24;">Pentosas (5C)</strong> — Ribosa, Desoxirribosa ⭐</span>
+                        <strong style="color:#f59e0b;font-size:0.8rem;">ARN / ADN</strong>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.5);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;">
+                        <span><strong style="color:#fbbf24;">Hexosas (6C)</strong> — Glucosa, Fructuosa, Galactosa ⭐⭐⭐</span>
+                        <strong style="color:#fbbf24;font-size:0.8rem;">¡Las más importantes!</strong>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>4 carbonos - TETROSAS</h3>
-                    <p><strong>Ejemplo:</strong> Eritrosa (aldosa)</p>
-                    <p>Rara en forma libre, importante en vías metabólicas.</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Aldosas vs Cetosas</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">🔶 ALDOSAS</h4>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.7;">
+                            Carbonilo en <strong style="color:#fbbf24;">C1</strong> (aldehído)<br>
+                            Glucosa (aldohexosa)<br>
+                            Ribosa (aldopentosa)<br>
+                            Galactosa (aldohexosa)
+                        </div>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">🔷 CETOSAS</h4>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.7;">
+                            Carbonilo en <strong style="color:#fbbf24;">C2</strong> (cetona)<br>
+                            Fructuosa (cetohexosa)<br>
+                            Ribulosa (cetopentosa)<br>
+                            Dihidroxiacetona (cetotriosa)
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>5 carbonos - PENTOSAS ⭐</h3>
-                    <p>Muy importantes biológicamente.</p>
-                    <p><strong>Ejemplos clave:</strong></p>
-                    <ul>
-                        <li><em>Ribosa:</em> Forma parte del ARN</li>
-                        <li><em>2-Desoxirribosa:</em> Forma parte del ADN</li>
-                        <li><em>Ribulosa:</em> Participa en la fotosíntesis</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Serie D y L</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#6ee7b7;">Serie D ✅</strong>
+                        <p style="color:#cbd5e1;font-size:0.85rem;margin:0.4rem 0 0;">-OH del C asimétrico más alejado a la <strong style="color:#6ee7b7;">DERECHA</strong>. Predomina en la naturaleza.</p>
+                    </div>
+                    <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#fca5a5;">Serie L</strong>
+                        <p style="color:#94a3b8;font-size:0.85rem;margin:0.4rem 0 0;">-OH a la <strong style="color:#fca5a5;">IZQUIERDA</strong>. Rara en organismos vivos.</p>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>6 carbonos - HEXOSAS ⭐⭐⭐</h3>
-                    <p>¡Las más importantes!</p>
-                    <p><strong>Ejemplos principales:</strong></p>
-                    <ul>
-                        <li><em>Glucosa:</em> Principal fuente de energía</li>
-                        <li><em>Fructuosa:</em> Azúcar de las frutas</li>
-                        <li><em>Galactosa:</em> Componente de la lactosa</li>
-                        <li><em>Manosa:</em> Importante en glucoproteínas</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Anomería α y β</h3>
+                <div style="background:rgba(245,158,11,0.08);border-radius:10px;padding:1rem;margin-bottom:1rem;">
+                    <p style="color:#cbd5e1;font-size:0.9rem;margin:0 0 0.75rem;">Al ciclarse, el C carbonílico → <strong style="color:#fcd34d;">carbono anomérico</strong>:</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+                        <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);padding:0.75rem;border-radius:8px;text-align:center;font-size:0.88rem;">
+                            <strong style="color:#fca5a5;">α (alfa)</strong>
+                            <p style="color:#94a3b8;margin:0.3rem 0 0;">-OH anomérico hacia <strong style="color:#f87171;">ABAJO</strong></p>
+                        </div>
+                        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);padding:0.75rem;border-radius:8px;text-align:center;font-size:0.88rem;">
+                            <strong style="color:#6ee7b7;">β (beta)</strong>
+                            <p style="color:#94a3b8;margin:0.3rem 0 0;">-OH anomérico hacia <strong style="color:#6ee7b7;">ARRIBA</strong></p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="concepto">
-                    <h3>7 carbonos - HEPTOSAS</h3>
-                    <p><strong>Ejemplo:</strong> Sedoheptulosa</p>
-                    <p>Intermediario en la vía de las pentosas fosfato.</p>
-                </div>
-                
-                <h2>Clasificación según Grupo Funcional</h2>
-                
-                <div class="ejemplo">
-                    <h3>🔸 ALDOSAS</h3>
-                    <p>Contienen un grupo <strong>aldehído</strong> (C=O) en el carbono 1.</p>
-                    <p><strong>Nomenclatura:</strong> Si tiene 6 carbonos → <em>aldo</em>hexosa</p>
-                    <p><strong>Ejemplos:</strong></p>
-                    <ul>
-                        <li>Glucosa (aldohexosa)</li>
-                        <li>Ribosa (aldopentosa)</li>
-                        <li>Gliceraldehído (aldotriosa)</li>
-                    </ul>
-                </div>
-                
-                <div class="ejemplo">
-                    <h3>🔸 CETOSAS</h3>
-                    <p>Contienen un grupo <strong>cetona</strong> (C=O) en el carbono 2.</p>
-                    <p><strong>Nomenclatura:</strong> Si tiene 6 carbonos → <em>ceto</em>hexosa</p>
-                    <p><strong>Ejemplos:</strong></p>
-                    <ul>
-                        <li>Fructuosa (cetohexosa)</li>
-                        <li>Ribulosa (cetopentosa)</li>
-                        <li>Dihidroxiacetona (cetotriosa)</li>
-                    </ul>
-                </div>
-                
-                <h2>Isomería en Monosacáridos</h2>
-                
-                <div class="nota-importante">
-                    <h3>💡 Tipos de Isómeros</h3>
-                    
-                    <p><strong>1. Isomería estructural:</strong></p>
-                    <p>Misma fórmula molecular pero diferente estructura.</p>
-                    <p><em>Ejemplo:</em> Glucosa (aldosa) vs Fructuosa (cetosa) → Ambas C₆H₁₂O₆</p>
-                    
-                    <p><strong>2. Estereoisomería (quiralidad):</strong></p>
-                    <p>Diferentes disposiciones espaciales de los grupos -OH.</p>
-                    <p>Los monosacáridos tienen carbonos <em>asimétricos</em> (quirales).</p>
-                    
-                    <p><strong>3. Serie D y L:</strong></p>
-                    <ul>
-                        <li><strong>Serie D:</strong> -OH del carbono asimétrico más alejado del carbonilo está a la DERECHA</li>
-                        <li><strong>Serie L:</strong> -OH del carbono asimétrico más alejado del carbonilo está a la IZQUIERDA</li>
-                    </ul>
-                    <p>⚠️ En la naturaleza predominan los monosacáridos de la serie <strong>D</strong>.</p>
-                </div>
-                
-                <h2>Representaciones Estructurales</h2>
-                
-                <div class="concepto">
-                    <h3>📐 Proyección de Fischer</h3>
-                    <p>Representación lineal donde:</p>
-                    <ul>
-                        <li>La cadena de carbonos se dibuja vertical</li>
-                        <li>Los grupos que salen del plano están a los lados</li>
-                        <li>El grupo más oxidado (carbonilo) se coloca arriba</li>
-                    </ul>
-                    <p><strong>Uso:</strong> Útil para comparar configuraciones</p>
-                </div>
-                
-                <div class="concepto">
-                    <h3>🔄 Proyección de Haworth (cíclica)</h3>
-                    <p>Representación del anillo formado por ciclación.</p>
-                    <ul>
-                        <li>Los monosacáridos en solución forman anillos</li>
-                        <li>Pentosas forman anillos de 5 miembros (furanosas)</li>
-                        <li>Hexosas forman anillos de 6 miembros (piranosas)</li>
-                    </ul>
-                    <p><strong>Uso:</strong> Representa la forma real en la que existen los azúcares</p>
-                </div>
-                
-                <h2>Anomería: α y β</h2>
-                <p>Al ciclarse, el carbono carbonílico se convierte en un nuevo centro quiral llamado <strong>carbono anomérico</strong>:</p>
-                
-                <table>
-                    <tr>
-                        <th>Anómero</th>
-                        <th>Posición -OH</th>
-                        <th>Ejemplo</th>
-                    </tr>
-                    <tr>
-                        <td><strong>α (alfa)</strong></td>
-                        <td>-OH hacia ABAJO</td>
-                        <td>α-D-glucosa</td>
-                    </tr>
-                    <tr>
-                        <td><strong>β (beta)</strong></td>
-                        <td>-OH hacia ARRIBA</td>
-                        <td>β-D-glucosa</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Mutarrotación:</strong> En solución, los anómeros α y β están en equilibrio dinámico.</p>
+
+                <div style="background:rgba(245,158,11,0.08);border-radius:8px;padding:0.9rem;">
+                    <p style="margin:0;color:#fcd34d;font-size:0.88rem;">💡 <strong>Mutarrotación:</strong> En solución, los anómeros α y β están en equilibrio dinámico. En glucosa: 36% α y 64% β.</p>
                 </div>
             `
         },
-        
+
         {
-            id: 3,
+            id: 'monosacáridos-importantes',
             titulo: 'Monosacáridos Importantes',
-            tiempo: '8 min',
+            tiempo: '5 min',
             completada: false,
             contenido: `
-                <h1>⭐ Monosacáridos Importantes</h1>
-                
-                <h2>D-Glucosa (Dextrosa)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🍯 El Azúcar de la Sangre</h3>
-                    <p><strong>Fórmula:</strong> C₆H₁₂O₆</p>
-                    <p><strong>Tipo:</strong> Aldohexosa</p>
-                    <p><strong>Sabor:</strong> Dulce moderado</p>
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Las 3 Hexosas Principales</h3>
+                <div style="display:grid;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.4);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🍯 D-Glucosa (Dextrosa)</strong>
+                            <span style="background:rgba(245,158,11,0.25);color:#fcd34d;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">ALDOHEXOSA</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 Principal fuente de energía celular<br>
+                            🔸 Glucemia normal: <strong style="color:#fcd34d;">70–110 mg/dL</strong><br>
+                            🔸 El cerebro consume <strong>120 g/día</strong><br>
+                            🔸 Se almacena como glucógeno (animales) o almidón (plantas)
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.25);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🍓 D-Fructuosa (Levulosa)</strong>
+                            <span style="background:rgba(245,158,11,0.2);color:#fcd34d;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">CETOHEXOSA</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 El más dulce: <strong style="color:#fcd34d;">1.7× la glucosa</strong><br>
+                            🔸 Azúcar de frutas y miel (40%)<br>
+                            🔸 Bajo índice glucémico (IG = 19)<br>
+                            🔸 Isómero de glucosa: misma fórmula C₆H₁₂O₆, diferente estructura
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🥛 D-Galactosa</strong>
+                            <span style="background:rgba(245,158,11,0.15);color:#f59e0b;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">ALDOHEXOSA</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 Epímero de glucosa en <strong style="color:#fcd34d;">C4</strong><br>
+                            🔸 Componente de la lactosa (azúcar de la leche)<br>
+                            🔸 Esencial en glucolípidos cerebrales<br>
+                            🔸 Se convierte en glucosa por la <strong>vía de Leloir</strong>
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Es el monosacárido <strong>más importante</strong> en biología</li>
-                    <li>Principal fuente de energía para las células</li>
-                    <li>Concentración normal en sangre: <strong>70-110 mg/dL</strong></li>
-                    <li>Atraviesa la barrera hematoencefálica (energía para el cerebro)</li>
-                    <li>En solución, 36% forma α y 64% forma β</li>
-                </ul>
-                
-                <h3>Funciones Biológicas</h3>
-                <div class="concepto">
-                    <p><strong>1. Energía inmediata:</strong></p>
-                    <p>Se oxida en la glucólisis produciendo ATP (respiración celular)</p>
-                    
-                    <p><strong>2. Reserva energética:</strong></p>
-                    <p>Se almacena como glucógeno (animales) o almidón (plantas)</p>
-                    
-                    <p><strong>3. Precursor biosintético:</strong></p>
-                    <p>Se usa para sintetizar aminoácidos, lípidos y otros compuestos</p>
-                    
-                    <p><strong>4. Componente estructural:</strong></p>
-                    <p>Forma parte de glucolípidos y glucoproteínas</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Las Pentosas del ADN y ARN 🧬</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#a5b4fc;">Ribosa</strong>
+                        <p style="color:#cbd5e1;font-size:0.85rem;margin:0.4rem 0 0;line-height:1.6;">Componente del <strong style="color:#a5b4fc;">ARN</strong>, ATP, NAD, FAD, CoA.<br>Tiene <strong>-OH en C2</strong></p>
+                    </div>
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#6ee7b7;">2-Desoxirribosa</strong>
+                        <p style="color:#cbd5e1;font-size:0.85rem;margin:0.4rem 0 0;line-height:1.6;">Componente del <strong style="color:#6ee7b7;">ADN</strong>.<br>Le falta -OH en C2 → <strong>más estable</strong></p>
+                    </div>
                 </div>
-                
-                <h3>Origen</h3>
-                <ul>
-                    <li><strong>Alimentos:</strong> Frutas, miel, hidrólisis de almidón</li>
-                    <li><strong>Digestión:</strong> De disacáridos y polisacáridos</li>
-                    <li><strong>Gluconeogénesis:</strong> Síntesis a partir de aminoácidos, lactato o glicerol</li>
-                </ul>
-                
-                <div class="nota-importante">
-                    <p>⚠️ <strong>Diabetes Mellitus:</strong> Enfermedad donde la glucosa en sangre está elevada debido a deficiencia de insulina o resistencia a ella.</p>
+
+                <div style="background:rgba(239,68,68,0.08);border-left:3px solid #ef4444;padding:1rem;border-radius:8px;margin-bottom:0.75rem;">
+                    <strong style="color:#fca5a5;">⚠️ Galactosemia</strong>
+                    <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.88rem;">Deficiencia de enzimas de la vía de Leloir. Galactosa se acumula → <strong>cataratas, daño hepático, retraso mental</strong>. Tratamiento: dieta sin galactosa.</p>
                 </div>
-                
-                <hr>
-                
-                <h2>D-Fructuosa (Levulosa)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🍓 El Azúcar de las Frutas</h3>
-                    <p><strong>Fórmula:</strong> C₆H₁₂O₆</p>
-                    <p><strong>Tipo:</strong> Cetohexosa</p>
-                    <p><strong>Sabor:</strong> El más dulce de todos (1.7× glucosa)</p>
+                <div style="background:rgba(251,146,60,0.08);border-left:3px solid #f97316;padding:1rem;border-radius:8px;">
+                    <strong style="color:#fdba74;">⚠️ Diabetes Mellitus</strong>
+                    <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.88rem;">Glucemia ≥ 126 mg/dL en ayunas = diagnóstico. Tipo 1: falta insulina. Tipo 2: resistencia a insulina.</p>
                 </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Es una <strong>cetosa</strong> (grupo cetona en C2)</li>
-                    <li>Isómero de la glucosa (misma fórmula, diferente estructura)</li>
-                    <li>Forma anillos de 5 miembros (furanosa) y 6 miembros (piranosa)</li>
-                    <li>Más soluble en agua que la glucosa</li>
-                </ul>
-                
-                <h3>Fuentes Naturales</h3>
-                <ul>
-                    <li><strong>Frutas:</strong> Especialmente manzanas, peras, uvas</li>
-                    <li><strong>Miel:</strong> 40% fructuosa</li>
-                    <li><strong>Sacarosa:</strong> Se libera al hidrolizar azúcar de mesa</li>
-                    <li><strong>Jarabe de maíz de alta fructuosa (JMAF):</strong> Usado en bebidas</li>
-                </ul>
-                
-                <h3>Metabolismo</h3>
-                <div class="concepto">
-                    <p><strong>Absorción:</strong></p>
-                    <p>Se absorbe más lento que la glucosa (no requiere insulina inicialmente)</p>
-                    
-                    <p><strong>Conversión:</strong></p>
-                    <p>En el hígado se convierte en glucosa, glucógeno o ácidos grasos</p>
-                    
-                    <p><strong>Índice glucémico:</strong></p>
-                    <p>Bajo (19) comparado con glucosa (100)</p>
+            `
+        },
+
+        {
+            id: 'disacáridos',
+            titulo: 'Disacáridos',
+            tiempo: '5 min',
+            completada: false,
+            contenido: `
+                <div style="background:rgba(245,158,11,0.12);border-left:4px solid #f59e0b;padding:1.25rem;border-radius:10px;margin-bottom:1.25rem;">
+                    <h4 style="color:#f59e0b;margin:0 0 0.5rem;">Enlace Glucosídico</h4>
+                    <p style="margin:0;line-height:1.6;">Unión covalente entre dos monosacáridos por <strong>reacción de condensación</strong> (se libera H₂O). Se rompe por hidrólisis. Se nombra según los C unidos: ej. α(1→4).</p>
                 </div>
-                
-                <div class="nota-importante">
-                    <p>⚠️ <strong>Consumo excesivo:</strong> El exceso de fructuosa (especialmente JMAF) se asocia con hígado graso, resistencia a insulina y obesidad.</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Los 3 Disacáridos Principales</h3>
+                <div style="display:grid;gap:0.85rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.4);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🍭 Sacarosa — Azúcar de Mesa</strong>
+                            <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">NO REDUCTOR</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 <strong style="color:#fcd34d;">Glucosa α(1→2) Fructuosa</strong><br>
+                            🔸 Fuente: caña de azúcar (20%) y remolacha (17%)<br>
+                            🔸 Hidrólisis por: <strong>Sacarasa (invertasa)</strong><br>
+                            🔸 No reductor: ambos C anoméricos están en el enlace
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.25);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🥛 Lactosa — Azúcar de la Leche</strong>
+                            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">REDUCTOR ✓</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 <strong style="color:#fcd34d;">Galactosa β(1→4) Glucosa</strong><br>
+                            🔸 Único azúcar de origen animal. Leche materna: 7%<br>
+                            🔸 Hidrólisis por: <strong>Lactasa (β-galactosidasa)</strong><br>
+                            🔸 Reductor: glucosa tiene C anomérico libre
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:1.1rem;border-radius:12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.4rem;">
+                            <strong style="color:#fbbf24;font-size:1rem;">🌾 Maltosa — Azúcar de Malta</strong>
+                            <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:700;">REDUCTOR ✓</span>
+                        </div>
+                        <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                            🔸 <strong style="color:#fcd34d;">Glucosa α(1→4) Glucosa</strong><br>
+                            🔸 Hidrólisis parcial del almidón. Presente en malta y cerveza<br>
+                            🔸 Hidrólisis por: <strong>Maltasa</strong><br>
+                            🔸 Reductor: un C anomérico libre
+                        </div>
+                    </div>
                 </div>
-                
-                <hr>
-                
-                <h2>D-Galactosa</h2>
-                
-                <div class="dato-clave">
-                    <h3>🥛 El Azúcar de la Leche</h3>
-                    <p><strong>Fórmula:</strong> C₆H₁₂O₆</p>
-                    <p><strong>Tipo:</strong> Aldohexosa</p>
-                    <p><strong>Sabor:</strong> Dulce (0.6× glucosa)</p>
-                </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li><strong>Epímero</strong> de la glucosa (difiere solo en la posición del -OH en C4)</li>
-                    <li>Raramente libre en la naturaleza</li>
-                    <li>Componente de la lactosa (azúcar de la leche)</li>
-                </ul>
-                
-                <h3>Funciones Biológicas</h3>
-                <div class="concepto">
-                    <p><strong>1. Glucolípidos cerebrales:</strong></p>
-                    <p>Componente esencial en el desarrollo del sistema nervioso</p>
-                    
-                    <p><strong>2. Glucoproteínas:</strong></p>
-                    <p>Forma parte de proteínas de membrana</p>
-                    
-                    <p><strong>3. Lactosa:</strong></p>
-                    <p>Forma disacárido con glucosa en la leche materna</p>
-                </div>
-                
-                <h3>Metabolismo</h3>
-                <p>La galactosa se convierte en glucosa mediante la <strong>vía de Leloir</strong>:</p>
-                <p>Galactosa → Galactosa-1-fosfato → Glucosa-1-fosfato → Glucosa</p>
-                
-                <div class="nota-importante">
-                    <p>⚠️ <strong>Galactosemia:</strong> Enfermedad genética donde falta una enzima de la vía de Leloir. La galactosa se acumula causando daño hepático, cataratas y retraso mental.</p>
-                </div>
-                
-                <hr>
-                
-                <h2>D-Ribosa y 2-Desoxirribosa</h2>
-                
-                <div class="dato-clave">
-                    <h3>🧬 Los Azúcares de los Ácidos Nucleicos</h3>
-                    <p><strong>Fórmula Ribosa:</strong> C₅H₁₀O₅</p>
-                    <p><strong>Fórmula Desoxirribosa:</strong> C₅H₁₀O₄</p>
-                    <p><strong>Tipo:</strong> Aldopentosas</p>
-                </div>
-                
-                <h3>D-Ribosa</h3>
-                <ul>
-                    <li>Componente del <strong>ARN</strong> (ácido ribonucleico)</li>
-                    <li>Forma parte del <strong>ATP, NAD, FAD, CoA</strong> (coenzimas)</li>
-                    <li>Forma anillos de 5 miembros (β-D-ribofuranosa)</li>
-                </ul>
-                
-                <h3>2-Desoxirribosa</h3>
-                <ul>
-                    <li>Componente del <strong>ADN</strong> (ácido desoxirribonucleico)</li>
-                    <li>Le falta un -OH en el carbono 2 (de ahí "desoxi")</li>
-                    <li>Esta diferencia hace al ADN más estable que el ARN</li>
-                </ul>
-                
-                <div class="concepto">
-                    <h3>Diferencia Clave</h3>
-                    <table>
-                        <tr>
-                            <th>Ribosa</th>
-                            <th>Diferencia</th>
-                            <th>Desoxirribosa</th>
-                        </tr>
-                        <tr>
-                            <td>C2 tiene -OH</td>
-                            <td>→</td>
-                            <td>C2 tiene -H</td>
-                        </tr>
-                        <tr>
-                            <td>ARN</td>
-                            <td></td>
-                            <td>ADN</td>
-                        </tr>
-                        <tr>
-                            <td>Menos estable</td>
-                            <td></td>
-                            <td>Más estable</td>
-                        </tr>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Tabla Comparativa</h3>
+                <div style="overflow-x:auto;margin-bottom:1.25rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                        <thead>
+                            <tr style="background:rgba(245,158,11,0.2);">
+                                <th style="padding:0.6rem;text-align:left;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Disacárido</th>
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Composición</th>
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Enlace</th>
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Reductor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);">
+                                <td style="padding:0.6rem;color:#fbbf24;font-weight:600;">Sacarosa</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">Glc + Fru</td>
+                                <td style="padding:0.6rem;color:#94a3b8;text-align:center;">α(1→2)</td>
+                                <td style="padding:0.6rem;text-align:center;color:#fca5a5;font-weight:700;">NO ❌</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);background:rgba(30,41,59,0.4);">
+                                <td style="padding:0.6rem;color:#fbbf24;font-weight:600;">Lactosa</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">Gal + Glc</td>
+                                <td style="padding:0.6rem;color:#94a3b8;text-align:center;">β(1→4)</td>
+                                <td style="padding:0.6rem;text-align:center;color:#6ee7b7;font-weight:700;">SÍ ✅</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.6rem;color:#fbbf24;font-weight:600;">Maltosa</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">Glc + Glc</td>
+                                <td style="padding:0.6rem;color:#94a3b8;text-align:center;">α(1→4)</td>
+                                <td style="padding:0.6rem;text-align:center;color:#6ee7b7;font-weight:700;">SÍ ✅</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-                
-                <hr>
-                
-                <h2>Otros Monosacáridos Importantes</h2>
-                
-                <div class="ejemplo">
-                    <h3>🔸 D-Manosa</h3>
-                    <ul>
-                        <li>Aldohexosa, epímero de la glucosa en C2</li>
-                        <li>Componente de glucoproteínas</li>
-                        <li>Importante en el sistema inmune</li>
-                    </ul>
-                </div>
-                
-                <div class="ejemplo">
-                    <h3>🔸 Xilosa</h3>
-                    <ul>
-                        <li>Aldopentosa</li>
-                        <li>Componente de xilano (hemicelulosa)</li>
-                        <li>Se usa como edulcorante (xilitol)</li>
-                    </ul>
-                </div>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> Todos los monosacáridos importantes en humanos son de la serie D.</p>
+
+                <div style="background:rgba(239,68,68,0.08);border-left:3px solid #ef4444;padding:1rem;border-radius:8px;">
+                    <strong style="color:#fca5a5;">⚠️ Intolerancia a la Lactosa</strong>
+                    <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.88rem;">Afecta al <strong>65-70% de adultos</strong>. Deficiencia de lactasa → la lactosa no digerida es fermentada por bacterias. <strong>Síntomas:</strong> distensión, gases, diarrea, dolor abdominal.</p>
                 </div>
             `
         },
-        
+
         {
-            id: 4,
-            titulo: 'Disacáridos',
-            tiempo: '7 min',
+            id: 'polisacáridos-reserva',
+            titulo: 'Polisacáridos de Reserva',
+            tiempo: '5 min',
             completada: false,
             contenido: `
-                <h1>🔗 Disacáridos</h1>
-                
-                <h2>Definición y Formación</h2>
-                <p>Los <strong>disacáridos</strong> son carbohidratos formados por la unión de <strong>dos monosacáridos</strong> mediante un enlace glucosídico.</p>
-                
-                <div class="dato-clave">
-                    <h3>📌 Enlace Glucosídico</h3>
-                    <p>Es un enlace <strong>covalente</strong> que se forma por una reacción de <em>condensación</em> (deshidratación) entre dos grupos -OH.</p>
-                    <p><strong>Reacción:</strong></p>
-                    <p>Monosacárido 1 + Monosacárido 2 → Disacárido + H₂O</p>
-                    <p><strong>Nomenclatura:</strong> Se nombra según los carbonos unidos, ej: enlace α(1→4)</p>
+                <div style="background:rgba(245,158,11,0.12);border-left:4px solid #f59e0b;padding:1.25rem;border-radius:10px;margin-bottom:1.25rem;">
+                    <h4 style="color:#f59e0b;margin:0 0 0.5rem;">Polisacáridos</h4>
+                    <p style="margin:0;line-height:1.6;">Polímeros de <strong>más de 10 monosacáridos</strong>. Sin sabor dulce, insolubles, no reductores. Pueden ser <strong>de reserva</strong> (almidón, glucógeno) o <strong>estructurales</strong> (celulosa, quitina).</p>
                 </div>
-                
-                <h2>Características Generales</h2>
-                <ul>
-                    <li>Sólidos cristalinos, blancos y dulces</li>
-                    <li>Solubles en agua</li>
-                    <li>Se hidrolizan (rompen) en dos monosacáridos</li>
-                    <li>Algunos son reductores y otros no</li>
-                </ul>
-                
-                <hr>
-                
-                <h2>Sacarosa (Azúcar de Mesa)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🍭 El Disacárido más Común</h3>
-                    <p><strong>Composición:</strong> α-D-Glucosa + β-D-Fructuosa</p>
-                    <p><strong>Enlace:</strong> α(1→2) glucosídico</p>
-                    <p><strong>Fórmula:</strong> C₁₂H₂₂O₁₁</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🌾 Almidón — Reserva Vegetal</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">Amilosa (20-30%)</h4>
+                        <div style="color:#cbd5e1;font-size:0.85rem;line-height:1.7;">
+                            📏 Cadena <strong style="color:#fbbf24;">LINEAL</strong><br>
+                            🔗 Solo enlaces α(1→4)<br>
+                            🌀 Forma <strong>hélice</strong> en solución<br>
+                            🔵 Con yodo: <strong style="color:#818cf8;">AZUL</strong>
+                        </div>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">Amilopectina (70-80%)</h4>
+                        <div style="color:#cbd5e1;font-size:0.85rem;line-height:1.7;">
+                            🌳 Cadena <strong style="color:#fbbf24;">RAMIFICADA</strong><br>
+                            🔗 α(1→4) + α(1→6)<br>
+                            📐 Rama cada 24-30 glucosas<br>
+                            🔴 Con yodo: <strong style="color:#f87171;">ROJO-VIOLETA</strong>
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>¡El azúcar de mesa!</li>
-                    <li>Abundante en caña de azúcar (20%) y remolacha (17%)</li>
-                    <li>Muy dulce (referencia de dulzor = 1.0)</li>
-                    <li><strong>NO es reductor</strong> (ambos carbonos anoméricos están en el enlace)</li>
-                </ul>
-                
-                <h3>Fuentes Naturales</h3>
-                <div class="concepto">
-                    <ul>
-                        <li><strong>Caña de azúcar:</strong> Principal fuente comercial</li>
-                        <li><strong>Remolacha azucarera:</strong> Segunda fuente comercial</li>
-                        <li><strong>Frutas:</strong> Piña, mango, plátano</li>
-                        <li><strong>Miel:</strong> Pequeñas cantidades</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🥩 Glucógeno — Reserva Animal</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#6ee7b7;margin:0 0 0.5rem;">Hígado (100-120 g)</h4>
+                        <div style="color:#cbd5e1;font-size:0.85rem;line-height:1.7;">
+                            🎯 Mantiene la <strong style="color:#6ee7b7;">glucemia</strong><br>
+                            🩸 Libera glucosa a sangre<br>
+                            🔑 Glucagón lo degrada<br>
+                            ⏱️ Se agota en 12-24h ayuno
+                        </div>
+                    </div>
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#6ee7b7;margin:0 0 0.5rem;">Músculo (300-400 g)</h4>
+                        <div style="color:#cbd5e1;font-size:0.85rem;line-height:1.7;">
+                            💪 Solo para <strong style="color:#6ee7b7;">contracción</strong><br>
+                            🚫 No sale del músculo*<br>
+                            🔑 Adrenalina lo degrada<br>
+                            ⏱️ Se agota en 60-90 min
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>Hidrólisis</h3>
-                <p>La enzima <strong>sacarasa</strong> (invertasa) hidroliza la sacarosa:</p>
-                <p><em>Sacarosa + H₂O → Glucosa + Fructuosa</em></p>
-                
-                <div class="nota-importante">
-                    <p><strong>Azúcar invertido:</strong> Mezcla equimolar de glucosa y fructuosa obtenida por hidrólisis. Es más dulce que la sacarosa y no cristaliza (usado en repostería).</p>
+                <p style="color:#94a3b8;font-size:0.8rem;margin:-0.75rem 0 1.25rem;">*Sin glucosa-6-fosfatasa → no puede liberar glucosa libre a la sangre.</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Almidón vs Glucógeno</h3>
+                <div style="overflow-x:auto;margin-bottom:1.25rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                        <thead>
+                            <tr style="background:rgba(245,158,11,0.2);">
+                                <th style="padding:0.6rem;text-align:left;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Característica</th>
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Almidón</th>
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Glucógeno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);">
+                                <td style="padding:0.6rem;color:#94a3b8;">Organismo</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">🌿 Plantas</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">🐾 Animales</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);background:rgba(30,41,59,0.4);">
+                                <td style="padding:0.6rem;color:#94a3b8;">Ramificación</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">Cada 24-30</td>
+                                <td style="padding:0.6rem;color:#fbbf24;text-align:center;font-weight:600;">Cada 8-12 ↑</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);">
+                                <td style="padding:0.6rem;color:#94a3b8;">Tamaño</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;text-align:center;">~10,000 glc</td>
+                                <td style="padding:0.6rem;color:#fbbf24;text-align:center;font-weight:600;">~50,000 glc</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.6rem;color:#94a3b8;">Monómero</td>
+                                <td style="padding:0.6rem;color:#6ee7b7;text-align:center;">α-Glucosa</td>
+                                <td style="padding:0.6rem;color:#6ee7b7;text-align:center;">α-Glucosa</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <hr>
-                
-                <h2>Lactosa (Azúcar de la Leche)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🥛 El Disacárido de los Mamíferos</h3>
-                    <p><strong>Composición:</strong> β-D-Galactosa + β-D-Glucosa</p>
-                    <p><strong>Enlace:</strong> β(1→4) glucosídico</p>
-                    <p><strong>Fórmula:</strong> C₁₂H₂₂O₁₁</p>
-                </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Único carbohidrato de origen animal</li>
-                    <li>Presente en la leche de mamíferos (4-7% en humanos)</li>
-                    <li>Menos dulce que la sacarosa (0.4×)</li>
-                    <li><strong>SÍ es reductor</strong> (carbono anomérico libre en glucosa)</li>
-                </ul>
-                
-                <h3>Fuentes</h3>
-                <div class="concepto">
-                    <ul>
-                        <li><strong>Leche materna:</strong> 7%</li>
-                        <li><strong>Leche de vaca:</strong> 4-5%</li>
-                        <li><strong>Productos lácteos:</strong> Yogur, queso (cantidades variables)</li>
-                    </ul>
-                </div>
-                
-                <h3>Digestión</h3>
-                <p>La enzima <strong>lactasa</strong> (β-galactosidasa) hidroliza la lactosa en el intestino delgado:</p>
-                <p><em>Lactosa + H₂O → Galactosa + Glucosa</em></p>
-                
-                <div class="nota-importante">
-                    <h3>⚠️ Intolerancia a la Lactosa</h3>
-                    <p>Condición donde hay <strong>deficiencia de lactasa</strong>. La lactosa no digerida pasa al colon donde es fermentada por bacterias.</p>
-                    <p><strong>Síntomas:</strong></p>
-                    <ul>
-                        <li>Distensión abdominal</li>
-                        <li>Gases y flatulencia</li>
-                        <li>Diarrea</li>
-                        <li>Dolor abdominal</li>
-                    </ul>
-                    <p><strong>Prevalencia:</strong> 65-70% de la población mundial (especialmente asiáticos, africanos y latinos)</p>
-                </div>
-                
-                <hr>
-                
-                <h2>Maltosa (Azúcar de Malta)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🌾 El Disacárido del Almidón</h3>
-                    <p><strong>Composición:</strong> α-D-Glucosa + α-D-Glucosa</p>
-                    <p><strong>Enlace:</strong> α(1→4) glucosídico</p>
-                    <p><strong>Fórmula:</strong> C₁₂H₂₂O₁₁</p>
-                </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Formada por <strong>dos glucosas</strong></li>
-                    <li>Producto de la hidrólisis parcial del almidón</li>
-                    <li>Menos dulce que la sacarosa (0.3×)</li>
-                    <li><strong>SÍ es reductor</strong> (un carbono anomérico libre)</li>
-                </ul>
-                
-                <h3>Fuentes</h3>
-                <div class="concepto">
-                    <ul>
-                        <li><strong>Malta:</strong> Cebada germinada (proceso de malteo)</li>
-                        <li><strong>Cerveza:</strong> Producto de fermentación</li>
-                        <li><strong>Digestión:</strong> Hidrólisis de almidón por amilasa salival y pancreática</li>
-                        <li><strong>Jarabes:</strong> Jarabes de glucosa comerciales</li>
-                    </ul>
-                </div>
-                
-                <h3>Digestión</h3>
-                <p>La enzima <strong>maltasa</strong> hidroliza la maltosa:</p>
-                <p><em>Maltosa + H₂O → Glucosa + Glucosa</em></p>
-                
-                <hr>
-                
-                <h2>Otros Disacáridos</h2>
-                
-                <div class="ejemplo">
-                    <h3>🔸 Celobiosa</h3>
-                    <p><strong>Composición:</strong> β-D-Glucosa + β-D-Glucosa</p>
-                    <p><strong>Enlace:</strong> β(1→4)</p>
-                    <ul>
-                        <li>Unidad repetitiva de la celulosa</li>
-                        <li>Los humanos NO podemos digerirla (no tenemos celulasa)</li>
-                        <li>Los rumiantes sí (bacterias simbióticas)</li>
-                    </ul>
-                </div>
-                
-                <div class="ejemplo">
-                    <h3>🔸 Trehalosa</h3>
-                    <p><strong>Composición:</strong> α-D-Glucosa + α-D-Glucosa</p>
-                    <p><strong>Enlace:</strong> α(1→1)</p>
-                    <ul>
-                        <li>Presente en hongos e insectos</li>
-                        <li>NO es reductor (ambos anoméricos en el enlace)</li>
-                        <li>Protege contra estrés (deshidratación, congelación)</li>
-                    </ul>
-                </div>
-                
-                <h2>Tabla Comparativa</h2>
-                <table>
-                    <tr>
-                        <th>Disacárido</th>
-                        <th>Monosacáridos</th>
-                        <th>Enlace</th>
-                        <th>Reductor</th>
-                        <th>Fuente</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Sacarosa</strong></td>
-                        <td>Glucosa + Fructuosa</td>
-                        <td>α(1→2)</td>
-                        <td>NO</td>
-                        <td>Caña, remolacha</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Lactosa</strong></td>
-                        <td>Galactosa + Glucosa</td>
-                        <td>β(1→4)</td>
-                        <td>SÍ</td>
-                        <td>Leche</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Maltosa</strong></td>
-                        <td>Glucosa + Glucosa</td>
-                        <td>α(1→4)</td>
-                        <td>SÍ</td>
-                        <td>Malta, almidón</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Azúcar reductor:</strong> Es aquel que tiene un grupo carbonilo libre (aldehído o cetona) capaz de reducir reactivos como el reactivo de Benedict.</p>
+
+                <div style="background:rgba(239,68,68,0.08);border-left:3px solid #ef4444;padding:1rem;border-radius:8px;">
+                    <strong style="color:#fca5a5;">⚠️ Glucogenosis (enfermedades hereditarias)</strong>
+                    <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.88rem;"><strong>Von Gierke (tipo I):</strong> Sin glucosa-6-fosfatasa → hipoglucemia severa.<br><strong>McArdle (tipo V):</strong> Sin fosforilasa muscular → calambres con ejercicio.</p>
                 </div>
             `
         },
-        
+
         {
-            id: 5,
-            titulo: 'Polisacáridos - Almidón y Glucógeno',
-            tiempo: '7 min',
-            completada: false,
-            contenido: `
-                <h1>🌾 Polisacáridos de Reserva</h1>
-                
-                <h2>¿Qué son los Polisacáridos?</h2>
-                <p>Los <strong>polisacáridos</strong> son polímeros formados por la unión de <strong>más de 10 monosacáridos</strong> mediante enlaces glucosídicos.</p>
-                
-                <div class="dato-clave">
-                    <h3>📌 Características Generales</h3>
-                    <ul>
-                        <li>Pueden contener cientos o miles de unidades</li>
-                        <li>NO tienen sabor dulce</li>
-                        <li>Insolubles o poco solubles en agua</li>
-                        <li>NO son reductores</li>
-                        <li>Funciones: <strong>reserva energética</strong> o <strong>estructural</strong></li>
-                    </ul>
-                </div>
-                
-                <h2>Clasificación</h2>
-                <div class="concepto">
-                    <p><strong>1. Homopolisacáridos:</strong> Formados por un solo tipo de monosacárido</p>
-                    <p><em>Ejemplos:</em> Almidón, glucógeno, celulosa (todos de glucosa)</p>
-                    
-                    <p><strong>2. Heteropolisacáridos:</strong> Formados por diferentes monosacáridos</p>
-                    <p><em>Ejemplos:</em> Ácido hialurónico, heparina, pectina</p>
-                </div>
-                
-                <hr>
-                
-                <h2>Almidón (Amilum)</h2>
-                
-                <div class="dato-clave">
-                    <h3>🌾 La Reserva Energética de las Plantas</h3>
-                    <p><strong>Composición:</strong> Polímero de α-D-Glucosa</p>
-                    <p><strong>Peso molecular:</strong> 50,000 - varios millones de daltons</p>
-                    <p><strong>Localización:</strong> Gránulos en cloroplastos y amiloplastos</p>
-                </div>
-                
-                <h3>Estructura</h3>
-                <p>El almidón es una mezcla de dos polisacáridos:</p>
-                
-                <div class="concepto">
-                    <h3>1️⃣ Amilosa (20-30%)</h3>
-                    <ul>
-                        <li>Cadena <strong>lineal</strong> de glucosas</li>
-                        <li>Enlaces α(1→4) glucosídicos</li>
-                        <li>250-300 unidades de glucosa</li>
-                        <li>Forma <strong>hélice</strong> en solución</li>
-                        <li>Se tiñe de <strong>azul</strong> con yodo (prueba de almidón)</li>
-                    </ul>
-                </div>
-                
-                <div class="concepto">
-                    <h3>2️⃣ Amilopectina (70-80%)</h3>
-                    <ul>
-                        <li>Cadena <strong>ramificada</strong></li>
-                        <li>Enlaces α(1→4) en cadenas lineales</li>
-                        <li>Enlaces α(1→6) en puntos de ramificación (cada 24-30 glucosas)</li>
-                        <li>Hasta 10,000 unidades de glucosa</li>
-                        <li>Forma <strong>estructuras arborescentes</strong></li>
-                        <li>Se tiñe de <strong>rojo-violeta</strong> con yodo</li>
-                    </ul>
-                </div>
-                
-                <h3>Fuentes Alimentarias</h3>
-                <table>
-                    <tr>
-                        <th>Categoría</th>
-                        <th>Alimentos</th>
-                        <th>% Almidón</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Cereales</strong></td>
-                        <td>Arroz, trigo, maíz, avena</td>
-                        <td>60-75%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tubérculos</strong></td>
-                        <td>Papa, camote, yuca</td>
-                        <td>15-25%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Leguminosas</strong></td>
-                        <td>Frijol, lenteja, garbanzo</td>
-                        <td>40-50%</td>
-                    </tr>
-                </table>
-                
-                <h3>Digestión del Almidón</h3>
-                <div class="nota-importante">
-                    <p><strong>Paso 1 - Boca:</strong></p>
-                    <p><em>Amilasa salival (ptialina)</em> inicia la hidrólisis</p>
-                    <p>Almidón → Dextrinas → Maltosa</p>
-                    
-                    <p><strong>Paso 2 - Estómago:</strong></p>
-                    <p>La amilasa salival se inactiva por el pH ácido</p>
-                    
-                    <p><strong>Paso 3 - Intestino delgado:</strong></p>
-                    <p><em>Amilasa pancreática</em> continúa la digestión</p>
-                    <p>Dextrinas → Maltosa + Maltotriosa</p>
-                    
-                    <p><strong>Paso 4 - Borde en cepillo:</strong></p>
-                    <p><em>Maltasa, isomaltasa</em> completan la digestión</p>
-                    <p>Maltosa → Glucosa (absorbida)</p>
-                </div>
-                
-                <hr>
-                
-                <h2>Glucógeno</h2>
-                
-                <div class="dato-clave">
-                    <h3>🥩 La Reserva Energética Animal</h3>
-                    <p><strong>Composición:</strong> Polímero de α-D-Glucosa</p>
-                    <p><strong>Peso molecular:</strong> 1-4 millones de daltons</p>
-                    <p><strong>Localización:</strong> Hígado (10%) y músculo esquelético (1-2%)</p>
-                </div>
-                
-                <h3>Estructura</h3>
-                <ul>
-                    <li>Similar a la <strong>amilopectina</strong> pero MÁS ramificado</li>
-                    <li>Enlaces α(1→4) en cadenas</li>
-                    <li>Enlaces α(1→6) cada 8-12 glucosas (más frecuentes)</li>
-                    <li>Hasta 50,000 unidades de glucosa</li>
-                    <li>Forma de <strong>"árbol muy ramificado"</strong></li>
-                </ul>
-                
-                <h3>Localización y Función</h3>
-                
-                <div class="concepto">
-                    <h3>🔸 Glucógeno Hepático</h3>
-                    <p><strong>Ubicación:</strong> Hígado (100-120 g en adultos)</p>
-                    <p><strong>Función:</strong> Mantener la <strong>glucemia</strong> (glucosa en sangre)</p>
-                    <p><strong>Liberación:</strong> Entre comidas y durante ayuno</p>
-                    <p><strong>Regulación:</strong> Glucagón (moviliza) e insulina (almacena)</p>
-                </div>
-                
-                <div class="concepto">
-                    <h3>🔸 Glucógeno Muscular</h3>
-                    <p><strong>Ubicación:</strong> Músculo esquelético (300-400 g en adultos)</p>
-                    <p><strong>Función:</strong> Energía para la <strong>contracción muscular</strong></p>
-                    <p><strong>Uso:</strong> Solo durante ejercicio (NO sale del músculo)</p>
-                    <p><strong>Regulación:</strong> Adrenalina (moviliza), insulina (almacena)</p>
-                </div>
-                
-                <h3>Metabolismo del Glucógeno</h3>
-                
-                <div class="nota-importante">
-                    <h3>🔄 Glucogénesis (Síntesis)</h3>
-                    <p>Ocurre después de comer (estado postprandial):</p>
-                    <p>Glucosa → Glucosa-6-P → Glucosa-1-P → UDP-Glucosa → <strong>GLUCÓGENO</strong></p>
-                    <p><strong>Enzima clave:</strong> Glucógeno sintasa</p>
-                    <p><strong>Estímulo:</strong> Insulina (alta glucosa en sangre)</p>
-                    
-                    <h3>⚡ Glucogenólisis (Degradación)</h3>
-                    <p>Ocurre en ayuno o ejercicio:</p>
-                    <p><strong>GLUCÓGENO</strong> → Glucosa-1-P → Glucosa-6-P → Glucosa (hígado) o Piruvato (músculo)</p>
-                    <p><strong>Enzima clave:</strong> Glucógeno fosforilasa</p>
-                    <p><strong>Estímulo:</strong> Glucagón (hígado) o adrenalina (músculo)</p>
-                </div>
-                
-                <h3>Importancia de las Ramificaciones</h3>
-                <div class="concepto">
-                    <p><strong>¿Por qué el glucógeno es tan ramificado?</strong></p>
-                    <ul>
-                        <li>✅ <strong>Liberación rápida:</strong> Muchos extremos no reductores permiten movilización simultánea</li>
-                        <li>✅ <strong>Compacto:</strong> Ocupa menos espacio que cadenas lineales</li>
-                        <li>✅ <strong>Solubilidad:</strong> Más ramificaciones = más grupos -OH = mejor solubilidad</li>
-                    </ul>
-                </div>
-                
-                <h3>Enfermedades por Almacenamiento de Glucógeno</h3>
-                <div class="nota-importante">
-                    <p>⚠️ <strong>Glucogenosis:</strong> Grupo de enfermedades genéticas donde hay defectos en enzimas del metabolismo del glucógeno.</p>
-                    
-                    <p><strong>Tipo I (Enfermedad de Von Gierke):</strong></p>
-                    <p>Deficiencia de glucosa-6-fosfatasa → No se libera glucosa del hígado → Hipoglucemia severa</p>
-                    
-                    <p><strong>Tipo V (Enfermedad de McArdle):</strong></p>
-                    <p>Deficiencia de fosforilasa muscular → No se degrada glucógeno muscular → Calambres y debilidad</p>
-                </div>
-                
-                <h2>Comparación: Almidón vs Glucógeno</h2>
-                <table>
-                    <tr>
-                        <th>Característica</th>
-                        <th>Almidón</th>
-                        <th>Glucógeno</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Organismo</strong></td>
-                        <td>Plantas</td>
-                        <td>Animales, hongos</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ramificación</strong></td>
-                        <td>Moderada (cada 24-30)</td>
-                        <td>Alta (cada 8-12)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Localización</strong></td>
-                        <td>Cloroplastos</td>
-                        <td>Hígado, músculo</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tamaño</strong></td>
-                        <td>Hasta 10,000 glucosas</td>
-                        <td>Hasta 50,000 glucosas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Solubilidad</strong></td>
-                        <td>Insoluble</td>
-                        <td>Parcialmente soluble</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> Tanto almidón como glucógeno son polímeros de α-glucosa con enlaces α(1→4) y α(1→6). La diferencia está en el grado de ramificación.</p>
-                </div>
-            `
-        },
-        
-        {
-            id: 6,
+            id: 'polisacáridos-estructurales',
             titulo: 'Polisacáridos Estructurales',
-            tiempo: '6 min',
+            tiempo: '4 min',
             completada: false,
             contenido: `
-                <h1>🏗️ Polisacáridos Estructurales</h1>
-                
-                <h2>Celulosa</h2>
-                
-                <div class="dato-clave">
-                    <h3>🌿 El Polisacárido Más Abundante del Planeta</h3>
-                    <p><strong>Composición:</strong> Polímero de β-D-Glucosa</p>
-                    <p><strong>Enlaces:</strong> β(1→4) glucosídicos</p>
-                    <p><strong>Tamaño:</strong> 3,000-14,000 unidades de glucosa</p>
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🌿 Celulosa — El Más Abundante del Planeta</h3>
+                <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1.1rem;border-radius:12px;margin-bottom:1.25rem;">
+                    <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                        🔗 Polímero de <strong style="color:#6ee7b7;">β-D-Glucosa</strong> con enlaces <strong style="color:#6ee7b7;">β(1→4)</strong><br>
+                        📏 Cadenas lineales antiparalelas → microfibrillas muy resistentes<br>
+                        🧱 Principal componente de la <strong>pared celular vegetal</strong> (40-50%)<br>
+                        ❌ Humanos <strong style="color:#f87171;">NO tenemos celulasa</strong> → no la digerimos → es fibra
+                    </div>
                 </div>
-                
-                <h3>Estructura</h3>
-                <ul>
-                    <li>Cadenas <strong>lineales</strong> de β-glucosa (NO ramificadas)</li>
-                    <li>Las cadenas se orientan en forma <strong>antiparalela</strong></li>
-                    <li>Puentes de hidrógeno entre cadenas forman <strong>microfibrillas</strong></li>
-                    <li>Altamente organizada = muy <strong>resistente</strong></li>
-                </ul>
-                
-                <div class="concepto">
-                    <h3>🔬 Diferencia Clave: α vs β Enlace</h3>
-                    <p><strong>Almidón/Glucógeno:</strong> Enlaces α(1→4) → Hélice flexible → Digerible</p>
-                    <p><strong>Celulosa:</strong> Enlaces β(1→4) → Cadena extendida → NO digerible por humanos</p>
-                    <p>⚠️ Los humanos NO tenemos la enzima <em>celulasa</em> para romper enlaces β(1→4)</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">¿Por qué almidón sí y celulosa no?</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#fcd34d;">🌾 Almidón</strong>
+                        <p style="color:#94a3b8;font-size:0.85rem;margin:0.4rem 0 0;line-height:1.6;">Enlace <strong style="color:#fbbf24;">α(1→4)</strong><br>→ Hélice flexible<br>→ <span style="color:#6ee7b7;">Digerible ✅</span></p>
+                    </div>
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;text-align:center;">
+                        <strong style="color:#6ee7b7;">🌿 Celulosa</strong>
+                        <p style="color:#94a3b8;font-size:0.85rem;margin:0.4rem 0 0;line-height:1.6;">Enlace <strong style="color:#6ee7b7;">β(1→4)</strong><br>→ Cadena extendida rígida<br>→ <span style="color:#f87171;">No digerible ❌</span></p>
+                    </div>
                 </div>
-                
-                <h3>Localización y Función</h3>
-                <div class="concepto">
-                    <p><strong>En Plantas:</strong></p>
-                    <ul>
-                        <li>Principal componente de la <strong>pared celular</strong> (40-50%)</li>
-                        <li>Proporciona rigidez y resistencia</li>
-                        <li>Permite crecimiento vertical de las plantas</li>
-                    </ul>
-                    
-                    <p><strong>Aplicaciones Industriales:</strong></p>
-                    <ul>
-                        <li><strong>Papel:</strong> Pulpa de celulosa de árboles</li>
-                        <li><strong>Textiles:</strong> Algodón (90% celulosa), lino, cáñamo</li>
-                        <li><strong>Biocombustibles:</strong> Etanol celulósico</li>
-                        <li><strong>Derivados:</strong> Celofán, rayón, acetato de celulosa</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🦐 Quitina</h3>
+                <div style="display:grid;gap:0.6rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">Estructura</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">Polímero de <strong>N-acetilglucosamina</strong> con enlaces β(1→4). Similar a celulosa pero más resistente.</p>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">Dónde se encuentra</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">🦀 <strong>Exoesqueleto</strong> de artrópodos (insectos, crustáceos, arácnidos). 🍄 <strong>Pared celular</strong> de hongos.</p>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:0.9rem;border-radius:10px;">
+                        <strong style="color:#fcd34d;">Aplicaciones clínicas</strong>
+                        <p style="margin:0.3rem 0 0;color:#cbd5e1;font-size:0.9rem;">Suturas biodegradables, encapsulación de fármacos, tratamiento de agua, cosmética.</p>
+                    </div>
                 </div>
-                
-                <h3>Fibra Dietética</h3>
-                <div class="nota-importante">
-                    <p><strong>💡 La Celulosa como Fibra</strong></p>
-                    <p>Aunque no la digerimos, la celulosa es crucial como <strong>fibra dietética</strong>:</p>
-                    <ul>
-                        <li>✅ Aumenta el volumen fecal</li>
-                        <li>✅ Estimula peristaltismo intestinal</li>
-                        <li>✅ Previene estreñimiento</li>
-                        <li>✅ Reduce absorción de colesterol</li>
-                        <li>✅ Controla glucemia (retrasa absorción de glucosa)</li>
-                        <li>✅ Alimenta microbiota intestinal (fermentación parcial)</li>
-                    </ul>
-                    <p><strong>Fuentes:</strong> Verduras, frutas (cáscara), granos enteros, legumbres</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Fibra Dietética</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">Fibra Insoluble</h4>
+                        <div style="color:#cbd5e1;font-size:0.82rem;line-height:1.7;">
+                            Celulosa, hemicelulosa<br>
+                            ✅ ↑ Volumen fecal<br>
+                            ✅ Previene estreñimiento<br>
+                            ✅ ↓ Riesgo cáncer colon
+                        </div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.2);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">Fibra Soluble</h4>
+                        <div style="color:#cbd5e1;font-size:0.82rem;line-height:1.7;">
+                            Pectina, β-glucanos<br>
+                            ✅ ↓ Colesterol LDL<br>
+                            ✅ Controla glucemia<br>
+                            ✅ Prebiótico (microbiota)
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>Digestión por Rumiantes</h3>
-                <p>Los <strong>rumiantes</strong> (vacas, ovejas, cabras) SÍ pueden digerir celulosa gracias a:</p>
-                <ul>
-                    <li><strong>Bacterias simbióticas</strong> en el rumen que producen celulasa</li>
-                    <li>Sistema digestivo especializado (4 estómagos)</li>
-                    <li>Fermentación bacteriana → Ácidos grasos de cadena corta (energía)</li>
-                </ul>
-                
-                <hr>
-                
-                <h2>Quitina</h2>
-                
-                <div class="dato-clave">
-                    <h3>🦐 El Segundo Polisacárido Más Abundante</h3>
-                    <p><strong>Composición:</strong> Polímero de N-acetilglucosamina</p>
-                    <p><strong>Enlaces:</strong> β(1→4) glucosídicos</p>
-                    <p><strong>Similar a:</strong> Celulosa (pero con grupo acetamida)</p>
-                </div>
-                
-                <h3>Estructura</h3>
-                <ul>
-                    <li>Similar a la celulosa pero más <strong>resistente</strong></li>
-                    <li>Cada glucosa tiene un grupo <strong>-NHCOCH₃</strong> en C2</li>
-                    <li>Forma microfibrillas con puentes de hidrógeno</li>
-                    <li>Puede mineralizarse con CaCO₃ (muy duro)</li>
-                </ul>
-                
-                <h3>Localización</h3>
-                <div class="concepto">
-                    <p><strong>Artrópodos:</strong></p>
-                    <ul>
-                        <li>Exoesqueleto de <strong>insectos</strong> (cucarachas, escarabajos)</li>
-                        <li>Caparazón de <strong>crustáceos</strong> (cangrejos, camarones)</li>
-                        <li>Quelíceros de <strong>arácnidos</strong> (arañas, escorpiones)</li>
-                    </ul>
-                    
-                    <p><strong>Hongos:</strong></p>
-                    <ul>
-                        <li>Pared celular de la mayoría de los hongos</li>
-                        <li>Reemplaza a la celulosa (hongos no tienen celulosa)</li>
-                    </ul>
-                </div>
-                
-                <h3>Funciones</h3>
-                <ul>
-                    <li>✅ <strong>Protección:</strong> Barrera física contra depredadores</li>
-                    <li>✅ <strong>Soporte:</strong> Mantiene forma del organismo</li>
-                    <li>✅ <strong>Impermeabilización:</strong> Previene pérdida de agua</li>
-                </ul>
-                
-                <h3>Aplicaciones</h3>
-                <div class="concepto">
-                    <ul>
-                        <li><strong>Medicina:</strong> Suturas quirúrgicas biodegradables</li>
-                        <li><strong>Farmacia:</strong> Encapsulación de medicamentos</li>
-                        <li><strong>Agricultura:</strong> Recubrimientos de semillas</li>
-                        <li><strong>Cosmética:</strong> Hidratantes y cremas</li>
-                        <li><strong>Tratamiento de agua:</strong> Quelante de metales pesados</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>Hemicelulosa</h2>
-                
-                <div class="dato-clave">
-                    <h3>🌾 Componente de la Pared Vegetal</h3>
-                    <p><strong>Composición:</strong> Heteropolisacárido (varios azúcares)</p>
-                    <p><strong>Componentes:</strong> Xilosa, manosa, galactosa, glucosa, arabinosa</p>
-                </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Cadenas ramificadas más <strong>cortas</strong> que celulosa</li>
-                    <li>Se asocia con celulosa en la pared celular</li>
-                    <li>Más fácil de hidrolizar que la celulosa</li>
-                    <li>Soluble en álcali</li>
-                </ul>
-                
-                <h3>Función</h3>
-                <p>Junto con celulosa y pectina, forma la <strong>matriz de la pared celular</strong> vegetal:</p>
-                <ul>
-                    <li>Celulosa: Fibras de resistencia</li>
-                    <li>Hemicelulosa: Unión entre fibras de celulosa</li>
-                    <li>Pectina: Cemento que une todo</li>
-                </ul>
-                
-                <hr>
-                
-                <h2>Pectina</h2>
-                
-                <div class="dato-clave">
-                    <h3>🍎 El Gelificante Natural</h3>
-                    <p><strong>Composición:</strong> Polímero de ácido galacturónico</p>
-                    <p><strong>Localización:</strong> Pared celular y lámina media de plantas</p>
-                </div>
-                
-                <h3>Características</h3>
-                <ul>
-                    <li>Polímero <strong>ácido</strong> (grupos carboxilo -COOH)</li>
-                    <li>Muy <strong>hidrofilica</strong> (absorbe agua)</li>
-                    <li>Forma <strong>geles</strong> en presencia de azúcar y ácido</li>
-                </ul>
-                
-                <h3>Funciones</h3>
-                <div class="concepto">
-                    <p><strong>En Plantas:</strong></p>
-                    <ul>
-                        <li>Cementa células vegetales entre sí</li>
-                        <li>Controla porosidad de la pared celular</li>
-                        <li>Regula crecimiento celular</li>
-                    </ul>
-                    
-                    <p><strong>En Alimentación:</strong></p>
-                    <ul>
-                        <li>Gelificante en mermeladas y jaleas</li>
-                        <li>Estabilizante en jugos y lácteos</li>
-                        <li>Espesante en salsas</li>
-                    </ul>
-                    
-                    <p><strong>En Salud:</strong></p>
-                    <ul>
-                        <li>Fibra soluble (reduce colesterol)</li>
-                        <li>Prebiótico (alimenta bacterias beneficiosas)</li>
-                        <li>Regula tránsito intestinal</li>
-                    </ul>
-                </div>
-                
-                <h3>Fuentes</h3>
-                <p>Rica en: Manzana, cítricos (cáscara), membrillo, grosella, remolacha</p>
-                
-                <hr>
-                
-                <h2>Tabla Comparativa</h2>
-                <table>
-                    <tr>
-                        <th>Polisacárido</th>
-                        <th>Monómero</th>
-                        <th>Enlace</th>
-                        <th>Organismo</th>
-                        <th>Función</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Celulosa</strong></td>
-                        <td>β-Glucosa</td>
-                        <td>β(1→4)</td>
-                        <td>Plantas</td>
-                        <td>Estructural</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Quitina</strong></td>
-                        <td>N-acetilglucosamina</td>
-                        <td>β(1→4)</td>
-                        <td>Artrópodos, hongos</td>
-                        <td>Estructural</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Hemicelulosa</strong></td>
-                        <td>Varios</td>
-                        <td>Mixtos</td>
-                        <td>Plantas</td>
-                        <td>Estructural</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Pectina</strong></td>
-                        <td>Ác. galacturónico</td>
-                        <td>α(1→4)</td>
-                        <td>Plantas</td>
-                        <td>Cemento celular</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> Los polisacáridos estructurales tienen enlaces β(1→4) que los humanos NO podemos digerir, pero sirven como fibra dietética esencial.</p>
+
+                <div style="background:rgba(245,158,11,0.08);border-radius:8px;padding:0.9rem;">
+                    <p style="margin:0;color:#fcd34d;font-size:0.88rem;">💡 <strong>Recomendación diaria:</strong> 25-30 g de fibra. Los rumiantes SÍ digieren celulosa gracias a bacterias simbióticas en el rumen.</p>
                 </div>
             `
         },
-        
+
         {
-            id: 7,
+            id: 'metabolismo-glucosa',
             titulo: 'Metabolismo de Carbohidratos',
-            tiempo: '9 min',
-            completada: false,
-            contenido: `
-                <h1>⚡ Metabolismo de Carbohidratos</h1>
-                
-                <h2>Visión General</h2>
-                <p>El <strong>metabolismo de carbohidratos</strong> incluye todas las vías bioquímicas de síntesis, degradación e interconversión de carbohidratos en el organismo.</p>
-                
-                <div class="dato-clave">
-                    <h3>📌 Vías Metabólicas Principales</h3>
-                    <ul>
-                        <li><strong>Glucólisis:</strong> Degradación de glucosa → energía</li>
-                        <li><strong>Gluconeogénesis:</strong> Síntesis de glucosa</li>
-                        <li><strong>Glucogenogénesis:</strong> Síntesis de glucógeno</li>
-                        <li><strong>Glucogenólisis:</strong> Degradación de glucógeno</li>
-                        <li><strong>Vía de pentosas fosfato:</strong> Produce NADPH y ribosa</li>
-                        <li><strong>Ciclo de Krebs:</strong> Oxidación completa → CO₂ + H₂O</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>1. Glucólisis</h2>
-                
-                <div class="dato-clave">
-                    <h3>🔥 La Vía Central del Catabolismo de Glucosa</h3>
-                    <p><strong>Localización:</strong> Citoplasma</p>
-                    <p><strong>Reacción global:</strong> Glucosa + 2 NAD⁺ + 2 ADP + 2 Pi → 2 Piruvato + 2 NADH + 2 ATP + 2 H₂O</p>
-                    <p><strong>Balance neto:</strong> +2 ATP, +2 NADH por glucosa</p>
-                </div>
-                
-                <h3>Fases de la Glucólisis</h3>
-                
-                <div class="concepto">
-                    <h3>⬇️ Fase de Inversión (consume ATP)</h3>
-                    <p>Pasos 1-5: Se <strong>invierte energía</strong> para preparar la glucosa</p>
-                    <ul>
-                        <li><strong>Paso 1:</strong> Glucosa → Glucosa-6-P (usa ATP)</li>
-                        <li><em>Enzima:</em> Hexoquinasa (irreversible)</li>
-                        <li><strong>Paso 3:</strong> Fructosa-6-P → Fructosa-1,6-bifosfato (usa ATP)</li>
-                        <li><em>Enzima:</em> Fosfofructoquinasa-1 (PFK-1) ⭐ <em>paso limitante</em></li>
-                        <li><strong>Paso 5:</strong> Fructosa-1,6-biP → 2 Gliceraldehído-3-P</li>
-                    </ul>
-                    <p><strong>Costo:</strong> -2 ATP</p>
-                </div>
-                
-                <div class="concepto">
-                    <h3>⬆️ Fase de Beneficio (genera ATP)</h3>
-                    <p>Pasos 6-10: Se <strong>produce energía</strong></p>
-                    <ul>
-                        <li><strong>Paso 6-7:</strong> Gliceraldehído-3-P → 1,3-Bisfosfoglicerato → 3-Fosfoglicerato</li>
-                        <li><em>Genera:</em> 1 NADH + 1 ATP (×2 = 2 NADH + 2 ATP)</li>
-                        <li><strong>Paso 10:</strong> Fosfoenolpiruvato → <strong>Piruvato</strong></li>
-                        <li><em>Enzima:</em> Piruvato quinasa (irreversible)</li>
-                        <li><em>Genera:</em> 1 ATP (×2 = 2 ATP)</li>
-                    </ul>
-                    <p><strong>Beneficio:</strong> +4 ATP, +2 NADH</p>
-                </div>
-                
-                <div class="nota-importante">
-                    <h3>🎯 Enzimas Reguladoras (Puntos de Control)</h3>
-                    <p><strong>1. Hexoquinasa:</strong></p>
-                    <ul>
-                        <li>Inhibe: Glucosa-6-P (producto)</li>
-                        <li>Atrapa glucosa dentro de la célula</li>
-                    </ul>
-                    
-                    <p><strong>2. Fosfofructoquinasa-1 (PFK-1) ⭐:</strong></p>
-                    <ul>
-                        <li><strong>Paso limitante</strong> de la glucólisis</li>
-                        <li>Activa: AMP, ADP, F-2,6-BP</li>
-                        <li>Inhibe: ATP, citrato</li>
-                    </ul>
-                    
-                    <p><strong>3. Piruvato quinasa:</strong></p>
-                    <ul>
-                        <li>Activa: F-1,6-BP (feedforward)</li>
-                        <li>Inhibe: ATP, acetil-CoA, alanina</li>
-                    </ul>
-                </div>
-                
-                <h3>Destino del Piruvato</h3>
-                <div class="concepto">
-                    <p><strong>Con Oxígeno (aeróbico):</strong></p>
-                    <p>Piruvato → Acetil-CoA → Ciclo de Krebs → 38 ATP totales</p>
-                    
-                    <p><strong>Sin Oxígeno (anaeróbico):</strong></p>
-                    <p>Piruvato → <strong>Lactato</strong> (músculo) o <strong>Etanol</strong> (levaduras)</p>
-                    <p><em>Regenera NAD⁺ para continuar glucólisis</em></p>
-                </div>
-                
-                <hr>
-                
-                <h2>2. Gluconeogénesis</h2>
-                
-                <div class="dato-clave">
-                    <h3>🔄 Síntesis de Nueva Glucosa</h3>
-                    <p><strong>Localización:</strong> Hígado (90%), riñón (10%)</p>
-                    <p><strong>Función:</strong> Mantener glucemia en ayuno prolongado</p>
-                    <p><strong>Precursores:</strong> Lactato, aminoácidos, glicerol</p>
-                </div>
-                
-                <h3>¿Cuándo Ocurre?</h3>
-                <ul>
-                    <li>Ayuno > 8 horas</li>
-                    <li>Durante el sueño</li>
-                    <li>Ejercicio prolongado</li>
-                    <li>Dieta baja en carbohidratos</li>
-                </ul>
-                
-                <h3>Ruta</h3>
-                <p>Es <strong>casi lo opuesto</strong> a la glucólisis, pero con enzimas diferentes en los pasos irreversibles:</p>
-                
-                <div class="concepto">
-                    <p><strong>Paso 1:</strong> Piruvato → Oxalacetato → Fosfoenolpiruvato</p>
-                    <p><em>Enzimas:</em> Piruvato carboxilasa + PEPCK</p>
-                    
-                    <p><strong>Paso 2:</strong> Fructosa-1,6-BP → Fructosa-6-P</p>
-                    <p><em>Enzima:</em> Fructosa-1,6-bisfosfatasa</p>
-                    
-                    <p><strong>Paso 3:</strong> Glucosa-6-P → <strong>Glucosa</strong></p>
-                    <p><em>Enzima:</em> Glucosa-6-fosfatasa (solo en hígado y riñón)</p>
-                </div>
-                
-                <div class="nota-importante">
-                    <h3>⚠️ Costo Energético</h3>
-                    <p>Hacer glucosa a partir de piruvato cuesta <strong>6 ATP</strong></p>
-                    <p>La glucólisis solo genera 2 ATP → Balance neto: -4 ATP</p>
-                    <p>⚡ Pero vale la pena: El cerebro NECESITA glucosa (120 g/día)</p>
-                </div>
-                
-                <h3>Regulación</h3>
-                <table>
-                    <tr>
-                        <th>Condición</th>
-                        <th>Señal</th>
-                        <th>Efecto</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Ayuno</strong></td>
-                        <td>↑ Glucagón</td>
-                        <td>↑ Gluconeogénesis</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Fed (postprandial)</strong></td>
-                        <td>↑ Insulina</td>
-                        <td>↓ Gluconeogénesis</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ejercicio</strong></td>
-                        <td>↑ AMP, ↓ ATP</td>
-                        <td>↑ Glucólisis, ↓ Gluconeogénesis</td>
-                    </tr>
-                </table>
-                
-                <hr>
-                
-                <h2>3. Metabolismo del Glucógeno</h2>
-                
-                <h3>Glucogenogénesis (Síntesis)</h3>
-                <div class="dato-clave">
-                    <p><strong>Cuándo:</strong> Después de comer (alta glucosa)</p>
-                    <p><strong>Estímulo:</strong> Insulina</p>
-                    <p><strong>Localización:</strong> Hígado, músculo</p>
-                </div>
-                
-                <div class="concepto">
-                    <p><strong>Pasos:</strong></p>
-                    <p>1. Glucosa → Glucosa-6-P (hexoquinasa)</p>
-                    <p>2. Glucosa-6-P → Glucosa-1-P (fosfoglucomutasa)</p>
-                    <p>3. Glucosa-1-P + UTP → <strong>UDP-Glucosa</strong> (activada)</p>
-                    <p>4. UDP-Glucosa → <strong>GLUCÓGENO</strong> (glucógeno sintasa)</p>
-                    <p>5. Ramificaciones cada 8-12 glucosas (enzima ramificante)</p>
-                    
-                    <p><strong>Enzima clave:</strong> Glucógeno sintasa</p>
-                    <p><em>Activada por:</em> Insulina, glucosa-6-P</p>
-                    <p><em>Inactivada por:</em> Adrenalina, glucagón (fosforilación)</p>
-                </div>
-                
-                <h3>Glucogenólisis (Degradación)</h3>
-                <div class="dato-clave">
-                    <p><strong>Cuándo:</strong> Ayuno, ejercicio</p>
-                    <p><strong>Estímulo:</strong> Glucagón (hígado), Adrenalina (músculo)</p>
-                    <p><strong>Función:</strong> Liberar glucosa para mantener glucemia</p>
-                </div>
-                
-                <div class="concepto">
-                    <p><strong>Pasos:</strong></p>
-                    <p>1. <strong>GLUCÓGENO</strong> → Glucosa-1-P (glucógeno fosforilasa)</p>
-                    <p>2. Glucosa-1-P → Glucosa-6-P (fosfoglucomutasa)</p>
-                    <p>3. Glucosa-6-P → <strong>Glucosa</strong> (glucosa-6-fosfatasa, solo hígado)</p>
-                    
-                    <p><strong>Enzima clave:</strong> Glucógeno fosforilasa</p>
-                    <p><em>Activada por:</em> Adrenalina, glucagón, AMP, Ca²⁺</p>
-                    <p><em>Inactivada por:</em> Insulina, ATP, glucosa-6-P</p>
-                </div>
-                
-                <div class="nota-importante">
-                    <h3>⚠️ Diferencia Músculo vs Hígado</h3>
-                    <p><strong>Hígado:</strong></p>
-                    <ul>
-                        <li>Tiene glucosa-6-fosfatasa</li>
-                        <li>Puede liberar glucosa a la sangre</li>
-                        <li>Función: Mantener glucemia</li>
-                    </ul>
-                    
-                    <p><strong>Músculo:</strong></p>
-                    <ul>
-                        <li>NO tiene glucosa-6-fosfatasa</li>
-                        <li>Glucosa-6-P se queda en el músculo</li>
-                        <li>Función: Energía para contracción muscular</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>4. Vía de las Pentosas Fosfato</h2>
-                
-                <div class="dato-clave">
-                    <h3>🔬 Vía Alternativa de Oxidación de Glucosa</h3>
-                    <p><strong>Localización:</strong> Citoplasma</p>
-                    <p><strong>Función:</strong> Producir NADPH y ribosa-5-P</p>
-                    <p><strong>NO produce ATP</strong></p>
-                </div>
-                
-                <h3>Productos y Funciones</h3>
-                <div class="concepto">
-                    <p><strong>1. NADPH:</strong></p>
-                    <ul>
-                        <li>Poder reductor para <strong>biosíntesis</strong> (ácidos grasos, colesterol)</li>
-                        <li>Defensa antioxidante (regenera glutatión reducido)</li>
-                        <li>Esencial en eritrocitos (protege de estrés oxidativo)</li>
-                    </ul>
-                    
-                    <p><strong>2. Ribosa-5-P:</strong></p>
-                    <ul>
-                        <li>Precursor de <strong>nucleótidos</strong> (ADN, ARN)</li>
-                        <li>Esencial para síntesis de ATP, NAD, FAD, CoA</li>
-                    </ul>
-                </div>
-                
-                <h3>Importancia Clínica</h3>
-                <div class="nota-importante">
-                    <p><strong>Deficiencia de Glucosa-6-Fosfato Deshidrogenasa (G6PD):</strong></p>
-                    <ul>
-                        <li>Enfermedad genética ligada al cromosoma X</li>
-                        <li>↓ NADPH → ↓ Glutatión reducido</li>
-                        <li>Eritrocitos vulnerables a estrés oxidativo</li>
-                        <li><strong>Síntomas:</strong> Anemia hemolítica (al comer habas, ciertos medicamentos)</li>
-                        <li>Protección contra malaria (ventaja evolutiva)</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>Integración Metabólica</h2>
-                
-                <div class="concepto">
-                    <h3>Estado Postprandial (Fed)</h3>
-                    <p><strong>Señal:</strong> ↑ Insulina</p>
-                    <ul>
-                        <li>↑ Glucólisis</li>
-                        <li>↑ Glucogenogénesis</li>
-                        <li>↑ Lipogénesis</li>
-                        <li>↓ Gluconeogénesis</li>
-                        <li>↓ Glucogenólisis</li>
-                    </ul>
-                </div>
-                
-                <div class="concepto">
-                    <h3>Estado de Ayuno</h3>
-                    <p><strong>Señal:</strong> ↑ Glucagón</p>
-                    <ul>
-                        <li>↑ Glucogenólisis (primeras 12h)</li>
-                        <li>↑ Gluconeogénesis (después de 12h)</li>
-                        <li>↑ Lipólisis</li>
-                        <li>↑ Cetogénesis</li>
-                        <li>↓ Glucólisis</li>
-                        <li>↓ Glucogenogénesis</li>
-                    </ul>
-                </div>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> El metabolismo de carbohidratos está finamente regulado por hormonas (insulina, glucagón) para mantener la glucemia entre 70-110 mg/dL.</p>
-                </div>
-            `
-        },
-        
-        {
-            id: 8,
-            titulo: 'Funciones Biológicas de los Carbohidratos',
             tiempo: '6 min',
             completada: false,
             contenido: `
-                <h1>🎯 Funciones Biológicas de los Carbohidratos</h1>
-                
-                <h2>1. Función Energética ⚡</h2>
-                
-                <div class="dato-clave">
-                    <h3>🔥 Principal Fuente de Energía</h3>
-                    <p>Los carbohidratos aportan <strong>4 kcal/gramo</strong></p>
-                    <p>Son la fuente de energía <strong>más rápida y eficiente</strong></p>
+                <div style="background:rgba(245,158,11,0.12);border-left:4px solid #f59e0b;padding:1.25rem;border-radius:10px;margin-bottom:1.25rem;">
+                    <h4 style="color:#f59e0b;margin:0 0 0.5rem;">Regulación Metabólica</h4>
+                    <p style="margin:0;line-height:1.6;"><strong>Insulina</strong> (estado fed) y <strong>glucagón</strong> (ayuno) regulan finamente el metabolismo para mantener glucemia <strong style="color:#fcd34d;">70-110 mg/dL</strong>.</p>
                 </div>
-                
-                <h3>Energía Inmediata: Glucosa</h3>
-                <div class="concepto">
-                    <ul>
-                        <li>El cerebro consume <strong>120 g de glucosa/día</strong> (60% del total)</li>
-                        <li>Eritrocitos dependen 100% de glucosa (no tienen mitocondrias)</li>
-                        <li>Músculo en ejercicio intenso usa principalmente glucosa</li>
-                        <li>ATP se genera en <strong>minutos</strong> (vs horas para lípidos)</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">⚡ Glucólisis</h3>
+                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.4rem;">
+                        <span style="color:#94a3b8;font-size:0.85rem;">📍 Citoplasma | Sin O₂ requerido</span>
+                        <span style="background:rgba(16,185,129,0.2);color:#6ee7b7;padding:0.2rem 0.7rem;border-radius:20px;font-size:0.8rem;font-weight:700;">Neto: +2 ATP +2 NADH</span>
+                    </div>
+                    <div style="color:#cbd5e1;font-size:0.88rem;margin-bottom:0.75rem;">
+                        Glucosa <span style="color:#f87171;">(-2 ATP)</span> → Fructosa-1,6-BP → 2× Piruvato <span style="color:#6ee7b7;">(+4 ATP)</span>
+                    </div>
+                    <div style="display:grid;gap:0.5rem;">
+                        <div style="background:rgba(30,41,59,0.85);padding:0.6rem 0.85rem;border-radius:8px;font-size:0.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.3rem;">
+                            <span style="color:#fcd34d;font-weight:600;">⭐ Paso limitante: PFK-1</span>
+                            <span style="color:#94a3b8;">Activa: AMP | Inhibe: ATP, citrato</span>
+                        </div>
+                        <div style="background:rgba(16,185,129,0.08);border-left:3px solid #10b981;padding:0.6rem 0.85rem;border-radius:8px;font-size:0.85rem;color:#cbd5e1;">
+                            🌬️ <strong>Aeróbico:</strong> Piruvato → Acetil-CoA → Krebs → <strong style="color:#6ee7b7;">~30-32 ATP totales</strong>
+                        </div>
+                        <div style="background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;padding:0.6rem 0.85rem;border-radius:8px;font-size:0.85rem;color:#cbd5e1;">
+                            🏃 <strong>Anaeróbico:</strong> Piruvato → <strong style="color:#fbbf24;">Lactato</strong> (músculo) / <strong style="color:#fbbf24;">Etanol</strong> (levaduras)
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>Reserva Energética: Glucógeno</h3>
-                <div class="concepto">
-                    <p><strong>Hígado:</strong></p>
-                    <ul>
-                        <li>Almacena 100-120 g de glucógeno</li>
-                        <li>Mantiene glucemia entre comidas</li>
-                        <li>Se agota en 12-24 horas de ayuno</li>
-                    </ul>
-                    
-                    <p><strong>Músculo:</strong></p>
-                    <ul>
-                        <li>Almacena 300-400 g de glucógeno</li>
-                        <li>Energía para contracción muscular</li>
-                        <li>Se agota en 60-90 min de ejercicio intenso</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🔄 Gluconeogénesis — Síntesis de Glucosa</h3>
+                <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);padding:1rem;border-radius:12px;margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.4rem;">
+                        <span style="color:#a5b4fc;font-size:0.88rem;font-weight:600;">📍 Hígado (90%) + Riñón (10%)</span>
+                        <span style="background:rgba(239,68,68,0.2);color:#fca5a5;padding:0.2rem 0.7rem;border-radius:20px;font-size:0.8rem;">Costo: 6 ATP</span>
+                    </div>
+                    <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                        🔸 Activa en ayuno &gt;8h, ejercicio prolongado, dieta cetogénica<br>
+                        🔸 Precursores: <strong style="color:#a5b4fc;">Lactato, aminoácidos, glicerol</strong><br>
+                        🔸 Enzimas únicas: PEPCK, Fructosa-1,6-bisfosfatasa, G-6-fosfatasa<br>
+                        🔸 Estimulada por <strong>glucagón</strong>, inhibida por insulina
+                    </div>
                 </div>
-                
-                <div class="nota-importante">
-                    <p>💡 <strong>Ventaja evolutiva:</strong> Los carbohidratos se movilizan MÁS RÁPIDO que las grasas. Crucial para reacciones de "lucha o huida".</p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🔬 Vía de las Pentosas Fosfato</h3>
+                <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;margin-bottom:1.25rem;">
+                    <div style="color:#cbd5e1;font-size:0.88rem;line-height:1.8;">
+                        🔸 <strong>No produce ATP</strong>. Produce <strong style="color:#6ee7b7;">NADPH</strong> y <strong style="color:#6ee7b7;">Ribosa-5-P</strong><br>
+                        🔸 NADPH: biosíntesis de lípidos y defensa antioxidante (glutatión)<br>
+                        🔸 Ribosa-5-P: precursor de nucleótidos (ADN, ARN, ATP, NAD, FAD)
+                    </div>
+                    <div style="margin-top:0.75rem;background:rgba(239,68,68,0.08);border-left:3px solid #ef4444;padding:0.75rem;border-radius:8px;font-size:0.85rem;">
+                        <strong style="color:#fca5a5;">⚠️ Deficiencia de G6PD:</strong> <span style="color:#cbd5e1;"> ↓NADPH → eritrocitos vulnerables al estrés oxidativo → <strong>anemia hemolítica</strong>. Desencadenada por habas o ciertos medicamentos.</span>
+                    </div>
                 </div>
-                
-                <hr>
-                
-                <h2>2. Función Estructural 🏗️</h2>
-                
-                <h3>En Plantas</h3>
-                <div class="concepto">
-                    <p><strong>Celulosa:</strong></p>
-                    <ul>
-                        <li>Componente principal de la <strong>pared celular</strong> (40-50%)</li>
-                        <li>Proporciona rigidez y resistencia</li>
-                        <li>Permite crecimiento vertical</li>
-                        <li>El compuesto orgánico más abundante del planeta</li>
-                    </ul>
-                    
-                    <p><strong>Hemicelulosa y Pectina:</strong></p>
-                    <ul>
-                        <li>Completan la matriz de la pared celular</li>
-                        <li>Dan flexibilidad y adhesión entre células</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Regulación Hormonal</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                    <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#6ee7b7;margin:0 0 0.5rem;">🍽️ Insulina (Fed)</h4>
+                        <div style="color:#cbd5e1;font-size:0.83rem;line-height:1.8;">
+                            ↑ Glucólisis<br>
+                            ↑ Glucogenogénesis<br>
+                            ↑ Lipogénesis<br>
+                            ↓ Gluconeogénesis<br>
+                            ↓ Glucogenólisis
+                        </div>
+                    </div>
+                    <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);padding:1rem;border-radius:12px;">
+                        <h4 style="color:#fcd34d;margin:0 0 0.5rem;">🏃 Glucagón (Ayuno)</h4>
+                        <div style="color:#cbd5e1;font-size:0.83rem;line-height:1.8;">
+                            ↑ Glucogenólisis<br>
+                            ↑ Gluconeogénesis<br>
+                            ↑ Lipólisis<br>
+                            ↑ Cetogénesis<br>
+                            ↓ Glucólisis
+                        </div>
+                    </div>
                 </div>
-                
-                <h3>En Animales</h3>
-                <div class="concepto">
-                    <p><strong>Quitina:</strong></p>
-                    <ul>
-                        <li><strong>Exoesqueleto</strong> de artrópodos (insectos, crustáceos)</li>
-                        <li>Pared celular de hongos</li>
-                        <li>Protección y soporte mecánico</li>
-                    </ul>
-                    
-                    <p><strong>Ácido Hialurónico:</strong></p>
-                    <ul>
-                        <li>Componente de la <strong>matriz extracelular</strong></li>
-                        <li>Lubricante de articulaciones</li>
-                        <li>Hidratación de tejidos (retiene agua)</li>
-                        <li>Presente en humor vítreo del ojo</li>
-                    </ul>
-                    
-                    <p><strong>Condroitín Sulfato:</strong></p>
-                    <ul>
-                        <li>Componente del <strong>cartílago</strong></li>
-                        <li>Resistencia a la compresión</li>
-                        <li>Usado en suplementos para osteoartritis</li>
-                    </ul>
+            `
+        },
+
+        {
+            id: 'funciones-glucoconjugados',
+            titulo: 'Funciones y Glucoconjugados',
+            tiempo: '4 min',
+            completada: false,
+            contenido: `
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Funciones Biológicas de los Carbohidratos</h3>
+                <div style="display:grid;gap:0.55rem;margin-bottom:1.5rem;">
+                    <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);padding:0.9rem;border-radius:10px;display:flex;align-items:center;gap:0.85rem;">
+                        <span style="font-size:1.5rem;flex-shrink:0;">⚡</span>
+                        <div><strong style="color:#fcd34d;">Energética</strong><p style="margin:0.15rem 0 0;color:#94a3b8;font-size:0.85rem;">Glucosa → 4 kcal/g. Glucógeno y almidón como reserva.</p></div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;align-items:center;gap:0.85rem;">
+                        <span style="font-size:1.5rem;flex-shrink:0;">🏗️</span>
+                        <div><strong style="color:#fcd34d;">Estructural</strong><p style="margin:0.15rem 0 0;color:#94a3b8;font-size:0.85rem;">Celulosa (pared vegetal), quitina (exoesqueleto), ácido hialurónico (matriz extracelular).</p></div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;align-items:center;gap:0.85rem;">
+                        <span style="font-size:1.5rem;flex-shrink:0;">🔐</span>
+                        <div><strong style="color:#fcd34d;">Reconocimiento Celular</strong><p style="margin:0.15rem 0 0;color:#94a3b8;font-size:0.85rem;">Glucoproteínas y glucolípidos de membrana. Grupos sanguíneos ABO.</p></div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;align-items:center;gap:0.85rem;">
+                        <span style="font-size:1.5rem;flex-shrink:0;">🧬</span>
+                        <div><strong style="color:#fcd34d;">Precursor Biosintético</strong><p style="margin:0.15rem 0 0;color:#94a3b8;font-size:0.85rem;">Ribosa → ácidos nucleicos. Piruvato → aminoácidos. Acetil-CoA → lípidos.</p></div>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);border:1px solid rgba(245,158,11,0.15);padding:0.9rem;border-radius:10px;display:flex;align-items:center;gap:0.85rem;">
+                        <span style="font-size:1.5rem;flex-shrink:0;">🛡️</span>
+                        <div><strong style="color:#fcd34d;">Protectora</strong><p style="margin:0.15rem 0 0;color:#94a3b8;font-size:0.85rem;">Heparina (anticoagulante), moco (barrera epitelial), ác. hialurónico (articulaciones).</p></div>
+                    </div>
                 </div>
-                
-                <hr>
-                
-                <h2>3. Función de Reconocimiento Celular 🔐</h2>
-                
-                <div class="dato-clave">
-                    <h3>🎯 El "Código de Barras" Celular</h3>
-                    <p>Los carbohidratos en la superficie celular actúan como <strong>marcadores de identidad</strong></p>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">🩸 Grupos Sanguíneos ABO</h3>
+                <div style="overflow-x:auto;margin-bottom:1.25rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+                        <thead>
+                            <tr style="background:rgba(245,158,11,0.2);">
+                                <th style="padding:0.6rem;text-align:center;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Tipo</th>
+                                <th style="padding:0.6rem;text-align:left;color:#fcd34d;border-bottom:2px solid rgba(245,158,11,0.4);">Carbohidrato terminal en eritrocito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);">
+                                <td style="padding:0.6rem;text-align:center;font-weight:700;color:#fbbf24;">O</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;">Solo antígeno H (fucosa) — base de todos</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);background:rgba(30,41,59,0.4);">
+                                <td style="padding:0.6rem;text-align:center;font-weight:700;color:#fbbf24;">A</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;">Antígeno H + <strong style="color:#fcd34d;">N-acetilgalactosamina</strong></td>
+                            </tr>
+                            <tr style="border-bottom:1px solid rgba(245,158,11,0.1);">
+                                <td style="padding:0.6rem;text-align:center;font-weight:700;color:#fbbf24;">B</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;">Antígeno H + <strong style="color:#fcd34d;">Galactosa</strong></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0.6rem;text-align:center;font-weight:700;color:#fbbf24;">AB</td>
+                                <td style="padding:0.6rem;color:#cbd5e1;">Ambos antígenos A y B</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <h3>Glucoproteínas</h3>
-                <div class="concepto">
-                    <p>Proteínas con cadenas de carbohidratos unidas:</p>
-                    <ul>
-                        <li><strong>Antígenos de grupos sanguíneos</strong> (A, B, O)</li>
-                        <li>Receptores de superficie celular</li>
-                        <li>Anticuerpos (inmunoglobulinas)</li>
-                        <li>Hormonas (FSH, LH, hCG)</li>
-                    </ul>
+
+                <h3 style="color:#f59e0b;margin-bottom:0.75rem;">Glucosaminoglucanos Clave</h3>
+                <div style="display:grid;gap:0.5rem;margin-bottom:1rem;">
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+                        <strong style="color:#fcd34d;">Ácido Hialurónico</strong>
+                        <span style="color:#94a3b8;font-size:0.82rem;">Articulaciones, humor vítreo, piel</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+                        <strong style="color:#fcd34d;">Heparina</strong>
+                        <span style="color:#94a3b8;font-size:0.82rem;">⚠️ Anticoagulante natural y clínico</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+                        <strong style="color:#fcd34d;">Condroitín Sulfato</strong>
+                        <span style="color:#94a3b8;font-size:0.82rem;">Cartílago — resistencia compresión</span>
+                    </div>
+                    <div style="background:rgba(30,41,59,0.85);padding:0.8rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+                        <strong style="color:#fcd34d;">Queratán Sulfato</strong>
+                        <span style="color:#94a3b8;font-size:0.82rem;">Córnea — transparencia ocular</span>
+                    </div>
                 </div>
-                
-                <h3>Glucolípidos</h3>
-                <div class="concepto">
-                    <p>Lípidos con carbohidratos:</p>
-                    <ul>
-                        <li>Componentes de la <strong>membrana plasmática</strong></li>
-                        <li>Formación de glucocálix (capa externa)</li>
-                        <li>Reconocimiento célula-célula</li>
-                        <li>Receptores para virus y toxinas</li>
-                    </ul>
-                </div>
-                
-                <div class="ejemplo">
-                    <h3>🩸 Grupos Sanguíneos ABO</h3>
-                    <p>Determinados por carbohidratos en eritrocitos:</p>
-                    <ul>
-                        <li><strong>Tipo O:</strong> Antígeno H (básico, solo fucosa)</li>
-                        <li><strong>Tipo A:</strong> Antígeno H + N-acetilgalactosamina</li>
-                        <li><strong>Tipo B:</strong> Antígeno H + Galactosa</li>
-                        <li><strong>Tipo AB:</strong> Ambos antígenos A y B</li>
-                    </ul>
-                    <p>Las diferencias son SOLO en los <strong>carbohidratos terminales</strong></p>
-                </div>
-                
-                <hr>
-                
-                <h2>4. Precursores Biosintéticos 🧬</h2>
-                
-                <h3>Síntesis de Ácidos Nucleicos</h3>
-                <div class="concepto">
-                    <p><strong>Ribosa y Desoxirribosa:</strong></p>
-                    <ul>
-                        <li>Esqueleto de ARN y ADN</li>
-                        <li>Componente de ATP, NAD, FAD, CoA</li>
-                        <li>Producidas en la vía de pentosas fosfato</li>
-                    </ul>
-                </div>
-                
-                <h3>Síntesis de Aminoácidos</h3>
-                <div class="concepto">
-                    <p>Varios aminoácidos NO esenciales se sintetizan a partir de intermediarios de la glucólisis:</p>
-                    <ul>
-                        <li><strong>3-Fosfoglicerato</strong> → Serina, Glicina, Cisteína</li>
-                        <li><strong>Piruvato</strong> → Alanina</li>
-                        <li><strong>Oxalacetato</strong> (Krebs) → Aspartato, Asparagina</li>
-                        <li><strong>α-Cetoglutarato</strong> (Krebs) → Glutamato, Glutamina, Prolina</li>
-                    </ul>
-                </div>
-                
-                <h3>Síntesis de Lípidos</h3>
-                <div class="concepto">
-                    <p>El exceso de glucosa se convierte en <strong>ácidos grasos</strong>:</p>
-                    <ul>
-                        <li>Glucosa → Acetil-CoA → Ácidos grasos</li>
-                        <li>Glicerol-3-fosfato (de glucólisis) → Esqueleto de triacilglicéridos</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>5. Función Protectora 🛡️</h2>
-                
-                <h3>Mucopolisacáridos (Glucosaminoglucanos)</h3>
-                <div class="concepto">
-                    <p><strong>Ácido Hialurónico:</strong></p>
-                    <ul>
-                        <li>Lubricante en articulaciones</li>
-                        <li>Amortiguador en disco intervertebral</li>
-                        <li>Protege córnea y humor vítreo</li>
-                    </ul>
-                    
-                    <p><strong>Heparina:</strong></p>
-                    <ul>
-                        <li><strong>Anticoagulante</strong> natural</li>
-                        <li>Evita trombosis</li>
-                        <li>Usado clínicamente en cirugía</li>
-                    </ul>
-                    
-                    <p><strong>Queratán Sulfato:</strong></p>
-                    <ul>
-                        <li>Componente de la <strong>córnea</strong></li>
-                        <li>Transparencia del ojo</li>
-                        <li>Resistencia mecánica</li>
-                    </ul>
-                </div>
-                
-                <h3>Moco y Secreciones</h3>
-                <div class="concepto">
-                    <ul>
-                        <li>Las <strong>glucoproteínas del moco</strong> protegen epitelios</li>
-                        <li>Barrera contra patógenos y ácidos</li>
-                        <li>Presentes en tracto respiratorio, digestivo, reproductivo</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>6. Regulación de la Expresión Génica 📖</h2>
-                
-                <div class="concepto">
-                    <p><strong>Glucosilación de Proteínas:</strong></p>
-                    <ul>
-                        <li>Modifica la <strong>actividad</strong> de proteínas</li>
-                        <li>Controla localización celular</li>
-                        <li>Afecta estabilidad y vida media</li>
-                        <li>Regula señalización celular</li>
-                    </ul>
-                    
-                    <p><strong>O-GlcNAc:</strong></p>
-                    <ul>
-                        <li>N-acetilglucosamina unida a proteínas nucleares y citoplásmicas</li>
-                        <li>Compite con fosforilación</li>
-                        <li>Regula transcripción, traducción, señalización</li>
-                        <li>Sensor del estado metabólico celular</li>
-                    </ul>
-                </div>
-                
-                <hr>
-                
-                <h2>7. Fibra Dietética 🥦</h2>
-                
-                <div class="dato-clave">
-                    <h3>🌾 Beneficios de la Fibra</h3>
-                    <p>Aunque NO se digiere, la fibra es <strong>esencial</strong> para la salud</p>
-                </div>
-                
-                <h3>Tipos de Fibra</h3>
-                <div class="concepto">
-                    <p><strong>Fibra Insoluble:</strong> Celulosa, hemicelulosa, lignina</p>
-                    <ul>
-                        <li>✅ Aumenta volumen fecal</li>
-                        <li>✅ Acelera tránsito intestinal</li>
-                        <li>✅ Previene estreñimiento</li>
-                        <li>✅ Reduce riesgo de cáncer colorrectal</li>
-                    </ul>
-                    
-                    <p><strong>Fibra Soluble:</strong> Pectina, β-glucanos, inulina</p>
-                    <ul>
-                        <li>✅ Reduce colesterol LDL</li>
-                        <li>✅ Controla glucemia</li>
-                        <li>✅ Alimenta microbiota (prebiótico)</li>
-                        <li>✅ Aumenta saciedad</li>
-                    </ul>
-                </div>
-                
-                <h3>Recomendaciones</h3>
-                <p><strong>Ingesta diaria recomendada:</strong> 25-30 gramos</p>
-                <p><strong>Fuentes:</strong> Verduras, frutas, granos enteros, legumbres, frutos secos</p>
-                
-                <hr>
-                
-                <h2>Resumen de Funciones</h2>
-                <table>
-                    <tr>
-                        <th>Función</th>
-                        <th>Carbohidrato</th>
-                        <th>Ejemplo</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Energética</strong></td>
-                        <td>Glucosa, glucógeno</td>
-                        <td>ATP en glucólisis</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Reserva</strong></td>
-                        <td>Glucógeno, almidón</td>
-                        <td>Hígado, músculo</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Estructural</strong></td>
-                        <td>Celulosa, quitina</td>
-                        <td>Pared celular, exoesqueleto</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Reconocimiento</strong></td>
-                        <td>Glucoproteínas</td>
-                        <td>Grupos sanguíneos</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Precursor</strong></td>
-                        <td>Ribosa</td>
-                        <td>ARN, ADN</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Protectora</strong></td>
-                        <td>Ácido hialurónico</td>
-                        <td>Líquido sinovial</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Fibra</strong></td>
-                        <td>Celulosa, pectina</td>
-                        <td>Salud digestiva</td>
-                    </tr>
-                </table>
-                
-                <div class="recordatorio">
-                    <p>💡 <strong>Recuerda:</strong> Los carbohidratos NO solo son "azúcar y energía". Tienen roles estructurales, de señalización y regulación fundamentales para la vida.</p>
+
+                <div style="background:rgba(245,158,11,0.08);border-radius:8px;padding:0.9rem;">
+                    <p style="margin:0;color:#fcd34d;font-size:0.88rem;">💡 Las diferencias entre grupos sanguíneos son solo en los <strong>carbohidratos terminales</strong> de glucoproteínas en la superficie del eritrocito.</p>
                 </div>
             `
         }
     ]
 };
 
-// Registrar el módulo globalmente
 if (typeof window !== 'undefined') {
     window.CARBOHIDRATOS = CARBOHIDRATOS;
 }
