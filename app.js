@@ -550,6 +550,9 @@ function checkAnswer() {
     document.getElementById('explanationBox').style.display = 'block';
     document.getElementById('submitBtn').textContent = 'Siguiente →';
     document.getElementById('submitBtn').onclick = nextQuestion;
+    
+    // Scroll automático a la explicación (PC y móvil)
+    scrollToBottom(document.getElementById('explanationBox'), 150);
 }
 
 function nextQuestion() {
@@ -1521,6 +1524,8 @@ function mostrarResultadoInline(correcto, tipoCorrector) {
         el.style.border = '1px solid rgba(239,68,68,0.25)';
         el.innerHTML = `❌ Era: <strong>${tipo}</strong>`;
     }
+    // Scroll automático (PC y móvil)
+    scrollToBottom(el, 100);
 }
 
 function siguienteTarjeta() {
