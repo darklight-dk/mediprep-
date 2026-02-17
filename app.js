@@ -1,3 +1,16 @@
+// ═══════════════════════════════════════
+// UTILIDAD: Scroll suave al final de pantalla
+// ═══════════════════════════════════════
+function scrollToBottom(targetEl, delay = 120) {
+    setTimeout(() => {
+        if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        // También forzar scroll de window al fondo
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, delay);
+}
+
 // ============================================
 // MEDIPREP SMART - MOTOR DEL SISTEMA
 // ============================================
@@ -492,18 +505,21 @@ function checkAnswer() {
         const updated = {
             totalAnswered: (prev.totalAnswered || 0) + 1,
             correct: (prev.correct || 0) + 1,
+            currentStreak: streak,
             maxStreak: Math.max(prev.maxStreak || 0, streak),
         };
         AchievementSystem.saveStats(updated);
         AchievementSystem.check(updated);
+        refreshHomeStats();
 
     } else {
         incorrectAnswers++;
         localStorage.setItem('mediprep_streak', '0');
 
         const prev = AchievementSystem.getStats();
-        AchievementSystem.saveStats({ totalAnswered: (prev.totalAnswered || 0) + 1 });
+        AchievementSystem.saveStats({ totalAnswered: (prev.totalAnswered || 0) + 1, currentStreak: 0 });
         AchievementSystem.check(AchievementSystem.getStats());
+        refreshHomeStats();
 
         if (isExamMode) {
             wrongAnswers.push({
@@ -1893,6 +1909,7 @@ function responderDiag(indexOriginal, btnPresionado) {
     expTxt.textContent = caso.explicacion;
 
     document.getElementById('diagBtnSiguiente').style.display = 'block';
+    scrollToBottom(document.getElementById('diagBtnSiguiente'), 150);
 }
 
 function siguienteDiagnostico() {
@@ -2171,10 +2188,8 @@ function mcMostrarOpciones() {
     `).join('');
 
     document.getElementById('mcDiagnosticarBtn').style.display = 'block';
-    // Scroll suave hacia abajo
-    setTimeout(() => {
-        document.getElementById('mcDiagnosticarBtn').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
+    // Scroll suave hacia el final
+    scrollToBottom(document.getElementById('mcDiagnosticarBtn'), 200);
 }
 
 function mcResponder(indiceOriginal, btnPresionado) {
@@ -2236,7 +2251,7 @@ function mcResponder(indiceOriginal, btnPresionado) {
         document.getElementById('mcSiguienteBtn').textContent = '🏁 Ver resultados';
     }
 
-    expDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    scrollToBottom(expDiv, 150);
 }
 
 function mcSiguienteCaso() {
