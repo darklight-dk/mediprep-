@@ -204,7 +204,7 @@ function navTo(screenId, navId) {
 
 // Actualizar stats del home en cada visita
 function refreshHomeStats() {
-    const s = getStats();
+    const s = AchievementSystem.getStats();
     const el = id => document.getElementById(id);
     
     // Header streak (siempre visible si hay racha)
