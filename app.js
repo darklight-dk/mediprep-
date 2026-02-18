@@ -20,6 +20,50 @@ const CONFIG = {
     ANIMATIONS: { enabled: true }
 };
 
+const WrongAnswersBank = {
+    add(pregunta, tuRespuesta, correcta, explicacion, categoria = 'general') {
+        const bank = this.getAll();
+        bank.push({
+            id: Date.now() + Math.random(),
+            pregunta,
+            tuRespuesta,
+            correcta,
+            explicacion,
+            categoria,
+            fecha: new Date().toISOString(),
+            revisada: false
+        });
+        localStorage.setItem('mediprep_wrong_bank', JSON.stringify(bank));
+    },
+    
+    getAll() {
+        try {
+            return JSON.parse(localStorage.getItem('mediprep_wrong_bank') || '[]');
+        } catch {
+            return [];
+        }
+    },
+    
+    getPending() {
+        return this.getAll().filter(q => !q.revisada);
+    },
+    
+    markAsReviewed(id) {
+        const bank = this.getAll();
+        const item = bank.find(q => q.id === id);
+        if (item) item.revisada = true;
+        localStorage.setItem('mediprep_wrong_bank', JSON.stringify(bank));
+    },
+    
+    clear() {
+        localStorage.setItem('mediprep_wrong_bank', '[]');
+    },
+    
+    getCount() {
+        return this.getPending().length;
+    }
+};
+
 // SISTEMA DE LICENCIAS
 const VALID_LICENSES = [
     'MEDIPREP-2026-PREMIUM',
@@ -192,6 +236,7 @@ function showScreen(screenId) {
     document.getElementById(screenId).classList.add('active');
     if (screenId === 'homeScreen') refreshHomeStats();
     if (screenId === 'logrosScreen') renderLogros();
+    if (screenId === 'repasoIncorrectasScreen') renderWrongBank();
 }
 
 // ─── NAVEGACIÓN CON BOTTOM NAV ──────────────────────────────
@@ -215,6 +260,35 @@ function refreshHomeStats() {
         const sv = el('headerStreakVal');
         if (sv) sv.textContent = streak;
     }
+    
+    // Contador de incorrectas pendientes
+    const wrongCount = WrongAnswersBank.getCount();
+    const wrongBadge = el('wrongCountBadge');
+    if (wrongBadge) {
+        wrongBadge.textContent = wrongCount;
+        wrongBadge.style.display = wrongCount > 0 ? 'flex' : 'none';
+    }
+    
+    // Actualizar card del home
+    const cardHome = el('wrongBankCard');
+    const cardCount = el('wrongBankCardCount');
+    if (cardHome && cardCount) {
+        cardHome.style.display = wrongCount > 0 ? 'block' : 'none';
+        cardCount.textContent = wrongCount;
+    }
+    
+    // Actualizar estadísticas generales
+    const correct = s.correct || 0;
+    const total = s.totalAnswered || 0;
+    const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+    
+    const correctEl = el('homeStatsCorrect');
+    const totalEl = el('homeStatsTotal');
+    const accuracyEl = el('homeStatsAccuracy');
+    
+    if (correctEl) correctEl.textContent = correct;
+    if (totalEl) totalEl.textContent = total;
+    if (accuracyEl) accuracyEl.textContent = accuracy + '%';
 }
 
 
@@ -520,6 +594,15 @@ function checkAnswer() {
         AchievementSystem.saveStats({ totalAnswered: (prev.totalAnswered || 0) + 1, currentStreak: 0 });
         AchievementSystem.check(AchievementSystem.getStats());
         refreshHomeStats();
+
+        // Guardar en banco de incorrectas
+        WrongAnswersBank.add(
+            q.pregunta,
+            q.opciones[originalSelectedIndex],
+            q.opciones[q.correcta],
+            q.explicacion,
+            q.categoria || 'general'
+        );
 
         if (isExamMode) {
             wrongAnswers.push({
@@ -1586,6 +1669,84 @@ function playAudioFile(filename) {
     }
 }
 
+
+// ═══════════════════════════════════════
+// BANCO DE PREGUNTAS INCORRECTAS
+// ═══════════════════════════════════════
+
+
+// ═══════════════════════════════════════
+// RENDERIZAR BANCO DE INCORRECTAS
+// ═══════════════════════════════════════
+function renderWrongBank() {
+    const pending = WrongAnswersBank.getPending();
+    const listEl = document.getElementById('wrongBankList');
+    const emptyEl = document.getElementById('wrongBankEmpty');
+    const btnStart = document.getElementById('btnStartWrongQuiz');
+    const cardHome = document.getElementById('wrongBankCard');
+    const cardCount = document.getElementById('wrongBankCardCount');
+    
+    if (pending.length === 0) {
+        if (listEl) listEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'block';
+        if (btnStart) btnStart.style.display = 'none';
+        if (cardHome) cardHome.style.display = 'none';
+    } else {
+        if (listEl) {
+            listEl.style.display = 'flex';
+            listEl.innerHTML = pending.map((q, idx) => `
+                <div style="background:rgba(30,41,59,0.8);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:1rem;">
+                    <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;margin-bottom:0.5rem;">PREGUNTA ${idx + 1}</div>
+                    <div style="font-size:0.9rem;color:white;margin-bottom:0.75rem;line-height:1.5;">${q.pregunta}</div>
+                    <div style="display:grid;gap:0.5rem;font-size:0.85rem;margin-bottom:0.75rem;">
+                        <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);padding:0.6rem;border-radius:8px;color:#fca5a5;">
+                            <strong>❌ Tu respuesta:</strong> ${q.tuRespuesta}
+                        </div>
+                        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);padding:0.6rem;border-radius:8px;color:#6ee7b7;">
+                            <strong>✅ Correcta:</strong> ${q.correcta}
+                        </div>
+                    </div>
+                    
+                    <!-- Explicación expandible -->
+                    <div id="wrongExp${q.id}" style="display:none;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);padding:0.75rem;border-radius:8px;margin-bottom:0.75rem;font-size:0.85rem;color:#cbd5e1;line-height:1.6;">
+                        <strong style="color:#a5b4fc;">💡 Explicación:</strong><br>${q.explicacion || 'Sin explicación disponible'}
+                    </div>
+                    
+                    <div style="display:flex;gap:0.5rem;">
+                        <button onclick="document.getElementById('wrongExp${q.id}').style.display = document.getElementById('wrongExp${q.id}').style.display === 'none' ? 'block' : 'none';" style="flex:1;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;padding:0.6rem;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;">
+                            💡 Ver explicación
+                        </button>
+                        <button onclick="WrongAnswersBank.markAsReviewed(${q.id}); renderWrongBank(); refreshHomeStats();" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#6ee7b7;padding:0.6rem 1rem;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;">
+                            ✓ Revisada
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        if (emptyEl) emptyEl.style.display = 'none';
+        if (btnStart) btnStart.style.display = 'none';  // Ocultar el botón de quiz ya que ahora es modo estudio directo
+        if (cardHome) cardHome.style.display = 'block';
+        if (cardCount) cardCount.textContent = pending.length;
+    }
+}
+
+// ═══════════════════════════════════════
+// INICIAR QUIZ DE REPASO DE INCORRECTAS
+// ═══════════════════════════════════════
+function startWrongQuestionsQuiz() {
+    const pending = WrongAnswersBank.getPending();
+    if (pending.length === 0) {
+        alert('No hay preguntas pendientes');
+        return;
+    }
+    
+    // Mostrar directamente las preguntas como tarjetas de estudio
+    // En lugar de intentar recrear un quiz (que requiere todas las opciones originales)
+    alert('📚 Modo de estudio de incorrectas:\n\nRevisa cada pregunta y su explicación.\nMarca como "revisada" cuando la hayas entendido.');
+    showScreen('repasoIncorrectasScreen');
+    renderWrongBank();
+}
+
 function playSound(tipo) {
     if (!CONFIG.SOUNDS.enabled) return;
     try {
@@ -1645,6 +1806,8 @@ function playSound(tipo) {
 const Animations = {
     confetti() {
         if (!CONFIG.ANIMATIONS.enabled) return;
+        // 🎉 YIPPEE sound effect
+        playAudioFile('yippee.ogg');
         const colors = ['#14b8a6', '#fb923c', '#ec4899', '#8b5cf6', '#22c55e', '#f59e0b', '#ef4444', '#3b82f6'];
         for (let i = 0; i < 80; i++) {
             const p = document.createElement('div');
