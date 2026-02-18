@@ -213,6 +213,10 @@ body::after {
   from { opacity:0; transform:translateY(14px); }
   to   { opacity:1; transform:translateY(0); }
 }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
 
 /* ── PAGE HEADERS ──────────────────────── */
 .page-header {
@@ -1227,35 +1231,87 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
 
                 <!-- PANTALLA: LOGROS -->
         <div id="logrosScreen" class="screen">
-            <div class="page-header">
-                <button class="back-btn" onclick="navTo('homeScreen','nav-home')">←</button>
-                <h2 class="page-title">🏆 Mis Logros</h2>
+            <!-- ════════════════════════════════════════ -->
+            <!-- HERO SECTION -->
+            <!-- ════════════════════════════════════════ -->
+            <div style="background:linear-gradient(135deg,rgba(245,158,11,.2) 0%,rgba(234,179,8,.1) 50%,rgba(202,138,4,.05) 100%);border:1px solid rgba(245,158,11,.4);border-radius:20px;padding:2rem 1.5rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(245,158,11,.2);">
+                <!-- Decoración de fondo -->
+                <div style="position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 70%);animation:pulse 4s ease-in-out infinite;pointer-events:none;"></div>
+                
+                <!-- Contenido -->
+                <div style="position:relative;z-index:1;">
+                    <div id="trofeoInteractivo" style="font-size:4rem;margin-bottom:0.75rem;cursor:pointer;display:inline-block;transition:all 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);filter:drop-shadow(0 4px 12px rgba(245,158,11,0.4));" 
+                         onclick="playAudioFile('subir-de-nivel_.ogg'); this.style.transform='scale(1.4) rotate(360deg)'; setTimeout(() => this.style.transform='scale(1) rotate(0deg)', 600);" 
+                         onmouseover="this.style.transform='scale(1.15) rotate(5deg)'" 
+                         onmouseout="this.style.transform='scale(1) rotate(0deg)'" 
+                         title="¡Click para celebrar! 🎉">🏆</div>
+                    
+                    <div style="font-size:0.75rem;color:rgba(245,158,11,0.8);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;">Hall of Fame</div>
+                    
+                    <div id="logrosSubtitulo" style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:#fbbf24;margin-bottom:1rem;text-shadow:0 2px 8px rgba(245,158,11,0.3);">0 / 36 Logros</div>
+                    
+                    <!-- Barra de progreso -->
+                    <div style="background:rgba(30,41,59,0.6);height:10px;border-radius:20px;overflow:hidden;margin-bottom:0.5rem;">
+                        <div id="progressBar" style="background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b);height:100%;width:0%;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 12px rgba(245,158,11,0.6);"></div>
+                    </div>
+                    
+                    <div id="progressText" style="font-size:0.8rem;color:rgba(251,191,36,0.7);font-weight:600;">0% completado</div>
+                </div>
             </div>
 
-            <!-- HERO LOGROS -->
-            <div class="card" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(234,179,8,.08));border-color:rgba(245,158,11,.3);text-align:center;margin-bottom:1.25rem;padding:1.75rem;box-shadow:0 0 40px var(--gold-glow);">
-                <div style="font-size:3rem;margin-bottom:.6rem;">🏆</div>
-                <div style="font-family:var(--font-d);font-size:1.1rem;font-weight:800;color:var(--gold-l);" id="logrosSubtitulo">0 / 0 desbloqueados</div>
+            <!-- ════════════════════════════════════════ -->
+            <!-- ESTADÍSTICAS RÁPIDAS -->
+            <!-- ════════════════════════════════════════ -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.5rem;">
+                <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:0.85rem 0.5rem;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:800;color:#10b981;margin-bottom:0.15rem;" id="statCorrectas">0</div>
+                    <div style="font-size:0.7rem;color:#6ee7b7;font-weight:600;">Correctas</div>
+                </div>
+                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:12px;padding:0.85rem 0.5rem;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:800;color:#f59e0b;margin-bottom:0.15rem;" id="statRacha">0</div>
+                    <div style="font-size:0.7rem;color:#fcd34d;font-weight:600;">Racha</div>
+                </div>
+                <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:0.85rem 0.5rem;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:800;color:#6366f1;margin-bottom:0.15rem;" id="statTotal">0</div>
+                    <div style="font-size:0.7rem;color:#a5b4fc;font-weight:600;">Total</div>
+                </div>
+                <div style="background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);border-radius:12px;padding:0.85rem 0.5rem;text-align:center;">
+                    <div style="font-size:1.5rem;font-weight:800;color:#ec4899;margin-bottom:0.15rem;" id="statPrecision">0%</div>
+                    <div style="font-size:0.7rem;color:#f9a8d4;font-weight:600;">Precisión</div>
+                </div>
             </div>
 
-            <!-- STATS -->
-            <div class="stats-grid" style="margin-bottom:1.25rem;">
-                <div class="stat-card">
-                    <div class="stat-value" id="statCorrectas" style="color:var(--emerald-l)">0</div>
-                    <div class="stat-label">Correctas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="statRacha" style="color:var(--gold)">0</div>
-                    <div class="stat-label">Máx. Racha</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="statTotal" style="color:var(--indigo-l)">0</div>
-                    <div class="stat-label">Respondidas</div>
-                </div>
+            <!-- ════════════════════════════════════════ -->
+            <!-- FILTROS POR TIER -->
+            <!-- ════════════════════════════════════════ -->
+            <div style="display:flex;gap:0.5rem;overflow-x:auto;margin-bottom:1rem;padding-bottom:0.5rem;-webkit-overflow-scrolling:touch;">
+                <button onclick="filterLogros('all')" id="filter-all" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);color:#fbbf24;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    ✨ Todos
+                </button>
+                <button onclick="filterLogros('bronze')" id="filter-bronze" style="background:rgba(205,127,50,0.1);border:1px solid rgba(205,127,50,0.3);color:#cd7f32;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    🥉 Bronce
+                </button>
+                <button onclick="filterLogros('silver')" id="filter-silver" style="background:rgba(192,192,192,0.1);border:1px solid rgba(192,192,192,0.3);color:#c0c0c0;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    🥈 Plata
+                </button>
+                <button onclick="filterLogros('gold')" id="filter-gold" style="background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);color:#ffd700;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    🥇 Oro
+                </button>
+                <button onclick="filterLogros('platinum')" id="filter-platinum" style="background:rgba(229,228,226,0.1);border:1px solid rgba(229,228,226,0.3);color:#e5e4e2;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    💎 Platino
+                </button>
+                <button onclick="filterLogros('diamond')" id="filter-diamond" style="background:rgba(185,242,255,0.1);border:1px solid rgba(185,242,255,0.3);color:#b9f2ff;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    👑 Diamante
+                </button>
+                <button onclick="filterLogros('secret')" id="filter-secret" style="background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);color:#a855f7;padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;">
+                    🌈 Secretos
+                </button>
             </div>
 
-            <!-- Grid de logros -->
-            <div id="logrosGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;"></div>
+            <!-- ════════════════════════════════════════ -->
+            <!-- GRID DE LOGROS -->
+            <!-- ════════════════════════════════════════ -->
+            <div id="logrosGrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;"></div>
         </div>
 
         <!-- PANTALLA: JUEGOS -->

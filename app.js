@@ -1663,9 +1663,52 @@ function playAudioFile(filename) {
     try {
         const audio = new Audio(filename);
         audio.volume = 0.5;
-        audio.play().catch(err => console.log('Audio play error:', err));
+        
+        // Intentar reproducir el archivo
+        audio.play().catch(err => {
+            console.log('Audio play error:', err);
+            
+            // Si falla con .ogg, intentar con .mp3
+            if (filename.endsWith('.ogg')) {
+                const mp3Filename = filename.replace('.ogg', '.mp3');
+                const audioMp3 = new Audio(mp3Filename);
+                audioMp3.volume = 0.5;
+                audioMp3.play().catch(err2 => {
+                    console.log('MP3 fallback también falló:', err2);
+                    
+                    // Último fallback: sonido sintético
+                    if (filename.includes('yippee')) {
+                        playYippeeFallback();
+                    }
+                });
+            }
+        });
     } catch (err) {
         console.log('Audio error:', err);
+    }
+}
+
+// Fallback sintético para yippee si no se encuentra el archivo
+function playYippeeFallback() {
+    if (!CONFIG.SOUNDS.enabled) return;
+    try {
+        const ctx = getAudioCtx();
+        // Melodía alegre ascendente (yippee style)
+        const notas = [523, 659, 784, 1047, 1319]; // C5, E5, G5, C6, E6
+        notas.forEach((freq, i) => {
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.connect(g);
+            g.connect(ctx.destination);
+            o.type = 'sine';
+            o.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+            g.gain.setValueAtTime(0.2, ctx.currentTime + i * 0.08);
+            g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.2);
+            o.start(ctx.currentTime + i * 0.08);
+            o.stop(ctx.currentTime + i * 0.08 + 0.2);
+        });
+    } catch (err) {
+        console.log('Yippee fallback error:', err);
     }
 }
 
@@ -1857,36 +1900,63 @@ const Animations = {
 // SISTEMA DE LOGROS
 // ══════════════════════════════════════════════
 const ACHIEVEMENTS = [
-    // ── PRIMEROS PASOS ───────────────────────────────
-    { id: 'first_steps',  name: 'Primeros Pasos',      icon: '👣',   description: 'Respondiste tu primera pregunta',        condition: (s) => (s.totalAnswered||0) >= 1 },
-    { id: 'warming_up',   name: 'Calentando Motores',  icon: '🔄',   description: 'Respondiste 25 preguntas',               condition: (s) => (s.totalAnswered||0) >= 25 },
-    { id: 'hundred_ans',  name: 'Constante',            icon: '💯',   description: '100 preguntas respondidas en total',     condition: (s) => (s.totalAnswered||0) >= 100 },
-    { id: 'five_hundred', name: 'Dedicación Total',     icon: '🔱',   description: '500 preguntas respondidas',              condition: (s) => (s.totalAnswered||0) >= 500 },
-
-    // ── ACIERTOS ─────────────────────────────────────
-    { id: 'beginner',     name: 'Principiante',         icon: '🌱',   description: '10 respuestas correctas',                condition: (s) => (s.correct||0) >= 10 },
-    { id: 'intermediate', name: 'Estudiante Aplicado',  icon: '📚',   description: '50 respuestas correctas',                condition: (s) => (s.correct||0) >= 50 },
-    { id: 'expert',       name: 'Experto',               icon: '🎓',   description: '100 respuestas correctas',               condition: (s) => (s.correct||0) >= 100 },
-    { id: 'master',       name: 'Maestro',               icon: '🧠',   description: '250 respuestas correctas',               condition: (s) => (s.correct||0) >= 250 },
-
-    // ── RACHAS ───────────────────────────────────────
-    { id: 'streak_5',     name: 'En Racha',              icon: '🔥',   description: '5 aciertos seguidos',                   condition: (s) => (s.maxStreak||0) >= 5 },
-    { id: 'streak_10',    name: 'Imparable',              icon: '⚡',   description: '10 aciertos seguidos',                  condition: (s) => (s.maxStreak||0) >= 10 },
-    { id: 'streak_20',    name: 'Legendario',             icon: '💎',   description: '20 aciertos seguidos',                  condition: (s) => (s.maxStreak||0) >= 20 },
-    { id: 'streak_30',    name: 'Modo Dios',              icon: '👑',   description: '30 aciertos seguidos sin fallar',       condition: (s) => (s.maxStreak||0) >= 30 },
-
-    // ── EXÁMENES ─────────────────────────────────────
-    { id: 'high_score',   name: 'Alto Rendimiento',     icon: '🥇',   description: '90%+ en un examen de 20+ preguntas',    condition: (s, ex) => ex && ex.score >= 90 && ex.total >= 20 },
-    { id: 'perfect_exam', name: 'Examen Perfecto',       icon: '🏆',   description: '100% en examen de 20+ preguntas',       condition: (s, ex) => ex && ex.score === 100 && ex.total >= 20 },
-
-    // ── DIAGNÓSTICO CLÍNICO ──────────────────────────
-    { id: 'doctor',       name: 'Doctor en Ciernes',    icon: '🩺',   description: '10 diagnósticos correctos',              condition: (s) => (s.diagCorrectas||0) >= 10 },
-    { id: 'specialist',   name: 'Especialista',          icon: '🏥',   description: '30 diagnósticos correctos',              condition: (s) => (s.diagCorrectas||0) >= 30 },
-    { id: 'attending',    name: 'Médico Residente',      icon: '👨‍⚕️', description: 'Completaste los 60 casos clínicos',     condition: (s) => (s.diagCorrectas||0) >= 60 },
-
-    // ── ESPECIALES ───────────────────────────────────
-    { id: 'night_owl',    name: 'Búho Nocturno',         icon: '🦉',   description: 'Estudiaste después de medianoche',       condition: () => { const h = new Date().getHours(); return h >= 0 && h < 5; } },
-    { id: 'early_bird',   name: 'Madrugador',            icon: '🌅',   description: 'Estudiaste entre 5 y 7 AM',             condition: () => { const h = new Date().getHours(); return h >= 5 && h < 7; } },
+    // ═══════════════════════════════════════════════
+    // 🥉 BRONCE - Primeros Pasos
+    // ═══════════════════════════════════════════════
+    { id: 'first_steps',    name: 'Primeros Pasos',           icon: '👣', tier: 'bronze',   description: 'Respondiste tu primera pregunta',              condition: (s) => (s.totalAnswered||0) >= 1 },
+    { id: 'curious',        name: 'Curioso',                  icon: '🔍', tier: 'bronze',   description: 'Respondiste 10 preguntas',                    condition: (s) => (s.totalAnswered||0) >= 10 },
+    { id: 'warming_up',     name: 'Calentando',               icon: '🔄', tier: 'bronze',   description: 'Respondiste 25 preguntas',                    condition: (s) => (s.totalAnswered||0) >= 25 },
+    { id: 'beginner',       name: 'Principiante',             icon: '🌱', tier: 'bronze',   description: '10 respuestas correctas',                     condition: (s) => (s.correct||0) >= 10 },
+    { id: 'first_exam',     name: 'Primera Prueba',           icon: '📝', tier: 'bronze',   description: 'Completaste tu primer examen',                condition: (s) => (s.examsCompleted||0) >= 1 },
+    
+    // ═══════════════════════════════════════════════
+    // 🥈 PLATA - Estudiante Comprometido
+    // ═══════════════════════════════════════════════
+    { id: 'fifty_correct',  name: 'Estudiante Aplicado',      icon: '📚', tier: 'silver',   description: '50 respuestas correctas',                     condition: (s) => (s.correct||0) >= 50 },
+    { id: 'hundred_ans',    name: 'Constante',                icon: '💯', tier: 'silver',   description: '100 preguntas respondidas',                   condition: (s) => (s.totalAnswered||0) >= 100 },
+    { id: 'streak_5',       name: 'En Racha',                 icon: '🔥', tier: 'silver',   description: '5 aciertos seguidos',                         condition: (s) => (s.maxStreak||0) >= 5 },
+    { id: 'quick_learner',  name: 'Aprendizaje Rápido',       icon: '⚡', tier: 'silver',   description: 'Respondiste 20 preguntas en menos de 10 min', condition: (s) => (s.speedRun20||0) > 0 },
+    { id: 'night_owl',      name: 'Búho Nocturno',            icon: '🦉', tier: 'silver',   description: 'Estudiaste después de medianoche',            condition: () => { const h = new Date().getHours(); return h >= 0 && h < 5; } },
+    
+    // ═══════════════════════════════════════════════
+    // 🥇 ORO - Experto en Formación
+    // ═══════════════════════════════════════════════
+    { id: 'expert',         name: 'Experto',                  icon: '🎓', tier: 'gold',     description: '100 respuestas correctas',                    condition: (s) => (s.correct||0) >= 100 },
+    { id: 'two_fifty',      name: 'Imparable',                icon: '🚀', tier: 'gold',     description: '250 preguntas respondidas',                   condition: (s) => (s.totalAnswered||0) >= 250 },
+    { id: 'streak_10',      name: 'Racha de Fuego',           icon: '🔥', tier: 'gold',     description: '10 aciertos seguidos',                        condition: (s) => (s.maxStreak||0) >= 10 },
+    { id: 'high_score',     name: 'Alto Rendimiento',         icon: '🥇', tier: 'gold',     description: '90%+ en un examen de 20+ preguntas',          condition: (s, ex) => ex && ex.score >= 90 && ex.total >= 20 },
+    { id: 'five_exams',     name: 'Evaluador Serial',         icon: '📋', tier: 'gold',     description: 'Completaste 5 exámenes completos',            condition: (s) => (s.examsCompleted||0) >= 5 },
+    { id: 'doctor',         name: 'Doctor en Ciernes',        icon: '🩺', tier: 'gold',     description: '10 diagnósticos correctos',                   condition: (s) => (s.diagCorrectas||0) >= 10 },
+    
+    // ═══════════════════════════════════════════════
+    // 💎 PLATINO - Maestro del Conocimiento
+    // ═══════════════════════════════════════════════
+    { id: 'master',         name: 'Maestro',                  icon: '🧠', tier: 'platinum', description: '250 respuestas correctas',                    condition: (s) => (s.correct||0) >= 250 },
+    { id: 'five_hundred',   name: 'Dedicación Total',         icon: '🔱', tier: 'platinum', description: '500 preguntas respondidas',                   condition: (s) => (s.totalAnswered||0) >= 500 },
+    { id: 'streak_20',      name: 'Legendario',               icon: '💎', tier: 'platinum', description: '20 aciertos seguidos',                        condition: (s) => (s.maxStreak||0) >= 20 },
+    { id: 'perfect_exam',   name: 'Examen Perfecto',          icon: '💯', tier: 'platinum', description: '100% en examen de 20+ preguntas',             condition: (s, ex) => ex && ex.score === 100 && ex.total >= 20 },
+    { id: 'specialist',     name: 'Especialista Clínico',     icon: '🏥', tier: 'platinum', description: '30 diagnósticos correctos',                   condition: (s) => (s.diagCorrectas||0) >= 30 },
+    { id: 'ten_exams',      name: 'Veterano de Exámenes',     icon: '📚', tier: 'platinum', description: 'Completaste 10 exámenes completos',           condition: (s) => (s.examsCompleted||0) >= 10 },
+    { id: 'early_bird',     name: 'Madrugador Disciplinado',  icon: '🌅', tier: 'platinum', description: 'Estudiaste entre 5 y 7 AM',                  condition: () => { const h = new Date().getHours(); return h >= 5 && h < 7; } },
+    
+    // ═══════════════════════════════════════════════
+    // 👑 DIAMANTE - Elite Absoluta
+    // ═══════════════════════════════════════════════
+    { id: 'grandmaster',    name: 'Gran Maestro',             icon: '👑', tier: 'diamond',  description: '500 respuestas correctas',                    condition: (s) => (s.correct||0) >= 500 },
+    { id: 'thousand',       name: 'Leyenda Viviente',         icon: '🌟', tier: 'diamond',  description: '1000 preguntas respondidas',                  condition: (s) => (s.totalAnswered||0) >= 1000 },
+    { id: 'streak_30',      name: 'Modo Dios',                icon: '⚡', tier: 'diamond',  description: '30 aciertos seguidos sin fallar',             condition: (s) => (s.maxStreak||0) >= 30 },
+    { id: 'streak_50',      name: 'Inmortal',                 icon: '🔮', tier: 'diamond',  description: '50 aciertos seguidos',                        condition: (s) => (s.maxStreak||0) >= 50 },
+    { id: 'attending',      name: 'Médico Residente',         icon: '👨‍⚕️', tier: 'diamond',  description: 'Completaste 60 casos clínicos',               condition: (s) => (s.diagCorrectas||0) >= 60 },
+    { id: 'perfectionist',  name: 'Perfeccionista',           icon: '✨', tier: 'diamond',  description: '95%+ de precisión con 100+ preguntas',        condition: (s) => (s.totalAnswered||0) >= 100 && ((s.correct||0)/(s.totalAnswered||1)) >= 0.95 },
+    { id: 'twenty_exams',   name: 'Maestro Evaluador',        icon: '🎯', tier: 'diamond',  description: 'Completaste 20 exámenes completos',           condition: (s) => (s.examsCompleted||0) >= 20 },
+    
+    // ═══════════════════════════════════════════════
+    // 🌈 SECRETOS / ESPECIALES
+    // ═══════════════════════════════════════════════
+    { id: 'no_mistakes',    name: 'Impecable',                icon: '🎖️', tier: 'secret',   description: 'Completaste un examen sin errores (50+ preg)', condition: (s, ex) => ex && ex.score === 100 && ex.total >= 50 },
+    { id: 'speed_demon',    name: 'Demonio de Velocidad',     icon: '🏃', tier: 'secret',   description: '50 preguntas correctas en menos de 15 min',   condition: (s) => (s.speedRun50||0) > 0 },
+    { id: 'comeback_kid',   name: 'Phoenix',                  icon: '🔥', tier: 'secret',   description: 'Racha de 15+ después de fallar 5 seguidas',  condition: (s) => (s.comeback||0) > 0 },
+    { id: 'scholar',        name: 'Erudito Completo',         icon: '📖', tier: 'secret',   description: 'Visitaste todos los módulos de clases',       condition: (s) => (s.modulesVisited||0) >= 7 },
 ];
 
 const AchievementSystem = {
@@ -2133,39 +2203,127 @@ function mostrarResultadoDiag() {
 // ══════════════════════════════════════════════
 // PANTALLA DE LOGROS
 // ══════════════════════════════════════════════
+// ═══════════════════════════════════════
+// COLORES POR TIER
+// ═══════════════════════════════════════
+const TIER_COLORS = {
+    bronze:   { bg: 'rgba(205,127,50,0.15)',  border: 'rgba(205,127,50,0.4)',   glow: 'rgba(205,127,50,0.3)', text: '#cd7f32' },
+    silver:   { bg: 'rgba(192,192,192,0.15)', border: 'rgba(192,192,192,0.4)',  glow: 'rgba(192,192,192,0.3)', text: '#c0c0c0' },
+    gold:     { bg: 'rgba(255,215,0,0.15)',   border: 'rgba(255,215,0,0.4)',    glow: 'rgba(255,215,0,0.3)', text: '#ffd700' },
+    platinum: { bg: 'rgba(229,228,226,0.15)', border: 'rgba(229,228,226,0.4)',  glow: 'rgba(229,228,226,0.3)', text: '#e5e4e2' },
+    diamond:  { bg: 'rgba(185,242,255,0.15)', border: 'rgba(185,242,255,0.4)',  glow: 'rgba(185,242,255,0.3)', text: '#b9f2ff' },
+    secret:   { bg: 'rgba(168,85,247,0.15)',  border: 'rgba(168,85,247,0.4)',   glow: 'rgba(168,85,247,0.3)', text: '#a855f7' }
+};
+
+let currentFilter = 'all';
+
+function filterLogros(tier) {
+    currentFilter = tier;
+    
+    // Actualizar botones de filtro
+    document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+        const btnTier = btn.id.replace('filter-', '');
+        if (btnTier === tier) {
+            btn.style.opacity = '1';
+            btn.style.transform = 'scale(1.05)';
+        } else {
+            btn.style.opacity = '0.6';
+            btn.style.transform = 'scale(1)';
+        }
+    });
+    
+    renderLogros();
+}
+
 function renderLogros() {
     const unlocked = AchievementSystem._getUnlocked();
     const stats = AchievementSystem.getStats();
 
-    // Estadísticas
+    // ═══════════════════════════════════════
+    // ESTADÍSTICAS
+    // ═══════════════════════════════════════
+    const correct = stats.correct || 0;
+    const total = stats.totalAnswered || 0;
+    const precision = total > 0 ? Math.round((correct / total) * 100) : 0;
+    
     const elC = document.getElementById('statCorrectas');
     const elR = document.getElementById('statRacha');
     const elT = document.getElementById('statTotal');
-    if (elC) elC.textContent = stats.correct || 0;
+    const elP = document.getElementById('statPrecision');
+    
+    if (elC) elC.textContent = correct;
     if (elR) elR.textContent = stats.maxStreak || 0;
-    if (elT) elT.textContent = stats.totalAnswered || 0;
+    if (elT) elT.textContent = total;
+    if (elP) elP.textContent = precision + '%';
 
-    // Subtítulo
+    // ═══════════════════════════════════════
+    // PROGRESO GENERAL
+    // ═══════════════════════════════════════
+    const percentage = Math.round((unlocked.length / ACHIEVEMENTS.length) * 100);
+    
     const sub = document.getElementById('logrosSubtitulo');
-    if (sub) sub.textContent = `${unlocked.length} / ${ACHIEVEMENTS.length} desbloqueados`;
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    
+    if (sub) sub.textContent = `${unlocked.length} / ${ACHIEVEMENTS.length} Logros`;
+    if (progressBar) progressBar.style.width = percentage + '%';
+    if (progressText) progressText.textContent = percentage + '% completado';
 
-    // Grid de logros
+    // ═══════════════════════════════════════
+    // FILTRAR LOGROS
+    // ═══════════════════════════════════════
+    const filteredAchievements = currentFilter === 'all' 
+        ? ACHIEVEMENTS 
+        : ACHIEVEMENTS.filter(ach => ach.tier === currentFilter);
+
+    // ═══════════════════════════════════════
+    // GRID DE LOGROS CON DISEÑO PROFESIONAL
+    // ═══════════════════════════════════════
     const grid = document.getElementById('logrosGrid');
     if (!grid) return;
-    grid.innerHTML = ACHIEVEMENTS.map(ach => {
+    
+    grid.innerHTML = filteredAchievements.map(ach => {
         const done = unlocked.includes(ach.id);
-        return `<div style="
-            background:${done ? 'rgba(245,158,11,0.12)' : 'rgba(30,41,59,0.5)'};
-            border:1px solid ${done ? 'rgba(245,158,11,0.4)' : 'rgba(100,116,139,0.15)'};
-            border-radius:14px;padding:1rem;text-align:center;
-            transition:all 0.2s;
-            ${done ? '' : 'opacity:0.45;filter:grayscale(1);'}">
-            <div style="font-size:2rem;margin-bottom:0.4rem;">${ach.icon}</div>
-            <div style="font-weight:700;font-size:0.88rem;color:${done ? '#f59e0b' : '#94a3b8'};">${ach.name}</div>
-            <div style="font-size:0.75rem;color:#64748b;margin-top:0.25rem;line-height:1.3;">${ach.description}</div>
-            ${done ? '<div style="color:#10b981;font-size:0.7rem;margin-top:0.4rem;font-weight:700;">✓ Desbloqueado</div>' : '<div style="color:#475569;font-size:0.7rem;margin-top:0.4rem;">🔒 Bloqueado</div>'}
+        const colors = TIER_COLORS[ach.tier] || TIER_COLORS.bronze;
+        
+        return `<div data-tier="${ach.tier}" style="
+            background:${done ? colors.bg : 'rgba(30,41,59,0.4)'};
+            border:2px solid ${done ? colors.border : 'rgba(100,116,139,0.15)'};
+            border-radius:16px;
+            padding:1.1rem;
+            text-align:center;
+            transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+            position:relative;
+            overflow:hidden;
+            ${done ? '' : 'opacity:0.5;filter:grayscale(0.8);'}
+            cursor:pointer;
+            ${done ? 'box-shadow:0 4px 12px ' + colors.glow + ';' : ''}
+            transform:scale(1);
+        " onmouseover="if(this.style.opacity==='1' || !this.style.opacity || this.style.opacity===''){this.style.transform='scale(1.05) translateY(-2px)';this.style.boxShadow='0 8px 20px ${colors.glow}';}" 
+           onmouseout="this.style.transform='scale(1) translateY(0)';this.style.boxShadow='${done ? '0 4px 12px ' + colors.glow : 'none'}';"> 
+           
+            ${done ? `<div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:linear-gradient(135deg,#10b981,#34d399);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;box-shadow:0 2px 6px rgba(16,185,129,0.4);">✓</div>` : ''}
+            
+            <div style="font-size:2.5rem;margin-bottom:0.6rem;filter:${done ? 'none' : 'grayscale(1)'};transition:transform 0.3s;">${ach.icon}</div>
+            
+            <div style="font-weight:800;font-size:0.9rem;color:${done ? colors.text : '#64748b'};margin-bottom:0.35rem;line-height:1.2;">${ach.name}</div>
+            
+            <div style="font-size:0.72rem;color:${done ? '#94a3b8' : '#475569'};line-height:1.4;margin-bottom:0.5rem;">${ach.description}</div>
+            
+            ${done 
+                ? `<div style="display:inline-block;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);color:#34d399;padding:0.25rem 0.65rem;border-radius:12px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;">Desbloqueado</div>` 
+                : `<div style="display:inline-block;background:rgba(100,116,139,0.15);border:1px solid rgba(100,116,139,0.25);color:#64748b;padding:0.25rem 0.65rem;border-radius:12px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;">🔒 Bloqueado</div>`
+            }
         </div>`;
     }).join('');
+    
+    // Mensaje si no hay logros en el filtro
+    if (filteredAchievements.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem 1rem;color:#64748b;">
+            <div style="font-size:2rem;margin-bottom:0.5rem;">🎯</div>
+            <div style="font-size:0.9rem;">No hay logros en esta categoría</div>
+        </div>`;
+    }
 }
 
 // ══════════════════════════════════════════════════════
