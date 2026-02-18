@@ -1186,6 +1186,59 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
                     </div>
                 </div>
 
+                <!-- ── NUEVAS FUNCIONES v2.0 ── -->
+                <div style="grid-column:1/-1;margin-top:0.25rem;margin-bottom:0.25rem;">
+                    <div style="font-size:0.65rem;font-weight:700;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.6rem;">✨ NUEVAS HERRAMIENTAS</div>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="action-card" style="background:rgba(99,102,241,0.08);border:1.5px solid rgba(99,102,241,0.2);" onclick="showScreen('dashboardScreen')">
+                    <span class="ac-icon" style="color:#818cf8;">📊</span>
+                    <div class="ac-title">Dashboard</div>
+                    <div class="ac-sub">Analíticas y progreso</div>
+                    <span class="ac-badge" style="background:rgba(99,102,241,0.2);color:#a5b4fc;">Nuevo</span>
+                </div>
+
+                <!-- SRS -->
+                <div class="action-card" style="background:rgba(16,185,129,0.07);border:1.5px solid rgba(16,185,129,0.2);" onclick="iniciarSRS()">
+                    <span class="ac-icon" style="color:#34d399;">🧠</span>
+                    <div class="ac-title">Repaso SRS</div>
+                    <div class="ac-sub">Repetición espaciada</div>
+                    <span class="ac-badge" style="background:rgba(16,185,129,0.2);color:#6ee7b7;" id="srsDueBadge">—</span>
+                </div>
+
+                <!-- Flashcards -->
+                <div class="action-card" style="background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);" onclick="showScreen('flashcardsMenuScreen')">
+                    <span class="ac-icon" style="color:#c084fc;">🃏</span>
+                    <div class="ac-title">Flashcards</div>
+                    <div class="ac-sub">Memorización activa</div>
+                    <span class="ac-badge" style="background:rgba(168,85,247,0.2);color:#c084fc;">38 tarjetas</span>
+                </div>
+
+                <!-- Glosario -->
+                <div class="action-card" style="background:rgba(56,189,248,0.07);border:1.5px solid rgba(56,189,248,0.2);" onclick="showScreen('glosarioScreen')">
+                    <span class="ac-icon" style="color:#7dd3fc;">📖</span>
+                    <div class="ac-title">Glosario</div>
+                    <div class="ac-sub">85 términos médicos</div>
+                    <span class="ac-badge" style="background:rgba(56,189,248,0.2);color:#7dd3fc;">Buscable</span>
+                </div>
+
+                <!-- Plan de Estudio -->
+                <div class="action-card" style="background:rgba(245,158,11,0.07);border:1.5px solid rgba(245,158,11,0.2);" onclick="showScreen('planEstudioScreen')">
+                    <span class="ac-icon" style="color:#fcd34d;">📅</span>
+                    <div class="ac-title">Plan de Estudio</div>
+                    <div class="ac-sub">Personalizado con IA</div>
+                    <span class="ac-badge" style="background:rgba(245,158,11,0.2);color:#fcd34d;">Automático</span>
+                </div>
+
+                <!-- Pomodoro -->
+                <div class="action-card" style="background:rgba(239,68,68,0.07);border:1.5px solid rgba(239,68,68,0.2);" onclick="showScreen('pomodoroScreen')">
+                    <span class="ac-icon" style="color:#fca5a5;">🍅</span>
+                    <div class="ac-title">Pomodoro</div>
+                    <div class="ac-sub">Sesiones de enfoque</div>
+                    <span class="ac-badge" style="background:rgba(239,68,68,0.2);color:#fca5a5;">25/5 min</span>
+                </div>
+
                 <div class="action-card" style="border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);grid-column:1/-1;padding:1rem 1.25rem;flex-direction:row;align-items:center;gap:1rem;" onclick="showOnboardingAgain()">
                     <span style="font-size:1.8rem">💡</span>
                     <div style="flex:1">
@@ -1945,6 +1998,257 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
         </div>
     </div>
 
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: DASHBOARD ANALÍTICAS                           -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="dashboardScreen" class="screen">
+        <div style="padding:1.25rem 1.25rem 0;">
+            <div class="page-header" style="margin-bottom:1.25rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">📊 Dashboard</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Tu progreso en tiempo real</p>
+                </div>
+            </div>
+        </div>
+        <div id="dashboardContent" style="padding:0 1.25rem 1.5rem;"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: REPASO SRS                                     -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="srsScreen" class="screen">
+        <div style="padding:1.25rem 1.25rem 0;">
+            <div class="page-header" style="margin-bottom:1.25rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">🧠 Repaso Espaciado</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Algoritmo SM-2 · Aprende más en menos tiempo</p>
+                </div>
+            </div>
+        </div>
+        <div id="srsContent" style="padding:0 1.25rem 1.5rem;"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: MENÚ FLASHCARDS                                -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="flashcardsMenuScreen" class="screen">
+        <div style="padding:1.25rem;">
+            <div class="page-header" style="margin-bottom:1.25rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">🃏 Flashcards</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Memorización activa · Elige un módulo</p>
+                </div>
+            </div>
+            <div id="flashcardsMenuContent"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: FLASHCARDS EN JUEGO                            -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="flashcardsScreen" class="screen">
+        <div style="padding:1.25rem 1.25rem 0;">
+            <div class="page-header" style="margin-bottom:1rem;">
+                <button onclick="showScreen('flashcardsMenuScreen')" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div style="flex:1">
+                    <h2 style="font-family:var(--font-d);font-size:1.2rem;font-weight:800;color:var(--text);">🃏 Flashcards</h2>
+                </div>
+            </div>
+        </div>
+        <div id="flashcardsContent" style="padding:0 1.25rem 1.5rem;"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: GLOSARIO MÉDICO                                -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="glosarioScreen" class="screen">
+        <div style="padding:1.25rem 1.25rem 0;">
+            <div class="page-header" style="margin-bottom:0.75rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">📖 Glosario Médico</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;"><span id="glosarioCount">85 términos</span> · Buscable</p>
+                </div>
+            </div>
+            <!-- Búsqueda -->
+            <div style="position:relative;margin-bottom:0.75rem;">
+                <span style="position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:#475569;font-size:0.95rem;">🔍</span>
+                <input type="text" placeholder="Buscar término..." oninput="buscarGlosario(this.value)"
+                    style="width:100%;padding:0.7rem 0.85rem 0.7rem 2.4rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
+                    onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+            </div>
+            <!-- Categorías -->
+            <div id="glosarioCategorias" style="display:flex;gap:0.4rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:0.75rem;scrollbar-width:none;"></div>
+        </div>
+        <div id="glosarioContent" style="padding:0 1.25rem 1.5rem;"></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: PLAN DE ESTUDIO                                -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="planEstudioScreen" class="screen">
+        <div style="padding:1.25rem;">
+            <div class="page-header" style="margin-bottom:1.25rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">📅 Plan de Estudio</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Generado con base en tus áreas débiles</p>
+                </div>
+            </div>
+
+            <!-- Configuración -->
+            <div style="background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:1.25rem;margin-bottom:1.25rem;">
+                <div style="font-size:0.72rem;font-weight:700;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">⚙️ Configurar</div>
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block;font-size:0.82rem;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;">📅 Fecha del examen</label>
+                    <input type="date" id="planFechaExamen"
+                        style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
+                        onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block;font-size:0.82rem;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;">⏱️ Horas de estudio por día</label>
+                    <select id="planHorasDia" style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;">
+                        <option value="1">1 hora</option>
+                        <option value="1.5">1.5 horas</option>
+                        <option value="2" selected>2 horas</option>
+                        <option value="3">3 horas</option>
+                        <option value="4">4 horas</option>
+                        <option value="6">6 horas</option>
+                    </select>
+                </div>
+                <button onclick="generarPlanEstudio()" style="width:100%;padding:0.9rem;background:linear-gradient(135deg,#6366f1,#4338ca);border:none;border-radius:12px;color:white;font-weight:700;font-size:1rem;cursor:pointer;">
+                    ✨ Generar mi plan
+                </button>
+            </div>
+
+            <!-- Resultado (se llena dinámicamente) -->
+            <div id="planResultado" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: POMODORO                                       -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="pomodoroScreen" class="screen">
+        <div style="padding:1.25rem;">
+            <div class="page-header" style="margin-bottom:1.5rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">🍅 Pomodoro</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Técnica de concentración 25/5 min</p>
+                </div>
+            </div>
+
+            <!-- Reloj central -->
+            <div style="text-align:center;padding:2rem 0;">
+                <div id="pomodoroModeLabel" style="font-size:0.8rem;font-weight:700;color:#ef4444;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;">🧠 Enfoque</div>
+
+                <!-- Timer circular visual -->
+                <div style="position:relative;width:200px;height:200px;margin:0 auto 2rem;">
+                    <svg width="200" height="200" viewBox="0 0 200 200" style="position:absolute;top:0;left:0;">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+                        <circle id="pomodoroCircle" cx="100" cy="100" r="90" fill="none" stroke="#ef4444" stroke-width="8"
+                            stroke-linecap="round" stroke-dasharray="0 565"
+                            transform="rotate(-90 100 100)" style="transition:stroke-dasharray 1s linear,stroke 0.5s;filter:drop-shadow(0 0 8px rgba(239,68,68,0.5));"/>
+                    </svg>
+                    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                        <div id="pomodoroTime" style="font-family:var(--mono);font-size:3rem;font-weight:700;color:#f1f5f9;letter-spacing:-2px;">25:00</div>
+                        <div style="font-size:0.7rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:1px;">minutos</div>
+                    </div>
+                </div>
+
+                <!-- Barra de progreso -->
+                <div style="background:rgba(255,255,255,0.06);border-radius:6px;height:6px;margin:0 1rem 2rem;overflow:hidden;">
+                    <div id="pomodoroBar" style="height:100%;width:0%;background:linear-gradient(90deg,#ef4444,#f87171);border-radius:6px;transition:width 1s linear;"></div>
+                </div>
+
+                <!-- Controles -->
+                <div style="display:flex;gap:0.75rem;justify-content:center;margin-bottom:1.5rem;">
+                    <button onclick="resetPomodoro()" style="padding:0.75rem 1.2rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#94a3b8;font-weight:600;cursor:pointer;font-size:0.9rem;">↺ Reset</button>
+                    <button id="pomodoroBtnStart" onclick="togglePomodoro()" style="padding:0.75rem 2rem;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;border-radius:12px;color:white;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 4px 16px rgba(239,68,68,0.35);">▶ Iniciar</button>
+                    <button onclick="setPomodoroMode(5,'break')" style="padding:0.75rem 1.2rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#34d399;font-weight:600;cursor:pointer;font-size:0.9rem;">☕ 5 min</button>
+                </div>
+
+                <!-- Modos rápidos -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.5rem;">
+                    <button onclick="setPomodoroMode(25,'work')" style="padding:0.6rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:10px;color:#fca5a5;font-size:0.78rem;font-weight:600;cursor:pointer;">🍅 25 min</button>
+                    <button onclick="setPomodoroMode(50,'work')" style="padding:0.6rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:10px;color:#fca5a5;font-size:0.78rem;font-weight:600;cursor:pointer;">🔥 50 min</button>
+                    <button onclick="setPomodoroMode(10,'break')" style="padding:0.6rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:10px;color:#6ee7b7;font-size:0.78rem;font-weight:600;cursor:pointer;">😴 10 min</button>
+                </div>
+
+                <!-- Estadísticas de sesión -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                    <div style="background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1rem;text-align:center;">
+                        <div style="font-size:0.7rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:0.25rem;">🍅 Pomodoros</div>
+                        <div id="pomodoroSession" style="font-size:1.8rem;font-weight:800;color:#ef4444;">0</div>
+                    </div>
+                    <div style="background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1rem;text-align:center;">
+                        <div style="font-size:0.7rem;color:#64748b;font-weight:700;text-transform:uppercase;margin-bottom:0.25rem;">⏱️ Enfoque</div>
+                        <div id="pomodoroTotalFocus" style="font-size:1.8rem;font-weight:800;color:#f59e0b;">0 min</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:12px;padding:1rem;margin-top:0.5rem;">
+                <div style="font-size:0.72rem;font-weight:700;color:#a5b4fc;margin-bottom:0.4rem;">💡 Técnica Pomodoro</div>
+                <div style="font-size:0.78rem;color:#64748b;line-height:1.6;">
+                    1. Estudia 25 min sin distracciones<br>
+                    2. Descansa 5 min<br>
+                    3. Cada 4 pomodoros, descansa 15-30 min
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- FAB POMODORO (flotante, visible en todas las pantallas)  -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <button id="pomodoroFab" onclick="showScreen('pomodoroScreen')"
+        style="position:fixed;bottom:80px;right:16px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;color:white;font-size:1.2rem;cursor:pointer;z-index:800;box-shadow:0 4px 16px rgba(239,68,68,0.4);display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        title="Pomodoro Timer"
+        onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        🍅
+    </button>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- Script para actualizar FAB pomodoro y SRS badge          -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <script>
+    // Actualizar badge SRS en home
+    function updateNewFeaturesBadges() {
+        // SRS due count
+        const srsData = JSON.parse(localStorage.getItem('mediprep_srs_cards') || '[]');
+        const now = new Date();
+        const due = srsData.filter(c => new Date(c.nextReview) <= now).length;
+        const badge = document.getElementById('srsDueBadge');
+        if (badge) {
+            badge.textContent = due > 0 ? due + ' hoy' : '✓ Al día';
+            badge.style.background = due > 0 ? 'rgba(239,68,68,0.2)' : 'rgba(16,185,129,0.2)';
+            badge.style.color = due > 0 ? '#fca5a5' : '#6ee7b7';
+        }
+    }
+
+    // Actualizar el círculo del pomodoro
+    setInterval(() => {
+        const circle = document.getElementById('pomodoroCircle');
+        if (!circle || !window.pomodoroSecondsLeft) return;
+        const total = window.pomodoroMode === 'work' ? 25 * 60 : 5 * 60;
+        const elapsed = total - window.pomodoroSecondsLeft;
+        const circumference = 2 * Math.PI * 90;
+        const dash = (elapsed / total) * circumference;
+        circle.setAttribute('stroke-dasharray', `${dash} ${circumference}`);
+        circle.setAttribute('stroke', window.pomodoroMode === 'work' ? '#ef4444' : '#10b981');
+    }, 1000);
+
+    window.addEventListener('load', () => {
+        setTimeout(updateNewFeaturesBadges, 500);
+    });
+    </script>
+
     <!-- AQUÍ SE CARGAN LAS PREGUNTAS DESDE ARCHIVOS EXTERNOS -->
     <script src="evaluacion-conceptos-salud.js"></script>
     <script src="evaluacion-planimetria.js"></script>
@@ -1979,6 +2283,11 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
 
     <!-- App principal (al final) -->
     <script src="app.js"></script>
+
+    <!-- NUEVAS FUNCIONES v2.0 -->
+    <script src="glosario-data.js"></script>
+    <script src="flashcards-data.js"></script>
+    <script src="nuevas-funciones.js"></script>
 
     <!-- PWA: Service Worker para modo offline -->
     <script>

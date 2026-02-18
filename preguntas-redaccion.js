@@ -8,7 +8,7 @@ const PREGUNTAS_REDACCION = [
     
     {pregunta:"Complete: El paciente reci_ió la _acuna contra la ra_ia",opciones:["v-b-v","b-v-b","b-b-b"],correcta:1,explicacion:"Recibió (b), vacuna (v), rabia (b)"},
     
-    {pregunta:"¿Cuál de estas palabras está correctamente escrita?",opciones:["Movil-idad","Movilidad","Mobi-lidad"],correcta:1,explicacion:"'Movilidad' se escribe con 'v' y sin guión. Proviene de 'móvil'."},
+    {pregunta:"¿Cuál de estas palabras está correctamente escrita?",opciones:["Movil-idad","Mobi-lidad","Movilidad"],correcta:2,explicacion:"'Movilidad' se escribe con 'v' y sin guión. Proviene de 'móvil'."},
     
     {pregunta:"Complete: El cora_ón _om_ea sangre al cere_ro",opciones:["z-b-b-b","s-v-v-v","z-b-v-b"],correcta:0,explicacion:"Corazón (z), bombea (b), bombea (b), cerebro (b)"},
     
@@ -17,7 +17,7 @@ const PREGUNTAS_REDACCION = [
     // ORTOGRAFÍA S/C/Z (20 preguntas)
     {pregunta:"Complete: El diagnó_ti_o previ_o fue preci_o",opciones:["s-c-s-s","z-s-s-z","s-c-o-s"],correcta:2,explicacion:"Diagnóstico (s-c), previo (o), preciso (s)"},
     
-    {pregunta:"Complete: La _acuna pre_iene la enferme_ad infec_iosa",opciones:["v-v-d-c","b-b-d-s","v-v-d-s"],correcta:2,explicacion:"Vacuna (v), previene (v), enfermedad (d), infecciosa (s)"},
+    {pregunta:"Complete: La _acuna pre_iene la enferme_ad infec_iosa",opciones:["v-v-d-s","b-b-d-s","v-v-d-c"],correcta:0,explicacion:"Vacuna (v), previene (v), enfermedad (d), infecciosa (s)"},
     
     {pregunta:"Complete: La le_ión produ_e inflama_ión",opciones:["z-s-s","s-c-c","s-z-c"],correcta:1,explicacion:"Lesión (s), produce (c), inflamación (c)"},
     
@@ -33,7 +33,7 @@ const PREGUNTAS_REDACCION = [
     // ACENTUACIÓN (30 preguntas)
     {pregunta:"Identifique la palabra correcta:",opciones:["Diagnóstico","Diagnostico","Diagnosticó"],correcta:0,explicacion:"Diagnóstico (sustantivo) lleva tilde en la antepenúltima sílaba (esdrújula)"},
     
-    {pregunta:"Complete: El me_ico reali_ó el exa_en fi_ico",opciones:["d-z-m-s","d-s-n-c","d-z-n-s"],correcta:0,explicacion:"Médico (d), realizó (z), examen (m), físico (s)"},
+    {pregunta:"Complete: El me_ico reali_ó el exa_en fi_ico",opciones:["d-s-n-c","d-z-m-s","d-z-n-s"],correcta:1,explicacion:"Médico (d), realizó (z), examen (m), físico (s)"},
     
     {pregunta:"Seleccione la acentuación correcta:",opciones:["El paciente esta estable","El paciente esta éstable","El paciente está estable"],correcta:2,explicacion:"Está (verbo estar) lleva tilde diacrítica"},
     
