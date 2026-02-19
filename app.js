@@ -1207,6 +1207,15 @@ function iniciarEvaluacionModulo() {
             banco = [];
         }
         minutos = 90;
+    } else if (moduloId === 'conamat-u1') {
+        banco = (typeof EVALUACION_CONAMAT_UNIDAD1 !== 'undefined') ? EVALUACION_CONAMAT_UNIDAD1 : [];
+        minutos = 50;
+    } else if (moduloId === 'conamat-u2') {
+        banco = (typeof EVALUACION_CONAMAT_UNIDAD2 !== 'undefined') ? EVALUACION_CONAMAT_UNIDAD2 : [];
+        minutos = 65;
+    } else if (moduloId === 'conamat-completo') {
+        banco = (typeof EVALUACION_CONAMAT_COMPLETO !== 'undefined') ? EVALUACION_CONAMAT_COMPLETO : [];
+        minutos = 115;
     } else {
         banco = (typeof EVALUACION_CONCEPTOS_SALUD !== 'undefined') ? EVALUACION_CONCEPTOS_SALUD : PREGUNTAS.medicina || [];
         minutos = 70;

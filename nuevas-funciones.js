@@ -521,10 +521,18 @@ let fcModulo = 'Todos';
 let fcCorrect = 0;
 let fcIncorrect = 0;
 
+// Pool combinado: flashcards originales + CONAMAT
+function getFlashcardsPool() {
+    const base = typeof FLASHCARDS_DATA !== 'undefined' ? FLASHCARDS_DATA : [];
+    const conamat = typeof FLASHCARDS_CONAMAT !== 'undefined' ? FLASHCARDS_CONAMAT : [];
+    return [...base, ...conamat];
+}
+
 function iniciarFlashcards(modulo = 'Todos') {
     fcModulo = modulo;
-    const pool = modulo === 'Todos' ? FLASHCARDS_DATA :
-        FLASHCARDS_DATA.filter(c => c.modulo === modulo);
+    const allCards = getFlashcardsPool();
+    const pool = modulo === 'Todos' ? allCards :
+        allCards.filter(c => c.modulo === modulo);
     fcCards = shuffle([...pool]);
     fcIndex = 0;
     fcVolteo = false;
@@ -535,17 +543,20 @@ function iniciarFlashcards(modulo = 'Todos') {
 }
 
 function renderFlashcardMenu() {
-    const modulos = ['Todos', ...new Set(FLASHCARDS_DATA.map(c => c.modulo))];
+    const allCards = getFlashcardsPool();
+    const modulos = ['Todos', ...new Set(allCards.map(c => c.modulo))];
     document.getElementById('flashcardsMenuContent').innerHTML = `
-        <div style="margin-bottom:1rem;color:#94a3b8;font-size:0.85rem;">${FLASHCARDS_DATA.length} tarjetas disponibles</div>
+        <div style="margin-bottom:1rem;color:#94a3b8;font-size:0.85rem;">${allCards.length} tarjetas disponibles</div>
         <div style="display:flex;flex-direction:column;gap:0.6rem;">
             ${modulos.map(m => {
-                const count = m === 'Todos' ? FLASHCARDS_DATA.length : FLASHCARDS_DATA.filter(c => c.modulo === m).length;
+                const count = m === 'Todos' ? allCards.length : allCards.filter(c => c.modulo === m).length;
                 return `<button onclick="iniciarFlashcards('${m}')" style="width:100%;padding:0.9rem 1.1rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#f1f5f9;font-weight:600;font-size:0.9rem;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all 0.15s;"
                     onmouseover="this.style.borderColor='rgba(99,102,241,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
                     <span>${m === 'Todos' ? '📚 Todos los módulos' : '📖 ' + m}</span>
                     <span style="background:rgba(99,102,241,0.2);border:1px solid rgba(99,102,241,0.3);padding:0.15rem 0.5rem;border-radius:8px;font-size:0.75rem;color:#a5b4fc;">${count}</span>
                 </button>`;
+            }).join('')}
+        </div>`;
             }).join('')}
         </div>`;
 }
