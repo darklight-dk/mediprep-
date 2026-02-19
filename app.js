@@ -284,11 +284,13 @@ function refreshHomeStats() {
     
     const correctEl = el('homeStatsCorrect');
     const totalEl = el('homeStatsTotal');
-    const accuracyEl = el('homeStatsAccuracy');
+    const accuracyEl = el('homeAccuracyLabel');
+    const accuracyBar = el('homeAccuracyBar');
     
     if (correctEl) correctEl.textContent = correct;
     if (totalEl) totalEl.textContent = total;
     if (accuracyEl) accuracyEl.textContent = accuracy + '%';
+    if (accuracyBar) accuracyBar.style.width = accuracy + '%';
 }
 
 

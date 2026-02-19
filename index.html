@@ -1110,151 +1110,139 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
             </div>
         </div>
 
-        <!-- Pantalla de Inicio -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PANTALLA DE INICIO                                    -->
+        <!-- ═══════════════════════════════════════════════════════ -->
         <div id="homeScreen" class="screen">
-            <!-- HERO -->
-            <div class="hero">
+
+            <!-- HERO compacto -->
+            <div class="hero" style="padding-bottom:0.5rem;">
                 <div class="hero-eyebrow">Premedicina · EXANI-II</div>
-                <h1 class="hero-title">Prepárate<br><span>para brillar.</span></h1>
-                <p class="hero-sub">Tu plataforma de preparación médica 🩺</p>
+                <h1 class="hero-title" style="font-size:2rem;margin-bottom:0.2rem;">Prepárate<br><span>para brillar.</span></h1>
             </div>
 
-            <!-- ESTADÍSTICAS RÁPIDAS -->
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.5rem;">
-                <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-size:0.75rem;color:#6ee7b7;font-weight:600;margin-bottom:0.25rem;">CORRECTAS</div>
-                    <div id="homeStatsCorrect" style="font-size:1.5rem;font-weight:800;color:#10b981;">0</div>
+            <!-- BARRA DE PROGRESO GLOBAL -->
+            <div style="margin:0 0 1.25rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+                    <span style="font-size:0.7rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Precision global</span>
+                    <span id="homeAccuracyLabel" style="font-size:0.78rem;color:#818cf8;font-weight:700;">0%</span>
                 </div>
-                <div style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.3);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-size:0.75rem;color:#fdba74;font-weight:600;margin-bottom:0.25rem;">TOTAL</div>
-                    <div id="homeStatsTotal" style="font-size:1.5rem;font-weight:800;color:#fb923c;">0</div>
+                <div style="height:5px;background:rgba(255,255,255,0.07);border-radius:99px;overflow:hidden;">
+                    <div id="homeAccuracyBar" style="height:100%;width:0%;background:linear-gradient(90deg,#6366f1,#a78bfa);border-radius:99px;transition:width 1s ease;"></div>
                 </div>
-                <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:12px;padding:1rem;text-align:center;">
-                    <div style="font-size:0.75rem;color:#fcd34d;font-weight:600;margin-bottom:0.25rem;">PRECISIÓN</div>
-                    <div id="homeStatsAccuracy" style="font-size:1.5rem;font-weight:800;color:#f59e0b;">0%</div>
-                </div>
-            </div>
-
-            <!-- GRID DE ACCIONES -->
-            <div class="action-grid">
-                <div class="action-card ac-indigo" onclick="navTo('preguntasRapidasScreen','nav-quiz')">
-                    <span class="ac-icon">⚡</span>
-                    <div class="ac-title">Quiz Flash</div>
-                    <div class="ac-sub">Practica por tema</div>
-                    <span class="ac-badge badge-indigo">Personalizable</span>
-                </div>
-
-                <div class="action-card ac-gold" onclick="navTo('examenesScreen','nav-exams')">
-                    <span class="ac-icon">🎯</span>
-                    <div class="ac-title">Exámenes</div>
-                    <div class="ac-sub">Simulacros EXANI-II</div>
-                    <span class="ac-badge badge-gold">Cronometrado</span>
-                </div>
-
-                <div class="action-card ac-emerald" onclick="navTo('clasesScreen','nav-clases')">
-                    <span class="ac-icon">📚</span>
-                    <div class="ac-title">Clases</div>
-                    <div class="ac-sub">Temario oficial completo</div>
-                    <span class="ac-badge badge-emerald">7 módulos</span>
-                </div>
-
-                <div class="action-card ac-rose" onclick="showScreen('juegosScreen')">
-                    <span class="ac-icon">🎮</span>
-                    <div class="ac-title">Juegos</div>
-                    <div class="ac-sub">Diagnóstico clínico</div>
-                    <span class="ac-badge badge-rose">3 modos</span>
-                </div>
-
-                <div class="action-card ac-indigo ac-span2" onclick="navTo('logrosScreen','nav-logros')">
-                    <span class="ac-icon" style="font-size:2.2rem">🏆</span>
-                    <div style="flex:1">
-                        <div class="ac-title">Mis Logros y Estadísticas</div>
-                        <div class="ac-sub">Revisa tu progreso, rachas y logros desbloqueados</div>
-                    </div>
-                    <span style="color:var(--indigo-l);font-size:1.2rem">›</span>
-                </div>
-
-                <!-- REPASO DE INCORRECTAS -->
-                <div id="wrongBankCard" class="action-card" style="border:1.5px solid rgba(239,68,68,.3);background:rgba(239,68,68,.08);grid-column:1/-1;padding:1rem 1.25rem;flex-direction:row;align-items:center;gap:1rem;display:none;" onclick="showScreen('repasoIncorrectasScreen')">
-                    <span style="font-size:1.8rem">❌</span>
-                    <div style="flex:1">
-                        <div style="font-family:var(--font-d);font-size:.88rem;font-weight:700;color:#fca5a5;">Repaso de Incorrectas</div>
-                        <div style="font-size:.75rem;color:rgba(252,165,165,.7);margin-top:.15rem;">Refuerza lo que fallaste</div>
-                    </div>
-                    <div style="background:rgba(239,68,68,.2);padding:.35rem .75rem;border-radius:20px;font-weight:700;font-size:.85rem;color:#fca5a5;">
-                        <span id="wrongBankCardCount">0</span> pendientes
-                    </div>
-                </div>
-
-                <!-- ── NUEVAS FUNCIONES v2.0 ── -->
-                <div style="grid-column:1/-1;margin-top:0.25rem;margin-bottom:0.25rem;">
-                    <div style="font-size:0.65rem;font-weight:700;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.6rem;">✨ NUEVAS HERRAMIENTAS</div>
-                </div>
-
-                <!-- Dashboard -->
-                <div class="action-card" style="background:rgba(99,102,241,0.08);border:1.5px solid rgba(99,102,241,0.2);" onclick="showScreen('dashboardScreen')">
-                    <span class="ac-icon" style="color:#818cf8;">📊</span>
-                    <div class="ac-title">Dashboard</div>
-                    <div class="ac-sub">Analíticas y progreso</div>
-                    <span class="ac-badge" style="background:rgba(99,102,241,0.2);color:#a5b4fc;">Nuevo</span>
-                </div>
-
-                <!-- SRS -->
-                <div class="action-card" style="background:rgba(16,185,129,0.07);border:1.5px solid rgba(16,185,129,0.2);" onclick="iniciarSRS()">
-                    <span class="ac-icon" style="color:#34d399;">🧠</span>
-                    <div class="ac-title">Repaso SRS</div>
-                    <div class="ac-sub">Repetición espaciada</div>
-                    <span class="ac-badge" style="background:rgba(16,185,129,0.2);color:#6ee7b7;" id="srsDueBadge">—</span>
-                </div>
-
-                <!-- Flashcards -->
-                <div class="action-card" style="background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);" onclick="showScreen('flashcardsMenuScreen')">
-                    <span class="ac-icon" style="color:#c084fc;">🃏</span>
-                    <div class="ac-title">Flashcards</div>
-                    <div class="ac-sub">Memorización activa</div>
-                    <span class="ac-badge" style="background:rgba(168,85,247,0.2);color:#c084fc;">38 tarjetas</span>
-                </div>
-
-                <!-- Glosario -->
-                <div class="action-card" style="background:rgba(56,189,248,0.07);border:1.5px solid rgba(56,189,248,0.2);" onclick="showScreen('glosarioScreen')">
-                    <span class="ac-icon" style="color:#7dd3fc;">📖</span>
-                    <div class="ac-title">Glosario</div>
-                    <div class="ac-sub">85 términos médicos</div>
-                    <span class="ac-badge" style="background:rgba(56,189,248,0.2);color:#7dd3fc;">Buscable</span>
-                </div>
-
-                <!-- Plan de Estudio -->
-                <div class="action-card" style="background:rgba(245,158,11,0.07);border:1.5px solid rgba(245,158,11,0.2);" onclick="showScreen('planEstudioScreen')">
-                    <span class="ac-icon" style="color:#fcd34d;">📅</span>
-                    <div class="ac-title">Plan de Estudio</div>
-                    <div class="ac-sub">Personalizado con IA</div>
-                    <span class="ac-badge" style="background:rgba(245,158,11,0.2);color:#fcd34d;">Automático</span>
-                </div>
-
-                <!-- Pomodoro -->
-                <div class="action-card" style="background:rgba(239,68,68,0.07);border:1.5px solid rgba(239,68,68,0.2);" onclick="showScreen('pomodoroScreen')">
-                    <span class="ac-icon" style="color:#fca5a5;">🍅</span>
-                    <div class="ac-title">Pomodoro</div>
-                    <div class="ac-sub">Sesiones de enfoque</div>
-                    <span class="ac-badge" style="background:rgba(239,68,68,0.2);color:#fca5a5;">25/5 min</span>
-                </div>
-
-                <div class="action-card" style="border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);grid-column:1/-1;padding:1rem 1.25rem;flex-direction:row;align-items:center;gap:1rem;" onclick="showOnboardingAgain()">
-                    <span style="font-size:1.8rem">💡</span>
-                    <div style="flex:1">
-                        <div style="font-family:var(--font-d);font-size:.88rem;font-weight:700;color:var(--text-2);">Ver tutorial</div>
-                        <div style="font-size:.72rem;color:var(--text-dim);">Repasa las funciones de la app</div>
-                    </div>
-                    <span style="color:var(--text-dim);font-size:1rem">›</span>
+                <div style="display:flex;gap:1rem;margin-top:0.4rem;">
+                    <span style="font-size:0.68rem;color:#64748b;">Correctas: <span id="homeStatsCorrect" style="color:#94a3b8;font-weight:600;">0</span></span>
+                    <span style="font-size:0.68rem;color:#64748b;">Total: <span id="homeStatsTotal" style="color:#94a3b8;font-weight:600;">0</span></span>
                 </div>
             </div>
 
-            <!-- MOTIVACIÓN BOTTOM -->
-            <div style="text-align:center;padding:.5rem;color:var(--text-dim);font-size:.75rem;font-style:italic;margin-top:0;">
-                Recuerda que para todos sale el sol ☀️
+            <!-- ALERTA INCORRECTAS -->
+            <div id="wrongBankCard" style="display:none;background:rgba(239,68,68,.08);border:1.5px solid rgba(239,68,68,.3);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1.25rem;cursor:pointer;" onclick="showScreen('repasoIncorrectasScreen')">
+                <div style="display:flex;align-items:center;gap:1rem;">
+                    <span style="font-size:1.6rem;">warning</span>
+                    <div style="flex:1;">
+                        <div style="font-weight:700;color:#fca5a5;font-size:0.85rem;">Tienes incorrectas por repasar</div>
+                        <div style="font-size:0.72rem;color:rgba(252,165,165,0.65);margin-top:0.1rem;">Refuerza lo que fallaste</div>
+                    </div>
+                    <div style="background:rgba(239,68,68,.2);padding:.3rem .7rem;border-radius:20px;font-weight:700;font-size:0.82rem;color:#fca5a5;"><span id="wrongBankCardCount">0</span></div>
+                </div>
+            </div>
+
+            <!-- SECCION: ESTUDIA -->
+            <div style="margin-bottom:0.5rem;">
+                <p style="font-size:0.65rem;font-weight:700;color:#475569;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.75rem;">ESTUDIA</p>
+
+                <div class="action-grid" style="margin-bottom:0.75rem;">
+                    <div class="action-card ac-indigo" onclick="navTo('preguntasRapidasScreen','nav-quiz')">
+                        <span class="ac-icon">&#x26A1;</span>
+                        <div class="ac-title">Quiz Flash</div>
+                        <div class="ac-sub">Practica por tema</div>
+                        <span class="ac-badge badge-indigo">Personalizable</span>
+                    </div>
+                    <div class="action-card ac-gold" onclick="navTo('examenesScreen','nav-exams')">
+                        <span class="ac-icon">&#x1F3AF;</span>
+                        <div class="ac-title">Examenes</div>
+                        <div class="ac-sub">Simulacros EXANI-II</div>
+                        <span class="ac-badge badge-gold">Cronometrado</span>
+                    </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem;">
+                    <div onclick="navTo('clasesScreen','nav-clases')" style="display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;cursor:pointer;">
+                        <div style="width:38px;height:38px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;">&#x1F4DA;</div>
+                        <div style="flex:1;"><div style="font-weight:700;color:#e2e8f0;font-size:0.85rem;">Clases Teoricas</div><div style="font-size:0.7rem;color:#64748b;">Temario oficial 7 modulos</div></div>
+                        <span style="color:#475569;font-size:1rem;">&#8250;</span>
+                    </div>
+                    <div onclick="showScreen('clasesV2Screen')" style="display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1rem;background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.2);border-radius:14px;cursor:pointer;">
+                        <div style="width:38px;height:38px;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.35);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;">&#x25B6;</div>
+                        <div style="flex:1;"><div style="font-weight:700;color:#e2e8f0;font-size:0.85rem;">Clases en Video <span style="background:rgba(239,68,68,0.25);color:#fca5a5;font-size:0.6rem;padding:0.1rem 0.4rem;border-radius:20px;">V2</span></div><div style="font-size:0.7rem;color:#64748b;">Playlist YouTube</div></div>
+                        <span style="color:#dc2626;font-size:1rem;">&#8250;</span>
+                    </div>
+                    <div onclick="showScreen('juegosScreen')" style="display:flex;align-items:center;gap:0.85rem;padding:0.85rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;cursor:pointer;">
+                        <div style="width:38px;height:38px;background:rgba(244,63,94,0.15);border:1px solid rgba(244,63,94,0.3);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;">&#x1F3AE;</div>
+                        <div style="flex:1;"><div style="font-weight:700;color:#e2e8f0;font-size:0.85rem;">Juegos Clinicos</div><div style="font-size:0.7rem;color:#64748b;">Diagnostico 3 modos</div></div>
+                        <span style="color:#475569;font-size:1rem;">&#8250;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCION: HERRAMIENTAS -->
+            <div style="margin-bottom:1.25rem;">
+                <p style="font-size:0.65rem;font-weight:700;color:#475569;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.75rem;">HERRAMIENTAS</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.55rem;">
+                    <div onclick="showScreen('dashboardScreen')" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F4CA;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">Dashboard</div>
+                        <div style="font-size:0.6rem;color:#64748b;">Analiticas</div>
+                    </div>
+                    <div onclick="iniciarSRS()" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F9E0;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">SRS</div>
+                        <div id="srsDueBadge" style="font-size:0.6rem;color:#6ee7b7;">&#8212;</div>
+                    </div>
+                    <div onclick="showScreen('flashcardsMenuScreen')" style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F0CF;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">Flashcards</div>
+                        <div style="font-size:0.6rem;color:#64748b;">38 tarjetas</div>
+                    </div>
+                    <div onclick="showScreen('glosarioScreen')" style="background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F4D6;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">Glosario</div>
+                        <div style="font-size:0.6rem;color:#64748b;">85 terminos</div>
+                    </div>
+                    <div onclick="showScreen('planEstudioScreen')" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F4C5;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">Plan</div>
+                        <div style="font-size:0.6rem;color:#64748b;">Automatico</div>
+                    </div>
+                    <div onclick="showScreen('pomodoroScreen')" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:13px;padding:0.85rem 0.5rem;display:flex;flex-direction:column;align-items:center;gap:0.35rem;text-align:center;cursor:pointer;">
+                        <span style="font-size:1.4rem;">&#x1F345;</span>
+                        <div style="font-size:0.72rem;font-weight:700;color:#c4c8e2;">Pomodoro</div>
+                        <div style="font-size:0.6rem;color:#64748b;">25/5 min</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGROS -->
+            <div class="action-card ac-indigo ac-span2" onclick="navTo('logrosScreen','nav-logros')" style="margin-bottom:0.75rem;">
+                <span class="ac-icon" style="font-size:1.8rem;">&#x1F3C6;</span>
+                <div style="flex:1;">
+                    <div class="ac-title">Mis Logros y Estadisticas</div>
+                    <div class="ac-sub">Progreso, rachas y logros desbloqueados</div>
+                </div>
+                <span style="color:#818cf8;font-size:1.1rem;">&#8250;</span>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:13px;padding:0.85rem 1rem;display:flex;align-items:center;gap:0.75rem;cursor:pointer;margin-bottom:0.5rem;" onclick="showOnboardingAgain()">
+                <span style="font-size:1.2rem;">&#x1F4A1;</span>
+                <div style="flex:1;"><div style="font-weight:700;color:#c4c8e2;font-size:0.82rem;">Ver tutorial</div><div style="font-size:0.68rem;color:#475569;">Repasa las funciones de la app</div></div>
+                <span style="color:#475569;">&#8250;</span>
+            </div>
+
+            <div style="text-align:center;padding:0.75rem 0 0.25rem;color:#3d4764;font-size:0.7rem;font-style:italic;">
+                Para todos sale el sol &#x2600;&#xFE0F;
             </div>
         </div>
-
         <!-- ══════════════════════════════════════════════ -->
         <!-- PANTALLA: REPASO DE INCORRECTAS -->
         <!-- ══════════════════════════════════════════════ -->
@@ -1832,7 +1820,7 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
         <!-- Pantalla de Lecciones dentro de un módulo -->
         <div id="leccionesScreen" class="screen">
             <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
-                <button class="back-btn" onclick="showScreen('clasesScreen')" style="margin-bottom:1rem;">←</button>
+                <button class="back-btn" onclick="showScreen('clasesV2Screen')" style="margin-bottom:1rem;">←</button>
                 <h2 id="moduloTitulo" style="color: #8b5cf6; font-size: 1.5rem; margin-bottom: 0.5rem;">Módulo</h2>
                 <p id="moduloDescripcion" style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6;"></p>
                 <div style="background: rgba(139,92,246,0.2); border-radius: 8px; height: 8px; margin-top: 1rem; overflow: hidden;">
@@ -2298,6 +2286,227 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
                     .catch(() => console.log('[MediPrep] SW no disponible'));
             });
         }
+    </script>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PANTALLA: CLASES V2 (YouTube Playlist)                   -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="clasesV2Screen" class="screen" style="display:none;">
+        <div style="padding:1.25rem 1.25rem 2rem;">
+
+            <!-- Header -->
+            <div class="page-header" style="margin-bottom:1.25rem;">
+                <button onclick="goHome(); clasesDestroyPlayer();" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+                <div>
+                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">▶️ Clases V2</h2>
+                    <p style="color:var(--text-3);font-size:0.78rem;">Videos del curso · Playlist completa</p>
+                </div>
+            </div>
+
+            <!-- Info actual del video -->
+            <div id="clasesInfoCard" style="background:rgba(255,0,0,0.08);border:1px solid rgba(255,80,80,0.25);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1rem;display:none;">
+                <div id="clasesTitulo" style="font-family:var(--font-d);font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">Cargando...</div>
+                <div id="clasesNumero" style="font-size:0.75rem;color:rgba(255,150,150,0.8);">Video 1 de ...</div>
+            </div>
+
+            <!-- Reproductor YouTube -->
+            <div style="position:relative;width:100%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:1.1rem;">
+                <div id="clasesPlayer" style="width:100%;aspect-ratio:16/9;"></div>
+            </div>
+
+            <!-- Controles prev / next -->
+            <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;">
+                <button id="clasesBtnPrev" onclick="clasesNavegar(-1)"
+                    style="flex:1;padding:0.9rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;color:#cbd5e1;font-size:0.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+                    ← Anterior
+                </button>
+                <button id="clasesBtnNext" onclick="clasesNavegar(1)"
+                    style="flex:1;padding:0.9rem;background:linear-gradient(135deg,rgba(220,38,38,0.7),rgba(239,68,68,0.5));border:1px solid rgba(255,80,80,0.4);border-radius:14px;color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+                    Siguiente →
+                </button>
+            </div>
+
+            <!-- Lista de clases (miniaturas) -->
+            <div style="margin-bottom:0.75rem;">
+                <div style="font-family:var(--font-d);font-size:0.8rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">📋 Lista de clases</div>
+                <div id="clasesLista" style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="color:var(--text-dim);font-size:0.82rem;text-align:center;padding:1.5rem;">Cargando playlist...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    // ─── CLASES V2 ────────────────────────────────────────────────
+    const CLASES_PLAYLIST_ID = 'PLGghcWPR9oStDe-l1lhYVqq2RcRNLbpLA';
+    const CLASES_FIRST_VIDEO  = 'XAqRuQqqQI8';
+
+    let clasesPlayer    = null;
+    let clasesIndex     = 0;       // índice actual en la playlist
+    let clasesTotal     = 0;
+    let clasesReady     = false;
+    let clasesVideoIds  = [];      // se llena cuando el player carga
+
+    // Se llama automáticamente cuando la API de YouTube está lista
+    function onYouTubeIframeAPIReady() {
+        console.log('[ClasesV2] YouTube IFrame API lista');
+    }
+
+    function clasesInitPlayer() {
+        if (clasesPlayer) return; // ya existe
+
+        clasesPlayer = new YT.Player('clasesPlayer', {
+            height: '100%',
+            width: '100%',
+            videoId: CLASES_FIRST_VIDEO,
+            playerVars: {
+                list:        CLASES_PLAYLIST_ID,
+                listType:    'playlist',
+                autoplay:    0,
+                rel:         0,
+                modestbranding: 1,
+                playsinline: 1,
+            },
+            events: {
+                onReady:       clasesOnReady,
+                onStateChange: clasesOnStateChange,
+            }
+        });
+    }
+
+    function clasesOnReady(event) {
+        clasesReady   = true;
+        clasesVideoIds = event.target.getPlaylist() || [];
+        clasesTotal    = clasesVideoIds.length;
+        clasesIndex    = event.target.getPlaylistIndex() || 0;
+
+        document.getElementById('clasesInfoCard').style.display = 'block';
+        clasesActualizarUI();
+        clasesRenderLista();
+    }
+
+    function clasesOnStateChange(event) {
+        // Actualizar UI cuando cambia de video (ej. autoplay siguiente)
+        if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.PAUSED) {
+            if (clasesReady) {
+                clasesIndex = clasesPlayer.getPlaylistIndex();
+                clasesActualizarUI();
+                clasesResaltarActivo();
+            }
+        }
+    }
+
+    function clasesActualizarUI() {
+        const data = clasesPlayer.getVideoData();
+        const titulo = data && data.title ? data.title : 'Clase ' + (clasesIndex + 1);
+        document.getElementById('clasesTitulo').textContent  = titulo;
+        document.getElementById('clasesNumero').textContent  = 'Video ' + (clasesIndex + 1) + ' de ' + (clasesTotal || '?');
+
+        // Botones
+        document.getElementById('clasesBtnPrev').style.opacity = clasesIndex === 0 ? '0.4' : '1';
+        document.getElementById('clasesBtnNext').style.opacity = (clasesTotal && clasesIndex >= clasesTotal - 1) ? '0.4' : '1';
+    }
+
+    function clasesNavegar(dir) {
+        if (!clasesReady) return;
+        if (dir > 0) clasesPlayer.nextVideo();
+        else         clasesPlayer.previousVideo();
+
+        // Pequeño delay para que el player actualice el índice
+        setTimeout(() => {
+            clasesIndex = clasesPlayer.getPlaylistIndex();
+            clasesActualizarUI();
+            clasesResaltarActivo();
+        }, 400);
+    }
+
+    function clasesIrA(idx) {
+        if (!clasesReady) return;
+        clasesPlayer.playVideoAt(idx);
+        clasesIndex = idx;
+        clasesActualizarUI();
+        clasesResaltarActivo();
+        // Scroll al player
+        document.getElementById('clasesPlayer').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function clasesRenderLista() {
+        const cont = document.getElementById('clasesLista');
+        if (!clasesVideoIds.length) {
+            cont.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;text-align:center;padding:1rem;">La lista se cargará al reproducir</div>';
+            return;
+        }
+        cont.innerHTML = '';
+        clasesVideoIds.forEach((vid, i) => {
+            const thumb = `https://img.youtube.com/vi/${vid}/mqdefault.jpg`;
+            const div = document.createElement('div');
+            div.id = 'clase-item-' + i;
+            div.onclick = () => clasesIrA(i);
+            div.style.cssText = `
+                display:flex;align-items:center;gap:0.75rem;
+                padding:0.6rem 0.75rem;border-radius:12px;cursor:pointer;
+                border:1px solid rgba(255,255,255,0.07);
+                background:${i === clasesIndex ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.03)'};
+                transition:background 0.2s;
+            `;
+            div.innerHTML = `
+                <div style="position:relative;flex-shrink:0;width:72px;height:41px;border-radius:8px;overflow:hidden;">
+                    <img src="${thumb}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
+                    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+                        <span style="font-size:1rem;color:#fff;opacity:0.9;">▶</span>
+                    </div>
+                </div>
+                <div style="flex:1;min-width:0;">
+                    <div style="font-size:0.75rem;font-weight:700;color:${i === clasesIndex ? '#ff7c7c' : 'var(--text-3)'};font-family:var(--font-d);">Clase ${i + 1}</div>
+                    <div id="clase-titulo-${i}" style="font-size:0.72rem;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Video ${i + 1}</div>
+                </div>
+                ${i === clasesIndex ? '<span style="color:#ff6b6b;font-size:1.1rem;">▶</span>' : ''}
+            `;
+            cont.appendChild(div);
+        });
+    }
+
+    function clasesResaltarActivo() {
+        document.querySelectorAll('[id^="clase-item-"]').forEach((el, i) => {
+            const active = i === clasesIndex;
+            el.style.background = active ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.03)';
+            const numEl = el.querySelector('div > div:first-child');
+            if (numEl) numEl.style.color = active ? '#ff7c7c' : 'var(--text-3)';
+        });
+    }
+
+    function clasesDestroyPlayer() {
+        // Pausar al salir (no destruir para no recargar)
+        if (clasesPlayer && clasesReady) {
+            try { clasesPlayer.pauseVideo(); } catch(e) {}
+        }
+    }
+
+    // Hook para inicializar al entrar a la pantalla
+    const _origShowScreen = typeof showScreen === 'function' ? showScreen : null;
+    document.addEventListener('DOMContentLoaded', () => {
+        // Sobreescribir showScreen para detectar clases
+        const originalShow = window.showScreen;
+        if (originalShow) {
+            window.showScreen = function(id) {
+                originalShow(id);
+                if (id === 'clasesV2Screen') {
+                    setTimeout(() => {
+                        if (typeof YT !== 'undefined' && YT.Player) {
+                            clasesInitPlayer();
+                        } else {
+                            // API aún no cargó, esperar
+                            window.onYouTubeIframeAPIReady = function() {
+                                clasesInitPlayer();
+                            };
+                        }
+                    }, 200);
+                }
+            };
+        }
+    });
     </script>
 </body>
 </html>
