@@ -2289,224 +2289,181 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
     </script>
 
     <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- PANTALLA: CLASES V2 (YouTube Playlist)                   -->
+    <!-- PANTALLA: CLASES V2 — embed directo sin JS API           -->
     <!-- ══════════════════════════════════════════════════════════ -->
-    <div id="clasesV2Screen" class="screen" style="display:none;">
-        <div style="padding:1.25rem 1.25rem 2rem;">
+    <div id="clasesV2Screen" class="screen">
+        <div style="padding:1.25rem 1.25rem 5rem;">
 
             <!-- Header -->
-            <div class="page-header" style="margin-bottom:1.25rem;">
-                <button onclick="goHome(); clasesDestroyPlayer();" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">←</button>
+            <div class="page-header" style="margin-bottom:1.1rem;">
+                <button onclick="goHome()" style="background:rgba(30,41,59,0.6);border:1px solid rgba(148,163,184,0.2);color:#94a3b8;padding:0.6rem;border-radius:10px;cursor:pointer;font-size:1.1rem;">&#8592;</button>
                 <div>
-                    <h2 style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:var(--text);">▶️ Clases V2</h2>
-                    <p style="color:var(--text-3);font-size:0.78rem;">Videos del curso · Playlist completa</p>
+                    <h2 style="font-family:var(--font-d);font-size:1.25rem;font-weight:800;color:var(--text);margin:0;">&#x25B6;&#xFE0F; Clases en Video</h2>
+                    <p style="color:var(--text-3);font-size:0.75rem;margin:0;">Playlist completa del curso</p>
                 </div>
             </div>
 
-            <!-- Info actual del video -->
-            <div id="clasesInfoCard" style="background:rgba(255,0,0,0.08);border:1px solid rgba(255,80,80,0.25);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1rem;display:none;">
-                <div id="clasesTitulo" style="font-family:var(--font-d);font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">Cargando...</div>
-                <div id="clasesNumero" style="font-size:0.75rem;color:rgba(255,150,150,0.8);">Video 1 de ...</div>
+            <!-- Info del video actual -->
+            <div style="background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.25);border-radius:14px;padding:0.85rem 1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                    <div id="cv2Titulo" style="font-family:var(--font-d);font-size:0.9rem;font-weight:700;color:#fff;">Clase 1</div>
+                    <div id="cv2Numero" style="font-size:0.72rem;color:rgba(255,150,150,0.75);margin-top:0.15rem;">Video 1 de la playlist</div>
+                </div>
+                <div style="background:rgba(220,38,38,0.2);border-radius:20px;padding:0.25rem 0.65rem;font-size:0.65rem;font-weight:700;color:#fca5a5;">YouTube</div>
             </div>
 
-            <!-- Reproductor YouTube -->
-            <div style="position:relative;width:100%;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:1.1rem;">
-                <div id="clasesPlayer" style="width:100%;aspect-ratio:16/9;"></div>
-            </div>
-
-            <!-- Controles prev / next -->
-            <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;">
-                <button id="clasesBtnPrev" onclick="clasesNavegar(-1)"
-                    style="flex:1;padding:0.9rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;color:#cbd5e1;font-size:0.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
-                    ← Anterior
-                </button>
-                <button id="clasesBtnNext" onclick="clasesNavegar(1)"
-                    style="flex:1;padding:0.9rem;background:linear-gradient(135deg,rgba(220,38,38,0.7),rgba(239,68,68,0.5));border:1px solid rgba(255,80,80,0.4);border-radius:14px;color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
-                    Siguiente →
-                </button>
-            </div>
-
-            <!-- Lista de clases (miniaturas) -->
-            <div style="margin-bottom:0.75rem;">
-                <div style="font-family:var(--font-d);font-size:0.8rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">📋 Lista de clases</div>
-                <div id="clasesLista" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div style="color:var(--text-dim);font-size:0.82rem;text-align:center;padding:1.5rem;">Cargando playlist...</div>
+            <!-- Reproductor: iframe directo, sin JS API -->
+            <div style="border-radius:16px;overflow:hidden;background:#000;box-shadow:0 8px 32px rgba(0,0,0,0.6);margin-bottom:1rem;position:relative;">
+                <iframe
+                    id="cv2Iframe"
+                    src="https://www.youtube.com/embed/XAqRuQqqQI8?rel=0&modestbranding=1&playsinline=1&autoplay=0"
+                    style="width:100%;aspect-ratio:16/9;border:none;display:block;"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+                <div id="cv2Placeholder" style="display:none;width:100%;aspect-ratio:16/9;align-items:center;justify-content:center;flex-direction:column;gap:0.75rem;background:rgba(15,15,25,0.9);">
+                    <span style="font-size:2.5rem;">&#x1F3AC;</span>
+                    <div style="font-weight:700;color:#e2e8f0;font-size:0.9rem;">Video proximamente</div>
+                    <div style="font-size:0.72rem;color:#64748b;">Este video se agregara pronto</div>
                 </div>
             </div>
+
+            <!-- Botones prev / next -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.25rem;">
+                <button id="cv2BtnPrev" onclick="cv2Navegar(-1)"
+                    style="padding:0.9rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;color:#cbd5e1;font-size:0.88rem;font-weight:600;cursor:pointer;">
+                    &#8592; Anterior
+                </button>
+                <button id="cv2BtnNext" onclick="cv2Navegar(1)"
+                    style="padding:0.9rem;background:linear-gradient(135deg,rgba(220,38,38,0.7),rgba(239,68,68,0.5));border:1px solid rgba(255,80,80,0.4);border-radius:14px;color:#fff;font-size:0.88rem;font-weight:700;cursor:pointer;">
+                    Siguiente &#8594;
+                </button>
+            </div>
+
+            <!-- Lista de clases numeradas -->
+            <div style="font-size:0.65rem;font-weight:800;color:#475569;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">&#x1F4CB; LISTA DE CLASES</div>
+            <div id="cv2Lista" style="display:flex;flex-direction:column;gap:0.4rem;"></div>
+
         </div>
     </div>
 
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-    // ─── CLASES V2 ────────────────────────────────────────────────
-    const CLASES_PLAYLIST_ID = 'PLGghcWPR9oStDe-l1lhYVqq2RcRNLbpLA';
-    const CLASES_FIRST_VIDEO  = 'XAqRuQqqQI8';
+    // ─── CLASES V2 — videos con titulos reales ───────────────────
+    const CV2_VIDEOS = [
+        { id: 'XAqRuQqqQI8', titulo: 'Salud y Enfermedad' },
+        { id: 'xkVfvVRgtGQ', titulo: 'Triada Ecologica' },
+        { id: 'Q_yTm4CNvwo', titulo: 'Cadena Epidemiologica' },
+        { id: 'Shx6ejAUrT0', titulo: 'Historia Natural de la Enfermedad' },
+        { id: null,          titulo: 'Modelo de Leavell y Clark (pendiente)' },
+    ];
 
-    let clasesPlayer    = null;
-    let clasesIndex     = 0;       // índice actual en la playlist
-    let clasesTotal     = 0;
-    let clasesReady     = false;
-    let clasesVideoIds  = [];      // se llena cuando el player carga
+    let cv2Index = 0;
+    const cv2Total = CV2_VIDEOS.length;
 
-    // Se llama automáticamente cuando la API de YouTube está lista
-    function onYouTubeIframeAPIReady() {
-        console.log('[ClasesV2] YouTube IFrame API lista');
+    function cv2BuildSrc(index, autoplay) {
+        const v = CV2_VIDEOS[index];
+        if (!v || !v.id) return '';
+        const ap = autoplay ? 1 : 0;
+        return `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1&playsinline=1&autoplay=${ap}`;
     }
 
-    function clasesInitPlayer() {
-        if (clasesPlayer) return; // ya existe
+    function cv2Navegar(dir) {
+        const newIdx = cv2Index + dir;
+        if (newIdx < 0) return;
+        cv2Index = newIdx;
+        cv2Actualizar(true);
+    }
 
-        clasesPlayer = new YT.Player('clasesPlayer', {
-            height: '100%',
-            width: '100%',
-            videoId: CLASES_FIRST_VIDEO,
-            playerVars: {
-                list:        CLASES_PLAYLIST_ID,
-                listType:    'playlist',
-                autoplay:    0,
-                rel:         0,
-                modestbranding: 1,
-                playsinline: 1,
-            },
-            events: {
-                onReady:       clasesOnReady,
-                onStateChange: clasesOnStateChange,
+    function cv2IrA(idx) {
+        cv2Index = idx;
+        cv2Actualizar(true);
+        document.getElementById('cv2Iframe').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    function cv2Actualizar(autoplay) {
+        const v = CV2_VIDEOS[cv2Index];
+        const iframe = document.getElementById('cv2Iframe');
+        const src = cv2BuildSrc(cv2Index, autoplay);
+
+        if (iframe) {
+            if (!src) {
+                // Video pendiente — mostrar mensaje
+                iframe.style.display = 'none';
+                const placeholder = document.getElementById('cv2Placeholder');
+                if (placeholder) placeholder.style.display = 'flex';
+            } else {
+                iframe.style.display = 'block';
+                iframe.src = src;
+                const placeholder = document.getElementById('cv2Placeholder');
+                if (placeholder) placeholder.style.display = 'none';
             }
+        }
+
+        const titulo = document.getElementById('cv2Titulo');
+        const numero = document.getElementById('cv2Numero');
+        if (titulo) titulo.textContent = v ? v.titulo : 'Clase ' + (cv2Index + 1);
+        if (numero) numero.textContent = 'Clase ' + (cv2Index + 1) + ' de ' + cv2Total;
+
+        const prev = document.getElementById('cv2BtnPrev');
+        const next = document.getElementById('cv2BtnNext');
+        if (prev) prev.style.opacity = cv2Index === 0 ? '0.35' : '1';
+        if (next) next.style.opacity = cv2Index >= cv2Total - 1 ? '0.35' : '1';
+
+        document.querySelectorAll('[data-cv2idx]').forEach(el => {
+            const i = parseInt(el.dataset.cv2idx);
+            const active = i === cv2Index;
+            el.style.background = active ? 'rgba(220,38,38,0.18)' : 'rgba(255,255,255,0.03)';
+            el.style.borderColor = active ? 'rgba(220,38,38,0.4)' : 'rgba(255,255,255,0.07)';
+            const label = el.querySelector('.cv2-num');
+            if (label) label.style.color = active ? '#fca5a5' : '#64748b';
         });
     }
 
-    function clasesOnReady(event) {
-        clasesReady   = true;
-        clasesVideoIds = event.target.getPlaylist() || [];
-        clasesTotal    = clasesVideoIds.length;
-        clasesIndex    = event.target.getPlaylistIndex() || 0;
-
-        document.getElementById('clasesInfoCard').style.display = 'block';
-        clasesActualizarUI();
-        clasesRenderLista();
-    }
-
-    function clasesOnStateChange(event) {
-        // Actualizar UI cuando cambia de video (ej. autoplay siguiente)
-        if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.PAUSED) {
-            if (clasesReady) {
-                clasesIndex = clasesPlayer.getPlaylistIndex();
-                clasesActualizarUI();
-                clasesResaltarActivo();
-            }
-        }
-    }
-
-    function clasesActualizarUI() {
-        const data = clasesPlayer.getVideoData();
-        const titulo = data && data.title ? data.title : 'Clase ' + (clasesIndex + 1);
-        document.getElementById('clasesTitulo').textContent  = titulo;
-        document.getElementById('clasesNumero').textContent  = 'Video ' + (clasesIndex + 1) + ' de ' + (clasesTotal || '?');
-
-        // Botones
-        document.getElementById('clasesBtnPrev').style.opacity = clasesIndex === 0 ? '0.4' : '1';
-        document.getElementById('clasesBtnNext').style.opacity = (clasesTotal && clasesIndex >= clasesTotal - 1) ? '0.4' : '1';
-    }
-
-    function clasesNavegar(dir) {
-        if (!clasesReady) return;
-        if (dir > 0) clasesPlayer.nextVideo();
-        else         clasesPlayer.previousVideo();
-
-        // Pequeño delay para que el player actualice el índice
-        setTimeout(() => {
-            clasesIndex = clasesPlayer.getPlaylistIndex();
-            clasesActualizarUI();
-            clasesResaltarActivo();
-        }, 400);
-    }
-
-    function clasesIrA(idx) {
-        if (!clasesReady) return;
-        clasesPlayer.playVideoAt(idx);
-        clasesIndex = idx;
-        clasesActualizarUI();
-        clasesResaltarActivo();
-        // Scroll al player
-        document.getElementById('clasesPlayer').scrollIntoView({behavior:'smooth', block:'center'});
-    }
-
-    function clasesRenderLista() {
-        const cont = document.getElementById('clasesLista');
-        if (!clasesVideoIds.length) {
-            cont.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem;text-align:center;padding:1rem;">La lista se cargará al reproducir</div>';
-            return;
-        }
+    function cv2RenderLista() {
+        const cont = document.getElementById('cv2Lista');
+        if (!cont) return;
         cont.innerHTML = '';
-        clasesVideoIds.forEach((vid, i) => {
-            const thumb = `https://img.youtube.com/vi/${vid}/mqdefault.jpg`;
+        CV2_VIDEOS.forEach((v, i) => {
+            const active = i === cv2Index;
+            const pending = !v.id;
             const div = document.createElement('div');
-            div.id = 'clase-item-' + i;
-            div.onclick = () => clasesIrA(i);
+            div.dataset.cv2idx = i;
+            div.onclick = () => { if (!pending) cv2IrA(i); };
             div.style.cssText = `
                 display:flex;align-items:center;gap:0.75rem;
-                padding:0.6rem 0.75rem;border-radius:12px;cursor:pointer;
-                border:1px solid rgba(255,255,255,0.07);
-                background:${i === clasesIndex ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.03)'};
-                transition:background 0.2s;
+                padding:0.75rem 0.85rem;border-radius:12px;
+                cursor:${pending ? 'default' : 'pointer'};
+                border:1px solid ${active ? 'rgba(220,38,38,0.4)' : 'rgba(255,255,255,0.07)'};
+                background:${active ? 'rgba(220,38,38,0.18)' : 'rgba(255,255,255,0.03)'};
+                opacity:${pending ? '0.5' : '1'};
+                transition:background 0.15s;
             `;
             div.innerHTML = `
-                <div style="position:relative;flex-shrink:0;width:72px;height:41px;border-radius:8px;overflow:hidden;">
-                    <img src="${thumb}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none'">
-                    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
-                        <span style="font-size:1rem;color:#fff;opacity:0.9;">▶</span>
-                    </div>
+                <div style="width:36px;height:36px;border-radius:10px;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="font-size:0.8rem;font-weight:800;color:#fca5a5;">${i + 1}</span>
                 </div>
                 <div style="flex:1;min-width:0;">
-                    <div style="font-size:0.75rem;font-weight:700;color:${i === clasesIndex ? '#ff7c7c' : 'var(--text-3)'};font-family:var(--font-d);">Clase ${i + 1}</div>
-                    <div id="clase-titulo-${i}" style="font-size:0.72rem;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Video ${i + 1}</div>
+                    <div class="cv2-num" style="font-size:0.82rem;font-weight:700;color:${active ? '#fca5a5' : '#e2e8f0'};font-family:var(--font-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${v.titulo}</div>
+                    <div style="font-size:0.65rem;color:#475569;margin-top:0.1rem;">${pending ? 'Proximamente' : 'Clase ' + (i+1)}</div>
                 </div>
-                ${i === clasesIndex ? '<span style="color:#ff6b6b;font-size:1.1rem;">▶</span>' : ''}
+                ${active ? '<span style="color:#ef4444;font-size:1rem;flex-shrink:0;">&#x25B6;</span>' : ''}
+                ${pending ? '<span style="font-size:0.65rem;color:#64748b;flex-shrink:0;">Pronto</span>' : ''}
             `;
             cont.appendChild(div);
         });
     }
 
-    function clasesResaltarActivo() {
-        document.querySelectorAll('[id^="clase-item-"]').forEach((el, i) => {
-            const active = i === clasesIndex;
-            el.style.background = active ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.03)';
-            const numEl = el.querySelector('div > div:first-child');
-            if (numEl) numEl.style.color = active ? '#ff7c7c' : 'var(--text-3)';
-        });
-    }
-
-    function clasesDestroyPlayer() {
-        // Pausar al salir (no destruir para no recargar)
-        if (clasesPlayer && clasesReady) {
-            try { clasesPlayer.pauseVideo(); } catch(e) {}
+    // Inicializar cuando se entra a la pantalla
+    // Parchamos showScreen en nuevas-funciones.js ya lo hace, pero lo hacemos aqui tambien
+    const _cv2OrigShow = window.showScreen;
+    window.showScreen = function(id) {
+        if (_cv2OrigShow) _cv2OrigShow(id);
+        if (id === 'clasesV2Screen') {
+            cv2RenderLista();
+            cv2Actualizar(false);
         }
-    }
-
-    // Hook para inicializar al entrar a la pantalla
-    const _origShowScreen = typeof showScreen === 'function' ? showScreen : null;
-    document.addEventListener('DOMContentLoaded', () => {
-        // Sobreescribir showScreen para detectar clases
-        const originalShow = window.showScreen;
-        if (originalShow) {
-            window.showScreen = function(id) {
-                originalShow(id);
-                if (id === 'clasesV2Screen') {
-                    setTimeout(() => {
-                        if (typeof YT !== 'undefined' && YT.Player) {
-                            clasesInitPlayer();
-                        } else {
-                            // API aún no cargó, esperar
-                            window.onYouTubeIframeAPIReady = function() {
-                                clasesInitPlayer();
-                            };
-                        }
-                    }, 200);
-                }
-            };
-        }
-    });
+    };
     </script>
 </body>
 </html>
