@@ -1264,7 +1264,7 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
             <div id="wrongBankList" style="display:flex;flex-direction:column;gap:0.85rem;"></div>
 
             <div style="margin-top:1.5rem;display:flex;gap:0.75rem;">
-                <button onclick="if(confirm('¿Limpiar todas las incorrectas?')) { WrongAnswersBank.clear(); renderWrongBank(); refreshHomeStats(); }" style="flex:1;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;padding:1rem;border-radius:12px;font-weight:600;cursor:pointer;">
+                <button onclick="mostrarModal('🗑️ Limpiar incorrectas', '¿Estás seguro? Se borrarán todas las preguntas marcadas para repasar.', [{texto:'Cancelar', clase:'modal-btn-cancel', accion:cerrarModal}, {texto:'Limpiar', clase:'modal-btn-confirm', accion:()=>{ WrongAnswersBank.clear(); renderWrongBank(); refreshHomeStats(); cerrarModal(); }}])" style="flex:1;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;padding:1rem;border-radius:12px;font-weight:600;cursor:pointer;">
                     🗑️ Limpiar todo
                 </button>
             </div>
@@ -1983,6 +1983,16 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
                 <button class="modal-btn modal-btn-cancel" onclick="closeSkipModal()">Cancelar</button>
                 <button class="modal-btn modal-btn-confirm" onclick="confirmSkip()">Saltar</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal genérico reutilizable -->
+    <div id="genericModal" class="modal-overlay">
+        <div class="modal-box">
+            <div id="gModalIcon" class="modal-icon">❓</div>
+            <div id="gModalTitle" class="modal-title">Titulo</div>
+            <div id="gModalMessage" class="modal-message">Mensaje</div>
+            <div id="gModalButtons" class="modal-buttons"></div>
         </div>
     </div>
 

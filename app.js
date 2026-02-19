@@ -198,6 +198,34 @@ let selectedAnswer = null;
 let correctAnswers = 0;
 let incorrectAnswers = 0;
 let timerInterval = null;
+
+// ─── MODAL GENÉRICO ──────────────────────────────────────────
+function mostrarModal(titulo, mensaje, botones) {
+    const iconMap = { '⏱️': '⏱️', '🗑️': '🗑️', '❓': '❓' };
+    const partes = titulo.split(' ');
+    const icono = partes[0];
+    const tituloLimpio = partes.slice(1).join(' ');
+
+    document.getElementById('gModalIcon').textContent = icono;
+    document.getElementById('gModalTitle').textContent = tituloLimpio;
+    document.getElementById('gModalMessage').textContent = mensaje;
+
+    const btns = document.getElementById('gModalButtons');
+    btns.innerHTML = '';
+    (botones || []).forEach(b => {
+        const btn = document.createElement('button');
+        btn.className = 'modal-btn ' + (b.clase || 'modal-btn-cancel');
+        btn.textContent = b.texto;
+        btn.onclick = b.accion;
+        btns.appendChild(btn);
+    });
+
+    document.getElementById('genericModal').classList.add('active');
+}
+
+function cerrarModal() {
+    document.getElementById('genericModal').classList.remove('active');
+}
 let startTime = 0;
 let timeRemaining = 0;
 let isExamMode = false;
@@ -234,6 +262,10 @@ function showScreen(screenId) {
     }
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
+    // Limpiar timer del quiz si salimos de la pantalla de preguntas
+    if (screenId !== 'preguntasRapidasScreen' && screenId !== 'resultadosScreen') {
+        clearInterval(timerInterval);
+    }
     if (screenId === 'homeScreen') refreshHomeStats();
     if (screenId === 'logrosScreen') renderLogros();
     if (screenId === 'repasoIncorrectasScreen') renderWrongBank();
@@ -670,8 +702,9 @@ function startTimer() {
 
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
-            alert('¡Tiempo agotado!');
-            endQuiz();
+            mostrarModal('⏱️ ¡Tiempo agotado!', 'Se acabó el tiempo. Vamos a ver tus resultados.', [
+                { texto: 'Ver resultados', clase: 'btn-primary', accion: () => endQuiz() }
+            ]);
         }
     }, 1000);
 }
