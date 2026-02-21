@@ -263,7 +263,7 @@ function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
     // Limpiar timer del quiz si salimos de la pantalla de preguntas
-    if (screenId !== 'preguntasRapidasScreen' && screenId !== 'resultadosScreen') {
+    if (screenId !== 'quizScreen' && screenId !== 'resultsScreen' && screenId !== 'preguntasRapidasScreen' && screenId !== 'resultadosScreen') {
         clearInterval(timerInterval);
     }
     if (screenId === 'homeScreen') refreshHomeStats();

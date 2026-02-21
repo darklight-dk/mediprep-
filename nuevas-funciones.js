@@ -557,8 +557,6 @@ function renderFlashcardMenu() {
                 </button>`;
             }).join('')}
         </div>`;
-            }).join('')}
-        </div>`;
 }
 
 function renderFlashcard() {
