@@ -1312,6 +1312,135 @@ body::before {
   box-shadow: 0 4px 24px rgba(245,158,11,0.5);
 }
 
+
+/* ════════════════════════════════════════════════
+   ARENA MEGA UPDATE v2.0 — ANIMATION SYSTEM
+════════════════════════════════════════════════ */
+
+/* FX Canvas (particle container) */
+#fxCanvas {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9995;
+  overflow: hidden;
+}
+
+/* Damage overlay */
+#damageOverlay {
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(239,68,68,0.35) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0;
+}
+
+/* Correct flash overlay */
+#correctOverlay {
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0;
+}
+
+@keyframes damageFlash {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes correctFlash {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Confetti particle */
+@keyframes confettiParticle {
+  0%   { transform: translate(0,0) rotate(0deg) scale(1); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translate(var(--vx), calc(var(--vy) + 300px)) rotate(var(--rot)) scale(.5); opacity: 0; }
+}
+
+/* Float up text */
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(.9); opacity: 0; }
+  20%  { transform: translateY(-10px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-80px) scale(.85); opacity: 0; }
+}
+
+/* Screen shake */
+@keyframes arenaShake {
+  0%,100%{ transform: translateX(0); }
+  15%    { transform: translateX(calc(var(--shake-i, 8px) * -1)); }
+  30%    { transform: translateX(var(--shake-i, 8px)); }
+  45%    { transform: translateX(calc(var(--shake-i, 8px) * -.6)); }
+  60%    { transform: translateX(calc(var(--shake-i, 8px) * .6)); }
+  75%    { transform: translateX(calc(var(--shake-i, 8px) * -.3)); }
+  90%    { transform: translateX(calc(var(--shake-i, 8px) * .3)); }
+}
+
+/* Heart shake */
+@keyframes heartShake {
+  0%,100%{ transform: translateX(0) scale(1); }
+  20%    { transform: translateX(-5px) scale(1.1); }
+  40%    { transform: translateX(5px) scale(1.05); }
+  60%    { transform: translateX(-3px); }
+  80%    { transform: translateX(3px); }
+}
+
+/* Score pop */
+@keyframes scorePop {
+  0%  { transform: scale(1);    }
+  40% { transform: scale(1.35); }
+  70% { transform: scale(.95);  }
+  100%{ transform: scale(1);    }
+}
+
+/* Boss glow pulse */
+@keyframes bossGlow {
+  0%,100%{ box-shadow: 0 0 0 0 rgba(239,68,68,0); border-color: rgba(239,68,68,0.4); }
+  50%    { box-shadow: 0 0 20px rgba(239,68,68,0.5); border-color: rgba(239,68,68,0.9); }
+}
+
+/* Timer pulse */
+@keyframes timerPulse {
+  0%,100%{ opacity: 1; }
+  50%    { opacity: .5; }
+}
+
+/* Results animations */
+@keyframes resultReveal {
+  from { opacity: 0; transform: scale(.94) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes trophyBounce {
+  0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+  60%  { transform: scale(1.2) rotate(5deg); opacity: 1; }
+  80%  { transform: scale(.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Question slide */
+@keyframes qSlideIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Power-up buttons glow on hover */
+#pu_fifty:hover,#pu_freeze:hover,#pu_skip:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Timer bar urgent animation */
+#batallaTimerBar.urgent {
+  animation: timerPulse .4s ease infinite;
+}
+
 </style>
 </head>
 <body>
@@ -1319,6 +1448,10 @@ body::before {
     <div class="aurora-orb aurora-1"></div>
     <div class="aurora-orb aurora-2"></div>
     <div class="aurora-orb aurora-3"></div>
+    <!-- FX OVERLAYS (particles, damage, correct flashes) -->
+    <div id="fxCanvas"></div>
+    <div id="damageOverlay"></div>
+    <div id="correctOverlay"></div>
     <!-- TOAST NOTIFICATIONS -->
     <div id="toastContainer"></div>
     <!-- LEVEL UP BANNER -->

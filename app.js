@@ -269,6 +269,8 @@ function showScreen(screenId) {
     if (screenId === 'homeScreen') refreshHomeStats();
     if (screenId === 'logrosScreen') renderLogros();
     if (screenId === 'repasoIncorrectasScreen') renderWrongBank();
+    if (screenId === 'batallaMenuScreen' && typeof refreshArenaMenu === 'function') refreshArenaMenu();
+    if (screenId === 'aiTutorScreen'     && typeof AITutor       !== 'undefined') AITutor.render();
 }
 
 // ─── NAVEGACIÓN CON BOTTOM NAV ──────────────────────────────
