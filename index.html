@@ -2074,10 +2074,21 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
             <!-- Búsqueda -->
             <div style="position:relative;margin-bottom:0.75rem;">
                 <span style="position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:#475569;font-size:0.95rem;">🔍</span>
-                <input type="text" placeholder="Buscar término..." oninput="buscarGlosario(this.value)"
-                    style="width:100%;padding:0.7rem 0.85rem 0.7rem 2.4rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
+                <input id="glosarioInput" type="text" placeholder="Buscar término, sinónimo o categoría..." oninput="buscarGlosario(this.value)"
+                    style="width:100%;padding:0.7rem 2.6rem 0.7rem 2.4rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
                     onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                <button id="glosarioClearBtn" onclick="limpiarBusquedaGlosario()" title="Limpiar búsqueda"
+                    style="display:none;position:absolute;right:0.7rem;top:50%;transform:translateY(-50%);background:rgba(100,116,139,0.2);border:none;border-radius:50%;width:22px;height:22px;color:#94a3b8;font-size:0.75rem;cursor:pointer;line-height:1;padding:0;transition:all 0.15s;"
+                    onmouseover="this.style.background='rgba(239,68,68,0.25)';this.style.color='#fca5a5'"
+                    onmouseout="this.style.background='rgba(100,116,139,0.2)';this.style.color='#94a3b8'">✕</button>
             </div>
+            <script>
+                // Mostrar/ocultar botón X según haya texto
+                document.getElementById('glosarioInput').addEventListener('input', function() {
+                    const btn = document.getElementById('glosarioClearBtn');
+                    if (btn) btn.style.display = this.value ? 'block' : 'none';
+                });
+            </script>
             <!-- Categorías -->
             <div id="glosarioCategorias" style="display:flex;gap:0.4rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:0.75rem;scrollbar-width:none;"></div>
         </div>
@@ -2287,7 +2298,18 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
     <script src="glosario-data.js"></script>
     <script src="flashcards-data.js"></script>
     <script src="flashcards-conamat.js"></script>
-    <script src="nuevas-funciones.js"></script>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MÓDULOS SEPARADOS — reemplaza nuevas-funciones.js -->
+    <!-- ═══════════════════════════════════════════ -->
+    <script src="historial-examenes.js"></script>
+    <script src="srs.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="glosario.js"></script>
+    <script src="flashcards.js"></script>
+    <script src="plan-estudio.js"></script>
+    <script src="pomodoro.js"></script>
+    <script src="screen-init.js"></script>
 
     <!-- PWA: Service Worker para modo offline -->
     <script>
