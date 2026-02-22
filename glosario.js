@@ -84,15 +84,11 @@ function renderGlosario() {
 // Renderiza la imagen de un término (si existe)
 function _renderGlosarioImagen(t) {
     if (!t.imagen) return '';
-    const src = t.imagen;
-    const uid = 'gimg_' + t.id;
     return `
-        <div id="${uid}_wrap" style="margin-bottom:0.85rem;border-radius:12px;overflow:hidden;border:1px solid rgba(99,102,241,0.2);background:rgba(0,0,0,0.25);">
-            <div id="${uid}_loader" style="text-align:center;padding:0.85rem;font-size:0.72rem;color:#475569;">⏳ Cargando imagen...</div>
-            <img src="${src}" alt="${t.termino}" loading="lazy"
-                style="width:100%;max-height:240px;object-fit:contain;display:none;padding:0.5rem;box-sizing:border-box;"
-                onload="(function(img){img.style.display='block';var l=document.getElementById('${uid}_loader');if(l)l.style.display='none';})(this)"
-                onerror="(function(wrap){if(wrap)wrap.innerHTML='<div style=\\'text-align:center;padding:0.65rem;font-size:0.72rem;color:#475569;\\'>📡 Requiere conexión a internet</div>';})(document.getElementById('${uid}_wrap'))">
+        <div style="margin-bottom:0.85rem;border-radius:12px;overflow:hidden;border:1px solid rgba(99,102,241,0.2);background:rgba(0,0,0,0.2);">
+            <img src="${t.imagen}" alt="${t.termino}"
+                style="width:100%;max-height:240px;object-fit:contain;display:block;padding:0.5rem;box-sizing:border-box;"
+                onerror="this.closest('div').style.display='none'">
             ${t.imagenCredito ? `<div style="font-size:0.62rem;color:#475569;text-align:center;padding:0.2rem 0.5rem 0.4rem;border-top:1px solid rgba(255,255,255,0.04);">${t.imagenCredito}</div>` : ''}
         </div>`;
 }

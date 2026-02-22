@@ -313,14 +313,38 @@ function refreshHomeStats() {
     const correct = s.correct || 0;
     const total = s.totalAnswered || 0;
     const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
-    
-    const correctEl = el('homeStatsCorrect');
-    const totalEl = el('homeStatsTotal');
+
+    // ── Nuevos IDs v4.0 ──
+    const precisionEl  = el('hstatPrecision');
+    const rachaEl      = el('hstatRacha');
+    const totalEl2     = el('hstatTotal');
+    const bar1         = el('hstatBar1');
+    const bar2         = el('hstatBar2');
+    const bar3         = el('hstatBar3');
+    const srsIndicator = el('homeSrsIndicator');
+    const srsCountEl   = el('homeSrsCount');
+
+    if (precisionEl) precisionEl.textContent = accuracy + '%';
+    if (rachaEl)     rachaEl.textContent      = streak;
+    if (totalEl2)    totalEl2.textContent     = total;
+    if (bar1) setTimeout(()=>{ bar1.style.width = accuracy + '%'; }, 100);
+    if (bar2) setTimeout(()=>{ bar2.style.width = Math.min(streak * 10, 100) + '%'; }, 150);
+    if (bar3) setTimeout(()=>{ bar3.style.width = Math.min(total / 5, 100) + '%'; }, 200);
+
+    // SRS indicator en la daily card
+    if (typeof SRSSystem !== 'undefined' && srsIndicator && srsCountEl) {
+        const due = SRSSystem.getDueCards().length;
+        srsIndicator.style.display = due > 0 ? 'block' : 'none';
+        srsCountEl.textContent = due;
+    }
+
+    // ── Legacy IDs (por compatibilidad) ──
+    const correctEl  = el('homeStatsCorrect');
+    const totalElOld = el('homeStatsTotal');
     const accuracyEl = el('homeAccuracyLabel');
-    const accuracyBar = el('homeAccuracyBar');
-    
-    if (correctEl) correctEl.textContent = correct;
-    if (totalEl) totalEl.textContent = total;
+    const accuracyBar= el('homeAccuracyBar');
+    if (correctEl)  correctEl.textContent  = correct;
+    if (totalElOld) totalElOld.textContent = total;
     if (accuracyEl) accuracyEl.textContent = accuracy + '%';
     if (accuracyBar) accuracyBar.style.width = accuracy + '%';
 }
