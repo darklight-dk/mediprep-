@@ -266,11 +266,10 @@ function showScreen(screenId) {
     if (screenId !== 'quizScreen' && screenId !== 'resultsScreen' && screenId !== 'preguntasRapidasScreen' && screenId !== 'resultadosScreen') {
         clearInterval(timerInterval);
     }
-    if (screenId === 'homeScreen') refreshHomeStats();
+    if (screenId === 'homeScreen') { refreshHomeStats(); if (typeof syncArenaUI === 'function') setTimeout(syncArenaUI, 150); }
     if (screenId === 'logrosScreen') renderLogros();
     if (screenId === 'repasoIncorrectasScreen') renderWrongBank();
     if (screenId === 'batallaMenuScreen' && typeof refreshArenaMenu === 'function') refreshArenaMenu();
-    if (screenId === 'aiTutorScreen'     && typeof AITutor       !== 'undefined') AITutor.render();
 }
 
 // ─── NAVEGACIÓN CON BOTTOM NAV ──────────────────────────────
@@ -755,6 +754,32 @@ function endQuiz() {
     document.getElementById('correctCount').textContent = correctAnswers;
     document.getElementById('incorrectCount').textContent = incorrectAnswers;
     document.getElementById('timeUsed').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+    // Emoji dinámico según rendimiento
+    const emojiEl = document.getElementById('scoreEmoji');
+    if (emojiEl) {
+        emojiEl.textContent = percentage >= 90 ? '🏆'
+                            : percentage >= 75 ? '⭐'
+                            : percentage >= 60 ? '👍'
+                            : percentage >= 40 ? '💪'
+                            : '📚';
+    }
+    // Color del score
+    const scoreEl = document.getElementById('finalScore');
+    if (scoreEl) {
+        scoreEl.style.background = percentage >= 75
+            ? 'linear-gradient(135deg,#10b981,#34d399)'
+            : percentage >= 50
+            ? 'linear-gradient(135deg,#f59e0b,#fbbf24)'
+            : 'linear-gradient(135deg,#ef4444,#f87171)';
+        scoreEl.style['-webkit-background-clip'] = 'text';
+        scoreEl.style['-webkit-text-fill-color'] = 'transparent';
+    }
+    // CTA de incorrectas
+    const ctaEl = document.getElementById('resultsWrongCta');
+    if (ctaEl) {
+        ctaEl.style.display = incorrectAnswers > 0 ? 'flex' : 'none';
+    }
 
     // Guardar nota del módulo si fue evaluación de módulo
     if (currentMode === 'evaluacion-modulo' && moduloActual) {

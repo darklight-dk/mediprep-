@@ -232,6 +232,7 @@ var Arena = {
     this.qIdx      = 0;
     this._answered = false;
     this._frozen   = false;
+    this._done     = false;   // guard: solo 1 llamada a _results()
     this.powerups  = { fifty: true, freeze: true, skip: true };
     this.totalTime = type === 'veloz' ? 8 : type === 'boss' ? 20 : 15;
 
@@ -253,6 +254,14 @@ var Arena = {
       result._dCorrect = shuffled.indexOf(correctText);
       return result;
     });
+
+    // Asegurar que powerups y HUD secundario están visibles al iniciar
+    var puBar2 = document.getElementById('batallaPoweups');
+    var comboEl2 = document.getElementById('batallaCombo');
+    var xpEl2    = document.getElementById('batallaXPLabel');
+    if (puBar2)   puBar2.style.display   = 'flex';
+    if (comboEl2) comboEl2.style.display = 'none';   // empieza oculto, se muestra con primer combo
+    if (xpEl2)    xpEl2.style.display    = 'block';
 
     showScreen('batallaScreen');
     this._renderQ();
@@ -282,7 +291,8 @@ var Arena = {
         + ' onmouseout="if(!this.disabled){this.style.borderColor=\'rgba(255,255,255,0.07)\';this.style.background=\'rgba(13,17,31,0.88)\';this.style.transform=\'\';}"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.07);align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;">' + LETTERS[i] + '</span><span style="flex:1;">' + q._dOpts[i] + '</span></button>';
     }
 
-    document.getElementById('batallaContent').innerHTML =
+    requestAnimationFrame(function() {
+      document.getElementById('batallaContent').innerHTML =
       '<div style="animation:qSlideIn .32s cubic-bezier(.22,1,.36,1) both;">'
         + (isBoss ? '<div style="text-align:center;margin-bottom:.8rem;"><span style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(239,68,68,0.14);border:1.5px solid rgba(239,68,68,0.45);border-radius:99px;padding:.3rem .85rem;animation:bossGlow 1.5s ease-in-out infinite;font-size:.72rem;font-weight:800;color:#ef4444;letter-spacing:.09em;text-transform:uppercase;">👹 Pregunta Jefe</span></div>' : '')
         + '<div style="font-size:.67rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.45rem;display:flex;align-items:center;gap:.35rem;"><span style="width:5px;height:5px;border-radius:50%;background:var(--indigo-l);display:inline-block;"></span>' + (q.categoria || 'Medicina') + '</div>'
@@ -293,8 +303,8 @@ var Arena = {
         + ' onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'\'" onclick="Arena.next()">'
         + (isLast ? 'Ver resultados ⚔️' : 'Siguiente →') + '</button>'
       + '</div>';
-
-    this._startTimer();
+      _self._startTimer();
+    });
   },
 
   // ── ANSWER ───────────────────────────────────────────────────
@@ -387,14 +397,13 @@ var Arena = {
     if (nxtEl) {
       nxtEl.style.display = 'block';
       if (this.lives <= 0) {
-        nxtEl.textContent      = '💀 Ver resultados';
+        nxtEl.textContent      = '💀 Ver resultados finales';
         nxtEl.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
         nxtEl.onclick          = function() { Arena._results(); };
       }
     }
 
     this._hudUpdate();
-    if (this.lives <= 0) setTimeout(function() { Arena._results(); }, 2200);
   },
 
   // ── NEXT ─────────────────────────────────────────────────────
@@ -536,7 +545,19 @@ var Arena = {
 
   // ── RESULTS ──────────────────────────────────────────────────
   _results: function() {
+    if (this._done) return;   // evitar doble ejecución
+    this._done = true;
     clearInterval(this._timer);
+
+    // Ocultar power-ups para que no queden debajo de los resultados
+    var puBar = document.getElementById('batallaPoweups');
+    if (puBar) puBar.style.display = 'none';
+
+    // Ocultar HUD secundario (combo, XP label) para pantalla limpia
+    var comboEl = document.getElementById('batallaCombo');
+    var xpEl    = document.getElementById('batallaXPLabel');
+    if (comboEl) comboEl.style.display = 'none';
+    if (xpEl)    xpEl.style.display    = 'none';
     this.addXP(this.xp);
 
     var prevBest = parseInt(localStorage.getItem('mediprep_arena_best') || '0');
