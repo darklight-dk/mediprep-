@@ -36,6 +36,39 @@ function renderGlosario() {
         ">${cat}</button>`;
     }).join('');
 
+    // ── Búsquedas recomendadas (solo cuando input vacío) ──────
+    const recomEl = document.getElementById('glosarioRecomendadas');
+    if (recomEl) {
+        const RECOMENDADAS = [
+            { label: '🔴 eritro-', q: 'eritro' },
+            { label: '⚡ taqui-', q: 'taqui' },
+            { label: '📉 hipo-', q: 'hipo-' },
+            { label: '📈 hiper-', q: 'hiper-' },
+            { label: '🧠 neuro', q: 'nervioso' },
+            { label: '❤️ cardio', q: 'cardiovascular' },
+            { label: '🌿 prefijos', q: 'Prefijos Médicos' },
+            { label: '🫀 raíces', q: 'Raíces Médicas' },
+            { label: '🔬 micro-', q: 'micro-' },
+            { label: '⬆️ epi-', q: 'epi-' },
+            { label: '⬛ hemi-', q: 'hemi-' },
+        ];
+        if (!glosarioQuery.trim()) {
+            recomEl.style.display = 'flex';
+            recomEl.innerHTML = RECOMENDADAS.map(r =>
+                `<button onclick="buscarGlosario('${r.q}')" style="
+                    padding:.32rem .75rem; border-radius:20px; border:1px solid rgba(255,255,255,0.1);
+                    background:rgba(255,255,255,0.04); color:var(--text-3); font-size:.72rem;
+                    font-weight:600; cursor:pointer; white-space:nowrap; transition:all .18s;
+                    font-family:var(--font);"
+                    onmouseover="this.style.background='rgba(99,102,241,0.15)';this.style.color='var(--indigo-l)';this.style.borderColor='rgba(99,102,241,0.4)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.color='var(--text-3)';this.style.borderColor='rgba(255,255,255,0.1)'"
+                >${r.label}</button>`
+            ).join('');
+        } else {
+            recomEl.style.display = 'none';
+        }
+    }
+
     if (items.length === 0) {
         contenedor.innerHTML = `<div style="text-align:center;padding:3rem 1rem;color:#475569;">
             <div style="font-size:2rem;margin-bottom:0.5rem;">🔍</div>
@@ -109,12 +142,13 @@ function filtrarGlosario(categoria) {
 
 function buscarGlosario(query) {
     glosarioQuery = query;
-    // Si se busca desde "Ver también", limpiar el filtro de categoría
     glosarioFiltroCategoria = 'Todos';
     renderGlosario();
-    // Limpiar el input si existe
+    // Fix: chips no disparan evento 'input' → actualizar clear btn manualmente
     const inp = document.getElementById('glosarioInput');
-    if (inp) inp.value = query;
+    const clr = document.getElementById('glosarioClearBtn');
+    if (inp) { inp.value = query; inp.focus(); inp.setSelectionRange(query.length, query.length); }
+    if (clr) clr.style.display = query ? 'block' : 'none';
 }
 
 function limpiarBusquedaGlosario() {

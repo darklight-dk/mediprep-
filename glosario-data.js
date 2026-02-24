@@ -743,6 +743,284 @@ const GLOSARIO_DATA = [
   ejemplo:'Vitamina D: regula calcio. Déficit → raquitismo (niños) u osteomalacia (adultos). Vitamina K: coagulación (factores II, VII, IX, X). Antagonizada por warfarina.',
   relacionados:['Enzima','Absorción intestinal'] },
 
+
+  // ═══════════════════════════════════════════════════════════
+  // PREFIJOS MÉDICOS
+  // ═══════════════════════════════════════════════════════════
+  { id:'pref01', termino:'A- / An-',       categoria:'Prefijos Médicos', icono:'🚫',
+    definicion:'Sin, ausencia, negación. Indica carencia de algo.',
+    ejemplo:'Anemia (sin sangre suficiente), apnea (sin respiración), analgesia (sin dolor).',
+    sinonimos:['Sin-','Negación'], relacionados:['Hipoxia','Apnea'] },
+
+  { id:'pref02', termino:'Anti-',          categoria:'Prefijos Médicos', icono:'🛡️',
+    definicion:'Contra, opuesto a. Se usa para indicar oposición o antagonismo.',
+    ejemplo:'Antibiótico (contra bacterias), antiinflamatorio, antihipertensivo.',
+    sinonimos:['Contra-'], relacionados:['Profilaxis'] },
+
+  { id:'pref03', termino:'Bradi-',         categoria:'Prefijos Médicos', icono:'🐢',
+    definicion:'Lento. Indica disminución de la velocidad o frecuencia de un proceso.',
+    ejemplo:'Bradicardia (corazón lento < 60 lpm), bradipnea (respiración lenta).',
+    sinonimos:['Lento-'], relacionados:['Taquicardia','FC'] },
+
+  { id:'pref04', termino:'Braqui-',        categoria:'Prefijos Médicos', icono:'📏',
+    definicion:'Corto. Indica estructura o segmento de longitud reducida.',
+    ejemplo:'Braquicefalia (cabeza corta), braquicarpia (dedos cortos).',
+    sinonimos:['Corto-'], relacionados:['Macro-','Micro-'] },
+
+  { id:'pref05', termino:'Dis-',           categoria:'Prefijos Médicos', icono:'⚠️',
+    definicion:'Dificultad, trastorno, anormalidad de función.',
+    ejemplo:'Disnea (dificultad para respirar), disfagia (dificultad para deglutir), disuria.',
+    sinonimos:['Dificultad-','Trastorno-'], relacionados:['Apnea','Disfagia'] },
+
+  { id:'pref06', termino:'Endo-',          categoria:'Prefijos Médicos', icono:'🔬',
+    definicion:'Dentro de, interior. Hace referencia al interior de una estructura.',
+    ejemplo:'Endoscopia (ver por dentro), endocardio (capa interna del corazón), endotelio.',
+    sinonimos:['Intra-','Dentro de'], relacionados:['Exo-','Pericardio'] },
+
+  { id:'pref07', termino:'Epi-',           categoria:'Prefijos Médicos', icono:'⬆️',
+    definicion:'Sobre, encima de, por encima. Indica posición superior o sobre una estructura.',
+    ejemplo:'Epidermis (sobre la piel), epigastrio (sobre el estómago), epicardio.',
+    sinonimos:['Sobre-','Supra-'], relacionados:['Hipo-','Sub-'] },
+
+  { id:'pref08', termino:'Exo- / Ecto-',   categoria:'Prefijos Médicos', icono:'⬆️',
+    definicion:'Fuera de, exterior. Indica que algo está en el exterior o proviene de afuera.',
+    ejemplo:'Exocrina (secreción hacia fuera), ectopia (fuera de lugar normal).',
+    sinonimos:['Extra-','Fuera de'], relacionados:['Endo-','Endocrino'] },
+
+  { id:'pref09', termino:'Hemi-',          categoria:'Prefijos Médicos', icono:'⬛',
+    definicion:'Mitad, medio. Indica la mitad de una estructura o territorio.',
+    ejemplo:'Hemiplejía (parálisis de medio cuerpo), hemianopsia (mitad del campo visual).',
+    sinonimos:['Semi-','Medio-'], relacionados:['Cuadriplejía','Paraplejía'] },
+
+  { id:'pref10', termino:'Hiper-',         categoria:'Prefijos Médicos', icono:'📈',
+    definicion:'Exceso, encima de lo normal, aumento patológico.',
+    ejemplo:'Hipertensión (presión elevada), hiperglucemia (glucosa alta), hipercalemia.',
+    sinonimos:['Sobre-','Exceso de'], relacionados:['Hipo-','Homeostasis'] },
+
+  { id:'pref11', termino:'Hipo-',          categoria:'Prefijos Médicos', icono:'📉',
+    definicion:'Bajo, por debajo de lo normal, disminución patológica.',
+    ejemplo:'Hipotensión (presión baja), hipoglucemia (glucosa baja), hipoxia (bajo oxígeno).',
+    sinonimos:['Sub-','Deficiencia de'], relacionados:['Hiper-','Shock'] },
+
+  { id:'pref12', termino:'Inter-',         categoria:'Prefijos Médicos', icono:'↔️',
+    definicion:'Entre, en medio de dos estructuras.',
+    ejemplo:'Intercostal (entre costillas), interdigital, interlobular.',
+    sinonimos:['Entre-'], relacionados:['Intra-','Pericardio'] },
+
+  { id:'pref13', termino:'Intra-',         categoria:'Prefijos Médicos', icono:'🎯',
+    definicion:'Dentro de, en el interior de una estructura específica.',
+    ejemplo:'Intravenoso (dentro de la vena), intramuscular, intratecal.',
+    sinonimos:['Endo-','Dentro de'], relacionados:['Inter-','Vía de administración'] },
+
+  { id:'pref14', termino:'Leuco- / Leuco-',categoria:'Prefijos Médicos', icono:'⬜',
+    definicion:'Blanco. Indica color blanco o relacionado con leucocitos (glóbulos blancos).',
+    ejemplo:'Leucocito (célula blanca), leucemia (cáncer de células blancas), leucorrea.',
+    sinonimos:['Albo-','Blanco'], relacionados:['Eritro-','Leucocito'] },
+
+  { id:'pref15', termino:'Macro-',         categoria:'Prefijos Médicos', icono:'🔎',
+    definicion:'Grande, tamaño mayor al normal.',
+    ejemplo:'Macrocefalia (cabeza grande), macrófago (célula grande), macrosomía.',
+    sinonimos:['Mega-','Grande'], relacionados:['Micro-','Gigantismo'] },
+
+  { id:'pref16', termino:'Micro-',         categoria:'Prefijos Médicos', icono:'🔬',
+    definicion:'Pequeño, tamaño menor al normal, o a nivel microscópico.',
+    ejemplo:'Microcefalia (cabeza pequeña), microorganismo, microvasculatura.',
+    sinonimos:['Mini-','Pequeño'], relacionados:['Macro-','Célula'] },
+
+  { id:'pref17', termino:'Neo-',           categoria:'Prefijos Médicos', icono:'🌱',
+    definicion:'Nuevo, reciente, de nueva formación.',
+    ejemplo:'Neoplasia (nueva formación celular = tumor), neonato (recién nacido), neovascularización.',
+    sinonimos:['Nuevo-'], relacionados:['Neoplasia','Tumor','Oncología'] },
+
+  { id:'pref18', termino:'Peri-',          categoria:'Prefijos Médicos', icono:'🔄',
+    definicion:'Alrededor de, que rodea una estructura.',
+    ejemplo:'Pericardio (alrededor del corazón), periostio (alrededor del hueso), peritoneal.',
+    sinonimos:['Circum-','Alrededor de'], relacionados:['Endocardio','Pleura'] },
+
+  { id:'pref19', termino:'Poli-',          categoria:'Prefijos Médicos', icono:'🔢',
+    definicion:'Mucho, varios, múltiple.',
+    ejemplo:'Poliuria (mucha orina), polidipsia (mucha sed), policitemia, polineuropatía.',
+    sinonimos:['Multi-','Varios'], relacionados:['Oliguria','Diabetes insípida'] },
+
+  { id:'pref20', termino:'Post-',          categoria:'Prefijos Médicos', icono:'⏩',
+    definicion:'Después de, posterior a un evento o estructura.',
+    ejemplo:'Postoperatorio (después de cirugía), postnatal, postictal (después de convulsión).',
+    sinonimos:['Meta-','Después de'], relacionados:['Pre-','Pre-operatorio'] },
+
+  { id:'pref21', termino:'Pre-',           categoria:'Prefijos Médicos', icono:'⏪',
+    definicion:'Antes de, previo a, anterior a un evento o estructura.',
+    ejemplo:'Preoperatorio (antes de cirugía), prenatal (antes del nacimiento), precordial.',
+    sinonimos:['Pro-','Ante-'], relacionados:['Post-','Profilaxis'] },
+
+  { id:'pref22', termino:'Eritro-',        categoria:'Prefijos Médicos', icono:'🔴',
+    definicion:'Rojo. Indica color rojo o relación con eritrocitos (glóbulos rojos).',
+    ejemplo:'Eritrocito (célula roja), eritema (enrojecimiento), eritropoyetina.',
+    sinonimos:['Rubro-','Rojo'], relacionados:['Leuco-','Eritrocito','Hemoglobina'] },
+
+  { id:'pref23', termino:'Xanto-',         categoria:'Prefijos Médicos', icono:'🟡',
+    definicion:'Amarillo. Indica coloración amarillenta en tejidos o estructuras.',
+    ejemplo:'Xantoma (depósito graso amarillo en piel), xantopsia (ver amarillo).',
+    sinonimos:['Amarillo'], relacionados:['Ictericia','Carotenemia'] },
+
+  { id:'pref24', termino:'Ciano-',         categoria:'Prefijos Médicos', icono:'🔵',
+    definicion:'Azul. Indica coloración azulada, generalmente por hipoxia tisular.',
+    ejemplo:'Cianosis (coloración azul por hipoxia), cianosado, cianótico.',
+    sinonimos:['Azul'], relacionados:['Hipoxia','Saturación O₂'] },
+
+  { id:'pref25', termino:'Oligo-',         categoria:'Prefijos Médicos', icono:'💧',
+    definicion:'Poco, escaso, deficiencia en cantidad.',
+    ejemplo:'Oliguria (poca orina < 400 mL/día), oligospermia, oligoamnios.',
+    sinonimos:['Escaso-','Poco'], relacionados:['Poli-','Anuria','Diuresis'] },
+
+  { id:'pref26', termino:'Taqu- / Taqui-', categoria:'Prefijos Médicos', icono:'⚡',
+    definicion:'Rápido, veloz. Indica aumento de la velocidad o frecuencia.',
+    ejemplo:'Taquicardia (frecuencia cardíaca > 100 lpm), taquipnea (respiración rápida).',
+    sinonimos:['Rápido-'], relacionados:['Bradicardia','FC','Taquipnea'] },
+
+  { id:'pref27', termino:'Sub- / Infra-',  categoria:'Prefijos Médicos', icono:'⬇️',
+    definicion:'Debajo de, inferior a, por debajo de una estructura.',
+    ejemplo:'Subclavio (bajo la clavícula), infraumbilical (bajo el ombligo), subdural.',
+    sinonimos:['Infra-','Bajo-'], relacionados:['Supra-','Epi-'] },
+
+  { id:'pref28', termino:'Supra-',         categoria:'Prefijos Médicos', icono:'🔝',
+    definicion:'Encima de, superior a, sobre una estructura.',
+    ejemplo:'Suprarrenal (sobre el riñón = glándula adrenal), supraclavicular, supraespinoso.',
+    sinonimos:['Epi-','Hiper-','Encima de'], relacionados:['Sub-','Glándula adrenal'] },
+
+  { id:'pref29', termino:'Para-',          categoria:'Prefijos Médicos', icono:'↕️',
+    definicion:'Al lado de, junto a, similar pero anormal, o parálisis.',
+    ejemplo:'Paravertebral (al lado de la columna), paraplejía (parálisis de miembros inferiores).',
+    sinonimos:['Al lado de'], relacionados:['Hemi-','Cuadriplejía'] },
+
+  { id:'pref30', termino:'Pseudo-',        categoria:'Prefijos Médicos', icono:'🎭',
+    definicion:'Falso, aparente, que simula algo sin serlo realmente.',
+    ejemplo:'Pseudomembrana (falsa membrana), pseudoquiste, pseudohermafroditismo.',
+    sinonimos:['Falso-','Pseudo'], relacionados:['Simulación','Diagnóstico diferencial'] },
+
+
+  // ═══════════════════════════════════════════════════════════
+  // RAÍCES MÉDICAS
+  // ═══════════════════════════════════════════════════════════
+  { id:'raiz01', termino:'Cardio-',        categoria:'Raíces Médicas', icono:'❤️',
+    definicion:'Raíz que significa corazón. Se refiere a todo lo relacionado con el órgano cardíaco.',
+    ejemplo:'Cardiología (estudio del corazón), cardiomegalia (agrandamiento), cardiopatía.',
+    sinonimos:['Corazón'], relacionados:['Miocardio','Pericardio','Endocardio'] },
+
+  { id:'raiz02', termino:'Gastro-',        categoria:'Raíces Médicas', icono:'🟠',
+    definicion:'Raíz que significa estómago. Hace referencia a la cámara gástrica y sus funciones.',
+    ejemplo:'Gastritis (inflamación del estómago), gastrectomía, gastroscopía.',
+    sinonimos:['Estómago'], relacionados:['Gástrico','Úlcera péptica','Entero-'] },
+
+  { id:'raiz03', termino:'Entero-',        categoria:'Raíces Médicas', icono:'🌀',
+    definicion:'Raíz que significa intestino. Abarca tanto intestino delgado como grueso.',
+    ejemplo:'Enteritis (inflamación intestinal), enterococo, enterostomía.',
+    sinonimos:['Intestino'], relacionados:['Gastro-','Colo-','Íleo'] },
+
+  { id:'raiz04', termino:'Colo-',          categoria:'Raíces Médicas', icono:'🫙',
+    definicion:'Raíz que significa colon (intestino grueso). Se utiliza en patologías del colon.',
+    ejemplo:'Colitis (inflamación del colon), colonoscopía, colostomía, cáncer colorrectal.',
+    sinonimos:['Colon','Intestino grueso'], relacionados:['Entero-','Procto-','Recto'] },
+
+  { id:'raiz05', termino:'Procto-',        categoria:'Raíces Médicas', icono:'🔻',
+    definicion:'Raíz que significa recto y ano. Se usa en procedimientos y patologías anorectales.',
+    ejemplo:'Proctología (especialidad), proctoscopía (visualización del recto), proctitis.',
+    sinonimos:['Recto','Ano'], relacionados:['Colo-','Hemorroide','Fístula anal'] },
+
+  { id:'raiz06', termino:'Espleno-',       categoria:'Raíces Médicas', icono:'🟣',
+    definicion:'Raíz que significa bazo. Órgano linfoide implicado en filtrado sanguíneo e inmunidad.',
+    ejemplo:'Esplenomegalia (bazo agrandado), esplenectomía (extirpación del bazo), esplenitis.',
+    sinonimos:['Bazo'], relacionados:['Hepato-','Inmunología','Linfoma'] },
+
+  { id:'raiz07', termino:'Hepato-',        categoria:'Raíces Médicas', icono:'🟤',
+    definicion:'Raíz que significa hígado. Relacionado con funciones hepáticas y detoxificación.',
+    ejemplo:'Hepatitis (inflamación del hígado), hepatomegalia, hepatocarcinoma, hepatectomía.',
+    sinonimos:['Hígado'], relacionados:['Espleno-','Cirrosis','Bilirrubina'] },
+
+  { id:'raiz08', termino:'Vesico- / Cisto-', categoria:'Raíces Médicas', icono:'🫧',
+    definicion:'Raíz que significa vejiga. Vesico- para vejiga urinaria; cisto- para cualquier saco o vejiga.',
+    ejemplo:'Cistitis (inflamación de la vejiga), cistoscopía, vesicoureteral, cistectomía.',
+    sinonimos:['Vejiga'], relacionados:['Nefro-','Uro-','ITU'] },
+
+  { id:'raiz09', termino:'Nefro-',         categoria:'Raíces Médicas', icono:'🫘',
+    definicion:'Raíz que significa riñón. Involucra la función renal y las vías urinarias superiores.',
+    ejemplo:'Nefritis (inflamación renal), nefrología, nefrectomía, nefrolitiasis.',
+    sinonimos:['Riñón','Renal'], relacionados:['Uro-','Vesico-','Diálisis'] },
+
+  { id:'raiz10', termino:'Uro-',           categoria:'Raíces Médicas', icono:'💧',
+    definicion:'Raíz que significa orina y vías urinarias. Engloba todo el sistema urinario.',
+    ejemplo:'Urología (especialidad), urografía (radiografía de vías urinarias), urosepsis.',
+    sinonimos:['Orina','Vías urinarias'], relacionados:['Nefro-','Vesico-','Diuresis'] },
+
+  { id:'raiz11', termino:'Cervic-',        categoria:'Raíces Médicas', icono:'🦒',
+    definicion:'Raíz que significa cuello. Se aplica al cuello anatómico y al cuello uterino.',
+    ejemplo:'Cervicitis (inflamación del cuello uterino), cervical, cervicobraquialgia.',
+    sinonimos:['Cuello'], relacionados:['Cérvix','Columna cervical','Papanicolaou'] },
+
+  { id:'raiz12', termino:'Senos-',         categoria:'Raíces Médicas', icono:'🕳️',
+    definicion:'Raíz que significa cavidades o senos. Espacios huecos en huesos o tejidos.',
+    ejemplo:'Sinusitis (inflamación de los senos paranasales), senos cavernosos, senos venosos.',
+    sinonimos:['Cavidades','Senos paranasales'], relacionados:['Neumo-','Rinitis'] },
+
+  { id:'raiz13', termino:'Tonsil-',        categoria:'Raíces Médicas', icono:'👄',
+    definicion:'Raíz que significa amígdalas (tonsilas). Estructuras linfoides en la faringe.',
+    ejemplo:'Tonsilitis (amigdalitis), tonsilectomía (extirpación de amígdalas), hipertrofia tonsilar.',
+    sinonimos:['Amígdalas','Tonsilas'], relacionados:['Adeno-','Faringe','Inmunología'] },
+
+  { id:'raiz14', termino:'Neumo-',         categoria:'Raíces Médicas', icono:'🫁',
+    definicion:'Raíz que significa pulmón o aire. Se usa para condiciones pulmonares.',
+    ejemplo:'Neumonía (inflamación del pulmón), neumotórax (aire en pleura), neumología.',
+    sinonimos:['Pulmón','Aire'], relacionados:['Pleura','Bronco-','Dis-'] },
+
+  { id:'raiz15', termino:'Cefalo-',        categoria:'Raíces Médicas', icono:'🧠',
+    definicion:'Raíz que significa cabeza. Incluye el cráneo, cerebro y estructuras cefálicas.',
+    ejemplo:'Cefalea (dolor de cabeza), hidrocefalia (agua en cabeza), macrocefalia.',
+    sinonimos:['Cabeza','Cráneo'], relacionados:['Encéfalo-','Neuro-','Hemi-'] },
+
+  { id:'raiz16', termino:'Neuro-',         categoria:'Raíces Médicas', icono:'⚡',
+    definicion:'Raíz que significa nervio o sistema nervioso. Abarca SNC y SNP.',
+    ejemplo:'Neurología, neuropatía (enfermedad nerviosa), neurotransmisor, neuroplasticidad.',
+    sinonimos:['Nervio','Sistema nervioso'], relacionados:['Encéfalo-','Cefalo-','Miel-'] },
+
+  { id:'raiz17', termino:'Encéfalo-',      categoria:'Raíces Médicas', icono:'🧬',
+    definicion:'Raíz que significa encéfalo (cerebro). Específico para el tejido encefálico.',
+    ejemplo:'Encefalitis (inflamación del encéfalo), encefalopatía, electroencefalograma (EEG).',
+    sinonimos:['Cerebro','Encéfalo'], relacionados:['Neuro-','Cefalo-','Meningitis'] },
+
+  { id:'raiz18', termino:'Miel-',          categoria:'Raíces Médicas', icono:'🦴',
+    definicion:'Raíz que significa médula (espinal u ósea). No confundir con miel de abeja.',
+    ejemplo:'Mielitis (inflamación de la médula), leucemia mieloide, mieloma múltiple.',
+    sinonimos:['Médula','Médula espinal','Médula ósea'], relacionados:['Neuro-','Leuco-'] },
+
+  { id:'raiz19', termino:'Mio-',           categoria:'Raíces Médicas', icono:'💪',
+    definicion:'Raíz que significa músculo. Se aplica a músculo esquelético, cardíaco y liso.',
+    ejemplo:'Miositis (inflamación muscular), miocardio (músculo del corazón), miopatía, mialgia.',
+    sinonimos:['Músculo'], relacionados:['Cardio-','Distrofia muscular','EMG'] },
+
+  { id:'raiz20', termino:'Derma-',         categoria:'Raíces Médicas', icono:'🩹',
+    definicion:'Raíz que significa piel. Incluye epidermis, dermis y capas cutáneas.',
+    ejemplo:'Dermatitis (inflamación de la piel), dermatología, epidermis, esclerodermia.',
+    sinonimos:['Piel','Cutáneo'], relacionados:['Epitelial','Melanoma','Queratinocito'] },
+
+  { id:'raiz21', termino:'Cito-',          categoria:'Raíces Médicas', icono:'🔬',
+    definicion:'Raíz que significa célula. Se usa en tipos y funciones celulares.',
+    ejemplo:'Citología (estudio de células), eritrocito, leucocito, citotóxico, citoquina.',
+    sinonimos:['Célula'], relacionados:['Leuco-','Eritro-','Histología'] },
+
+  { id:'raiz22', termino:'Adeno-',         categoria:'Raíces Médicas', icono:'🫐',
+    definicion:'Raíz que significa glándula. Abarca glándulas exocrinas y endocrinas.',
+    ejemplo:'Adenoma (tumor glandular benigno), adenopatía (ganglio aumentado), adenocarcinoma.',
+    sinonimos:['Glándula'], relacionados:['Endocrino','Linfadenopatía','Tumor'] },
+
+  { id:'raiz23', termino:'Fagos-',         categoria:'Raíces Médicas', icono:'👾',
+    definicion:'Raíz que significa comer, devorar o deglutir. Relacionado con ingesta y fagocitosis.',
+    ejemplo:'Macrófago (célula que devora agentes extraños), disfagia, bacteriófago.',
+    sinonimos:['Comer','Devorar','Deglutir'], relacionados:['Cito-','Inmunología','Disfagia'] },
+
+  { id:'raiz24', termino:'Gluco-',         categoria:'Raíces Médicas', icono:'🍬',
+    definicion:'Raíz que significa glucosa o azúcar. Relacionado con metabolismo de carbohidratos.',
+    ejemplo:'Glucosa, glucemia (nivel de azúcar en sangre), glucómetro, glucocorticoide, glucagón.',
+    sinonimos:['Glucosa','Azúcar'], relacionados:['Hiper-','Hipo-','Diabetes','Insulina'] },
+
 ];
 
 // Obtener todas las categorías únicas ordenadas

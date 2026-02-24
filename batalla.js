@@ -195,12 +195,9 @@ var Arena = {
         return [];
       },
       function() {
+        // Solo medicina pura — sin comprensión lectora ni matemáticas
         if (typeof PREGUNTAS === 'undefined') return [];
-        return [].concat(
-          Array.isArray(PREGUNTAS.medicina)    ? PREGUNTAS.medicina    : [],
-          Array.isArray(PREGUNTAS.comprension) ? PREGUNTAS.comprension : [],
-          Array.isArray(PREGUNTAS.matematicas) ? PREGUNTAS.matematicas : []
-        );
+        return Array.isArray(PREGUNTAS.medicina) ? PREGUNTAS.medicina : [];
       },
     ];
 
