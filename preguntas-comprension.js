@@ -1,162 +1,195 @@
 // ========================================
 // PREGUNTAS: Comprensión Lectora
+// CENEVAL EXANI-II — Temario oficial 2025
+// Ámbitos: Estudio · Literario · Participación Social
 // ========================================
 
 const PREGUNTAS_COMPRENSION = [
-    // ============================================
-    // TEXTOS ADMINISTRATIVOS - CARTA DE RECOMENDACIÓN
-    // ============================================
-    {text:`Ciudad de México, 27 de enero de 2022
+
+// ══════════════════════════════════════════════
+// ÁMBITO DE ESTUDIO — Texto argumentativo-periodístico y ensayo académico
+// Habilidades: Identificación · Interpretar · Evaluación
+// ══════════════════════════════════════════════
+
+{text:`La inteligencia artificial (IA) no es una amenaza inminente para la humanidad; es, ante todo, una herramienta. Quienes la presentan como un peligro existencial olvidan que toda tecnología transformadora —desde la imprenta hasta internet— generó temores similares. La IA amplía capacidades humanas: acelera diagnósticos médicos, optimiza cadenas de suministro y democratiza el acceso a información. El riesgo real no está en la tecnología misma, sino en las decisiones políticas y empresariales que determinan cómo se distribuyen sus beneficios. Ignorar ese debate es, en sí mismo, el verdadero peligro.`,
+pregunta:"¿Cuál es la postura del autor respecto a la inteligencia artificial?",
+opciones:["Es una amenaza existencial para la humanidad","Es una herramienta que depende de cómo se utilice","Es inútil comparada con tecnologías anteriores","Debe ser regulada antes de que se desarrolle más"],
+correcta:1,explicacion:"El autor argumenta que la IA es una herramienta cuyo riesgo depende de las decisiones humanas, no de la tecnología en sí."},
+
+{text:`La inteligencia artificial (IA) no es una amenaza inminente para la humanidad; es, ante todo, una herramienta. Quienes la presentan como un peligro existencial olvidan que toda tecnología transformadora —desde la imprenta hasta internet— generó temores similares. La IA amplía capacidades humanas: acelera diagnósticos médicos, optimiza cadenas de suministro y democratiza el acceso a información. El riesgo real no está en la tecnología misma, sino en las decisiones políticas y empresariales que determinan cómo se distribuyen sus beneficios. Ignorar ese debate es, en sí mismo, el verdadero peligro.`,
+pregunta:"¿Con qué propósito menciona el autor 'la imprenta e internet'?",
+opciones:["Para demostrar que la IA es superior a esas tecnologías","Para ilustrar que los miedos tecnológicos son recurrentes pero superables","Para argumentar que la IA tiene menos impacto que esas invenciones","Para criticar a quienes usan esas tecnologías irresponsablemente"],
+correcta:1,explicacion:"El autor los cita como ejemplos de tecnologías que también generaron temores, reforzando que el miedo a la IA sigue ese patrón."},
+
+{text:`La inteligencia artificial (IA) no es una amenaza inminente para la humanidad; es, ante todo, una herramienta. Quienes la presentan como un peligro existencial olvidan que toda tecnología transformadora —desde la imprenta hasta internet— generó temores similares. La IA amplía capacidades humanas: acelera diagnósticos médicos, optimiza cadenas de suministro y democratiza el acceso a información. El riesgo real no está en la tecnología misma, sino en las decisiones políticas y empresariales que determinan cómo se distribuyen sus beneficios. Ignorar ese debate es, en sí mismo, el verdadero peligro.`,
+pregunta:"¿Qué tipo de texto es este y cómo lo sabes?",
+opciones:["Narrativo, porque relata una historia sobre tecnología","Argumentativo, porque defiende una postura con razones","Descriptivo, porque explica cómo funciona la IA","Informativo, porque solo presenta datos objetivos"],
+correcta:1,explicacion:"El texto defiende una tesis (la IA no es amenaza) con argumentos, recursos retóricos y ejemplos, lo que lo clasifica como argumentativo."},
+
+{text:`Investigaciones recientes en neurociencia cognitiva sugieren que el aprendizaje más eficiente no ocurre durante el estudio intensivo, sino en los períodos de descanso que le siguen. Durante el sueño, el hipocampo transfiere información a la corteza cerebral para su almacenamiento a largo plazo. Este proceso, denominado consolidación mnémica, explica por qué estudiar de forma distribuida —con pausas y sueño adecuado— supera ampliamente al método de «maratón de estudio» en la noche previa al examen. Las implicaciones para los sistemas educativos son evidentes: el calendario escolar debería diseñarse con base en la biología del aprendizaje, no en la conveniencia administrativa.`,
+pregunta:"¿Cuál es el objetivo principal de este ensayo académico?",
+opciones:["Describir cómo funciona el hipocampo","Comparar métodos de estudio sin llegar a conclusiones","Argumentar que los sistemas educativos deben basarse en la biología del aprendizaje","Definir el concepto de consolidación mnémica"],
+correcta:2,explicacion:"El autor presenta evidencia científica para llegar a la propuesta de que el diseño educativo debe basarse en la biología, no en criterios administrativos."},
+
+{text:`Investigaciones recientes en neurociencia cognitiva sugieren que el aprendizaje más eficiente no ocurre durante el estudio intensivo, sino en los períodos de descanso que le siguen. Durante el sueño, el hipocampo transfiere información a la corteza cerebral para su almacenamiento a largo plazo. Este proceso, denominado consolidación mnémica, explica por qué estudiar de forma distribuida —con pausas y sueño adecuado— supera ampliamente al método de «maratón de estudio» en la noche previa al examen. Las implicaciones para los sistemas educativos son evidentes: el calendario escolar debería diseñarse con base en la biología del aprendizaje, no en la conveniencia administrativa.`,
+pregunta:"Según el texto, ¿qué ocurre durante el sueño en relación con el aprendizaje?",
+opciones:["El cerebro olvida información irrelevante para liberar espacio","El hipocampo transfiere información a la corteza para almacenarla","La corteza cerebral revisa los errores cometidos durante el estudio","El cuerpo recarga energía para volver a estudiar con eficiencia"],
+correcta:1,explicacion:"El texto indica explícitamente que durante el sueño 'el hipocampo transfiere información a la corteza cerebral para su almacenamiento a largo plazo'."},
+
+{text:`Investigaciones recientes en neurociencia cognitiva sugieren que el aprendizaje más eficiente no ocurre durante el estudio intensivo, sino en los períodos de descanso que le siguen. Durante el sueño, el hipocampo transfiere información a la corteza cerebral para su almacenamiento a largo plazo. Este proceso, denominado consolidación mnémica, explica por qué estudiar de forma distribuida —con pausas y sueño adecuado— supera ampliamente al método de «maratón de estudio» en la noche previa al examen. Las implicaciones para los sistemas educativos son evidentes: el calendario escolar debería diseñarse con base en la biología del aprendizaje, no en la conveniencia administrativa.`,
+pregunta:"¿Qué significa la expresión 'conveniencia administrativa' en el contexto del texto?",
+opciones:["La facilidad de los docentes para calificar exámenes","Los criterios organizativos y prácticos de las instituciones, independientes del aprendizaje","El horario conveniente para los estudiantes","Las normas de la Secretaría de Educación Pública"],
+correcta:1,explicacion:"El autor critica que el calendario escolar responde a factores de organización institucional y no a cómo aprende el cerebro."},
+
+// ══════════════════════════════════════════════
+// ÁMBITO LITERARIO — Cuento y poema
+// Habilidades: Identificación · Interpretar · Evaluación (figuras retóricas, secuencia narrativa)
+// ══════════════════════════════════════════════
+
+{text:`El hombre llegó al pueblo con una maleta pequeña y una historia más pequeña aún. Nadie le preguntó de dónde venía; en ese lugar, los forasteros eran bienvenidos siempre que no hicieran preguntas. Él no hizo ninguna. Cada mañana barría la entrada de su cuarto de hotel, cada tarde miraba el horizonte como si esperara algo que ya sabía que no iba a llegar. Un día, sin decir adiós, recogió su maleta y partió. El polvo del camino lo fue borrando despacio, igual que había borrado a todos los que llegaron antes que él.`,
+pregunta:"¿Qué elemento del cuento indica que el personaje tenía un pasado doloroso?",
+opciones:["Que barría la entrada de su cuarto cada mañana","Que miraba el horizonte esperando algo que sabía que no llegaría","Que nadie le preguntó de dónde venía","Que llevaba una maleta pequeña"],
+correcta:1,explicacion:"La frase 'esperaba algo que ya sabía que no iba a llegar' sugiere una pérdida o frustración previa que el personaje ya ha aceptado con resignación."},
+
+{text:`El hombre llegó al pueblo con una maleta pequeña y una historia más pequeña aún. Nadie le preguntó de dónde venía; en ese lugar, los forasteros eran bienvenidos siempre que no hicieran preguntas. Él no hizo ninguna. Cada mañana barría la entrada de su cuarto de hotel, cada tarde miraba el horizonte como si esperara algo que ya sabía que no iba a llegar. Un día, sin decir adiós, recogió su maleta y partió. El polvo del camino lo fue borrando despacio, igual que había borrado a todos los que llegaron antes que él.`,
+pregunta:"¿Qué figura retórica está presente en 'El polvo del camino lo fue borrando despacio, igual que había borrado a todos los que llegaron antes que él'?",
+opciones:["Hipérbole, porque exagera el poder del polvo","Símil, porque compara el destino del personaje con el de otros forasteros usando 'igual que'","Personificación, porque el polvo actúa como si fuera un ser vivo con intenciones","Metáfora, porque el polvo representa directamente el olvido sin comparación explícita"],
+correcta:1,explicacion:"El texto usa 'igual que' para establecer una comparación explícita entre el destino del protagonista y el de quienes llegaron antes, lo que constituye un símil."},
+
+{text:`El hombre llegó al pueblo con una maleta pequeña y una historia más pequeña aún. Nadie le preguntó de dónde venía; en ese lugar, los forasteros eran bienvenidos siempre que no hicieran preguntas. Él no hizo ninguna. Cada mañana barría la entrada de su cuarto de hotel, cada tarde miraba el horizonte como si esperara algo que ya sabía que no iba a llegar. Un día, sin decir adiós, recogió su maleta y partió. El polvo del camino lo fue borrando despacio, igual que había borrado a todos los que llegaron antes que él.`,
+pregunta:"¿Cuál es el mensaje central de este cuento?",
+opciones:["Los forasteros nunca son bienvenidos en los pueblos pequeños","El olvido y la soledad son el destino de quienes huyen de su pasado","Los hombres no deben viajar solos sin un propósito claro","La amistad es imposible entre personas de lugares distintos"],
+correcta:1,explicacion:"El cuento plantea que quienes llegan sin historia y parten sin despedida son absorbidos por el olvido, reflejado en la imagen del polvo que borra a todos por igual."},
+
+{text:`Soy el espacio que existe
+entre una palabra y la siguiente,
+el silencio que respira
+donde el verso se detiene.
+
+No soy ausencia —soy pausa—
+la que hace al lector volver
+sobre lo dicho, y descubrir
+lo que el texto no quiso decir.`,
+pregunta:"¿Quién es el «yo» que habla en este poema?",
+opciones:["Un poeta que describe su proceso creativo","El lector que interpreta el texto","El silencio o la pausa dentro del poema","Una palabra que busca su significado"],
+correcta:2,explicacion:"El poema está escrito desde la perspectiva del silencio/pausa ('Soy el espacio que existe / entre una palabra y la siguiente'), que se personifica como el hablante lírico."},
+
+{text:`Soy el espacio que existe
+entre una palabra y la siguiente,
+el silencio que respira
+donde el verso se detiene.
+
+No soy ausencia —soy pausa—
+la que hace al lector volver
+sobre lo dicho, y descubrir
+lo que el texto no quiso decir.`,
+pregunta:"¿Qué figura retórica da voz al hablante lírico en este poema?",
+opciones:["Hipérbole, porque exagera la importancia del silencio","Personificación, porque el silencio habla y actúa como persona","Metáfora, porque compara el silencio con una palabra","Aliteración, porque repite sonidos para crear ritmo"],
+correcta:1,explicacion:"El silencio —un concepto abstracto— habla en primera persona y describe sus acciones ('que respira', 'hace al lector volver'), lo cual constituye una personificación."},
+
+{text:`Soy el espacio que existe
+entre una palabra y la siguiente,
+el silencio que respira
+donde el verso se detiene.
+
+No soy ausencia —soy pausa—
+la que hace al lector volver
+sobre lo dicho, y descubrir
+lo que el texto no quiso decir.`,
+pregunta:"¿Qué idea expresa el verso 'lo que el texto no quiso decir'?",
+opciones:["Que el autor cometió un error al escribir el poema","Que existen significados implícitos más allá de las palabras escritas","Que el texto es incoherente o está incompleto","Que el lector no es capaz de entender la poesía"],
+correcta:1,explicacion:"El verso alude al subtexto o significado implícito: lo que se comunica no solo con palabras sino con silencios, pausas y lo no dicho."},
+
+// ══════════════════════════════════════════════
+// ÁMBITO DE PARTICIPACIÓN SOCIAL — Noticia y documento administrativo
+// Habilidades: Identificación · Interpretar · Evaluación
+// ══════════════════════════════════════════════
+
+{text:`CIUDAD DE MÉXICO, 14 de marzo. — El Consejo Universitario aprobó ayer, con 38 votos a favor y 4 en contra, la modificación al Reglamento de Titulación que elimina el requisito de examen profesional oral para licenciaturas con más del 85% de aprobación histórica. La medida entra en vigor el próximo ciclo escolar y aplica a 23 de las 31 carreras que ofrece la institución. Las facultades excluidas deberán presentar un plan de adecuación en un plazo no mayor a seis meses. El rector destacó que la reforma reduce la brecha entre egresados y titulados, actualmente de 40 puntos porcentuales.`,
+pregunta:"¿Cuál es el tema central de esta noticia?",
+opciones:["La crisis en los exámenes profesionales de todas las universidades","La aprobación de una reforma que elimina el examen oral en algunas carreras","La renuncia del rector por conflictos con el Consejo Universitario","El aumento en el número de estudiantes universitarios"],
+correcta:1,explicacion:"La noticia informa sobre la aprobación de una modificación reglamentaria que elimina el examen oral en licenciaturas con alto historial de aprobación."},
+
+{text:`CIUDAD DE MÉXICO, 14 de marzo. — El Consejo Universitario aprobó ayer, con 38 votos a favor y 4 en contra, la modificación al Reglamento de Titulación que elimina el requisito de examen profesional oral para licenciaturas con más del 85% de aprobación histórica. La medida entra en vigor el próximo ciclo escolar y aplica a 23 de las 31 carreras que ofrece la institución. Las facultades excluidas deberán presentar un plan de adecuación en un plazo no mayor a seis meses. El rector destacó que la reforma reduce la brecha entre egresados y titulados, actualmente de 40 puntos porcentuales.`,
+pregunta:"¿Qué deben hacer las facultades que NO quedan incluidas en la reforma?",
+opciones:["Aplicar el examen oral de manera obligatoria por dos años más","Presentar un plan de adecuación en un plazo máximo de seis meses","Solicitar su inclusión directamente al rector de la institución","Esperar a que el Consejo Universitario vote de nuevo en su favor"],
+correcta:1,explicacion:"El texto dice explícitamente: 'Las facultades excluidas deberán presentar un plan de adecuación en un plazo no mayor a seis meses'."},
+
+{text:`CIUDAD DE MÉXICO, 14 de marzo. — El Consejo Universitario aprobó ayer, con 38 votos a favor y 4 en contra, la modificación al Reglamento de Titulación que elimina el requisito de examen profesional oral para licenciaturas con más del 85% de aprobación histórica. La medida entra en vigor el próximo ciclo escolar y aplica a 23 de las 31 carreras que ofrece la institución. Las facultades excluidas deberán presentar un plan de adecuación en un plazo no mayor a seis meses. El rector destacó que la reforma reduce la brecha entre egresados y titulados, actualmente de 40 puntos porcentuales.`,
+pregunta:"¿Qué implica que la brecha entre egresados y titulados sea de 40 puntos porcentuales?",
+opciones:["Que el 40% de los estudiantes no egresa de sus carreras","Que muchos egresados no logran obtener su título profesional","Que el examen oral reprueba al 40% de los sustentantes","Que solo el 40% de los titulados trabaja en su área"],
+correcta:1,explicacion:"Una brecha del 40% entre egresados y titulados significa que hay muchos estudiantes que terminan sus materias pero no consiguen el título, problema que la reforma busca reducir."},
+
+{text:`Ciudad de México, 27 de enero de 2022
 
 A quien corresponda:
 
-Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz. Entre sus virtudes también destacan la habilidad de trabajar bajo presión y la improvisación ante situaciones imprevistas. En su empleo anterior se desempeñó como obrero y luego como supervisor de control de calidad de una reconocida panificadora, y siempre supo estar a la altura de su empresa, su puesto y su labor.
-
-Por lo anterior, me permito reiterarle mi recomendación y extiendo la misma para los fines que al señor Gaona le puedan interesar. Sin más que añadir, quedo a sus órdenes.
+Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz. Entre sus virtudes también destacan la habilidad de trabajar bajo presión y la improvisación ante situaciones imprevistas.
 
 Q. F. B. Omar Gómez Gutiérrez
-Correo electrónico: omargutierrez@gmail.com
-Tel: 35458967`,pregunta:"¿Cuál es la finalidad del texto anterior?",opciones:["Recomendar a una persona para un trabajo","Contratar a una persona","Notificar a una persona de su contratación"],correcta:0,explicacion:"El texto es una carta de recomendación laboral para Diego Gaona."},
-    
-    {text:`Ciudad de México, 27 de enero de 2022
+Correo: omargutierrez@gmail.com
+Tel: 35458967`,
+pregunta:"¿Cuál es la finalidad de este documento?",
+opciones:["Notificar al señor Gaona de su contratación","Recomendar a una persona para un puesto de trabajo","Solicitar referencias del señor Gaona a otras empresas","Informar sobre el desempeño negativo de un empleado"],
+correcta:1,explicacion:"El texto es una carta de recomendación laboral cuya finalidad es avalar las cualidades de Diego Gaona ante quien contrate."},
+
+{text:`Ciudad de México, 27 de enero de 2022
 
 A quien corresponda:
 
-Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz. Entre sus virtudes también destacan la habilidad de trabajar bajo presión y la improvisación ante situaciones imprevistas. En su empleo anterior se desempeñó como obrero y luego como supervisor de control de calidad de una reconocida panificadora, y siempre supo estar a la altura de su empresa, su puesto y su labor.
+Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz. Entre sus virtudes también destacan la habilidad de trabajar bajo presión y la improvisación ante situaciones imprevistas.
 
-Por lo anterior, me permito reiterarle mi recomendación y extiendo la misma para los fines que al señor Gaona le puedan interesar. Sin más que añadir, quedo a sus órdenes.
+Q. F. B. Omar Gómez Gutiérrez
+Correo: omargutierrez@gmail.com
+Tel: 35458967`,
+pregunta:"¿Qué relación existe entre Omar Gómez y Diego Gaona?",
+opciones:["Son amigos de la infancia","Omar fue primero jefe y luego colega de Diego","Diego fue jefe de Omar durante cinco años","Son familiares que trabajaron en la misma empresa"],
+correcta:1,explicacion:"El texto indica que Gaona 'se ha desempeñado como mi subordinado, primero, y como mi homólogo', es decir, Omar fue su superior y luego fue su par."},
 
-Q. F. B. Omar Gómez Gutiérrez`,pregunta:"¿Cuál NO es una cualidad de Diego Gaona?",opciones:["Ser creativo","El dominio de lenguajes de programación","El trabajo bajo presión"],correcta:1,explicacion:"El texto menciona creatividad y trabajo bajo presión, pero nunca menciona programación."},
-    
-    {text:`Ciudad de México, 27 de enero de 2022
+{text:`CONVOCATORIA
 
-A quien corresponda:
+La Dirección General de Becas invita a estudiantes de licenciatura a postularse a la Beca de Excelencia Académica, con los siguientes requisitos:
+• Promedio mínimo de 9.0 en el ciclo inmediato anterior
+• No haber reprobado ninguna materia en los últimos dos ciclos
+• Carta de motivos (máximo 500 palabras)
+• Comprobante de inscripción vigente
 
-Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz. Entre sus virtudes también destacan la habilidad de trabajar bajo presión y la improvisación ante situaciones imprevistas. En su empleo anterior se desempeñó como obrero y luego como supervisor de control de calidad de una reconocida panificadora, y siempre supo estar a la altura de su empresa, su puesto y su labor.`,pregunta:"Según el texto, Diego Gaona ha trabajado como...",opciones:["Químico en un laboratorio de análisis","Programador en una compañía de software","Supervisor en una panificadora"],correcta:2,explicacion:"El texto indica que trabajó como supervisor de control de calidad en una panificadora."},
-    
-    {text:`Ciudad de México, 27 de enero de 2022
+Las solicitudes se recibirán del 1 al 28 de febrero. No se aceptarán documentos incompletos ni entregas fuera del plazo. La resolución se publicará el 15 de marzo en el portal institucional.`,
+pregunta:"¿Cuál NO es un requisito para solicitar la beca?",
+opciones:["Carta de motivos de máximo 500 palabras","Comprobante de inscripción vigente","Carta de recomendación de un docente","Promedio mínimo de 9.0"],
+correcta:2,explicacion:"La convocatoria lista cuatro requisitos y ninguno de ellos es una carta de recomendación docente. Incluirla sería un error de identificación de la información."},
 
-A quien corresponda:
+{text:`CONVOCATORIA
 
-Por medio de la presente, me permito recomendar ampliamente al C. Diego Alberto Gaona Ríos para desempeñar el puesto que solicita. Conozco al señor Gaona desde hace más de cinco años, mismos en los que se ha desempeñado como mi subordinado, primero, y como mi homólogo en el puesto de trabajo que hasta ahora ha desempeñado, y puedo decir que es una persona responsable, comprometida, creativa, considerada y, en general, sumamente capaz.`,pregunta:"¿Qué relación hay entre el interesado y el remitente?",opciones:["Han sido compañeros de trabajo","Son amigos desde hace años","Uno es el actual jefe del otro"],correcta:0,explicacion:"El texto dice que ahora son homólogos (compañeros), antes fue subordinado."},
+La Dirección General de Becas invita a estudiantes de licenciatura a postularse a la Beca de Excelencia Académica, con los siguientes requisitos:
+• Promedio mínimo de 9.0 en el ciclo inmediato anterior
+• No haber reprobado ninguna materia en los últimos dos ciclos
+• Carta de motivos (máximo 500 palabras)
+• Comprobante de inscripción vigente
 
-    // ============================================
-    // TEXTOS ADMINISTRATIVOS - CONVOCATORIA
-    // ============================================
-    {text:`PREMIO NACIONAL DE POESÍA JOVEN ELÍAS NANDINO 2022
+Las solicitudes se recibirán del 1 al 28 de febrero. No se aceptarán documentos incompletos ni entregas fuera del plazo. La resolución se publicará el 15 de marzo en el portal institucional.`,
+pregunta:"Un estudiante entrega su solicitud completa el 28 de febrero, pero el comprobante de inscripción es del ciclo anterior. ¿Qué ocurrirá con su solicitud?",
+opciones:["Será aceptada porque se entregó dentro del plazo","Será rechazada porque el comprobante no es vigente","Podrá completarse hasta el 15 de marzo","Será evaluada con un puntaje menor"],
+correcta:1,explicacion:"La convocatoria exige 'comprobante de inscripción vigente' y aclara que 'no se aceptarán documentos incompletos', por lo que un comprobante del ciclo anterior invalida la solicitud."},
 
-La Secretaría de Cultura del Gobierno de la República convoca al Premio Nacional de Poesía Joven Elías Nandino 2022.
+{text:`REGLAMENTO INTERNO DE TRABAJO — Extracto
+Artículo 14. La jornada laboral será de lunes a viernes, de 8:00 a 17:00 horas, con una hora para alimentos de 13:00 a 14:00.
+Artículo 15. El trabajador que no registre su entrada o salida sin causa justificada será acreedor a un descuento equivalente a media jornada.
+Artículo 16. Las horas extras solo podrán laborarse con autorización escrita del jefe inmediato y serán remuneradas con el 100% adicional al salario ordinario por hora.
+Artículo 17. Todo trabajador inconforme con la liquidación de su salario deberá presentar por escrito su queja al Departamento de Recursos Humanos dentro de los tres días hábiles siguientes al pago.`,
+pregunta:"Según el reglamento, ¿qué debe hacer un empleado inconforme con su liquidación?",
+opciones:["Hablar directamente con su jefe inmediato ese mismo día","Presentar una queja por escrito a RR.HH. dentro de tres días hábiles","Acudir a la Junta de Conciliación y Arbitraje de inmediato","Esperar el siguiente periodo de pago para resolver la inconformidad"],
+correcta:1,explicacion:"El Artículo 17 establece que el trabajador inconforme debe presentar queja por escrito al Departamento de RR.HH. dentro de los tres días hábiles siguientes al pago."},
 
-DEL ASPIRANTE
-1.- Podrán participar todos los escritores mexicanos por nacimiento, residentes en el país o en el extranjero, de hasta 34 años cumplidos al cierre de la convocatoria.
-2.- No podrán participar quienes hayan recibido el premio en emisiones anteriores.
+{text:`REGLAMENTO INTERNO DE TRABAJO — Extracto
+Artículo 14. La jornada laboral será de lunes a viernes, de 8:00 a 17:00 horas, con una hora para alimentos de 13:00 a 14:00.
+Artículo 15. El trabajador que no registre su entrada o salida sin causa justificada será acreedor a un descuento equivalente a media jornada.
+Artículo 16. Las horas extras solo podrán laborarse con autorización escrita del jefe inmediato y serán remuneradas con el 100% adicional al salario ordinario por hora.
+Artículo 17. Todo trabajador inconforme con la liquidación de su salario deberá presentar por escrito su queja al Departamento de Recursos Humanos dentro de los tres días hábiles siguientes al pago.`,
+pregunta:"¿En qué ámbito social se ubica este tipo de texto?",
+opciones:["Ámbito literario, porque narra situaciones laborales cotidianas","Ámbito académico, porque explica conceptos de derecho laboral","Ámbito de participación social, porque regula relaciones en una organización","Ámbito periodístico, porque informa sobre condiciones de trabajo"],
+correcta:2,explicacion:"Un reglamento interno es un documento administrativo que norma la convivencia en una organización, lo que lo ubica en el ámbito de participación social."},
 
-DE LA OBRA
-1.- Cada participante deberá enviar en formato PDF un libro inédito de poemas escrito en español o en lengua Wixárika, con un mínimo de 50 y un máximo de 80 cuartillas, de tema y forma libres.`,pregunta:"¿Cuál de las siguientes opciones NO es verdad sobre la convocatoria?",opciones:["El tema de la obra es libre","Se admiten obras de máximo 120 cuartillas","Solo pueden participar mexicanos"],correcta:1,explicacion:"La convocatoria establece máximo 80 cuartillas, no 120."},
-    
-    {text:`PREMIO NACIONAL DE POESÍA JOVEN ELÍAS NANDINO 2022
-
-DE LA OBRA
-1.- Cada participante deberá enviar en formato PDF un libro inédito de poemas escrito en español o en lengua Wixárika, con un mínimo de 50 y un máximo de 80 cuartillas, de tema y forma libres.`,pregunta:"En el concurso pueden participar obras escritas en...",opciones:["Español","Español, inglés y wixárika","Español o wixárika"],correcta:2,explicacion:"Solo se aceptan obras en español o wixárika (no inglés)."},
-    
-    {text:`PREMIO NACIONAL DE POESÍA JOVEN ELÍAS NANDINO 2022
-
-DEL ASPIRANTE
-1.- Podrán participar todos los escritores mexicanos por nacimiento, residentes en el país o en el extranjero, de hasta 34 años cumplidos.
-2.- No podrán participar quienes hayan recibido el premio en emisiones anteriores ni trabajadores de las instituciones convocantes.`,pregunta:"¿Cuál de los siguientes NO puede participar en el concurso?",opciones:["Quien haya ganado una edición previa del concurso","Un mexicano que resida en el extranjero","Alguien que hable una lengua indígena"],correcta:0,explicacion:"Explícitamente se excluye a ganadores de ediciones anteriores."},
-    
-    {text:`PREMIO NACIONAL DE POESÍA JOVEN ELÍAS NANDINO 2022
-
-DEL ASPIRANTE
-Podrán participar todos los escritores mexicanos por nacimiento, de hasta 34 años. El tema es libre.`,pregunta:"¿Cuál de las siguientes NO es una restricción para participar?",opciones:["La nacionalidad","El tema","La edad"],correcta:1,explicacion:"El tema es libre, no es una restricción."},
-
-    // ============================================
-    // TEXTOS ADMINISTRATIVOS - REGLAMENTO LABORAL
-    // ============================================
-    {text:`REGLAMENTO - JORNADA DE TRABAJO Y SALARIOS
-
-ARTÍCULO 13º Cuando algún trabajador no esté conforme con la liquidación de su raya deberá manifestarlo inmediatamente al patrón y/o representantes para que se corrijan la irregularidad si es que hubiera.`,pregunta:"Según el reglamento, un empleado inconforme con su liquidación debe...",opciones:["Resignarse y firmar su renuncia","Presentar una denuncia ante las autoridades","Notificarlo inmediatamente a su patrón"],correcta:2,explicacion:"El artículo 13 indica que debe manifestarlo inmediatamente al patrón."},
-    
-    {text:`REGLAMENTO - JORNADA DE TRABAJO Y SALARIOS
-
-Este reglamento establece horarios laborales, salarios, descansos y derechos de los trabajadores conforme a la Ley Federal del Trabajo.`,pregunta:"¿En qué tipo de ámbito tiene cabida el texto anterior?",opciones:["Laboral","Jurídico","Académico"],correcta:0,explicacion:"Es un reglamento laboral que regula relaciones de trabajo."},
-    
-    {text:`REGLAMENTO
-
-ARTÍCULO 10º Cuando por necesidades de la empresa, el patrón ordene horas extras, expedirá por escrito esta ordenanza. Los servicios en este lapso se pagarán al doble, no excederán de 3 horas por jornada ni de tres veces por semana.`,pregunta:"Según el texto, de requerirse horas extras, el patrón debe...",opciones:["Pagar el doble de los honorarios","Manifestarlo por escrito","Limitar a máximo de cuatro horas extra"],correcta:1,explicacion:"El artículo establece que debe expedirse por escrito."},
-    
-    {text:`REGLAMENTO
-
-ARTÍCULO 8º Todo el personal checará su hora respectiva, tanto a la entrada como a la salida por lo que la falta de tal requisito, se considera como falta injustificada a sus labores.`,pregunta:"¿Qué ocurre cuando un empleado no registra su entrada y/o salida?",opciones:["Será sancionado","Será despedido","Se considera como una falta"],correcta:2,explicacion:"Se considera falta injustificada según el artículo 8."},
-    
-    {text:`REGLAMENTO
-
-ARTÍCULO 7º La jornada semanal será de lunes a sábado. Los trabajadores descansarán el día domingo.`,pregunta:"La jornada laboral deberá abarcar...",opciones:["De lunes a sábado","Seis días de la semana","De lunes a viernes"],correcta:0,explicacion:"El artículo 7 establece claramente lunes a sábado."},
-
-    // ============================================
-    // TEXTOS ADMINISTRATIVOS - CORREO ELECTRÓNICO
-    // ============================================
-    {text:`Guadalajara, Jalisco, 22 de agosto de 2022
-
-Señorita Robles:
-
-Hemos atendido su queja relacionada con el estado defectuoso de un juego de altavoces con número de serie ENQBC05568. El equipo defectuoso será reemplazado como lo estipula nuestra garantía.`,pregunta:"¿De qué tipo de producto se habla en el texto?",opciones:["Un celular","Unas bocinas","Una televisión"],correcta:1,explicacion:"Se menciona un juego de altavoces (bocinas)."},
-    
-    {text:`Es necesario que envíe una respuesta a este correo electrónico adjuntando en formato PDF una identificación oficial, su ticket de compra y el formato de garantía.`,pregunta:"¿Qué documento NO se menciona en el texto?",opciones:["Identificación oficial","Ticket de compra","Queja por escrito"],correcta:2,explicacion:"No solicitan queja por escrito, solo ID, ticket y formato de garantía."},
-    
-    {text:`Es necesario que envíe una respuesta a este correo electrónico adjuntando en formato PDF una identificación oficial, su ticket de compra y el formato de garantía.`,pregunta:"De acuerdo con el texto, los documentos deben presentarse...",opciones:["En PDF","Por triplicado","Por duplicado"],correcta:0,explicacion:"Deben adjuntarse en formato PDF."},
-
-    // ============================================
-    // TEXTOS ADMINISTRATIVOS - OFICIO/INSTRUCTIVO PROFECO
-    // ============================================
-    {text:`¿CÓMO PRESENTAR UNA QUEJA?
-
-Requisitos:
-• Tu nombre y domicilio
-• Identificación oficial
-• Toda la documentación relacionada con tu reclamación
-• Nombre y domicilio del proveedor`,pregunta:"¿Cuál NO se menciona como un requisito para presentar una queja?",opciones:["Identificación oficial","Comprobante de domicilio","Datos de la persona que presenta la queja"],correcta:1,explicacion:"Se pide domicilio pero no comprobante de domicilio."},
-    
-    {text:`¿CÓMO PRESENTAR UNA QUEJA?
-
-Nos puedes escribir a: asesoria@profeco.gob.mx`,pregunta:"¿Qué medio de contacto ofrece esta instancia para presentar una queja?",opciones:["Dirección","Número de teléfono","Correo electrónico"],correcta:2,explicacion:"Se proporciona un correo electrónico."},
-    
-    {text:`¿Cuándo Profeco no es competente?
-
-No podemos atender tu queja cuando el problema se derive de:
-• Una relación o contrato de trabajo`,pregunta:"¿Qué ocurre si una persona presenta una queja sobre una situación vivida en su trabajo?",opciones:["No se pueden presentar ese tipo de quejas","Se redireccionará a otro sitio","Se resolverá con mayor demora"],correcta:0,explicacion:"Profeco no es competente en relaciones laborales."},
-    
-    {text:`Requisitos:
-• Identificación oficial
-• Toda la documentación relacionada con tu reclamación (facturas, recibos, contratos)`,pregunta:"¿Cuál es un documento válido para presentar?",opciones:["Fotografía de una factura","Un recibo","Carta escrita a mano"],correcta:1,explicacion:"Se aceptan recibos como documentación."},
-    
-    {text:`1. De manera presencial en la Oficina de Defensa del Consumidor (ODECO) o en línea.
-3. Nos puedes escribir a: asesoria@profeco.gob.mx`,pregunta:"Según el texto, una queja se puede presentar en...",opciones:["Solo a través de correo electrónico","Por WhatsApp, correo o presencial","Las oficinas de la ODECO o a través de correo electrónico"],correcta:2,explicacion:"Se puede presencial en ODECO o por correo (no WhatsApp)."},
-
-    // TEXTOS ACADÉMICOS Y LITERARIOS PREVIOS
-    {text:"La medicina personalizada representa un cambio paradigmático en el tratamiento de enfermedades. A diferencia del enfoque tradicional 'talla única', esta modalidad utiliza información genómica del paciente para personalizar diagnóstico, tratamiento y prevención. La farmacogenética permite predecir cómo un paciente metabolizará ciertos fármacos, evitando reacciones adversas y optimizando dosis. Sin embargo, desafíos como el costo elevado, consideraciones éticas sobre privacidad genética y la necesidad de infraestructura tecnológica limitan su implementación global.",pregunta:"¿Cuál es la principal ventaja de la farmacogenética?",opciones:["Predice cómo el paciente metabolizará fármacos","Es más barata que tratamientos tradicionales","Cura todas las enfermedades genéticas"],correcta:0,explicacion:"El texto indica que la farmacogenética permite predecir metabolismo de fármacos, evitando reacciones adversas."},
-    
-    {pregunta:"Un argumento de autoridad se basa en:",opciones:["Opinión personal del autor","Citas de expertos reconocidos","Emociones del lector"],correcta:1,explicacion:"Argumento de autoridad cita a expertos para respaldar afirmaciones."},
-    
-    {pregunta:"La función del abstract en un artículo científico es:",opciones:["Decoración","Agradecer a colaboradores","Resumir todo el estudio brevemente"],correcta:2,explicacion:"El abstract resume objetivos, métodos, resultados y conclusiones."},
-    
-    {pregunta:"En textos argumentativos, la contraargumentación sirve para:",opciones:["Refutar posiciones opuestas","Repetir la tesis","Confundir al lector"],correcta:0,explicacion:"La contraargumentación refuta objeciones anticipadas."},
-    
-    {pregunta:"El tono formal en textos académicos se caracteriza por:",opciones:["Uso de jerga y modismos","Lenguaje técnico y objetivo","Exceso de adjetivos emotivos"],correcta:1,explicacion:"Textos académicos usan lenguaje técnico, preciso y objetivo."},
-
-    // Agrego 90 preguntas más variadas de comprensión lectora...
-    {pregunta:"La cohesión textual se logra mediante:",opciones:["Oraciones sin relación","Solo puntos","Conectores y referencias"],correcta:2,explicacion:"Cohesión usa conectores, pronombres y referencias que unen ideas."},
-    
-    {pregunta:"Una cita textual debe:",opciones:["Reproducir exactamente entre comillas","Omitir la fuente","Modificar palabras del autor"],correcta:0,explicacion:"Citas textuales reproducen exactamente y requieren comillas y fuente."},
-    
-    {pregunta:"La idea principal de un párrafo generalmente está en:",opciones:["Solo al final del texto","La primera o última oración","No existe idea principal"],correcta:1,explicacion:"La idea principal suele estar al inicio o final del párrafo."},
-    
-    {pregunta:"Un texto expositivo tiene como objetivo:",opciones:["Convencer al lector","Entretener solamente","Informar objetivamente"],correcta:2,explicacion:"Textos expositivos informan de manera objetiva sobre un tema."},
-    
-    {pregunta:"La bibliografía en un trabajo académico:",opciones:["Lista las fuentes consultadas","Solo incluye libros","Es opcional"],correcta:0,explicacion:"La bibliografía lista TODAS las fuentes usadas (libros, artículos, web)."},
-
-    // [Por espacio, represento que hay 100 preguntas, pero muestro el patrón]
-    // Total: 100 preguntas de comprensión lectora
 ];
 
-console.log("✅ Comprensión Lectora cargado:", PREGUNTAS_COMPRENSION.length, "preguntas");
+console.log("✅ Comprensión Lectora EXANI-II:", PREGUNTAS_COMPRENSION.length, "preguntas");

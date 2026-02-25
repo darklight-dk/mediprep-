@@ -1,25 +1,29 @@
 // ============================================
 // ÍNDICE DE PREGUNTAS - MEDIPREP SMART
+// CENEVAL EXANI-II — Alineado al temario oficial 2025
 // ============================================
-// Este archivo une todas las preguntas de los
-// archivos separados en un solo objeto PREGUNTAS
-
-// IMPORTANTE: Cargar ANTES de este archivo:
-// preguntas-comprension.js
-// preguntas-redaccion.js
-// preguntas-matematicas.js
-// preguntas-premedicina.js
+// Carga DESPUÉS de:
+//   preguntas-comprension.js
+//   preguntas-redaccion.js
+//   preguntas-matematicas.js
+//   preguntas-premedicina.js
 
 const PREGUNTAS = {
-    comprension: PREGUNTAS_COMPRENSION,
-    redaccion:   PREGUNTAS_REDACCION,
-    matematicas: PREGUNTAS_MATEMATICAS,
-    medicina:    PREGUNTAS_PREMEDICINA
+    comprension: typeof PREGUNTAS_COMPRENSION !== 'undefined' ? PREGUNTAS_COMPRENSION : [],
+    redaccion:   typeof PREGUNTAS_REDACCION   !== 'undefined' ? PREGUNTAS_REDACCION   : [],
+    matematicas: typeof PREGUNTAS_MATEMATICAS !== 'undefined' ? PREGUNTAS_MATEMATICAS : [],
+    medicina:    typeof PREGUNTAS_PREMEDICINA !== 'undefined' ? PREGUNTAS_PREMEDICINA : []
 };
 
-console.log("✅ BANCO COMPLETO CARGADO");
-console.log("📊 Comprensión:",  PREGUNTAS.comprension.length);
-console.log("📊 Redacción:",    PREGUNTAS.redaccion.length);
-console.log("📊 Matemáticas:",  PREGUNTAS.matematicas.length);
-console.log("📊 Medicina:",     PREGUNTAS.medicina.length);
-console.log("🎯 TOTAL:", PREGUNTAS.comprension.length + PREGUNTAS.redaccion.length + PREGUNTAS.matematicas.length + PREGUNTAS.medicina.length);
+// PREGUNTAS_EXAMEN — alias requerido por app.js para los simulacros
+// Las matemáticas del examen oficial usan el mismo banco
+const PREGUNTAS_EXAMEN = {
+    matematicas: PREGUNTAS.matematicas
+};
+
+console.log("✅ BANCO COMPLETO CARGADO — EXANI-II 2025");
+console.log("📖 Comprensión:", PREGUNTAS.comprension.length, "preguntas");
+console.log("✍️  Redacción:",   PREGUNTAS.redaccion.length,   "preguntas");
+console.log("🔢 Matemáticas:", PREGUNTAS.matematicas.length, "preguntas");
+console.log("🏥 Medicina:",    PREGUNTAS.medicina.length,    "preguntas");
+console.log("🎯 TOTAL:",       PREGUNTAS.comprension.length + PREGUNTAS.redaccion.length + PREGUNTAS.matematicas.length + PREGUNTAS.medicina.length, "preguntas");
