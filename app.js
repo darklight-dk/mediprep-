@@ -154,8 +154,6 @@ function showActivationError(msg) {
 // validateHash removed
 
 // generateChecksum removed
-    return Math.abs(hash).toString(36).toUpperCase().substring(0, 8).padEnd(8, '0');
-}
 
 function showActivationSuccess() {
     const activationScreen = document.getElementById('activationScreen');
