@@ -413,27 +413,6 @@ body::after {
 .hlc-arrow { color:var(--text-dim); font-size:1rem; flex-shrink:0; }
 
 /* ── HOME: TOOLS GRID ──────────────────────────────── */
-.home-tools-grid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:.5rem; margin-bottom:1.1rem;
-}
-.htool {
-  background:rgba(11,14,26,0.88); border:1px solid rgba(255,255,255,0.065);
-  border-radius:16px; padding:.9rem .5rem .78rem;
-  display:flex; flex-direction:column; align-items:center; gap:.32rem; text-align:center;
-  cursor:pointer; position:relative; overflow:hidden;
-  transition:border-color .2s, transform .22s cubic-bezier(.34,1.56,.64,1), background .2s, box-shadow .2s;
-}
-.htool::before {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(160deg, rgba(255,255,255,.022) 0%, transparent 55%); pointer-events:none;
-}
-.htool:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
-.htool:active { transform:scale(.93); }
-.htool-icon { font-size:1.4rem; line-height:1; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); transition:transform .28s cubic-bezier(.34,1.56,.64,1); }
-.htool:hover .htool-icon { transform:scale(1.15) translateY(-2px); }
-.htool-name { font-size:.68rem; font-weight:700; color:var(--text-2); line-height:1.2; }
-.htool-info { font-size:.58rem; color:var(--text-dim); font-weight:600; }
 
 /* ── HOME: ACHIEVEMENT BANNER ──────────────────────── */
 .home-achievement-banner {
@@ -1144,23 +1123,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 }
 
 /* ══ TOOL CARDS — color-coded individual ══════════ */
-.htool-db    { --tc: rgba(99,102,241,0.18);  --tb: rgba(99,102,241,0.1);  }
-.htool-srs   { --tc: rgba(16,185,129,0.18);  --tb: rgba(16,185,129,0.1);  }
-.htool-flash { --tc: rgba(168,85,247,0.18);  --tb: rgba(168,85,247,0.1);  }
-.htool-glos  { --tc: rgba(56,189,248,0.18);  --tb: rgba(56,189,248,0.1);  }
-.htool-plan  { --tc: rgba(245,158,11,0.18);  --tb: rgba(245,158,11,0.1);  }
-.htool-pom   { --tc: rgba(239,68,68,0.18);   --tb: rgba(239,68,68,0.1);   }
 
-.htool-db,.htool-srs,.htool-flash,.htool-glos,.htool-plan,.htool-pom {
-  border-color: var(--tc) !important;
-  background: var(--tb) !important;
-}
-.htool-db:hover    { box-shadow: 0 6px 20px rgba(99,102,241,0.18) !important;  border-color: rgba(99,102,241,0.5) !important; }
-.htool-srs:hover   { box-shadow: 0 6px 20px rgba(16,185,129,0.18) !important;  border-color: rgba(16,185,129,0.5) !important; }
-.htool-flash:hover { box-shadow: 0 6px 20px rgba(168,85,247,0.18) !important;  border-color: rgba(168,85,247,0.5) !important; }
-.htool-glos:hover  { box-shadow: 0 6px 20px rgba(56,189,248,0.18) !important;  border-color: rgba(56,189,248,0.5) !important; }
-.htool-plan:hover  { box-shadow: 0 6px 20px rgba(245,158,11,0.18) !important;  border-color: rgba(245,158,11,0.5) !important; }
-.htool-pom:hover   { box-shadow: 0 6px 20px rgba(239,68,68,0.18) !important;   border-color: rgba(239,68,68,0.5) !important; }
 
 /* ══ LIST CARD ACCENT LINES ════════════════════════ */
 .hlc-accent {
@@ -1255,6 +1218,41 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 }
 .hero-sub { color: var(--text-3); font-size: .88rem; font-weight: 500; line-height: 1.4; }
 
+
+/* ══ HERRAMIENTAS — same system as home-list-card ══════════════════════ */
+.home-tools-grid { display:flex; flex-direction:column; gap:.42rem; }
+
+.htool-db    { --tc:#818cf8; --tbg:rgba(99,102,241,.13);  --tbord:rgba(99,102,241,.22); }
+.htool-srs   { --tc:#34d399; --tbg:rgba(16,185,129,.13);  --tbord:rgba(16,185,129,.22); }
+.htool-flash { --tc:#c084fc; --tbg:rgba(168,85,247,.13);  --tbord:rgba(168,85,247,.22); }
+.htool-glos  { --tc:#38bdf8; --tbg:rgba(56,189,248,.13);  --tbord:rgba(56,189,248,.22); }
+.htool-plan  { --tc:#fbbf24; --tbg:rgba(245,158,11,.13);  --tbord:rgba(245,158,11,.22); }
+.htool-pom   { --tc:#f87171; --tbg:rgba(239,68,68,.13);   --tbord:rgba(239,68,68,.22);  }
+
+.htool-db  .hlc-accent,.htool-srs  .hlc-accent,.htool-flash .hlc-accent,
+.htool-glos .hlc-accent,.htool-plan .hlc-accent,.htool-pom  .hlc-accent {
+  background: var(--tc);
+}
+.htool-db  .hlc-icon,.htool-srs  .hlc-icon,.htool-flash .hlc-icon,
+.htool-glos .hlc-icon,.htool-plan .hlc-icon,.htool-pom  .hlc-icon {
+  background: var(--tbg); border: 1px solid var(--tbord);
+}
+.htool-db:hover,.htool-srs:hover,.htool-flash:hover,
+.htool-glos:hover,.htool-plan:hover,.htool-pom:hover {
+  border-color: var(--tbord) !important;
+  background: var(--tbg) !important;
+  box-shadow: 4px 0 20px rgba(0,0,0,.25), inset 0 0 0 1px var(--tbord);
+}
+.htool-db:hover .hlc-arrow,.htool-srs:hover .hlc-arrow,.htool-flash:hover .hlc-arrow,
+.htool-glos:hover .hlc-arrow,.htool-plan:hover .hlc-arrow,.htool-pom:hover .hlc-arrow {
+  color: var(--tc);
+}
+
+.htool-badge {
+  font-size:.58rem; font-weight:800; padding:.13rem .44rem; border-radius:20px;
+  font-family:var(--font-d); background:var(--tbg); color:var(--tc); border:1px solid var(--tbord);
+  line-height:1.4;
+}
 </style>
 </head>
 <body>
@@ -1603,36 +1601,68 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <p class="home-section-label home-animate home-animate-4" style="margin-top:.4rem;">Herramientas</p>
 
             <div class="home-tools-grid home-animate home-animate-4">
-                <div class="htool htool-db" onclick="showScreen('dashboardScreen')">
-                    <span class="htool-icon">📊</span>
-                    <span class="htool-name">Dashboard</span>
-                    <span class="htool-info">Analíticas</span>
+
+                <div class="home-list-card htool-db" onclick="showScreen('dashboardScreen')" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">📊</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Dashboard</div>
+                        <div class="hlc-sub">Tu progreso · Rachas · Analíticas</div>
+                    </div>
+                    <span class="hlc-arrow">›</span>
                 </div>
-                <div class="htool htool-srs" onclick="iniciarSRS()">
-                    <span class="htool-icon">🧠</span>
-                    <span class="htool-name">SRS</span>
-                    <span class="htool-info" id="srsDueBadge">Repaso</span>
+
+                <div class="home-list-card htool-srs" onclick="iniciarSRS()" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">🧠</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Repetición Espaciada <span style="font-size:.6rem;font-weight:800;opacity:.8;">SRS</span></div>
+                        <div class="hlc-sub">Memoriza para siempre · Algoritmo adaptativo</div>
+                    </div>
+                    <span class="htool-badge" id="srsDueBadge" style="margin-right:.3rem;">–</span>
+                    <span class="hlc-arrow">›</span>
                 </div>
-                <div class="htool htool-flash" onclick="showScreen('flashcardsMenuScreen')">
-                    <span class="htool-icon">🃏</span>
-                    <span class="htool-name">Flashcards</span>
-                    <span class="htool-info">Tarjetas</span>
+
+                <div class="home-list-card htool-flash" onclick="showScreen('flashcardsMenuScreen')" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">🃏</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Flashcards</div>
+                        <div class="hlc-sub">Tarjetas de memoria · Por tema</div>
+                    </div>
+                    <span class="hlc-arrow">›</span>
                 </div>
-                <div class="htool htool-glos" onclick="showScreen('glosarioScreen')">
-                    <span class="htool-icon">📖</span>
-                    <span class="htool-name">Glosario</span>
-                    <span class="htool-info">107 términos</span>
+
+                <div class="home-list-card htool-glos" onclick="showScreen('glosarioScreen')" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">📖</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Glosario Médico</div>
+                        <div class="hlc-sub">161 términos · Prefijos · Raíces</div>
+                    </div>
+                    <span class="hlc-arrow">›</span>
                 </div>
-                <div class="htool htool-plan" onclick="showScreen('planEstudioScreen')">
-                    <span class="htool-icon">📅</span>
-                    <span class="htool-name">Plan</span>
-                    <span class="htool-info">Automático</span>
+
+                <div class="home-list-card htool-plan" onclick="showScreen('planEstudioScreen')" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">📅</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Plan de Estudio</div>
+                        <div class="hlc-sub">Cronograma automático · Tu fecha de examen</div>
+                    </div>
+                    <span class="hlc-arrow">›</span>
                 </div>
-                <div class="htool htool-pom" onclick="showScreen('pomodoroScreen')">
-                    <span class="htool-icon">🍅</span>
-                    <span class="htool-name">Pomodoro</span>
-                    <span class="htool-info">25 / 5 min</span>
+
+                <div class="home-list-card htool-pom" onclick="showScreen('pomodoroScreen')" style="position:relative;overflow:hidden;">
+                    <div class="hlc-accent"></div>
+                    <div class="hlc-icon">🍅</div>
+                    <div style="flex:1;">
+                        <div class="hlc-title">Pomodoro</div>
+                        <div class="hlc-sub">25 min estudio · 5 min descanso</div>
+                    </div>
+                    <span class="hlc-arrow">›</span>
                 </div>
+
             </div>
 
             <!-- ── LOGROS ─────────────────────────────── -->
