@@ -1220,39 +1220,304 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
 
 /* ══ HERRAMIENTAS — same system as home-list-card ══════════════════════ */
-.home-tools-grid { display:flex; flex-direction:column; gap:.42rem; }
 
-.htool-db    { --tc:#818cf8; --tbg:rgba(99,102,241,.13);  --tbord:rgba(99,102,241,.22); }
-.htool-srs   { --tc:#34d399; --tbg:rgba(16,185,129,.13);  --tbord:rgba(16,185,129,.22); }
-.htool-flash { --tc:#c084fc; --tbg:rgba(168,85,247,.13);  --tbord:rgba(168,85,247,.22); }
-.htool-glos  { --tc:#38bdf8; --tbg:rgba(56,189,248,.13);  --tbord:rgba(56,189,248,.22); }
-.htool-plan  { --tc:#fbbf24; --tbg:rgba(245,158,11,.13);  --tbord:rgba(245,158,11,.22); }
-.htool-pom   { --tc:#f87171; --tbg:rgba(239,68,68,.13);   --tbord:rgba(239,68,68,.22);  }
 
-.htool-db  .hlc-accent,.htool-srs  .hlc-accent,.htool-flash .hlc-accent,
-.htool-glos .hlc-accent,.htool-plan .hlc-accent,.htool-pom  .hlc-accent {
-  background: var(--tc);
+
+
+/* ══ DRAWER MENU ════════════════════════════════════════════ */
+.drawer-overlay {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(0,0,0,0); pointer-events: none;
+  transition: background .3s ease;
 }
-.htool-db  .hlc-icon,.htool-srs  .hlc-icon,.htool-flash .hlc-icon,
-.htool-glos .hlc-icon,.htool-plan .hlc-icon,.htool-pom  .hlc-icon {
-  background: var(--tbg); border: 1px solid var(--tbord);
-}
-.htool-db:hover,.htool-srs:hover,.htool-flash:hover,
-.htool-glos:hover,.htool-plan:hover,.htool-pom:hover {
-  border-color: var(--tbord) !important;
-  background: var(--tbg) !important;
-  box-shadow: 4px 0 20px rgba(0,0,0,.25), inset 0 0 0 1px var(--tbord);
-}
-.htool-db:hover .hlc-arrow,.htool-srs:hover .hlc-arrow,.htool-flash:hover .hlc-arrow,
-.htool-glos:hover .hlc-arrow,.htool-plan:hover .hlc-arrow,.htool-pom:hover .hlc-arrow {
-  color: var(--tc);
+.drawer-overlay.open {
+  background: rgba(0,0,0,.65); pointer-events: all;
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
 }
 
-.htool-badge {
-  font-size:.58rem; font-weight:800; padding:.13rem .44rem; border-radius:20px;
-  font-family:var(--font-d); background:var(--tbg); color:var(--tc); border:1px solid var(--tbord);
-  line-height:1.4;
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(82vw, 320px); z-index: 1200;
+  background: #080b18;
+  border-left: 1px solid rgba(255,255,255,.07);
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  display: flex; flex-direction: column;
+  overflow: hidden;
 }
+.drawer.open { transform: translateX(0); }
+
+/* top gradient bar */
+.drawer::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+}
+
+.drawer-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.1rem .8rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.drawer-brand {
+  display: flex; align-items: center; gap: .55rem;
+}
+.drawer-brand-icon {
+  width: 36px; height: 36px; border-radius: 10px; font-size: 1.3rem;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg,rgba(99,102,241,.25),rgba(139,92,246,.2));
+  border: 1px solid rgba(99,102,241,.3);
+}
+.drawer-brand-name {
+  font-size: .95rem; font-weight: 800; color: #fff; letter-spacing: -.02em;
+}
+.drawer-brand-sub {
+  font-size: .6rem; color: var(--text-dim); font-weight: 600; letter-spacing: .05em;
+}
+.drawer-close {
+  width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.05); color: var(--text-3); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background .18s, color .18s;
+}
+.drawer-close:hover { background: rgba(239,68,68,.15); color: #f87171; border-color: rgba(239,68,68,.3); }
+
+.drawer-body {
+  flex: 1; overflow-y: auto; padding: .75rem .85rem;
+  -webkit-overflow-scrolling: touch;
+}
+.drawer-body::-webkit-scrollbar { width: 3px; }
+.drawer-body::-webkit-scrollbar-track { background: transparent; }
+.drawer-body::-webkit-scrollbar-thumb { background: rgba(99,102,241,.3); border-radius: 3px; }
+
+.drawer-section-label {
+  font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-dim); padding: .65rem .25rem .35rem; margin-top: .3rem;
+}
+.drawer-item {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .65rem .75rem; border-radius: 12px; cursor: pointer;
+  transition: background .18s, transform .18s;
+  margin-bottom: .18rem;
+  border: 1px solid transparent;
+}
+.drawer-item:hover {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.07);
+  transform: translateX(3px);
+}
+.drawer-item:active { transform: scale(.97); }
+.drawer-item-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+}
+.drawer-item-text { flex: 1; }
+.drawer-item-title { font-size: .82rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+.drawer-item-sub { font-size: .64rem; color: var(--text-dim); margin-top: .04rem; }
+.drawer-item-arrow { color: rgba(255,255,255,.2); font-size: .9rem; transition: color .18s; }
+.drawer-item:hover .drawer-item-arrow { color: rgba(255,255,255,.5); }
+
+/* Acerca de card */
+.drawer-about {
+  margin: .75rem 0 .5rem;
+  background: linear-gradient(135deg, rgba(99,102,241,.1), rgba(139,92,246,.07));
+  border: 1px solid rgba(99,102,241,.2); border-radius: 16px;
+  padding: 1.1rem;
+}
+.drawer-about-title {
+  font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--indigo-l); margin-bottom: .65rem; display: flex; align-items: center; gap: .4rem;
+}
+.drawer-about-text {
+  font-size: .75rem; color: var(--text-3); line-height: 1.65; margin-bottom: .55rem;
+}
+.drawer-about-tags {
+  display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .65rem;
+}
+.drawer-about-tag {
+  font-size: .58rem; font-weight: 700; padding: .18rem .5rem; border-radius: 20px;
+  background: rgba(99,102,241,.14); color: var(--indigo-l);
+  border: 1px solid rgba(99,102,241,.25); letter-spacing: .04em;
+}
+
+.drawer-footer {
+  padding: .8rem 1.1rem 1.1rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.drawer-footer-text {
+  text-align: center; font-size: .65rem; color: var(--text-dim); line-height: 1.7;
+}
+
+/* Hamburger button */
+.hamburger-btn {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4.5px;
+  cursor: pointer; border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  transition: background .18s, border-color .18s;
+}
+.hamburger-btn:hover { background: rgba(99,102,241,.15); border-color: rgba(99,102,241,.35); }
+.hamburger-btn span {
+  display: block; width: 16px; height: 1.5px; border-radius: 2px;
+  background: rgba(255,255,255,.8); transition: width .2s;
+}
+.hamburger-btn span:nth-child(2) { width: 11px; }
+.hamburger-btn:hover span { width: 16px; }
+
+/* ══ ACCESO ÚNICO ═══════════════════════════════════════════ */
+
+/* ── Home card ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: .6; }
+  50%  { transform: scale(1.12); opacity: .2; }
+  100% { transform: scale(1);   opacity: .6; }
+}
+@keyframes float-glow {
+  0%, 100% { box-shadow: 0 8px 40px rgba(251,191,36,.22), 0 0 0 1px rgba(251,191,36,.15); }
+  50%       { box-shadow: 0 14px 56px rgba(251,191,36,.38), 0 0 0 2px rgba(251,191,36,.28); }
+}
+
+.acceso-home-card {
+  position: relative; overflow: hidden; cursor: pointer;
+  border-radius: 20px; padding: 1.2rem 1.1rem;
+  background: linear-gradient(135deg, #1a1200 0%, #0d0d00 40%, #1a0a00 100%);
+  border: 1.5px solid rgba(251,191,36,.35);
+  animation: float-glow 3s ease-in-out infinite;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1);
+  -webkit-tap-highlight-color: transparent;
+}
+.acceso-home-card:hover  { transform: translateY(-3px) scale(1.01); }
+.acceso-home-card:active { transform: scale(.97); }
+
+/* shimmer layer */
+.acceso-home-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(105deg,
+    transparent 30%,
+    rgba(251,191,36,.08) 50%,
+    transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+  pointer-events: none;
+}
+
+/* corner badge */
+.acceso-home-card::after {
+  content: 'EXCLUSIVO';
+  position: absolute; top: 0; right: 0;
+  font-size: .48rem; font-weight: 900; letter-spacing: .12em;
+  padding: .3rem .65rem; border-radius: 0 18px 0 10px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #000; font-family: var(--font-d);
+}
+
+.acceso-crown {
+  font-size: 2.4rem; line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(251,191,36,.6));
+  animation: pulse-ring 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+.acceso-home-title {
+  font-size: 1.35rem; font-weight: 900; letter-spacing: -.02em; line-height: 1.1;
+  background: linear-gradient(135deg, #fbbf24 0%, #fde68a 50%, #f59e0b 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+.acceso-home-sub {
+  font-size: .75rem; color: rgba(251,191,36,.6); font-weight: 600; margin-top: .2rem;
+}
+.acceso-home-pill {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .62rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  padding: .22rem .7rem; border-radius: 20px;
+  background: rgba(251,191,36,.18); color: #fbbf24;
+  border: 1px solid rgba(251,191,36,.35); font-family: var(--font-d);
+  margin-top: .65rem;
+}
+.acceso-home-pills { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .55rem; }
+
+/* ── Inner screen ── */
+.acceso-screen-header {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #120d00, #0d0800, #160c00);
+  border-bottom: 1px solid rgba(251,191,36,.2);
+  padding: 1.4rem 1rem 1.1rem;
+  text-align: center;
+}
+.acceso-screen-header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, #fde68a, #fbbf24, transparent);
+}
+
+.acceso-section-label {
+  font-size: .6rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(251,191,36,.55); padding: 1rem .1rem .4rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.acceso-section-label::before, .acceso-section-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(251,191,36,.2), transparent);
+}
+
+.acceso-q-card {
+  position: relative; overflow: hidden;
+  background: rgba(251,191,36,.04);
+  border: 1px solid rgba(251,191,36,.14);
+  border-radius: 16px; margin-bottom: .85rem;
+  transition: border-color .18s, background .18s;
+}
+.acceso-q-card:hover { border-color: rgba(251,191,36,.28); background: rgba(251,191,36,.07); }
+
+.acceso-q-number {
+  font-size: .58rem; font-weight: 900; letter-spacing: .1em;
+  color: #fbbf24; font-family: var(--font-d);
+  background: rgba(251,191,36,.12); border-bottom: 1px solid rgba(251,191,36,.12);
+  padding: .4rem .85rem; display: flex; align-items: center; gap: .4rem;
+}
+.acceso-q-text {
+  font-size: .82rem; color: var(--text); line-height: 1.6;
+  padding: .75rem .85rem .5rem; font-weight: 600;
+}
+.acceso-q-options { padding: .1rem .85rem .75rem; display: flex; flex-direction: column; gap: .4rem; }
+
+.acceso-opt {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .55rem .7rem; border-radius: 10px;
+  font-size: .78rem; color: var(--text-3);
+  border: 1px solid transparent;
+  transition: background .15s;
+}
+.acceso-opt.correct {
+  background: rgba(34,197,94,.1); border-color: rgba(34,197,94,.25); color: #86efac;
+  font-weight: 700;
+}
+.acceso-opt.wrong { color: rgba(255,255,255,.25); text-decoration: line-through; }
+
+.acceso-opt-letter {
+  width: 22px; height: 22px; border-radius: 7px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 900; font-family: var(--font-d);
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  color: var(--text-2);
+}
+.acceso-opt.correct .acceso-opt-letter {
+  background: rgba(34,197,94,.2); border-color: rgba(34,197,94,.4); color: #4ade80;
+}
+.acceso-check { margin-left: auto; font-size: .9rem; }
+
+.acceso-img-box {
+  margin: .5rem .85rem; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(251,191,36,.15);
+  background: rgba(0,0,0,.3);
+  padding: .85rem; text-align: center;
+}
+.acceso-img-box svg { max-width: 200px; }
 </style>
 </head>
 <body>
@@ -1285,7 +1550,204 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <span>⚔️</span>
             <span id="headerXPVal">Nv.1</span>
         </div>
+        <div class="hamburger-btn" onclick="openDrawer()" title="Menú" id="hamburgerBtn">
+            <span></span><span></span><span></span>
+        </div>
     </header>
+
+    <!-- ══ DRAWER OVERLAY ════════════════════════════════════ -->
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+    <!-- ══ DRAWER ════════════════════════════════════════════ -->
+    <div class="drawer" id="mainDrawer">
+
+        <!-- Header -->
+        <div class="drawer-header">
+            <div class="drawer-brand">
+                <div class="drawer-brand-icon">🧬</div>
+                <div>
+                    <div class="drawer-brand-name">MediPrep Smart</div>
+                    <div class="drawer-brand-sub">EXANI-II · Premedicina</div>
+                </div>
+            </div>
+            <div class="drawer-close" onclick="closeDrawer()">✕</div>
+        </div>
+
+        <!-- Body -->
+        <div class="drawer-body">
+
+            <!-- ESTUDIA -->
+            <div class="drawer-section-label">⚡ Estudia</div>
+
+            <div class="drawer-item" onclick="closeDrawer(); navTo('preguntasRapidasScreen','nav-quiz')">
+                <div class="drawer-item-icon" style="background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);">⚡</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Quiz Flash</div>
+                    <div class="drawer-item-sub">Practica por tema · Personalizable</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); navTo('examenesScreen','nav-examenes')">
+                <div class="drawer-item-icon" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.25);">🎯</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Simulacros</div>
+                    <div class="drawer-item-sub">EXANI-II oficial · Cronometrado</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); navTo('clasesScreen','nav-clases')">
+                <div class="drawer-item-icon" style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);">📚</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Clases Teóricas</div>
+                    <div class="drawer-item-sub">7 módulos completos</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('clasesV2Screen')">
+                <div class="drawer-item-icon" style="background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.25);">▶️</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Clases en Video</div>
+                    <div class="drawer-item-sub">Playlist YouTube · Visual</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('batallaMenuScreen')">
+                <div class="drawer-item-icon" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);">⚔️</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Arena Médica</div>
+                    <div class="drawer-item-sub">Batalla · Combos · XP</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('juegosDiagnosticoScreen')">
+                <div class="drawer-item-icon" style="background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.25);">🎮</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Juegos Clínicos</div>
+                    <div class="drawer-item-sub">Diagnóstico · Signos · 3 modos</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <!-- HERRAMIENTAS -->
+            <div class="drawer-section-label">🛠 Herramientas</div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('dashboardScreen')">
+                <div class="drawer-item-icon" style="background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);">📊</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Dashboard</div>
+                    <div class="drawer-item-sub">Analíticas · Estadísticas</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); iniciarSRS()">
+                <div class="drawer-item-icon" style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);">🧠</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Repetición Espaciada</div>
+                    <div class="drawer-item-sub">SRS · Algoritmo adaptativo</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('flashcardsMenuScreen')">
+                <div class="drawer-item-icon" style="background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.25);">🃏</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Flashcards</div>
+                    <div class="drawer-item-sub">Tarjetas de memoria · Por tema</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('glosarioScreen')">
+                <div class="drawer-item-icon" style="background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.25);">📖</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Glosario Médico</div>
+                    <div class="drawer-item-sub">161 términos · Prefijos · Raíces</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('planEstudioScreen')">
+                <div class="drawer-item-icon" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.25);">📅</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Plan de Estudio</div>
+                    <div class="drawer-item-sub">Cronograma · Tu fecha de examen</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('pomodoroScreen')">
+                <div class="drawer-item-icon" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);">🍅</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Pomodoro</div>
+                    <div class="drawer-item-sub">25 min estudio · 5 min descanso</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('logrosScreen')">
+                <div class="drawer-item-icon" style="background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.25);">🏆</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title">Logros y Estadísticas</div>
+                    <div class="drawer-item-sub">Progreso · Rachas · Logros</div>
+                </div>
+                <span class="drawer-item-arrow">›</span>
+            </div>
+
+            <!-- ACCESO ÚNICO -->
+            <div class="drawer-section-label" style="color:rgba(251,191,36,.7);">⭐ Acceso Único</div>
+            <div class="drawer-item" onclick="closeDrawer(); showScreen('accesoUnicoScreen')" style="background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.18);">
+                <div class="drawer-item-icon" style="background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);">👑</div>
+                <div class="drawer-item-text">
+                    <div class="drawer-item-title" style="color:#fbbf24;">Acceso Único</div>
+                    <div class="drawer-item-sub">Guía manual · Preguntas reales</div>
+                </div>
+                <span class="drawer-item-arrow" style="color:rgba(251,191,36,.5);">›</span>
+            </div>
+
+            <!-- ACERCA DE -->
+            <div class="drawer-section-label">ℹ️ Acerca de</div>
+
+            <div class="drawer-about">
+                <div class="drawer-about-title">🧬 MediPrep Smart</div>
+                <div class="drawer-about-text">
+                    MediPrep Smart es la plataforma de preparación más completa para el <strong style="color:#fff;">EXANI-II de CENEVAL</strong> y para aspirantes a Premedicina. Diseñada para que estudiar sea efectivo, organizado y hasta entretenido.
+                </div>
+                <div class="drawer-about-text">
+                    Combina <strong style="color:#fff;">Quiz Flash</strong> adaptativo, <strong style="color:#fff;">simulacros oficiales</strong> cronometrados, un sistema de <strong style="color:#fff;">repetición espaciada (SRS)</strong> para memorizar a largo plazo, y módulos completos de clases teóricas con el temario oficial de Comprensión Lectora, Redacción Indirecta, Pensamiento Matemático y Premedicina.
+                </div>
+                <div class="drawer-about-text">
+                    Además incluye <strong style="color:#fff;">Arena Médica</strong> para aprender compitiendo, juegos clínicos, flashcards, glosario médico, plan de estudio automático y Pomodoro integrado.
+                </div>
+                <div class="drawer-about-text" style="color:var(--indigo-l);font-style:italic;">
+                    "Para todos sale el sol ☀️"
+                </div>
+                <div class="drawer-about-tags">
+                    <span class="drawer-about-tag">EXANI-II 2025</span>
+                    <span class="drawer-about-tag">CENEVAL oficial</span>
+                    <span class="drawer-about-tag">Premedicina</span>
+                    <span class="drawer-about-tag">SRS adaptativo</span>
+                    <span class="drawer-about-tag">180+ preguntas</span>
+                    <span class="drawer-about-tag">7 módulos</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="drawer-footer">
+            <div class="drawer-footer-text">
+                MediPrep Smart · v3.5<br>
+                <span style="color:rgba(255,255,255,.3);">Acceso permanente · $50 MXN</span>
+            </div>
+        </div>
+
+    </div>
 
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav" id="bottomNav">
@@ -1671,9 +2133,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <div class="home-tools-grid home-animate home-animate-4">
 
-                <div class="home-list-card htool-db" onclick="showScreen('dashboardScreen')" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">📊</div>
+                <!-- Dashboard -->
+                <div class="home-list-card" onclick="showScreen('dashboardScreen')" style="position:relative;overflow:hidden;border-color:rgba(99,102,241,.16);">
+                    <div class="hlc-accent" style="background:#818cf8;"></div>
+                    <div class="hlc-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.25);">📊</div>
                     <div style="flex:1;">
                         <div class="hlc-title">Dashboard</div>
                         <div class="hlc-sub">Tu progreso · Rachas · Analíticas</div>
@@ -1681,20 +2144,22 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <span class="hlc-arrow">›</span>
                 </div>
 
-                <div class="home-list-card htool-srs" onclick="iniciarSRS()" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">🧠</div>
+                <!-- SRS -->
+                <div class="home-list-card" onclick="iniciarSRS()" style="position:relative;overflow:hidden;border-color:rgba(16,185,129,.16);">
+                    <div class="hlc-accent" style="background:#34d399;"></div>
+                    <div class="hlc-icon" style="background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.25);">🧠</div>
                     <div style="flex:1;">
-                        <div class="hlc-title">Repetición Espaciada <span style="font-size:.6rem;font-weight:800;opacity:.8;">SRS</span></div>
+                        <div class="hlc-title">Repetición Espaciada <span style="font-size:.6rem;font-weight:800;color:#34d399;">SRS</span></div>
                         <div class="hlc-sub">Memoriza para siempre · Algoritmo adaptativo</div>
                     </div>
-                    <span class="htool-badge" id="srsDueBadge" style="margin-right:.3rem;">–</span>
+                    <span id="srsDueBadge" style="font-size:.6rem;font-weight:800;padding:.14rem .45rem;border-radius:20px;font-family:var(--font-d);background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3);margin-right:.3rem;display:none;"></span>
                     <span class="hlc-arrow">›</span>
                 </div>
 
-                <div class="home-list-card htool-flash" onclick="showScreen('flashcardsMenuScreen')" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">🃏</div>
+                <!-- Flashcards -->
+                <div class="home-list-card" onclick="showScreen('flashcardsMenuScreen')" style="position:relative;overflow:hidden;border-color:rgba(168,85,247,.16);">
+                    <div class="hlc-accent" style="background:#c084fc;"></div>
+                    <div class="hlc-icon" style="background:rgba(168,85,247,.14);border:1px solid rgba(168,85,247,.25);">🃏</div>
                     <div style="flex:1;">
                         <div class="hlc-title">Flashcards</div>
                         <div class="hlc-sub">Tarjetas de memoria · Por tema</div>
@@ -1702,9 +2167,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <span class="hlc-arrow">›</span>
                 </div>
 
-                <div class="home-list-card htool-glos" onclick="showScreen('glosarioScreen')" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">📖</div>
+                <!-- Glosario -->
+                <div class="home-list-card" onclick="showScreen('glosarioScreen')" style="position:relative;overflow:hidden;border-color:rgba(56,189,248,.16);">
+                    <div class="hlc-accent" style="background:#38bdf8;"></div>
+                    <div class="hlc-icon" style="background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.25);">📖</div>
                     <div style="flex:1;">
                         <div class="hlc-title">Glosario Médico</div>
                         <div class="hlc-sub">161 términos · Prefijos · Raíces</div>
@@ -1712,9 +2178,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <span class="hlc-arrow">›</span>
                 </div>
 
-                <div class="home-list-card htool-plan" onclick="showScreen('planEstudioScreen')" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">📅</div>
+                <!-- Plan -->
+                <div class="home-list-card" onclick="showScreen('planEstudioScreen')" style="position:relative;overflow:hidden;border-color:rgba(245,158,11,.16);">
+                    <div class="hlc-accent" style="background:#fbbf24;"></div>
+                    <div class="hlc-icon" style="background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.25);">📅</div>
                     <div style="flex:1;">
                         <div class="hlc-title">Plan de Estudio</div>
                         <div class="hlc-sub">Cronograma automático · Tu fecha de examen</div>
@@ -1722,9 +2189,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <span class="hlc-arrow">›</span>
                 </div>
 
-                <div class="home-list-card htool-pom" onclick="showScreen('pomodoroScreen')" style="position:relative;overflow:hidden;">
-                    <div class="hlc-accent"></div>
-                    <div class="hlc-icon">🍅</div>
+                <!-- Pomodoro -->
+                <div class="home-list-card" onclick="showScreen('pomodoroScreen')" style="position:relative;overflow:hidden;border-color:rgba(239,68,68,.16);">
+                    <div class="hlc-accent" style="background:#f87171;"></div>
+                    <div class="hlc-icon" style="background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.25);">🍅</div>
                     <div style="flex:1;">
                         <div class="hlc-title">Pomodoro</div>
                         <div class="hlc-sub">25 min estudio · 5 min descanso</div>
@@ -1753,9 +2221,237 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 <span class="hlc-arrow">›</span>
             </div>
 
+            
+            <!-- ── ACCESO ÚNICO ───────────────────────── -->
+            <p class="home-section-label home-animate home-animate-5" style="color:rgba(251,191,36,.7);letter-spacing:.12em;">
+                ⭐ ACCESO ÚNICO
+            </p>
+
+            <div class="acceso-home-card home-animate home-animate-5" onclick="showScreen('accesoUnicoScreen')">
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.6rem;">
+                    <span class="acceso-crown">👑</span>
+                    <div>
+                        <div class="acceso-home-title">Acceso Único</div>
+                        <div class="acceso-home-sub">Guía manual exclusiva · Solo aquí</div>
+                    </div>
+                </div>
+                <div style="font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:.55rem;">
+                    Preguntas reales de examen con respuesta oficial. Contenido exclusivo que no encontrarás en ningún otro lugar.
+                </div>
+                <div class="acceso-home-pills">
+                    <span class="acceso-home-pill">👑 Guía manual</span>
+                    <span class="acceso-home-pill">✅ Respuestas incluidas</span>
+                    <span class="acceso-home-pill">🔒 Solo aquí</span>
+                </div>
+            </div>
+
             <div class="home-footer-quote home-animate home-animate-6">Para todos sale el sol ☀️</div>
         </div>
-<div id="repasoIncorrectasScreen" class="screen">
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- ACCESO ÚNICO — Guía manual exclusiva                   -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div id="accesoUnicoScreen" class="screen">
+            <div class="container" style="padding-bottom:5rem;">
+
+                <!-- HEADER -->
+                <div class="acceso-screen-header" style="margin:-1rem -.85rem 0;border-radius:0 0 20px 20px;margin-bottom:1.2rem;">
+                    <button onclick="goHome()" style="position:absolute;left:1rem;top:1.1rem;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);color:#fbbf24;border-radius:10px;padding:.4rem .75rem;font-size:.78rem;font-weight:700;cursor:pointer;">← Inicio</button>
+                    <div style="font-size:2rem;margin-bottom:.4rem;filter:drop-shadow(0 0 16px rgba(251,191,36,.6));">👑</div>
+                    <div style="font-size:1.25rem;font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#fbbf24,#fde68a,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Acceso Único</div>
+                    <div style="font-size:.7rem;color:rgba(251,191,36,.5);margin-top:.2rem;font-weight:600;">Guía manual exclusiva · Preguntas reales</div>
+                </div>
+
+                <!-- STATS ROW -->
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:1.2rem;">
+                    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
+                        <div style="font-size:1.3rem;font-weight:900;color:#fbbf24;font-family:var(--font-d);">34+</div>
+                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Preguntas</div>
+                    </div>
+                    <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
+                        <div style="font-size:1.3rem;font-weight:900;color:#4ade80;font-family:var(--font-d);">100%</div>
+                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Respondidas</div>
+                    </div>
+                    <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
+                        <div style="font-size:1.3rem;font-weight:900;color:#818cf8;font-family:var(--font-d);">UAEH</div>
+                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Fuente</div>
+                    </div>
+                </div>
+
+                <!-- ─── BLOQUE 1: ANATOMÍA / SISTEMAS ────────────────── -->
+                <div class="acceso-section-label">Anatomía y Sistemas</div>
+
+                <!-- Q122 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 122</div>
+                    <div class="acceso-q-text">Relacione las capas de la piel con su representación.<br><span style="font-size:.72rem;color:var(--text-3);">Capa: 1. Dermis &nbsp; 2. Epidermis &nbsp; 3. Hipodermis</span></div>
+
+                    <!-- Skin layers diagram -->
+                    <div class="acceso-img-box">
+                        <div style="font-size:.65rem;font-weight:800;color:rgba(251,191,36,.7);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">Representación</div>
+                        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;">
+                            <!-- LAYER A: Epidermis -->
+                            <rect x="30" y="10" width="175" height="52" rx="4" fill="#8ab4a0" opacity=".85"/>
+                            <path d="M30 28 Q40 22 50 28 Q60 34 70 28 Q80 22 90 28 Q100 34 110 28 Q120 22 130 28 Q140 34 150 28 Q160 22 170 28 Q180 34 190 28 Q200 22 205 28" stroke="#6a9a82" stroke-width="1" fill="none" opacity=".6"/>
+                            <path d="M30 38 Q40 32 50 38 Q60 44 70 38 Q80 32 90 38 Q100 44 110 38 Q120 32 130 38 Q140 44 150 38 Q160 32 170 38 Q180 44 190 38 Q200 32 205 38" stroke="#6a9a82" stroke-width="1" fill="none" opacity=".5"/>
+                            <line x1="88"  y1="10" x2="86"  y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="118" y1="10" x2="116" y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="150" y1="10" x2="148" y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
+                            <text x="8" y="40" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">a)</text>
+                            <!-- LAYER B: Dermis -->
+                            <rect x="30" y="62" width="175" height="62" rx="2" fill="#7a9e8c" opacity=".75"/>
+                            <path d="M30 72 Q55 66 80 72 Q105 78 130 72 Q155 66 180 72 Q200 75 205 72" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".7"/>
+                            <path d="M30 84 Q55 78 80 84 Q105 90 130 84 Q155 78 180 84 Q200 87 205 84" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".6"/>
+                            <path d="M30 96 Q55 90 80 96 Q105 102 130 96 Q155 90 180 96 Q200 99 205 96" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".55"/>
+                            <path d="M30 108 Q55 102 80 108 Q105 114 130 108 Q155 102 180 108 Q200 111 205 108" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".5"/>
+                            <ellipse cx="119" cy="110" rx="7" ry="5" fill="#3a2818" opacity=".8"/>
+                            <line x1="119" y1="62" x2="119" y2="105" stroke="#3a2818" stroke-width="2.5"/>
+                            <text x="8" y="98" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">b)</text>
+                            <!-- LAYER C: Hipodermis -->
+                            <rect x="30" y="124" width="175" height="58" rx="2" fill="#b0a870" opacity=".6"/>
+                            <ellipse cx="55"  cy="148" rx="14" ry="10" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                            <ellipse cx="82"  cy="144" rx="13" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                            <ellipse cx="110" cy="150" rx="14" ry="10" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                            <ellipse cx="138" cy="144" rx="12" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                            <ellipse cx="164" cy="148" rx="13" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+                            <ellipse cx="68"  cy="164" rx="11" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+                            <ellipse cx="96"  cy="167" rx="13" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+                            <ellipse cx="124" cy="164" rx="11" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+                            <ellipse cx="151" cy="162" rx="12" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+                            <text x="8" y="158" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">c)</text>
+                            <!-- dividers -->
+                            <line x1="30" y1="62"  x2="205" y2="62"  stroke="rgba(255,255,255,.35)" stroke-width=".8"/>
+                            <line x1="30" y1="124" x2="205" y2="124" stroke="rgba(255,255,255,.35)" stroke-width=".8"/>
+                        </svg>
+                        <div style="display:flex;justify-content:center;gap:1rem;margin-top:.55rem;font-size:.62rem;color:rgba(255,255,255,.4);">
+                            <span>a) Epidermis</span><span>b) Dermis</span><span>c) Hipodermis</span>
+                        </div>
+                    </div>
+
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> 1a, 2c, 3b</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> 1b, 2a, 3c <span class="acceso-check">✅</span></div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> 1c, 2a, 3b</div>
+                    </div>
+                </div>
+
+                <!-- Q123 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 123</div>
+                    <div class="acceso-q-text">Identifique el hueso largo situado en la parte medial del antebrazo.</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Radio</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Cúbito <span class="acceso-check">✅</span></div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Húmero</div>
+                    </div>
+                </div>
+
+                <!-- Q124 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 124</div>
+                    <div class="acceso-q-text">¿Cuál es el vaso sanguíneo que se encarga de transportar la sangre oxigenada desde el corazón hacia el cuerpo?</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Capilar</div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Vena</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Arteria <span class="acceso-check">✅</span></div>
+                    </div>
+                </div>
+
+                <!-- Q125 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 125</div>
+                    <div class="acceso-q-text">¿Qué función le corresponde al intestino delgado?</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Almacenamiento de bilis</div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Producción de glucagón</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Digestión de proteínas <span class="acceso-check">✅</span></div>
+                    </div>
+                </div>
+
+                <!-- ─── BLOQUE 2: FARMACOLOGÍA ─────────────────────────── -->
+                <div class="acceso-section-label">Farmacología</div>
+
+                <!-- Q151 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 151</div>
+                    <div class="acceso-q-text">Son los medicamentos utilizados para tratar los síntomas de las alergias.</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Antiespasmódicos</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Antihistamínicos <span class="acceso-check">✅</span></div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Analgésicos</div>
+                    </div>
+                </div>
+
+                <!-- Q152 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 152</div>
+                    <div class="acceso-q-text">Se desea dar un fármaco a un paciente que presenta colitis ulcerosa. ¿Cuál es la vía contraindicada?</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Intravenosa</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Rectal <span class="acceso-check">✅</span></div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Tópica</div>
+                    </div>
+                </div>
+
+                <!-- Q153 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 153</div>
+                    <div class="acceso-q-text">¿Cuál es un ejemplo del objeto de estudio que corresponde a la farmacocinética?</div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Efectos secundarios de los antivirales</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Excreción del paracetamol por vía renal <span class="acceso-check">✅</span></div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Modificación de canales iónicos por antidepresivos</div>
+                    </div>
+                </div>
+
+                <!-- Q154 -->
+                <div class="acceso-q-card">
+                    <div class="acceso-q-number">📋 PREGUNTA 154</div>
+                    <div class="acceso-q-text">¿Qué tipo de solución representa el esquema en el medio extracelular?</div>
+                    <!-- SVG osmosis diagram -->
+                    <div class="acceso-img-box">
+                        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" style="width:160px;height:120px;">
+                            <rect width="160" height="120" rx="8" fill="rgba(0,0,0,0)"/>
+                            <!-- outer dots (extracelular - fewer) -->
+                            <circle cx="18" cy="20" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="140" cy="18" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="8"  cy="70" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="150" cy="75" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="30" cy="105" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="130" cy="102" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="75" cy="10" r="4" fill="rgba(251,191,36,.7)"/>
+                            <circle cx="155" cy="45" r="4" fill="rgba(251,191,36,.7)"/>
+                            <!-- cell circle -->
+                            <circle cx="80" cy="62" r="38" fill="rgba(99,102,241,.08)" stroke="rgba(99,102,241,.5)" stroke-width="1.5"/>
+                            <!-- inner dots (intracelular - more) -->
+                            <circle cx="68" cy="52" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="90" cy="48" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="62" cy="68" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="82" cy="72" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="96" cy="66" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="74" cy="82" r="4" fill="rgba(99,102,241,.9)"/>
+                            <circle cx="88" cy="58" r="4" fill="rgba(99,102,241,.9)"/>
+                        </svg>
+                        <div style="font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.3rem;">🟡 Extracelular &nbsp;&nbsp; 🔵 Intracelular</div>
+                    </div>
+                    <div class="acceso-q-options">
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Hipertónica</div>
+                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Hipotónica</div>
+                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Isotónica <span class="acceso-check">✅</span></div>
+                    </div>
+                </div>
+
+                <!-- ─── COMING SOON ─────────────────────────────────────── -->
+                <div style="text-align:center;padding:1.5rem .5rem;border:1px dashed rgba(251,191,36,.2);border-radius:16px;background:rgba(251,191,36,.03);margin-top:.5rem;">
+                    <div style="font-size:1.6rem;margin-bottom:.5rem;">🔒</div>
+                    <div style="font-size:.82rem;font-weight:700;color:rgba(251,191,36,.6);margin-bottom:.3rem;">Más preguntas próximamente</div>
+                    <div style="font-size:.7rem;color:var(--text-dim);">Esta sección se actualiza manualmente con preguntas reales de examen</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="repasoIncorrectasScreen" class="screen">
             <div class="page-header" style="margin-bottom:1.5rem;">
                 <button class="back-btn" onclick="goHome()">←</button>
                 <div>

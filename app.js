@@ -185,6 +185,32 @@ let correctAnswers = 0;
 let incorrectAnswers = 0;
 let timerInterval = null;
 
+// ══════════════════════════════════════════════
+// DRAWER MENU
+// ══════════════════════════════════════════════
+function openDrawer() {
+    const drawer = document.getElementById('mainDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    if (!drawer || !overlay) return;
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden'; // prevent scroll behind
+}
+
+function closeDrawer() {
+    const drawer = document.getElementById('mainDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    if (!drawer || !overlay) return;
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Close with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+});
+
 // ─── MODAL GENÉRICO ──────────────────────────────────────────
 function mostrarModal(titulo, mensaje, botones) {
     const iconMap = { '⏱️': '⏱️', '🗑️': '🗑️', '❓': '❓' };
