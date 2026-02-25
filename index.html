@@ -1315,74 +1315,143 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <!-- PANTALLA DE ACTIVACIÓN (PRIMERA PANTALLA - BLOQUEADA) -->
         <div id="activationScreen" class="screen">
             <div class="activation-wrap">
-                <div class="activation-orb">🧬</div>
-                <h1 class="activation-title">Bienvenid@ a<br>MediPrep Smart</h1>
-                <p class="activation-sub">
-                    Tu plataforma premium para el EXANI-II · Premedicina<br>
-                    <em style="color:var(--indigo-l)">Recuerda que para todos sale el sol ☀️</em>
-                </p>
 
-                <!-- FEATURES CARD -->
-                <div class="card" style="margin-bottom:1.5rem;text-align:left;">
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;">
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">🧠</span> Acceso ilimitado
+                <!-- ── HEADER LOGO ─────────────────────────── -->
+                <div style="text-align:center;margin-bottom:1.8rem;">
+                    <div style="display:inline-flex;align-items:center;justify-content:center;
+                                width:72px;height:72px;border-radius:22px;font-size:2.2rem;
+                                background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(139,92,246,.18));
+                                border:1.5px solid rgba(99,102,241,.35);margin-bottom:1rem;
+                                box-shadow:0 8px 32px rgba(99,102,241,.2);">🧬</div>
+                    <h1 style="font-size:1.65rem;font-weight:900;color:#fff;letter-spacing:-.03em;margin:0 0 .3rem;">
+                        MediPrep <span style="color:var(--indigo-l);">Smart</span>
+                    </h1>
+                    <p style="font-size:.78rem;color:var(--text-3);margin:0;letter-spacing:.02em;">
+                        Preparación EXANI-II · Premedicina
+                    </p>
+                </div>
+
+                <!-- ── PRICE CARD ──────────────────────────── -->
+                <div style="background:linear-gradient(135deg,rgba(99,102,241,.14),rgba(139,92,246,.1));
+                            border:1.5px solid rgba(99,102,241,.28);border-radius:20px;
+                            padding:1.25rem 1.2rem;margin-bottom:1.4rem;position:relative;overflow:hidden;">
+                    <!-- glow -->
+                    <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;
+                                background:radial-gradient(circle,rgba(139,92,246,.25),transparent 70%);
+                                pointer-events:none;"></div>
+
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                        <div>
+                            <div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+                                        color:var(--indigo-l);margin-bottom:.25rem;">Acceso Completo</div>
+                            <div style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1;">
+                                $50 <span style="font-size:.9rem;font-weight:600;color:var(--text-3);">MXN</span>
+                            </div>
+                            <div style="font-size:.7rem;color:var(--text-dim);margin-top:.2rem;">Pago único · Acceso permanente</div>
                         </div>
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">📜</span> Temario oficial
-                        </div>
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">🎯</span> Simulacros EXANI-II
-                        </div>
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">🎮</span> Juegos clínicos
-                        </div>
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">📚</span> 7 módulos de clases
-                        </div>
-                        <div style="display:flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--text-2);">
-                            <span style="font-size:1.1rem">✅</span> Siempre actualizado
+                        <div style="text-align:right;">
+                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:rgba(16,185,129,.15);
+                                        border:1px solid rgba(16,185,129,.3);border-radius:20px;color:#34d399;margin-bottom:.4rem;">
+                                ✓ Sin mensualidades
+                            </div>
+                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:rgba(99,102,241,.15);
+                                        border:1px solid rgba(99,102,241,.3);border-radius:20px;color:var(--indigo-l);">
+                                ✓ Siempre actualizado
+                            </div>
                         </div>
                     </div>
-                    <div style="margin-top:1rem;padding:.6rem;background:var(--indigo-bg);border:1px solid rgba(99,102,241,.2);border-radius:var(--r-sm);text-align:center;">
-                        <span style="font-family:var(--font-d);font-weight:800;font-size:1.4rem;color:var(--indigo-l);">GRATIS</span>
-                        <span style="color:var(--text-3);font-size:.82rem;margin-left:.5rem;">— Acceso Completo</span>
+
+                    <!-- Feature grid -->
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;">
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">🎯</span> Simulacros EXANI-II
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">⚔️</span> Arena Médica
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">📚</span> 7 módulos completos
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">🧠</span> Quiz Flash + SRS
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">📖</span> Glosario 161 términos
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
+                            <span style="font-size:.95rem;">🎮</span> Juegos clínicos
+                        </div>
                     </div>
                 </div>
 
-                <!-- INPUT -->
-                <div style="margin-bottom:1rem;">
-                    <label style="display:block;font-size:.75rem;font-weight:700;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.55rem;">
-                        Código de Activación
-                    </label>
-                    <input type="text" id="licenseInput" placeholder="MEDIPREP-XXXXXX"
-                           onkeyup="this.value=this.value.toUpperCase()"
-                           onkeypress="if(event.key==='Enter')activateLicense()">
-                </div>
-
-                <button class="btn btn-primary" onclick="activateLicense()" style="width:100%;margin-bottom:1.25rem;">
-                    🔓 Activar acceso
-                </button>
-
-                <div class="divider"><span class="divider-text">¿No tienes código?</span></div>
-
-                <a href="https://wa.me/527341151341?text=Hola!%20Quiero%20obtener%20mi%20codigo%20de%20acceso%20de%20MediPrep%20Smart"
+                <!-- ── CTA BUY ──────────────────────────────── -->
+                <a href="https://wa.me/521XXXXXXXXXX?text=Hola!%20quiero%20adquirir%20MediPrep%20Smart%20%F0%9F%A7%AC"
                    target="_blank"
-                   style="display:flex;align-items:center;justify-content:center;gap:.75rem;
-                          background:linear-gradient(135deg,#25D366,#128C7E);
-                          color:white;padding:1rem;border-radius:var(--r);
-                          text-decoration:none;font-weight:700;font-family:var(--font-d);
-                          font-size:.95rem;transition:transform .2s,box-shadow .2s;
-                          box-shadow:0 4px 16px rgba(37,211,102,.25);"
-                   onmouseover="this.style.transform='translateY(-2px)'"
-                   onmouseout="this.style.transform='translateY(0)'">
-                    <span style="font-size:1.2rem">💬</span> Obtener código por WhatsApp
+                   style="display:flex;align-items:center;justify-content:center;gap:.6rem;
+                          width:100%;padding:.9rem;border-radius:14px;margin-bottom:1rem;
+                          background:linear-gradient(135deg,#25d366,#128c7e);
+                          color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.01em;
+                          text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.25);
+                          transition:transform .18s,box-shadow .18s;"
+                   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(37,211,102,.35)'"
+                   onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(37,211,102,.25)'">
+                    <span style="font-size:1.1rem;">💬</span>
+                    Obtener acceso por WhatsApp
                 </a>
 
-                <div id="activationError" style="display:none;background:var(--rose-bg);
-                     border:1px solid rgba(244,63,94,.3);border-radius:var(--r);
-                     padding:.9rem;margin-top:1rem;color:#fda4af;font-size:.88rem;font-weight:600;">
+                <!-- ── DIVIDER ─────────────────────────────── -->
+                <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+                    <span style="font-size:.68rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em;">YA TENGO CÓDIGO</span>
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
                 </div>
+
+                <!-- ── INPUT ──────────────────────────────────── -->
+                <div style="margin-bottom:.75rem;">
+                    <div style="position:relative;">
+                        <span style="position:absolute;left:.9rem;top:50%;transform:translateY(-50%);
+                                     font-size:1rem;pointer-events:none;opacity:.5;">🔑</span>
+                        <input type="text" id="licenseInput"
+                               placeholder="Ingresa tu código de acceso"
+                               style="width:100%;box-sizing:border-box;
+                                      padding:.82rem .9rem .82rem 2.6rem;
+                                      background:rgba(11,14,26,0.85);
+                                      border:1.5px solid rgba(255,255,255,.1);
+                                      border-radius:14px;color:#fff;font-size:.9rem;
+                                      outline:none;transition:border-color .18s,box-shadow .18s;
+                                      font-family:var(--font-d);letter-spacing:.03em;"
+                               onfocus="this.style.borderColor='rgba(99,102,241,.55)';this.style.boxShadow='0 0 0 3px rgba(99,102,241,.12)'"
+                               onblur="this.style.borderColor='rgba(255,255,255,.1)';this.style.boxShadow='none'"
+                               onkeydown="if(event.key==='Enter') activateLicense()">
+                    </div>
+                </div>
+
+                <!-- Error msg -->
+                <div id="activationError"
+                     style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);
+                            border-radius:10px;padding:.6rem .85rem;margin-bottom:.75rem;
+                            color:#f87171;font-size:.78rem;font-weight:600;text-align:center;">
+                </div>
+
+                <!-- ── ACTIVATE BUTTON ─────────────────────── -->
+                <button id="activateBtn" onclick="activateLicense()"
+                        style="width:100%;padding:.85rem;border-radius:14px;border:none;cursor:pointer;
+                               background:linear-gradient(135deg,#6366f1,#8b5cf6);
+                               color:#fff;font-size:.92rem;font-weight:800;letter-spacing:.02em;
+                               box-shadow:0 6px 20px rgba(99,102,241,.3);
+                               transition:transform .18s,box-shadow .18s,opacity .18s;"
+                        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(99,102,241,.45)'"
+                        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(99,102,241,.3)'"
+                        onmousedown="this.style.transform='scale(.97)'"
+                        onmouseup="this.style.transform='translateY(-2px)'">
+                    Activar Acceso
+                </button>
+
+                <!-- footer note -->
+                <p style="text-align:center;font-size:.64rem;color:var(--text-dim);margin-top:1rem;line-height:1.6;">
+                    Para todos sale el sol ☀️
+                </p>
+
             </div>
         </div>
 

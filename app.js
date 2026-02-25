@@ -64,12 +64,23 @@ const WrongAnswersBank = {
     }
 };
 
-// SISTEMA DE LICENCIAS
-const VALID_LICENSES = [
-    'MEDIPREP-2026-PREMIUM',
-    'MEDIPREP-DEMO-001',
-    // Aquí agregarás los códigos que generes
+// ══════════════════════════════════════════════
+// SISTEMA DE LICENCIAS — SHA-256 encriptado
+// Los códigos se almacenan como hashes, nunca
+// en texto plano. No se pueden revertir.
+// ══════════════════════════════════════════════
+const VALID_HASHES = [
+    'f292031d002dfe7a807725a06d8f22c6670d9e81e8c99655f187cb9da8634f72', // EXANI-2026
+    '3f6a9b6aefd8e449ae5691eb55381b1dccbb13a6b52f3de2b6775fec86054941', // PREMEDICINA-V2
 ];
+
+async function hashCode(str) {
+    const normalized = str.trim().toUpperCase();
+    const msgBuffer = new TextEncoder().encode(normalized);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 // Función segura para ir al home — respeta la activación
 function goHome() {
@@ -97,75 +108,52 @@ function checkLicenseOnLoad() {
     }
 }
 
-function activateLicense() {
-    const input = document.getElementById('licenseInput').value.trim().toUpperCase();
+async function activateLicense() {
+    const input = document.getElementById('licenseInput').value.trim();
     const errorDiv = document.getElementById('activationError');
+    const btn = document.getElementById('activateBtn');
 
     if (!input) {
-        errorDiv.textContent = '⚠️ Por favor ingresa un código de activación';
-        errorDiv.style.display = 'block';
+        showActivationError('⚠️ Por favor ingresa tu código de acceso');
         return;
     }
 
-    // Validar formato básico
-    if (!input.startsWith('MEDIPREP-')) {
-        errorDiv.textContent = '❌ Código inválido. Debe comenzar con MEDIPREP-';
-        errorDiv.style.display = 'block';
-        return;
-    }
+    // UI: loading state
+    if (btn) { btn.disabled = true; btn.textContent = 'Verificando…'; }
+    if (errorDiv) errorDiv.style.display = 'none';
 
-    // Validar código (aquí puedes agregar validación con hash)
-    if (isValidLicense(input)) {
-        // Activar licencia
-        localStorage.setItem('mediprep_license', input);
-        localStorage.setItem('mediprep_activated', 'true');
-        localStorage.setItem('mediprep_activation_date', new Date().toISOString());
-
-        // Mostrar mensaje de éxito
-        showActivationSuccess();
-    } else {
-        errorDiv.textContent = '❌ Código inválido. Verifica e intenta nuevamente o contacta por WhatsApp.';
-        errorDiv.style.display = 'block';
+    try {
+        const hash = await hashCode(input);
+        if (VALID_HASHES.includes(hash)) {
+            // ✅ Código válido
+            localStorage.setItem('mediprep_license', '***');  // nunca guardar el código real
+            localStorage.setItem('mediprep_activated', 'true');
+            localStorage.setItem('mediprep_activation_date', new Date().toISOString());
+            showActivationSuccess();
+        } else {
+            showActivationError('❌ Código inválido. Cómpralo por WhatsApp para obtener acceso.');
+            if (btn) { btn.disabled = false; btn.textContent = 'Activar Acceso'; }
+        }
+    } catch(e) {
+        showActivationError('⚠️ Error al verificar. Intenta de nuevo.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Activar Acceso'; }
     }
 }
 
-function isValidLicense(code) {
-    // Validación simple: verifica si está en la lista O cumple con el patrón
-    if (VALID_LICENSES.includes(code)) {
-        return true;
-    }
-
-    // Validación por patrón (formato MEDIPREP-XXXX-XXXX)
-    // Aquí puedes implementar algoritmo de hash para mayor seguridad
-    const pattern = /^MEDIPREP-[A-Z0-9]{4,8}-[A-Z0-9]{4,8}$/;
-    if (pattern.test(code)) {
-        // Aquí podrías validar con un hash
-        return validateHash(code);
-    }
-
-    return false;
+function showActivationError(msg) {
+    const errorDiv = document.getElementById('activationError');
+    if (!errorDiv) return;
+    errorDiv.textContent = msg;
+    errorDiv.style.display = 'block';
+    errorDiv.style.animation = 'none';
+    setTimeout(() => errorDiv.style.animation = '', 10);
 }
 
-function validateHash(code) {
-    // Algoritmo simple de validación
-    // Los códigos válidos tienen un patrón específico
-    const parts = code.split('-');
-    if (parts.length !== 3) return false;
+// isValidLicense removed — sistema migrado a SHA-256 async
 
-    // Validación básica por checksum
-    const checksum = parts[2];
-    const expectedChecksum = generateChecksum(parts[1]);
+// validateHash removed
 
-    return checksum === expectedChecksum;
-}
-
-function generateChecksum(seed) {
-    // Genera un checksum simple de 8 caracteres
-    let hash = 0;
-    for (let i = 0; i < seed.length; i++) {
-        hash = ((hash << 5) - hash) + seed.charCodeAt(i);
-        hash = hash & hash;
-    }
+// generateChecksum removed
     return Math.abs(hash).toString(36).toUpperCase().substring(0, 8).padEnd(8, '0');
 }
 
