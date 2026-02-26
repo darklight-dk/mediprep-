@@ -1518,6 +1518,301 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
   padding: .85rem; text-align: center;
 }
 .acceso-img-box svg { max-width: 200px; }
+
+/* ══ ACCESO ÚNICO — Lobby + Book Viewer ════════════════════ */
+
+/* Lobby grid */
+.au-lobby {
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.au-cat-card {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: .9rem;
+  padding: .85rem .9rem; border-radius: 16px;
+  border: 1px solid var(--au-border, rgba(255,255,255,.1));
+  background: var(--au-bg, rgba(255,255,255,.04));
+  cursor: pointer;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .22s, border-color .18s, background .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.au-cat-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; border-radius: 3px 0 0 3px;
+  background: var(--au-accent, #fff);
+}
+.au-cat-card:hover { transform: translateX(4px); box-shadow: 4px 0 24px rgba(0,0,0,.25); }
+.au-cat-card:active { transform: scale(.97); }
+
+.au-cat-icon {
+  width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  background: var(--au-bg); border: 1px solid var(--au-border);
+  transition: transform .28s cubic-bezier(.34,1.56,.64,1);
+}
+.au-cat-card:hover .au-cat-icon { transform: scale(1.1) rotate(-5deg); }
+
+.au-cat-body { flex: 1; min-width: 0; }
+.au-cat-title { font-size: .85rem; font-weight: 800; color: #fff; line-height: 1.2; }
+.au-cat-sub { font-size: .66rem; color: var(--text-dim); margin-top: .08rem; }
+.au-cat-pill {
+  font-size: .58rem; font-weight: 800; padding: .15rem .5rem;
+  border-radius: 20px; font-family: var(--font-d);
+  background: var(--au-bg); color: var(--au-accent);
+  border: 1px solid var(--au-border);
+}
+.au-cat-arrow { color: rgba(255,255,255,.2); font-size: 1rem; transition: color .18s, transform .22s; }
+.au-cat-card:hover .au-cat-arrow { color: var(--au-accent); transform: translateX(3px); }
+
+/* ── BOOK VIEWER ──────────────────────────────────────────── */
+.au-book-screen { display: none; }
+.au-book-screen.active-view { display: flex; flex-direction: column; }
+
+.au-book-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(5,7,14,.95);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  padding: .65rem .85rem;
+  display: flex; align-items: center; gap: .7rem;
+}
+.au-book-back {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  color: var(--text-2); font-size: 1rem; cursor: pointer;
+  transition: background .18s, color .18s;
+}
+.au-book-back:hover { background: rgba(251,191,36,.15); color: #fbbf24; }
+
+.au-book-title-wrap { flex: 1; min-width: 0; }
+.au-book-cat-name { font-size: .82rem; font-weight: 800; color: #fff; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.au-book-progress-text { font-size: .62rem; color: var(--text-dim); }
+
+.au-book-counter {
+  font-size: .72rem; font-weight: 800; font-family: var(--font-d);
+  padding: .25rem .65rem; border-radius: 20px;
+  background: rgba(251,191,36,.12); color: #fbbf24;
+  border: 1px solid rgba(251,191,36,.25); flex-shrink: 0;
+}
+
+/* Progress bar */
+.au-progress-bar {
+  height: 3px; background: rgba(255,255,255,.08);
+  transition: none;
+}
+.au-progress-fill {
+  height: 100%; background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  border-radius: 0 2px 2px 0;
+  transition: width .4s cubic-bezier(.22,1,.36,1);
+}
+
+/* Page / card */
+.au-book-page {
+  flex: 1; padding: 1rem .85rem 6rem;
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+
+.au-page-tema {
+  font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(251,191,36,.6); margin-bottom: .6rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.au-page-pregunta {
+  font-size: .95rem; font-weight: 700; color: #fff; line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.au-opt {
+  display: flex; align-items: flex-start; gap: .7rem;
+  padding: .7rem .8rem; border-radius: 12px; margin-bottom: .5rem;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+  transition: background .18s, border-color .18s, transform .15s;
+}
+.au-opt:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); transform: translateX(3px); }
+.au-opt.selected-correct {
+  background: rgba(34,197,94,.1); border-color: rgba(34,197,94,.35);
+  animation: correctBounce .4s cubic-bezier(.34,1.56,.64,1);
+}
+.au-opt.selected-wrong {
+  background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.35);
+}
+.au-opt.reveal-correct { background: rgba(34,197,94,.07); border-color: rgba(34,197,94,.25); }
+.au-opt.disabled { pointer-events: none; }
+
+@keyframes correctBounce {
+  0%  { transform: scale(1); }
+  50% { transform: scale(1.03) translateX(5px); }
+  100%{ transform: scale(1); }
+}
+
+.au-opt-letter {
+  width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 900; font-family: var(--font-d);
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: var(--text-2); transition: background .18s, color .18s;
+}
+.au-opt.selected-correct .au-opt-letter { background: rgba(34,197,94,.25); border-color: rgba(34,197,94,.5); color: #4ade80; }
+.au-opt.selected-wrong .au-opt-letter { background: rgba(239,68,68,.25); border-color: rgba(239,68,68,.5); color: #f87171; }
+.au-opt.reveal-correct .au-opt-letter { background: rgba(34,197,94,.15); border-color: rgba(34,197,94,.3); color: #86efac; }
+
+.au-opt-text { font-size: .82rem; color: var(--text-2); line-height: 1.5; flex: 1; }
+.au-opt-icon { font-size: 1rem; flex-shrink: 0; opacity: 0; transition: opacity .2s; }
+.au-opt.selected-correct .au-opt-icon,
+.au-opt.selected-wrong .au-opt-icon,
+.au-opt.reveal-correct .au-opt-icon { opacity: 1; }
+
+/* Explanation box */
+.au-explanation {
+  display: none; margin-top: .8rem;
+  background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.18);
+  border-radius: 12px; padding: .75rem .9rem;
+  animation: fadeSlideUp .3s ease;
+}
+.au-explanation.show { display: block; }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.au-explanation-label {
+  font-size: .6rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: #fbbf24; margin-bottom: .35rem;
+}
+.au-explanation-text { font-size: .78rem; color: var(--text-3); line-height: 1.6; }
+.au-source-tag {
+  font-size: .58rem; color: rgba(255,255,255,.25); margin-top: .4rem;
+  display: flex; align-items: center; gap: .3rem;
+}
+
+/* Nav buttons */
+.au-nav-bar {
+  position: fixed; bottom: 4.2rem; left: 0; right: 0;
+  display: flex; align-items: center; gap: .7rem;
+  padding: .6rem .85rem;
+  background: rgba(5,7,14,.92); backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.07);
+  z-index: 49;
+}
+.au-nav-btn {
+  flex: 1; padding: .72rem; border-radius: 12px; border: none; cursor: pointer;
+  font-size: .82rem; font-weight: 800; letter-spacing: .02em;
+  transition: transform .18s, box-shadow .18s, opacity .18s;
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+}
+.au-nav-btn:active { transform: scale(.96); }
+.au-nav-prev {
+  background: rgba(255,255,255,.07); color: var(--text-2);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.au-nav-prev:hover { background: rgba(255,255,255,.12); }
+.au-nav-prev:disabled { opacity: .3; pointer-events: none; }
+.au-nav-next {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #000; box-shadow: 0 4px 16px rgba(251,191,36,.3);
+}
+.au-nav-next:hover { box-shadow: 0 6px 24px rgba(251,191,36,.45); }
+.au-nav-next:disabled { opacity: .4; pointer-events: none; }
+
+/* SVG diagram boxes */
+.au-diagram { margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(251,191,36,.15); background: rgba(0,0,0,.3); padding: .85rem; text-align: center; }
+
+/* ══ ACCESO ÚNICO — hcard color variants ══════════════════════ */
+.hcard-cyan {
+  background:linear-gradient(148deg, rgba(6,182,212,0.2), rgba(8,145,178,0.14));
+  border:1.5px solid rgba(6,182,212,0.28);
+  box-shadow:0 4px 24px rgba(6,182,212,0.1), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hcard-cyan:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(6,182,212,0.2); border-color:rgba(6,182,212,.6); }
+.hcard-cyan .hcard-glow { background:radial-gradient(circle, rgba(6,182,212,0.4) 0%, transparent 70%); }
+.hcard-cyan .hcard-sub { color:#67e8f9; }
+.hcard-cyan .hcard-tag { background:rgba(6,182,212,0.2); color:#a5f3fc; }
+
+.hcard-rose {
+  background:linear-gradient(148deg, rgba(236,72,153,0.2), rgba(190,24,93,0.14));
+  border:1.5px solid rgba(236,72,153,0.28);
+  box-shadow:0 4px 24px rgba(236,72,153,0.1), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hcard-rose:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(236,72,153,0.2); border-color:rgba(236,72,153,.6); }
+.hcard-rose .hcard-glow { background:radial-gradient(circle, rgba(236,72,153,0.4) 0%, transparent 70%); }
+.hcard-rose .hcard-sub { color:#f9a8d4; }
+.hcard-rose .hcard-tag { background:rgba(236,72,153,0.2); color:#fbcfe8; }
+
+.hcard-emerald {
+  background:linear-gradient(148deg, rgba(16,185,129,0.2), rgba(6,148,106,0.14));
+  border:1.5px solid rgba(16,185,129,0.28);
+  box-shadow:0 4px 24px rgba(16,185,129,0.1), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hcard-emerald:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(16,185,129,0.2); border-color:rgba(16,185,129,.6); }
+.hcard-emerald .hcard-glow { background:radial-gradient(circle, rgba(16,185,129,0.4) 0%, transparent 70%); }
+.hcard-emerald .hcard-sub { color:#6ee7b7; }
+.hcard-emerald .hcard-tag { background:rgba(16,185,129,0.2); color:#a7f3d0; }
+
+.hcard-violet {
+  background:linear-gradient(148deg, rgba(139,92,246,0.2), rgba(109,40,217,0.14));
+  border:1.5px solid rgba(139,92,246,0.28);
+  box-shadow:0 4px 24px rgba(139,92,246,0.1), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hcard-violet:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(139,92,246,0.2); border-color:rgba(139,92,246,.6); }
+.hcard-violet .hcard-glow { background:radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%); }
+.hcard-violet .hcard-sub { color:#c4b5fd; }
+.hcard-violet .hcard-tag { background:rgba(139,92,246,0.2); color:#ddd6fe; }
+
+/* Gold card — Posibles Preguntas */
+.hcard-gold {
+  background:linear-gradient(148deg, rgba(251,191,36,0.22), rgba(180,83,9,0.12));
+  border:1.5px solid rgba(251,191,36,0.35);
+  box-shadow:0 4px 24px rgba(251,191,36,0.18), inset 0 1px 0 rgba(255,255,255,.06);
+  animation:float-glow 3s ease-in-out infinite;
+}
+.hcard-gold:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(251,191,36,0.35); border-color:rgba(251,191,36,.7); }
+.hcard-gold .hcard-glow { background:radial-gradient(circle, rgba(251,191,36,0.5) 0%, transparent 70%); }
+.hcard-gold .hcard-sub { color:#fde68a; }
+.hcard-gold .hcard-tag { background:rgba(251,191,36,0.2); color:#fef08a; }
+.hcard-gold .hcard-title { background:linear-gradient(135deg,#fbbf24,#fde68a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+/* gold shimmer */
+.hcard-gold::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(105deg, transparent 35%, rgba(251,191,36,.07) 50%, transparent 65%);
+  background-size:200% 100%;
+  animation:shimmer 3s linear infinite;
+  pointer-events:none;
+}
+
+/* au lobby 2-col grid */
+.au-lobby-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:.8rem;
+}
+/* posibles-preguntas full width */
+.au-lobby-full { grid-column: 1 / -1; }
+
+/* ══ BOOK VIEWER — inline nav (no fixed) ════════════════════════ */
+.au-page-nav {
+  display:flex; gap:.65rem; margin-top:1.2rem; padding-bottom:4rem;
+}
+.au-page-nav-btn {
+  flex:1; padding:.72rem; border-radius:12px; border:none; cursor:pointer;
+  font-size:.82rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center; gap:.4rem;
+  transition:transform .18s, box-shadow .18s, opacity .18s;
+  -webkit-tap-highlight-color:transparent;
+}
+.au-page-nav-btn:active { transform:scale(.96); }
+.au-page-nav-prev {
+  background:rgba(255,255,255,.07); color:var(--text-2);
+  border:1px solid rgba(255,255,255,.1);
+}
+.au-page-nav-prev:hover { background:rgba(255,255,255,.12); }
+.au-page-nav-prev:disabled { opacity:.3; pointer-events:none; }
+.au-page-nav-next {
+  background:linear-gradient(135deg,#fbbf24,#f59e0b);
+  color:#000; box-shadow:0 4px 16px rgba(251,191,36,.3);
+}
+.au-page-nav-next:hover { box-shadow:0 6px 24px rgba(251,191,36,.45); }
+.au-page-nav-next:disabled { opacity:.4; pointer-events:none; }
 </style>
 </head>
 <body>
@@ -2252,204 +2547,109 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <!-- ACCESO ÚNICO — Guía manual exclusiva                   -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div id="accesoUnicoScreen" class="screen">
-            <div class="container" style="padding-bottom:5rem;">
 
-                <!-- HEADER -->
-                <div class="acceso-screen-header" style="margin:-1rem -.85rem 0;border-radius:0 0 20px 20px;margin-bottom:1.2rem;">
-                    <button onclick="goHome()" style="position:absolute;left:1rem;top:1.1rem;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);color:#fbbf24;border-radius:10px;padding:.4rem .75rem;font-size:.78rem;font-weight:700;cursor:pointer;">← Inicio</button>
-                    <div style="font-size:2rem;margin-bottom:.4rem;filter:drop-shadow(0 0 16px rgba(251,191,36,.6));">👑</div>
-                    <div style="font-size:1.25rem;font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,#fbbf24,#fde68a,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Acceso Único</div>
-                    <div style="font-size:.7rem;color:rgba(251,191,36,.5);margin-top:.2rem;font-weight:600;">Guía manual exclusiva · Preguntas reales</div>
-                </div>
+        <!-- ══ LOBBY VIEW ══════════════════════════════════════════ -->
+        <div id="auLobbyView">
+        <!-- back to home -->
+        <div style="display:flex;align-items:center;padding:.55rem .85rem;background:rgba(0,0,0,.3);border-bottom:1px solid rgba(255,255,255,.05);">
+            <button onclick="goHome()" style="display:flex;align-items:center;gap:.4rem;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);color:#fbbf24;border-radius:10px;padding:.35rem .8rem;font-size:.72rem;font-weight:700;cursor:pointer;">
+                ← Inicio
+            </button>
+            <div style="flex:1;text-align:center;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(251,191,36,.4);">ACCESO ÚNICO</div>
+            <div style="width:60px;"></div>
+        </div>
 
-                <!-- STATS ROW -->
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:1.2rem;">
-                    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
-                        <div style="font-size:1.3rem;font-weight:900;color:#fbbf24;font-family:var(--font-d);">34+</div>
-                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Preguntas</div>
+            <!-- HERO HEADER -->
+            <div style="position:relative;overflow:hidden;background:linear-gradient(160deg,#0d0900 0%,#1a0e00 50%,#0a0a0a 100%);padding:2rem .85rem 1.5rem;text-align:center;border-bottom:1px solid rgba(251,191,36,.15);">
+                <!-- top gold line -->
+                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#fbbf24,#fde68a,#fbbf24,transparent);"></div>
+                <!-- shimmer bg -->
+                <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(251,191,36,.04) 50%,transparent 65%);background-size:200% 100%;animation:shimmer 4s linear infinite;pointer-events:none;"></div>
+                <div style="font-size:3rem;margin-bottom:.5rem;filter:drop-shadow(0 0 20px rgba(251,191,36,.5));animation:pulse-ring 3s ease-in-out infinite;">👑</div>
+                <div style="font-size:1.5rem;font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#fbbf24 0%,#fde68a 50%,#f59e0b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;">Acceso Único</div>
+                <div style="font-size:.75rem;color:rgba(251,191,36,.5);font-weight:600;margin-bottom:1rem;">Guía manual exclusiva · Preguntas reales con respuesta</div>
+                <!-- stats row -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:340px;margin:0 auto;">
+                    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:12px;padding:.6rem .4rem;text-align:center;">
+                        <div id="auTotalCount" style="font-size:1.2rem;font-weight:900;color:#fbbf24;font-family:var(--font-d);">20</div>
+                        <div style="font-size:.58rem;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.04em;">Preguntas</div>
                     </div>
-                    <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
-                        <div style="font-size:1.3rem;font-weight:900;color:#4ade80;font-family:var(--font-d);">100%</div>
-                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Respondidas</div>
+                    <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:.6rem .4rem;text-align:center;">
+                        <div style="font-size:1.2rem;font-weight:900;color:#4ade80;font-family:var(--font-d);">4</div>
+                        <div style="font-size:.58rem;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.04em;">Subáreas</div>
                     </div>
-                    <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.18);border-radius:14px;padding:.7rem .5rem;text-align:center;">
-                        <div style="font-size:1.3rem;font-weight:900;color:#818cf8;font-family:var(--font-d);">UAEH</div>
-                        <div style="font-size:.6rem;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:.1rem;">Fuente</div>
-                    </div>
-                </div>
-
-                <!-- ─── BLOQUE 1: ANATOMÍA / SISTEMAS ────────────────── -->
-                <div class="acceso-section-label">Anatomía y Sistemas</div>
-
-                <!-- Q122 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 122</div>
-                    <div class="acceso-q-text">Relacione las capas de la piel con su representación.<br><span style="font-size:.72rem;color:var(--text-3);">Capa: 1. Dermis &nbsp; 2. Epidermis &nbsp; 3. Hipodermis</span></div>
-
-                    <!-- Skin layers diagram -->
-                    <div class="acceso-img-box">
-                        <div style="font-size:.65rem;font-weight:800;color:rgba(251,191,36,.7);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">Representación</div>
-                        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;">
-                            <!-- LAYER A: Epidermis -->
-                            <rect x="30" y="10" width="175" height="52" rx="4" fill="#8ab4a0" opacity=".85"/>
-                            <path d="M30 28 Q40 22 50 28 Q60 34 70 28 Q80 22 90 28 Q100 34 110 28 Q120 22 130 28 Q140 34 150 28 Q160 22 170 28 Q180 34 190 28 Q200 22 205 28" stroke="#6a9a82" stroke-width="1" fill="none" opacity=".6"/>
-                            <path d="M30 38 Q40 32 50 38 Q60 44 70 38 Q80 32 90 38 Q100 44 110 38 Q120 32 130 38 Q140 44 150 38 Q160 32 170 38 Q180 44 190 38 Q200 32 205 38" stroke="#6a9a82" stroke-width="1" fill="none" opacity=".5"/>
-                            <line x1="88"  y1="10" x2="86"  y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
-                            <line x1="118" y1="10" x2="116" y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
-                            <line x1="150" y1="10" x2="148" y2="-2" stroke="#3a2a1a" stroke-width="2.5" stroke-linecap="round"/>
-                            <text x="8" y="40" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">a)</text>
-                            <!-- LAYER B: Dermis -->
-                            <rect x="30" y="62" width="175" height="62" rx="2" fill="#7a9e8c" opacity=".75"/>
-                            <path d="M30 72 Q55 66 80 72 Q105 78 130 72 Q155 66 180 72 Q200 75 205 72" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".7"/>
-                            <path d="M30 84 Q55 78 80 84 Q105 90 130 84 Q155 78 180 84 Q200 87 205 84" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".6"/>
-                            <path d="M30 96 Q55 90 80 96 Q105 102 130 96 Q155 90 180 96 Q200 99 205 96" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".55"/>
-                            <path d="M30 108 Q55 102 80 108 Q105 114 130 108 Q155 102 180 108 Q200 111 205 108" stroke="#5a8070" stroke-width="1.2" fill="none" opacity=".5"/>
-                            <ellipse cx="119" cy="110" rx="7" ry="5" fill="#3a2818" opacity=".8"/>
-                            <line x1="119" y1="62" x2="119" y2="105" stroke="#3a2818" stroke-width="2.5"/>
-                            <text x="8" y="98" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">b)</text>
-                            <!-- LAYER C: Hipodermis -->
-                            <rect x="30" y="124" width="175" height="58" rx="2" fill="#b0a870" opacity=".6"/>
-                            <ellipse cx="55"  cy="148" rx="14" ry="10" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                            <ellipse cx="82"  cy="144" rx="13" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                            <ellipse cx="110" cy="150" rx="14" ry="10" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                            <ellipse cx="138" cy="144" rx="12" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                            <ellipse cx="164" cy="148" rx="13" ry="9"  fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
-                            <ellipse cx="68"  cy="164" rx="11" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
-                            <ellipse cx="96"  cy="167" rx="13" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
-                            <ellipse cx="124" cy="164" rx="11" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
-                            <ellipse cx="151" cy="162" rx="12" ry="7"  fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
-                            <text x="8" y="158" font-size="12" font-weight="700" fill="rgba(255,255,255,.9)" font-family="monospace">c)</text>
-                            <!-- dividers -->
-                            <line x1="30" y1="62"  x2="205" y2="62"  stroke="rgba(255,255,255,.35)" stroke-width=".8"/>
-                            <line x1="30" y1="124" x2="205" y2="124" stroke="rgba(255,255,255,.35)" stroke-width=".8"/>
-                        </svg>
-                        <div style="display:flex;justify-content:center;gap:1rem;margin-top:.55rem;font-size:.62rem;color:rgba(255,255,255,.4);">
-                            <span>a) Epidermis</span><span>b) Dermis</span><span>c) Hipodermis</span>
-                        </div>
-                    </div>
-
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> 1a, 2c, 3b</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> 1b, 2a, 3c <span class="acceso-check">✅</span></div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> 1c, 2a, 3b</div>
+                    <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:12px;padding:.6rem .4rem;text-align:center;">
+                        <div style="font-size:1.2rem;font-weight:900;color:#818cf8;font-family:var(--font-d);">UAEH</div>
+                        <div style="font-size:.58rem;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.04em;">Fuente</div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Q123 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 123</div>
-                    <div class="acceso-q-text">Identifique el hueso largo situado en la parte medial del antebrazo.</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Radio</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Cúbito <span class="acceso-check">✅</span></div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Húmero</div>
-                    </div>
+            <!-- LOBBY CONTENT -->
+            <div style="padding:.85rem .85rem 6rem;">
+                <div style="font-size:.6rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,191,36,.55);padding:.5rem 0 .8rem;display:flex;align-items:center;gap:.5rem;">
+                    <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(251,191,36,.2),transparent);"></span>
+                    ELIGE UNA SUBÁREA
+                    <span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(251,191,36,.2));"></span>
                 </div>
 
-                <!-- Q124 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 124</div>
-                    <div class="acceso-q-text">¿Cuál es el vaso sanguíneo que se encarga de transportar la sangre oxigenada desde el corazón hacia el cuerpo?</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Capilar</div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Vena</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Arteria <span class="acceso-check">✅</span></div>
-                    </div>
+                <div class="au-lobby" id="auLobbyGrid">
+                    <!-- rendered by JS -->
                 </div>
 
-                <!-- Q125 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 125</div>
-                    <div class="acceso-q-text">¿Qué función le corresponde al intestino delgado?</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Almacenamiento de bilis</div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Producción de glucagón</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Digestión de proteínas <span class="acceso-check">✅</span></div>
+                <!-- CENEVAL note -->
+                <div style="margin-top:1rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;padding:.85rem 1rem;display:flex;gap:.7rem;align-items:flex-start;">
+                    <span style="font-size:1.1rem;flex-shrink:0;">📋</span>
+                    <div>
+                        <div style="font-size:.72rem;font-weight:800;color:#818cf8;margin-bottom:.2rem;">Basado en el temario CENEVAL 2025</div>
+                        <div style="font-size:.68rem;color:var(--text-dim);line-height:1.6;">Las preguntas cubren las 4 subáreas oficiales del módulo Premedicina del EXANI-II: Salud Pública, Anatomía, Biología Celular y Bioquímica/Farmacología.</div>
                     </div>
                 </div>
-
-                <!-- ─── BLOQUE 2: FARMACOLOGÍA ─────────────────────────── -->
-                <div class="acceso-section-label">Farmacología</div>
-
-                <!-- Q151 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 151</div>
-                    <div class="acceso-q-text">Son los medicamentos utilizados para tratar los síntomas de las alergias.</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Antiespasmódicos</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Antihistamínicos <span class="acceso-check">✅</span></div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Analgésicos</div>
-                    </div>
-                </div>
-
-                <!-- Q152 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 152</div>
-                    <div class="acceso-q-text">Se desea dar un fármaco a un paciente que presenta colitis ulcerosa. ¿Cuál es la vía contraindicada?</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Intravenosa</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Rectal <span class="acceso-check">✅</span></div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Tópica</div>
-                    </div>
-                </div>
-
-                <!-- Q153 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 153</div>
-                    <div class="acceso-q-text">¿Cuál es un ejemplo del objeto de estudio que corresponde a la farmacocinética?</div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Efectos secundarios de los antivirales</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">B</span> Excreción del paracetamol por vía renal <span class="acceso-check">✅</span></div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">C</span> Modificación de canales iónicos por antidepresivos</div>
-                    </div>
-                </div>
-
-                <!-- Q154 -->
-                <div class="acceso-q-card">
-                    <div class="acceso-q-number">📋 PREGUNTA 154</div>
-                    <div class="acceso-q-text">¿Qué tipo de solución representa el esquema en el medio extracelular?</div>
-                    <!-- SVG osmosis diagram -->
-                    <div class="acceso-img-box">
-                        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" style="width:160px;height:120px;">
-                            <rect width="160" height="120" rx="8" fill="rgba(0,0,0,0)"/>
-                            <!-- outer dots (extracelular - fewer) -->
-                            <circle cx="18" cy="20" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="140" cy="18" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="8"  cy="70" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="150" cy="75" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="30" cy="105" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="130" cy="102" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="75" cy="10" r="4" fill="rgba(251,191,36,.7)"/>
-                            <circle cx="155" cy="45" r="4" fill="rgba(251,191,36,.7)"/>
-                            <!-- cell circle -->
-                            <circle cx="80" cy="62" r="38" fill="rgba(99,102,241,.08)" stroke="rgba(99,102,241,.5)" stroke-width="1.5"/>
-                            <!-- inner dots (intracelular - more) -->
-                            <circle cx="68" cy="52" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="90" cy="48" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="62" cy="68" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="82" cy="72" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="96" cy="66" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="74" cy="82" r="4" fill="rgba(99,102,241,.9)"/>
-                            <circle cx="88" cy="58" r="4" fill="rgba(99,102,241,.9)"/>
-                        </svg>
-                        <div style="font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.3rem;">🟡 Extracelular &nbsp;&nbsp; 🔵 Intracelular</div>
-                    </div>
-                    <div class="acceso-q-options">
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">A</span> Hipertónica</div>
-                        <div class="acceso-opt wrong"><span class="acceso-opt-letter">B</span> Hipotónica</div>
-                        <div class="acceso-opt correct"><span class="acceso-opt-letter">C</span> Isotónica <span class="acceso-check">✅</span></div>
-                    </div>
-                </div>
-
-                <!-- ─── COMING SOON ─────────────────────────────────────── -->
-                <div style="text-align:center;padding:1.5rem .5rem;border:1px dashed rgba(251,191,36,.2);border-radius:16px;background:rgba(251,191,36,.03);margin-top:.5rem;">
-                    <div style="font-size:1.6rem;margin-bottom:.5rem;">🔒</div>
-                    <div style="font-size:.82rem;font-weight:700;color:rgba(251,191,36,.6);margin-bottom:.3rem;">Más preguntas próximamente</div>
-                    <div style="font-size:.7rem;color:var(--text-dim);">Esta sección se actualiza manualmente con preguntas reales de examen</div>
-                </div>
-
             </div>
         </div>
+
+        <!-- ══ BOOK VIEWER ═══════════════════════════════════════════ -->
+        <div id="auBookView" style="display:none;flex-direction:column;min-height:100vh;">
+
+            <!-- sticky header -->
+            <div class="au-book-header">
+                <div class="au-book-back" onclick="auBackToLobby()">←</div>
+                <div class="au-book-title-wrap">
+                    <div class="au-book-cat-name" id="auBookCatName">Subárea</div>
+                    <div class="au-book-progress-text" id="auBookProgressText">Pregunta 1 de 5</div>
+                </div>
+                <div class="au-book-counter" id="auBookCounter">1/5</div>
+            </div>
+
+            <!-- progress bar -->
+            <div class="au-progress-bar">
+                <div class="au-progress-fill" id="auProgressFill" style="width:0%"></div>
+            </div>
+
+            <!-- page content -->
+            <div class="au-book-page" id="auBookPage">
+                <!-- rendered by JS per question -->
+            </div>
+
+
+        </div>
+
+        <!-- ══ RESULTS VIEW ══════════════════════════════════════════ -->
+        <div id="auResultsView" style="display:none;padding:2rem .85rem 6rem;text-align:center;">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">🏆</div>
+            <div style="font-size:1.3rem;font-weight:900;color:#fbbf24;margin-bottom:.4rem;">¡Sección completada!</div>
+            <div style="font-size:.8rem;color:var(--text-dim);margin-bottom:1.5rem;" id="auResultsSubtitle"></div>
+            <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:18px;padding:1.2rem;margin-bottom:1.5rem;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+                    <div><div style="font-size:1.6rem;font-weight:900;color:#4ade80;" id="auResCorrect">0</div><div style="font-size:.62rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;">Correctas</div></div>
+                    <div><div style="font-size:1.6rem;font-weight:900;color:#f87171;" id="auResWrong">0</div><div style="font-size:.62rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;">Incorrectas</div></div>
+                </div>
+            </div>
+            <button onclick="auBackToLobby()" style="width:100%;padding:.85rem;border-radius:14px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000;font-size:.9rem;font-weight:800;border:none;cursor:pointer;margin-bottom:.7rem;">Volver al menú</button>
+            <button onclick="auRestartCategory()" style="width:100%;padding:.85rem;border-radius:14px;background:rgba(255,255,255,.06);color:var(--text-2);font-size:.9rem;font-weight:700;border:1px solid rgba(255,255,255,.1);cursor:pointer;">Reintentar subárea</button>
+        </div>
+
+    </div>
 
         <div id="repasoIncorrectasScreen" class="screen">
             <div class="page-header" style="margin-bottom:1.5rem;">
@@ -4047,6 +4247,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     }
     </script>
 
+    <script src="preguntas-acceso-unico.js"></script>
+    <script src="acceso-unico.js"></script>
     <script src="batalla.js"></script>
 
 </body>
