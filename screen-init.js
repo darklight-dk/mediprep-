@@ -1,50 +1,88 @@
 // ============================================
-// MEDIPREP SMART — INICIALIZADOR DE PANTALLAS
-// Override showScreen para nuevas funciones
-// ============================================
-// Este archivo debe cargarse ÚLTIMO, después
-// de todos los demás módulos.
+// MEDIPREP SMART — INICIALIZADOR DE PANTALLAS v3
+// Debe cargarse después de app.js.
 // ============================================
 
 (function() {
-    // Guardar referencia al showScreen original
-    const _originalShowScreen = window.showScreen;
+
+    function tryCargarModulos() {
+        if (typeof cargarModulos === 'function' && typeof MODULOS_PREMEDICINA !== 'undefined') {
+            cargarModulos();
+        }
+    }
+
+    function tryRenderUAEMEX() {
+        if (typeof renderUAEMEXScreen === 'function') {
+            renderUAEMEXScreen();
+        } else {
+            // uaemex.js puede cargar tarde, reintentar
+            var n = 0;
+            var t = setInterval(function() {
+                n++;
+                if (typeof renderUAEMEXScreen === 'function') {
+                    clearInterval(t);
+                    renderUAEMEXScreen();
+                } else if (n >= 15) {
+                    clearInterval(t);
+                }
+            }, 150);
+        }
+    }
+
+    var _orig = window.showScreen;
 
     window.showScreen = function(screenId) {
-        // Llamar al original primero
-        if (_originalShowScreen) _originalShowScreen.call(this, screenId);
+        if (_orig) _orig.call(this, screenId);
 
-        // Acciones al abrir cada pantalla
         switch (screenId) {
+
+            case 'clasesScreen':
+                tryCargarModulos();
+                break;
+
+            case 'uaemexScreen':
+                tryRenderUAEMEX();
+                break;
+
             case 'dashboardScreen':
                 if (typeof renderDashboard === 'function') renderDashboard();
                 break;
+
             case 'glosarioScreen':
                 if (typeof renderGlosario === 'function') renderGlosario();
                 break;
+
             case 'flashcardsMenuScreen':
                 if (typeof renderFlashcardMenu === 'function') renderFlashcardMenu();
                 break;
+
             case 'srsScreen':
                 if (typeof SRSSystem !== 'undefined' && typeof srsSessionCards !== 'undefined') {
                     if (srsSessionCards.length === 0 && typeof iniciarSRS === 'function') iniciarSRS();
                 }
                 break;
+
             case 'planEstudioScreen':
                 if (typeof cargarPlanGuardado === 'function') cargarPlanGuardado();
                 break;
+
             case 'pomodoroScreen':
                 if (typeof updatePomodoroDisplay === 'function') {
                     updatePomodoroDisplay();
-                    const totalMins = Math.floor((pomodoroTotalFocusSeconds || 0) / 60);
-                    const tf = document.getElementById('pomodoroTotalFocus');
-                    if (tf) tf.textContent = totalMins + ' min';
-                    const se = document.getElementById('pomodoroSession');
+                    var tf = document.getElementById('pomodoroTotalFocus');
+                    var se = document.getElementById('pomodoroSession');
+                    if (tf) tf.textContent = Math.floor((pomodoroTotalFocusSeconds || 0) / 60) + ' min';
                     if (se) se.textContent = pomodoroSession || 0;
                 }
+                if (typeof renderPomoSettings === 'function') renderPomoSettings();
                 break;
         }
     };
 
-    console.log('✅ Screen-init cargado — Todos los módulos activos');
+    // También llamar cargarModulos en window load como respaldo
+    window.addEventListener('load', function() {
+        tryCargarModulos();
+    });
+
+    console.log('✅ Screen-init v3 cargado');
 })();
