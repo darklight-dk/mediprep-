@@ -11,7 +11,8 @@ const MODULOS_PREMEDICINA = [
     MODULO_SISTEMA_CARDIOVASCULAR,    // sistema-cardiovascular.js
     MODULO_SISTEMA_RESPIRATORIO,      // sistema-respiratorio.js
     MODULO_APARATO_DIGESTIVO,         // aparato-digestivo.js
-    CARBOHIDRATOS,                    // carbohidratos.js ← NUEVO
+    CARBOHIDRATOS,                    // carbohidratos.js
+    MODULO_SIGNOS_VITALES,            // signos-vitales.js ← NUEVO
 ];
 
 console.log("✅ Módulos de Premedicina cargados:", MODULOS_PREMEDICINA.length);
