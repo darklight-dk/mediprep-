@@ -15,6 +15,9 @@ var MODULO_COLORES = {
     'aparato-digestivo':     { accent: '#fb923c', glow: 'rgba(251,146,60,0.22)',  bg: 'rgba(251,146,60,0.08)',  border: 'rgba(251,146,60,0.28)' },
     'carbohidratos':         { accent: '#fbbf24', glow: 'rgba(251,191,36,0.22)',  bg: 'rgba(251,191,36,0.08)',  border: 'rgba(251,191,36,0.28)' },
     'signos-vitales':        { accent: '#f472b6', glow: 'rgba(244,114,182,0.22)', bg: 'rgba(244,114,182,0.08)', border: 'rgba(244,114,182,0.28)'},
+    'farmacologia':          { accent: '#818cf8', glow: 'rgba(129,140,248,0.22)', bg: 'rgba(129,140,248,0.08)', border: 'rgba(129,140,248,0.28)'},
+    'vitaminas':             { accent: '#fb923c', glow: 'rgba(251,146,60,0.22)',  bg: 'rgba(251,146,60,0.08)',  border: 'rgba(251,146,60,0.28)' },
+    'genetica':              { accent: '#34d399', glow: 'rgba(52,211,153,0.22)',  bg: 'rgba(52,211,153,0.08)',  border: 'rgba(52,211,153,0.28)' },
 };
 
 var DEFAULT_COLOR = { accent: '#818cf8', glow: 'rgba(99,102,241,0.2)', bg: 'rgba(99,102,241,0.08)', border: 'rgba(99,102,241,0.25)' };
