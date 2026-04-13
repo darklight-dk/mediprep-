@@ -1,0 +1,108 @@
+══════════════════════════════════════════════════════════════
+   GUÍA: CÓMO AGREGAR IMÁGENES A LOS SIMULACROS — MEDIPREP
+══════════════════════════════════════════════════════════════
+
+¿CÓMO FUNCIONA EL SISTEMA DE IMÁGENES?
+────────────────────────────────────────
+En el código de cada pregunta hay un campo "imagen". Ejemplo:
+
+    { n:46, imagen:'vol2-q46-celula-hipotonica', pregunta:'...' }
+
+Cuando imagen NO es null, la app busca el archivo:
+    sim_imgs/vol2-q46-celula-hipotonica.jpg
+
+Si la imagen existe → la muestra arriba de la pregunta.
+Si NO existe → muestra un placeholder con el nombre del archivo.
+
+══════════════════════════════════════════════════════════════
+PASO A PASO PARA AGREGAR UNA IMAGEN
+══════════════════════════════════════════════════════════════
+
+1. CREA LA CARPETA (solo la primera vez)
+   En la misma carpeta donde tienes tu index.html, crea:
+   
+   📁 mi-proyecto/
+   ├── index.html
+   ├── app.js
+   ├── simulacros.js
+   ├── ...
+   └── 📁 sim_imgs/        ← CREA ESTA CARPETA
+       └── (aquí van tus imágenes)
+
+2. NOMBRA TU IMAGEN IGUAL QUE EN EL CÓDIGO
+   Cada pregunta tiene su nombre de imagen ya definido. 
+   Por ejemplo:
+   
+   Código:   imagen: 'vol2-q46-celula-hipotonica'
+   Archivo:  sim_imgs/vol2-q46-celula-hipotonica.jpg
+   
+   ⚠️  IMPORTANTE: El nombre debe ser EXACTO (minúsculas,
+       guiones, sin espacios).
+
+3. FORMATOS SOPORTADOS
+   Usa .jpg para las imágenes. 
+   Tamaño recomendado: ancho entre 600px y 1200px.
+   Peso máximo recomendado: 500 KB por imagen.
+
+══════════════════════════════════════════════════════════════
+PREGUNTAS QUE REQUIEREN IMAGEN (por volumen)
+══════════════════════════════════════════════════════════════
+
+VOL. 1 — simulacro-premedicina-v1.js
+─────────────────────────────────────
+  Pregunta 15: planos anatómicos (diagrama)
+  Archivo:  sim_imgs/pendiente-planos-anatomicos.jpg
+
+VOL. 2 — simulacro-premedicina-v2.js
+─────────────────────────────────────
+  Pregunta 46: célula en solución hipotónica (se hincha)
+  Archivo:  sim_imgs/vol2-q46-celula-hipotonica.jpg
+
+VOL. 3 — simulacro-premedicina-v3.js
+─────────────────────────────────────
+  (Sin imágenes requeridas en este volumen)
+
+══════════════════════════════════════════════════════════════
+¿LAS IMÁGENES SE GUARDAN EN LOCAL? ¿SE PIERDEN?
+══════════════════════════════════════════════════════════════
+
+SÍ, las imágenes se guardan LOCAL junto con tus archivos .js
+y el index.html. Son archivos físicos en tu computadora.
+
+  ✅ Mientras tengas la carpeta sim_imgs/ con las imágenes,
+     siempre van a aparecer en la app.
+  
+  ✅ Si mueves toda la carpeta del proyecto a otra PC,
+     solo lleva también la carpeta sim_imgs/.
+
+  ✅ Si abres index.html desde un servidor local (como el
+     que usa la app), la carpeta sim_imgs/ debe estar en
+     la misma ubicación que index.html.
+
+══════════════════════════════════════════════════════════════
+AGREGAR IMAGEN A UNA PREGUNTA NUEVA
+══════════════════════════════════════════════════════════════
+
+Cuando me mandes nuevas preguntas en .txt que necesiten
+imagen, simplemente indica en el txt:
+
+    imagen: 'nombre-descriptivo-de-la-imagen'
+
+Ejemplo en tu txt:
+    Pregunta 12 → imagen del corazón con cámaras señaladas
+    imagen: vol4-q12-camaras-corazon
+
+Luego tú pones el archivo:
+    sim_imgs/vol4-q12-camaras-corazon.jpg
+
+Y listo — la app la muestra automáticamente.
+
+══════════════════════════════════════════════════════════════
+RESUMEN RÁPIDO
+══════════════════════════════════════════════════════════════
+
+  1. Crea carpeta sim_imgs/ junto a index.html
+  2. Pon la imagen con el nombre exacto del código + .jpg
+  3. Listo, la app la detecta sola
+
+══════════════════════════════════════════════════════════════

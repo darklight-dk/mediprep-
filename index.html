@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -14,55 +14,62 @@
     <title>MediPrep Smart · EXANI-II</title>
     <style>
 /* ════════════════════════════════════════════════════════════════
-   MEDIPREP SMART v5.0 — "Apex Medical"
-   Fonts: Manrope · Figtree · JetBrains Mono
-   Diseño: moderno, profesional, con carácter
+   EXANIMADO — Paleta oficial
+   Colores: Teal var(--teal-l) · Negro #1a1a2e · Blanco #fff
+   Fondo app: #f0f9f8
 ════════════════════════════════════════════════════════════════ */
 :root {
-  --bg:          #070B18;
-  --bg-1:        #0B1020;
-  --surface:     rgba(11,16,32,0.97);
-  --card:        #0F1628;
-  --card-2:      #121B30;
-  --glass:       rgba(255,255,255,0.045);
-  --glass-h:     rgba(255,255,255,0.075);
-  --border:      rgba(255,255,255,0.075);
-  --border-m:    rgba(255,255,255,0.13);
-  --border-h:    rgba(255,255,255,0.22);
+  /* ── BACKGROUNDS ── */
+  --bg:          #dff0ef;
+  --bg-1:        #ffffff;
+  --surface:     rgba(255,255,255,0.97);
+  --card:        #ffffff;
+  --card-2:      #eef8f7;
+  --glass:       rgba(255,255,255,0.9);
+  --glass-h:     rgba(255,255,255,0.98);
+  --border:      rgba(0,140,125,0.20);
+  --border-m:    rgba(0,140,125,0.35);
+  --border-h:    rgba(0,140,125,0.52);
 
+  /* ── BRAND TEAL ── */
+  --teal:        #3AADA9;
+  --teal-l:      #5BBCB8;
+  --teal-d:      #1e9490;
+  --teal-glow:   rgba(58,173,169,0.32);
+  --teal-bg:     rgba(58,173,169,0.12);
+  --teal-bdr:    rgba(58,173,169,0.32);
+
+  /* ── BLUE — azul claro original ── */
   --blue:        #4F8EF7;
   --blue-l:      #7AABFF;
   --blue-d:      #2D6FE0;
   --blue-glow:   rgba(79,142,247,0.28);
-  --blue-bg:     rgba(79,142,247,0.1);
+  --blue-bg:     rgba(79,142,247,0.10);
   --blue-bdr:    rgba(79,142,247,0.28);
 
-  --teal:        #00D4AA;
-  --teal-l:      #33DDBC;
-  --teal-glow:   rgba(0,212,170,0.25);
-  --teal-bg:     rgba(0,212,170,0.09);
-  --teal-bdr:    rgba(0,212,170,0.26);
+  /* ── OTROS COLORES ── */
+  --gold:        #d97706;
+  --gold-l:      #f59e0b;
+  --gold-glow:   rgba(217,119,6,0.22);
+  --gold-bg:     rgba(217,119,6,0.10);
 
-  --gold:        #F5A623;
-  --gold-l:      #FFCA6A;
-  --gold-glow:   rgba(245,166,35,0.26);
-  --gold-bg:     rgba(245,166,35,0.09);
+  --rose:        #e11d48;
+  --rose-glow:   rgba(225,29,72,0.2);
+  --rose-bg:     rgba(225,29,72,0.09);
+  --rose-bdr:    rgba(225,29,72,0.26);
 
-  --rose:        #FF5C7A;
-  --rose-glow:   rgba(255,92,122,0.24);
-  --rose-bg:     rgba(255,92,122,0.09);
-  --rose-bdr:    rgba(255,92,122,0.25);
+  --violet:      #7c3aed;
+  --violet-bg:   rgba(124,58,237,0.09);
+  --sky:         #0ea5e9;
+  --amber:       #d97706;
 
-  --violet:      #9B6DFF;
-  --violet-bg:   rgba(155,109,255,0.1);
-  --sky:         #3ECFED;
-  --amber:       #FF9F43;
+  /* ── TEXTO ── */
+  --text:        #0a1628;
+  --text-2:      #1e3a38;
+  --text-3:      #3d6e6a;
+  --text-dim:    #6a9a96;
 
-  --text:        #EDF1FF;
-  --text-2:      #B8C2E0;
-  --text-3:      #6B7899;
-  --text-dim:    #323C58;
-
+  /* ── TIPOGRAFÍA ── */
   --font:        'Figtree', system-ui, sans-serif;
   --font-d:      'Manrope', system-ui, sans-serif;
   --mono:        'JetBrains Mono', monospace;
@@ -70,35 +77,35 @@
   --r-xs: 6px; --r-sm: 10px; --r: 14px;
   --r-lg: 18px; --r-xl: 24px; --r-2xl: 32px;
 
-  --sh:    0 2px 12px rgba(0,0,0,0.4);
-  --sh-m:  0 6px 24px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.03) inset;
-  --sh-lg: 0 12px 40px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.04) inset;
-  --sh-xl: 0 20px 64px rgba(0,0,0,0.7);
+  --sh:    0 2px 6px rgba(0,80,70,0.12), 0 1px 3px rgba(0,80,70,0.08);
+  --sh-m:  0 4px 18px rgba(0,80,70,0.14), 0 1px 4px rgba(0,80,70,0.09);
+  --sh-lg: 0 10px 36px rgba(0,80,70,0.16), 0 2px 8px rgba(0,80,70,0.09);
+  --sh-xl: 0 20px 52px rgba(0,80,70,0.18);
 }
 
-[data-theme="light"] {
-  --bg:      #F0F4FC;
-  --bg-1:    #FFFFFF;
-  --card:    #FFFFFF;
-  --card-2:  #F7F9FF;
-  --glass:   rgba(255,255,255,0.8);
-  --glass-h: rgba(255,255,255,0.95);
-  --border:  rgba(0,20,80,0.08);
-  --border-m:rgba(0,20,80,0.14);
-  --border-h:rgba(0,20,80,0.22);
-  --blue:    #2D6FE0; --blue-l:#4F8EF7; --blue-d:#1A52BD;
-  --blue-glow:rgba(45,111,224,0.18); --blue-bg:rgba(45,111,224,0.07); --blue-bdr:rgba(45,111,224,0.22);
-  --teal:    #00B890; --teal-l:#00D4AA;
-  --teal-glow:rgba(0,184,144,0.18); --teal-bg:rgba(0,184,144,0.07); --teal-bdr:rgba(0,184,144,0.22);
-  --gold:    #D4880A; --gold-l:#F5A623;
-  --gold-glow:rgba(212,136,10,0.18); --gold-bg:rgba(212,136,10,0.07);
-  --rose:    #E03055; --rose-glow:rgba(224,48,85,0.18); --rose-bg:rgba(224,48,85,0.07); --rose-bdr:rgba(224,48,85,0.22);
-  --violet:  #6B40E0; --violet-bg:rgba(107,64,224,0.07);
-  --text:    #0A1028; --text-2:#2D3A5A; --text-3:#5A6888; --text-dim:#9AA4C0;
-  --sh:    0 1px 4px rgba(0,20,80,0.07);
-  --sh-m:  0 4px 16px rgba(0,20,80,0.09);
-  --sh-lg: 0 10px 32px rgba(0,20,80,0.11);
-  --sh-xl: 0 20px 52px rgba(0,20,80,0.13);
+/* Dark mode — verdaderamente oscuro */
+[data-theme="dark"] {
+  --bg:      #070B18;
+  --bg-1:    #0B1020;
+  --card:    #0F1628;
+  --card-2:  #121B30;
+  --glass:   rgba(255,255,255,0.05);
+  --glass-h: rgba(255,255,255,0.09);
+  --border:  rgba(255,255,255,0.08);
+  --border-m:rgba(255,255,255,0.14);
+  --border-h:rgba(255,255,255,0.24);
+  --teal:    #00D4AA; --teal-l:#33DDBC; --teal-d:#00B890;
+  --teal-glow:rgba(0,212,170,0.28); --teal-bg:rgba(0,212,170,0.10); --teal-bdr:rgba(0,212,170,0.28);
+  --blue:    #4F8EF7; --blue-l:#7AABFF; --blue-d:#2D6FE0;
+  --blue-glow:rgba(79,142,247,0.28); --blue-bg:rgba(79,142,247,0.10); --blue-bdr:rgba(79,142,247,0.28);
+  --gold:    #F5A623; --gold-l:#FFCA6A; --gold-glow:rgba(245,166,35,0.26); --gold-bg:rgba(245,166,35,0.09);
+  --rose:    #FF5C7A; --rose-glow:rgba(255,92,122,0.24); --rose-bg:rgba(255,92,122,0.09); --rose-bdr:rgba(255,92,122,0.26);
+  --violet:  #9B6DFF; --violet-bg:rgba(155,109,255,0.10);
+  --text:    #EDF1FF; --text-2:#B8C2E0; --text-3:#6B7899; --text-dim:#323C58;
+  --sh:    0 2px 12px rgba(0,0,0,0.45);
+  --sh-m:  0 6px 24px rgba(0,0,0,0.55);
+  --sh-lg: 0 12px 40px rgba(0,0,0,0.65);
+  --sh-xl: 0 20px 64px rgba(0,0,0,0.75);
 }
 
 /* ── RESET ─────────────────────────────────────────────── */
@@ -116,21 +123,17 @@ body {
   padding-bottom:72px; overflow-x:hidden; overflow-y:auto;
   transition:background .3s, color .3s;
 }
-body:not([data-theme="light"]) {
+[data-theme="dark"] body,
+body[data-theme="dark"] {
   background-image:
     radial-gradient(ellipse 90% 40% at 15% -5%, rgba(79,142,247,0.12) 0%, transparent 60%),
     radial-gradient(ellipse 50% 35% at 88% 88%, rgba(155,109,255,0.09) 0%, transparent 55%),
     radial-gradient(ellipse 40% 30% at 5% 68%, rgba(0,212,170,0.06) 0%, transparent 50%);
 }
-body:not([data-theme="light"])::after {
-  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-  opacity:.018;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:180px;
-}
+body:not([data-theme="light"])::after { display:none; }
 ::-webkit-scrollbar { width:3px; height:3px; }
 ::-webkit-scrollbar-track { background:transparent; }
-::-webkit-scrollbar-thumb { background:rgba(79,142,247,0.28); border-radius:99px; }
+::-webkit-scrollbar-thumb { background:rgba(91,188,184,0.35); border-radius:99px; }
 
 /* ── AURORA ────────────────────────────────────────────── */
 .aurora-orb { position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; }
@@ -145,23 +148,24 @@ body:not([data-theme="light"])::after {
 /* ── HEADER ────────────────────────────────────────────── */
 .header {
   position:sticky; top:0; z-index:900;
-  background:rgba(7,11,24,0.88);
-  backdrop-filter:blur(28px) saturate(2);
-  -webkit-backdrop-filter:blur(28px) saturate(2);
-  border-bottom:1px solid var(--border);
+  background:#ffffff;
+  backdrop-filter:blur(20px) saturate(1.5);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  border-bottom:1.5px solid rgba(91,188,184,0.2);
   padding:.72rem 1.1rem;
   display:flex; align-items:center; justify-content:space-between;
-  box-shadow:0 1px 0 rgba(255,255,255,0.02), 0 4px 20px rgba(0,0,0,0.45);
+  box-shadow:0 2px 12px rgba(0,100,90,0.07);
   transition:background .3s;
 }
-[data-theme="light"] .header {
-  background:rgba(255,255,255,0.9);
-  box-shadow:0 1px 0 var(--border), 0 4px 16px rgba(0,20,80,0.06);
+[data-theme="dark"] .header {
+  background:rgba(7,11,24,0.92);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 0 rgba(255,255,255,0.02), 0 4px 20px rgba(0,0,0,0.45);
 }
 .header::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, transparent, var(--blue) 25%, var(--teal) 60%, transparent);
-  opacity:.6;
+  content:''; position:absolute; top:0; left:0; right:0; height:2.5px;
+  background:linear-gradient(90deg, transparent, var(--teal) 30%, var(--teal-l) 60%, transparent);
+  opacity:.8;
 }
 .logo { display:flex; align-items:center; gap:.58rem; cursor:pointer; }
 .logo-icon {
@@ -222,39 +226,40 @@ body:not([data-theme="light"])::after {
 /* ── BOTTOM NAV ────────────────────────────────────────── */
 .bottom-nav {
   position:fixed; bottom:0; left:0; right:0; z-index:900;
-  background:rgba(7,11,24,0.96);
-  backdrop-filter:blur(32px) saturate(2.2);
-  -webkit-backdrop-filter:blur(32px) saturate(2.2);
-  border-top:1px solid var(--border);
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(20px) saturate(1.5);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  border-top:1.5px solid rgba(91,188,184,0.2);
   display:grid; grid-template-columns:repeat(5,1fr);
   padding:0 .2rem env(safe-area-inset-bottom,.35rem);
-  box-shadow:0 -8px 28px rgba(0,0,0,0.5);
+  box-shadow:0 -2px 16px rgba(0,100,90,0.08);
   transition:background .3s;
 }
-[data-theme="light"] .bottom-nav {
-  background:rgba(255,255,255,0.96);
-  box-shadow:0 -1px 0 var(--border), 0 -4px 16px rgba(0,20,80,0.05);
+[data-theme="dark"] .bottom-nav {
+  background:rgba(7,11,24,0.96);
+  border-top:1px solid var(--border);
+  box-shadow:0 -8px 28px rgba(0,0,0,0.5);
 }
 .nav-item {
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:.5rem .2rem .6rem; cursor:pointer; border:none; background:transparent;
-  color:var(--text-dim); font-family:var(--font); gap:.16rem;
+  color:#a0aec0; font-family:var(--font); gap:.16rem;
   min-height:58px; position:relative; transition:color .2s;
 }
 .nav-icon { font-size:1.2rem; line-height:1; transition:transform .28s cubic-bezier(.34,1.56,.64,1), filter .2s; }
 .nav-label { font-size:.55rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; line-height:1; }
-.nav-item.active { color:var(--blue-l); }
-.nav-item.active .nav-icon { transform:translateY(-3px) scale(1.18); filter:drop-shadow(0 0 7px var(--blue-glow)); }
+.nav-item.active { color:var(--teal-d); }
+.nav-item.active .nav-icon { transform:translateY(-3px) scale(1.18); filter:drop-shadow(0 0 7px var(--teal-glow)); }
 .nav-item.active::before {
   content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
   width:28px; height:2.5px;
-  background:linear-gradient(90deg, transparent, var(--blue-l), transparent);
+  background:linear-gradient(90deg, transparent, var(--teal), transparent);
   border-radius:0 0 4px 4px;
 }
 .nav-item.active::after {
   content:''; position:absolute; top:.38rem;
   width:36px; height:36px; border-radius:50%;
-  background:radial-gradient(circle, var(--blue-bg) 0%, transparent 70%);
+  background:radial-gradient(circle, var(--teal-bg) 0%, transparent 70%);
   pointer-events:none;
 }
 .nav-item:active .nav-icon { transform:scale(.86); }
@@ -412,10 +417,10 @@ body:not([data-theme="light"])::after {
 }
 [data-theme="light"] .home-list-card { box-shadow:var(--sh); }
 .home-list-card:hover {
-  border-color:var(--border-m);
+  border-color:var(--teal-bdr);
   background:var(--card-2);
   transform:translateX(4px);
-  box-shadow:0 4px 20px rgba(0,0,0,.35);
+  box-shadow:0 4px 16px rgba(0,100,90,.1);
 }
 .home-list-card:active { transform:scale(.98); }
 .hlc-accent { position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; }
@@ -567,8 +572,8 @@ body:not([data-theme="light"])::after {
 
 /* ── BUTTONS ───────────────────────────────────────────── */
 .btn { flex:1; padding:.86rem 1.3rem; border:none; border-radius:var(--r); font-size:.88rem; font-weight:700; cursor:pointer; transition:all .2s; font-family:var(--font-d); letter-spacing:-.01em; display:inline-flex; align-items:center; justify-content:center; gap:.4rem; position:relative; overflow:hidden; }
-.btn-primary { background:linear-gradient(135deg, var(--blue), var(--blue-d)); color:#fff; box-shadow:0 4px 14px var(--blue-glow), 0 1px 0 rgba(255,255,255,.1) inset; }
-.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 26px rgba(79,142,247,.44); }
+.btn-primary { background:linear-gradient(135deg, var(--teal), var(--teal-d)); color:#fff; box-shadow:0 4px 14px var(--teal-glow), 0 1px 0 rgba(255,255,255,.1) inset; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 26px var(--teal-glow); }
 .btn-primary:active { transform:scale(.98); }
 .btn-primary:disabled { opacity:.38; cursor:not-allowed; transform:none; }
 .btn-gold { background:linear-gradient(135deg, var(--gold), #C47A00); color:#0A0800; font-weight:800; box-shadow:0 4px 14px var(--gold-glow); }
@@ -698,11 +703,11 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
 .drawer { position:fixed; top:0; right:0; bottom:0; width:min(82vw,310px); z-index:1200; background:var(--bg-1); border-left:1px solid var(--border); transform:translateX(100%); transition:transform .33s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; overflow:hidden; }
 [data-theme="light"] .drawer { box-shadow:-10px 0 40px rgba(0,20,80,0.1); }
 .drawer.open { transform:translateX(0); }
-.drawer::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),var(--teal)); }
+.drawer::before { content:''; position:absolute; top:0; left:0; right:0; height:2.5px; background:linear-gradient(90deg,var(--teal),var(--teal-l)); }
 .drawer-header { display:flex; align-items:center; justify-content:space-between; padding:1rem 1rem .75rem; border-bottom:1px solid var(--border); flex-shrink:0; }
 .drawer-brand { display:flex; align-items:center; gap:.52rem; }
-.drawer-brand-icon { width:34px; height:34px; border-radius:10px; font-size:1.2rem; display:flex; align-items:center; justify-content:center; background:var(--blue-bg); border:1px solid var(--blue-bdr); }
-.drawer-brand-name { font-size:.9rem; font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.drawer-brand-icon { width:34px; height:34px; border-radius:10px; font-size:1.2rem; display:flex; align-items:center; justify-content:center; background:var(--teal-bg); border:1px solid var(--teal-bdr); }
+.drawer-brand-name { font-size:.9rem; font-weight:900; color:var(--text); letter-spacing:-.03em; }
 .drawer-brand-sub { font-size:.56rem; color:var(--text-dim); font-weight:600; letter-spacing:.05em; }
 .drawer-close { width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--glass); color:var(--text-3); font-size:.9rem; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .18s; }
 .drawer-close:hover { background:rgba(255,92,122,.15); color:#FF8099; border-color:var(--rose-bdr); }
@@ -769,7 +774,7 @@ input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; le
 .toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
 .toggle-slider { position:absolute; cursor:pointer; inset:0; background:var(--border-m); border-radius:99px; transition:background .25s; }
 .toggle-slider::before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:transform .25s cubic-bezier(.34,1.56,.64,1); box-shadow:0 1px 3px rgba(0,0,0,.3); }
-.toggle-switch input:checked + .toggle-slider { background:var(--blue); }
+.toggle-switch input:checked + .toggle-slider { background:var(--teal); }
 .toggle-switch input:checked + .toggle-slider::before { transform:translateX(18px); }
 .theme-selector { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-top:.3rem; }
 .theme-option { display:flex; align-items:center; gap:.55rem; padding:.62rem .78rem; border-radius:var(--r); border:1.5px solid var(--border); cursor:pointer; transition:all .2s; background:var(--glass); font-size:.76rem; font-weight:700; color:var(--text-2); }
@@ -974,27 +979,43 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     <div id="toastContainer"></div>
     <!-- LEVEL UP BANNER -->
     <div id="arenaLevelUpBanner"></div>
-    <header class="header">
-        <div class="logo" onclick="goHome()" title="Inicio">
-            <div class="logo-icon">🧬</div>
-            <div class="logo-text" style="display:flex;align-items:center;gap:.5rem;">Mediprep<span style="font-size:.52rem;font-weight:800;letter-spacing:.06em;padding:.12rem .48rem;border-radius:5px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.38);color:var(--blue-l);font-family:var(--font-d);text-transform:uppercase;">EXANI-II</span></div>
+    <!-- ══ EXANIMADO HEADER ══════════════════════════════════ -->
+    <header class="header" style="background:#fff;border-bottom:1.5px solid var(--border);backdrop-filter:none;-webkit-backdrop-filter:none;padding:.6rem 1rem;">
+        <!-- Logo ExaniMado -->
+        <div class="logo" onclick="goHome()" title="Inicio" style="gap:.55rem;">
+            <div style="width:36px;height:36px;border-radius:50%;border:2px solid #1a1a2e;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <img src="icon-192.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='🧬';">
+            </div>
+            <div style="font-family:'Figtree',sans-serif;font-size:1.15rem;font-weight:900;letter-spacing:-.03em;color:#1a1a2e;line-height:1;">
+                Exani<span style="color:#4DB6AC;">Mado</span>
+            </div>
         </div>
-        <div class="header-stat" id="headerStreak" style="display:flex;">
-            <span style="font-size:1.1rem">🔥</span>
-            <span id="headerStreakVal" style="font-weight:700;color:var(--gold);">0</span>
+
+        <!-- Search bar (decorativa, estilo imagen) -->
+        <div style="flex:1;max-width:200px;margin:0 .5rem;position:relative;">
+            <input type="text" placeholder="Buscar tema..." style="width:100%;padding:.42rem .9rem .42rem 2.1rem;border-radius:22px;border:1.5px solid rgba(0,0,0,0.13);background:#f5f5f5;font-size:.78rem;font-family:'Figtree',sans-serif;color:#1a1a2e;outline:none;" onfocus="navTo('preguntasRapidasScreen','nav-quiz')" readonly>
+            <span style="position:absolute;left:.65rem;top:50%;transform:translateY(-50%);font-size:.8rem;pointer-events:none;">🔍</span>
         </div>
-        <div class="header-stat" id="wrongCountBadge" style="display:none;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);padding:0.35rem 0.65rem;border-radius:20px;cursor:pointer;" onclick="showScreen('repasoIncorrectasScreen')" title="Repasar incorrectas">
-            <span style="font-size:0.9rem;margin-right:0.2rem;">❌</span>
-            <span style="font-weight:700;color:#fca5a5;font-size:0.85rem;">0</span>
-        </div>
-        <div id="headerXP" style="cursor:pointer;" onclick="showScreen('batallaMenuScreen')" title="Arena Médica">
-            <span>⚔️</span>
-            <span id="headerXPVal">Nv.1</span>
-        </div>
-        <div class="header-right">
-            <button class="settings-btn" onclick="openSettings()" title="Configuración" aria-label="Configuración">⚙</button>
-            <div class="hamburger-btn" onclick="openDrawer()" title="Menú" id="hamburgerBtn">
-                <span></span><span></span><span></span>
+
+        <!-- Streak + XP + Ajustes + Menu -->
+        <div style="display:flex;align-items:center;gap:.4rem;flex-shrink:0;">
+            <div class="header-stat" id="headerStreak" style="display:flex;gap:.2rem;align-items:center;">
+                <span style="font-size:1rem">🔥</span>
+                <span id="headerStreakVal" style="font-weight:800;color:#f59e0b;font-size:.85rem;">0</span>
+            </div>
+            <div class="header-stat" id="wrongCountBadge" style="display:none;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);padding:0.28rem 0.55rem;border-radius:20px;cursor:pointer;" onclick="showScreen('repasoIncorrectasScreen')">
+                <span style="font-size:0.85rem;">❌</span>
+                <span style="font-weight:700;color:#fca5a5;font-size:0.8rem;">0</span>
+            </div>
+            <div id="headerXP" style="cursor:pointer;display:flex;align-items:center;gap:.2rem;" onclick="showScreen('batallaMenuScreen')">
+                <span style="font-size:1rem;">⚔️</span>
+                <span id="headerXPVal" style="font-weight:800;font-size:.8rem;color:#1a1a2e;">Nv.1</span>
+            </div>
+            <button class="settings-btn" onclick="openSettings()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;padding:.2rem;color:#1a1a2e;" title="Configuración">⚙</button>
+            <div class="hamburger-btn" onclick="openDrawer()" id="hamburgerBtn" style="display:flex;flex-direction:column;gap:4px;cursor:pointer;padding:.3rem;">
+                <span style="display:block;width:20px;height:2px;background:#1a1a2e;border-radius:2px;"></span>
+                <span style="display:block;width:20px;height:2px;background:#1a1a2e;border-radius:2px;"></span>
+                <span style="display:block;width:14px;height:2px;background:#1a1a2e;border-radius:2px;"></span>
             </div>
         </div>
     </header>
@@ -1010,7 +1031,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <div class="drawer-brand">
                 <div class="drawer-brand-icon">🧬</div>
                 <div>
-                    <div class="drawer-brand-name">MediPrep Smart</div>
+                    <div class="drawer-brand-name">Exani<span style="color:var(--teal);">Mado</span></div>
                     <div class="drawer-brand-sub">EXANI-II · Premedicina</div>
                 </div>
             </div>
@@ -1444,260 +1465,223 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <!-- ═══════════════════════════════════════════════════════ -->
         <!-- PANTALLA DE INICIO                                    -->
         <!-- ═══════════════════════════════════════════════════════ -->
-        <div id="homeScreen" class="screen">
+        <div id="homeScreen" class="screen" style="background:var(--bg);min-height:100dvh;padding-bottom:80px;">
 
-            <!-- ── DAILY MISSION ─────────────────────── -->
-            <div class="daily-card home-animate home-animate-1" onclick="navTo('preguntasRapidasScreen','nav-quiz')">
-                <div class="daily-card-eyebrow">
-                    <span class="live-dot"></span>
-                    <span>Misión de hoy</span>
+        <!-- ══ HERO BANNER ══════════════════════════════════════ -->
+        <div style="background:linear-gradient(160deg,var(--teal-l) 0%,var(--teal-l) 60%,var(--teal-d) 100%);padding:1.6rem 1.2rem 1.4rem;position:relative;overflow:hidden;">
+            <!-- Grain texture overlay -->
+            <div style="position:absolute;inset:0;opacity:.04;background-image:url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E');background-size:150px;pointer-events:none;"></div>
+            <!-- Decorative circle -->
+            <div style="position:absolute;top:-40px;right:-50px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.1);pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.07);pointer-events:none;"></div>
+
+            <div style="position:relative;z-index:1;">
+                <div style="font-family:'Figtree',sans-serif;font-size:1.65rem;font-weight:900;color:#1a1a2e;line-height:1.2;margin-bottom:.5rem;letter-spacing:-.03em;">
+                    Domina el EXANI-II<br>y asegura tu lugar<br>en <span style="color:#fff;">Medicina.</span>
                 </div>
-                <div class="daily-card-title">
-                    ¿Listo para el<br>
-                    <span class="shimmer-text">EXANI-II?</span>
+                <div style="font-size:.8rem;color:rgba(26,26,46,0.75);line-height:1.55;margin-bottom:1rem;max-width:280px;">
+                    Transformamos tus horas de estudio en resultados reales. ¡Anímate a dar el primer paso hacia tu bata blanca!
                 </div>
-                <div class="daily-card-footer">
-                    <div class="daily-card-cta">Toca para practicar ahora →</div>
-                    <div id="homeSrsIndicator" style="display:none;" class="badge-chip badge-emerald">
-                        <span id="homeSrsCount">0</span> SRS hoy
+
+                <!-- Stats row in hero -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:.75rem;">
+                    <div style="background:rgba(255,255,255,0.28);border-radius:12px;padding:.65rem .4rem;text-align:center;border:1px solid rgba(255,255,255,.4);">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1.25rem;font-weight:900;color:#1a1a2e;" id="hstatPrecision">0%</div>
+                        <div style="font-size:.58rem;font-weight:700;color:rgba(26,26,46,.6);text-transform:uppercase;letter-spacing:.04em;">Precisión</div>
+                        <div class="hstat-bar" id="hstatBar1" style="display:none;"></div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.28);border-radius:12px;padding:.65rem .4rem;text-align:center;border:1px solid rgba(255,255,255,.4);">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1.25rem;font-weight:900;color:#1a1a2e;" id="hstatRacha">0</div>
+                        <div style="font-size:.58rem;font-weight:700;color:rgba(26,26,46,.6);text-transform:uppercase;letter-spacing:.04em;">Racha 🔥</div>
+                        <div class="hstat-bar" id="hstatBar2" style="display:none;"></div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.28);border-radius:12px;padding:.65rem .4rem;text-align:center;border:1px solid rgba(255,255,255,.4);">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1.25rem;font-weight:900;color:#1a1a2e;" id="hstatTotal">0</div>
+                        <div style="font-size:.58rem;font-weight:700;color:rgba(26,26,46,.6);text-transform:uppercase;letter-spacing:.04em;">Resueltas</div>
+                        <div class="hstat-bar" id="hstatBar3" style="display:none;"></div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ── STATS ─────────────────────────────── -->
-            <div class="home-stats-grid home-animate home-animate-2">
-                <div class="hstat">
-                    <div class="hstat-bar" id="hstatBar1" style="background:linear-gradient(90deg,var(--blue),var(--violet));width:0%;"></div>
-                    <div class="hstat-v grad-num grad-indigo" id="hstatPrecision">0%</div>
-                    <div class="hstat-l">Precisión</div>
-                </div>
-                <div class="hstat">
-                    <div class="hstat-bar" id="hstatBar2" style="background:linear-gradient(90deg,var(--gold),#fb923c);width:0%;"></div>
-                    <div class="hstat-v grad-num grad-gold" id="hstatRacha">0</div>
-                    <div class="hstat-l">Racha 🔥</div>
-                </div>
-                <div class="hstat">
-                    <div class="hstat-bar" id="hstatBar3" style="background:linear-gradient(90deg,var(--teal),#34d399);width:0%;"></div>
-                    <div class="hstat-v grad-num grad-emerald" id="hstatTotal">0</div>
-                    <div class="hstat-l">Resueltas</div>
+                <!-- SRS hidden indicator (kept for JS) -->
+                <div id="homeSrsIndicator" style="display:none;" class="badge-chip badge-emerald">
+                    <span id="homeSrsCount">0</span> SRS hoy
                 </div>
             </div>
+        </div>
 
-            <!-- ── INCORRECTAS ALERT ──────────────────── -->
-            <div id="wrongBankCard" style="display:none;" class="wrong-alert home-animate home-animate-2" onclick="showScreen('repasoIncorrectasScreen')">
-                <div class="hlc-icon" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.3);">⚠️</div>
+        <!-- ══ CONTENIDO PRINCIPAL ══════════════════════════════ -->
+        <div style="padding:.9rem .95rem 0;">
+
+            <!-- ALERT INCORRECTAS (hidden by default) -->
+            <div id="wrongBankCard" style="display:none;background:#fff3cd;border:1.5px solid #f59e0b;border-radius:14px;padding:.75rem 1rem;margin-bottom:.75rem;display:none;align-items:center;gap:.7rem;cursor:pointer;" onclick="showScreen('repasoIncorrectasScreen')">
+                <div style="font-size:1.3rem;">⚠️</div>
                 <div style="flex:1;">
-                    <div style="font-weight:700;color:#fca5a5;font-size:.84rem;">Tienes incorrectas por repasar</div>
-                    <div style="font-size:.68rem;color:rgba(252,165,165,0.55);margin-top:.06rem;">Refuerza lo que fallaste · <span id="wrongBankCardCount">0</span> preguntas</div>
+                    <div style="font-weight:700;color:#92400e;font-size:.82rem;">Tienes incorrectas por repasar</div>
+                    <div style="font-size:.68rem;color:#b45309;margin-top:.05rem;">Refuerza lo que fallaste · <span id="wrongBankCardCount">0</span> preguntas</div>
                 </div>
-                <div class="badge-chip badge-rose">Repasar →</div>
+                <div style="background:#f59e0b;color:#fff;font-size:.65rem;font-weight:800;padding:.25rem .65rem;border-radius:20px;">Repasar →</div>
             </div>
 
-            <!-- ── ARENA XP BAR ───────────────────────── -->
-            <div class="arena-xp-bar home-animate home-animate-3" id="homeArenaXPBar" onclick="showScreen('batallaMenuScreen')">
-                <div class="arena-xp-top">
-                    <span class="arena-xp-lvl" id="homeArenaLvlLabel">⚔️ Cargando nivel...</span>
-                    <span class="arena-xp-val" id="homeArenaXPLabel">0 XP</span>
+            <!-- ARENA XP BAR -->
+            <div class="arena-xp-bar" id="homeArenaXPBar" onclick="showScreen('batallaMenuScreen')" style="background:#fff;border:1.5px solid var(--teal-bdr);border-radius:16px;padding:.75rem 1rem;margin-bottom:.75rem;cursor:pointer;">
+                <div class="arena-xp-top" style="display:flex;justify-content:space-between;margin-bottom:.4rem;">
+                    <span class="arena-xp-lvl" id="homeArenaLvlLabel" style="font-size:.78rem;font-weight:700;color:#1a1a2e;">⚔️ Cargando nivel...</span>
+                    <span class="arena-xp-val" id="homeArenaXPLabel" style="font-size:.75rem;font-weight:700;color:var(--teal-l);">0 XP</span>
                 </div>
-                <div class="arena-xp-track">
-                    <div id="homeArenaXPFill" class="arena-xp-fill" style="width:0%;"></div>
+                <div class="arena-xp-track" style="background:var(--teal-bg);border-radius:99px;height:6px;overflow:hidden;">
+                    <div id="homeArenaXPFill" class="arena-xp-fill" style="width:0%;height:100%;background:linear-gradient(90deg,var(--teal-l),var(--teal-d));border-radius:99px;transition:width .6s ease;"></div>
                 </div>
             </div>
 
-            <!-- ── ARENA HERO ─────────────────────────── -->
-            <div class="home-animate home-animate-3" style="margin-bottom:.75rem;">
-                <div class="arena-hero" onclick="showScreen('batallaMenuScreen');refreshArenaMenu();">
-                    <div class="arena-hero-glow"></div>
-                    <div class="arena-hero-row">
-                        <div class="arena-hero-icon">⚔️</div>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.18rem;">
-                                <div class="arena-hero-name">Arena Médica</div>
-                                <span class="badge-chip badge-rose" id="homeArenaLvlBadge">⚔️ Nv.1</span>
-                            </div>
-                            <div class="arena-hero-sub">Batalla con vidas · combos · XP · power-ups</div>
-                        </div>
-                        <span class="arena-hero-chevron">›</span>
+            <!-- ══ SECCIÓN: MÓDULOS ══════════════════════════════ -->
+            <div style="font-family:'Figtree',sans-serif;font-size:1.15rem;font-weight:900;color:#1a1a2e;letter-spacing:-.01em;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;">
+                MÓDULOS
+                <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(0,175,155,.3),transparent);border-radius:2px;"></div>
+            </div>
+
+            <!-- Grid 2x2 MÓDULOS estilo pill -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:1.1rem;">
+
+                <!-- PREMEDICINA -->
+                <div onclick="showScreen('premedicinaScreen')"
+                    style="border:2.5px solid var(--teal-l);border-radius:22px;padding:.9rem .85rem;background:#fff;cursor:pointer;transition:all .18s;box-shadow:var(--sh);">
+                    <div style="font-family:'Figtree',sans-serif;font-size:.88rem;font-weight:900;color:var(--text);letter-spacing:.02em;text-transform:uppercase;line-height:1.25;margin-bottom:.3rem;">PREMEDICINA</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.2rem;">
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Clases</span>
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Video</span>
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Simul.</span>
+                    </div>
+                </div>
+
+                <!-- COMPRENSIÓN LECTORA -->
+                <div onclick="navTo('preguntasRapidasScreen','nav-quiz')"
+                    style="border:2.5px solid var(--teal-l);border-radius:22px;padding:.9rem .85rem;background:#fff;cursor:pointer;transition:all .18s;">
+                    <div style="font-family:'Figtree',sans-serif;font-size:.88rem;font-weight:900;color:#1a1a2e;letter-spacing:.02em;text-transform:uppercase;line-height:1.25;margin-bottom:.3rem;">COMPRENSIÓN<br>LECTORA</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.2rem;">
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Quiz</span>
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Simul.</span>
+                    </div>
+                </div>
+
+                <!-- PENSAMIENTO MATEMÁTICO -->
+                <div onclick="navTo('preguntasRapidasScreen','nav-quiz')"
+                    style="border:2.5px solid var(--teal-l);border-radius:22px;padding:.9rem .85rem;background:#fff;cursor:pointer;transition:all .18s;">
+                    <div style="font-family:'Figtree',sans-serif;font-size:.88rem;font-weight:900;color:#1a1a2e;letter-spacing:.02em;text-transform:uppercase;line-height:1.25;margin-bottom:.3rem;">PENSAMIENTO<br>MATEMÁTICO</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.2rem;">
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Quiz</span>
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Simul.</span>
+                    </div>
+                </div>
+
+                <!-- REDACCIÓN INDIRECTA -->
+                <div onclick="navTo('preguntasRapidasScreen','nav-quiz')"
+                    style="border:2.5px solid var(--teal-l);border-radius:22px;padding:.9rem .85rem;background:#fff;cursor:pointer;transition:all .18s;">
+                    <div style="font-family:'Figtree',sans-serif;font-size:.88rem;font-weight:900;color:#1a1a2e;letter-spacing:.02em;text-transform:uppercase;line-height:1.25;margin-bottom:.3rem;">REDACCIÓN<br>INDIRECTA</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.2rem;">
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Quiz</span>
+                        <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.18rem .5rem;border-radius:99px;font-weight:700;">Simul.</span>
                     </div>
                 </div>
             </div>
 
-            <!-- ── ESTUDIA ────────────────────────────── -->
-            <p class="home-section-label home-animate home-animate-3">Estudia</p>
+            <!-- ══ SECCIÓN: PRACTICA ══════════════════════════════ -->
+            <div style="font-family:'Figtree',sans-serif;font-size:.72rem;font-weight:800;color:var(--teal-d);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;">
+                ⚡ PRACTICA
+                <div style="flex:1;height:1px;background:var(--teal-bg);"></div>
+            </div>
 
-            <div class="home-study-grid home-animate home-animate-3">
-                <div class="hcard hcard-indigo kinetic" onclick="navTo('preguntasRapidasScreen','nav-quiz')">
-                    <div class="hcard-glow"></div>
-                    <span class="hcard-icon">⚡</span>
-                    <div class="hcard-title">Quiz Flash</div>
-                    <div class="hcard-sub">Practica por tema</div>
-                    <span class="hcard-tag">Personalizable</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.75rem;">
+                <div style="background:#fff;border:1.5px solid var(--blue-bdr);border-radius:16px;padding:.85rem .8rem;cursor:pointer;text-align:center;box-shadow:var(--sh);"
+                    onclick="navTo('preguntasRapidasScreen','nav-quiz')">
+                    <div style="font-size:1.5rem;margin-bottom:.3rem;">⚡</div>
+                    <div style="font-family:'Figtree',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);">Quiz Flash</div>
+                    <div style="font-size:.65rem;color:var(--blue-d);margin-top:.1rem;">Por tema</div>
                 </div>
-                <div class="hcard hcard-amber kinetic" onclick="navTo('examenesScreen','nav-exams')">
-                    <div class="hcard-glow"></div>
-                    <span class="hcard-icon">🎯</span>
-                    <div class="hcard-title">Simulacros</div>
-                    <div class="hcard-sub">EXANI-II oficial</div>
-                    <span class="hcard-tag">Cronometrado</span>
+                <div style="background:#fff;border:1.5px solid rgba(245,158,11,.3);border-radius:16px;padding:.85rem .8rem;cursor:pointer;text-align:center;box-shadow:var(--sh);"
+                    onclick="navTo('examenesScreen','nav-exams')">
+                    <div style="font-size:1.5rem;margin-bottom:.3rem;">🎯</div>
+                    <div style="font-family:'Figtree',sans-serif;font-size:.82rem;font-weight:800;color:var(--text);">Simulacros</div>
+                    <div style="font-size:.65rem;color:var(--gold);margin-top:.1rem;">EXANI-II</div>
                 </div>
             </div>
 
-            <div class="home-animate home-animate-3">
-                <div class="home-list-card" onclick="navTo('clasesScreen','nav-clases');setTimeout(function(){if(typeof cargarModulos==='function')cargarModulos();},80)">
-                    <div class="hlc-accent" style="background:var(--teal);"></div>
-                    <div class="hlc-icon" style="background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.22);">📚</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Clases Teóricas</div>
-                        <div class="hlc-sub">Temario completo · 7 módulos oficiales</div>
-                    </div>
-                    <span class="hlc-arrow">›</span>
+            <!-- ARENA MÉDICA -->
+            <div style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(220,38,38,.04));border:1.5px solid rgba(239,68,68,.25);border-radius:16px;padding:.85rem 1rem;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;box-shadow:var(--sh);"
+                onclick="showScreen('batallaMenuScreen');refreshArenaMenu();">
+                <div style="width:40px;height:40px;background:linear-gradient(135deg,#ef4444,#b91c1c);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;box-shadow:0 3px 10px rgba(239,68,68,.3);">⚔️</div>
+                <div style="flex:1;">
+                    <div style="font-family:'Figtree',sans-serif;font-size:.9rem;font-weight:800;color:var(--text);">Arena Médica</div>
+                    <div style="font-size:.7rem;color:#ef4444;margin-top:.08rem;">Batalla · Combos · XP · Power-ups</div>
                 </div>
-                <div class="home-list-card" onclick="showScreen('clasesV2Screen')" style="border-color:rgba(220,38,38,0.16);background:rgba(220,38,38,0.035);">
-                    <div class="hlc-accent" style="background:var(--rose);"></div>
-                    <div class="hlc-icon" style="background:rgba(220,38,38,0.14);border:1px solid rgba(220,38,38,0.28);">▶️</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Clases en Video <span class="badge-chip badge-rose" style="font-size:.55rem;padding:.08rem .38rem;vertical-align:middle;">V2</span></div>
-                        <div class="hlc-sub">Playlist YouTube · Explicaciones visuales</div>
-                    </div>
-                    <span class="hlc-arrow" style="color:rgba(220,38,38,0.55);">›</span>
-                </div>
-                <div class="home-list-card" onclick="showScreen('juegosScreen')">
-                    <div class="hlc-accent" style="background:var(--violet);"></div>
-                    <div class="hlc-icon" style="background:rgba(168,85,247,0.14);border:1px solid rgba(168,85,247,0.22);">🎮</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Juegos Clínicos</div>
-                        <div class="hlc-sub">Diagnóstico · Signos vs síntomas · 3 modos</div>
-                    </div>
-                    <span class="hlc-arrow">›</span>
-                </div>
+                <span class="badge-chip badge-rose" id="homeArenaLvlBadge">⚔️ Nv.1</span>
+                <span style="color:#ef4444;font-size:1.3rem;">›</span>
             </div>
 
-            <!-- ── HERRAMIENTAS ───────────────────────── -->
-            <p class="home-section-label home-animate home-animate-4" style="margin-top:.4rem;">Herramientas</p>
+            <!-- ══ SECCIÓN: HERRAMIENTAS ══════════════════════════ -->
+            <div style="font-family:'Figtree',sans-serif;font-size:.72rem;font-weight:800;color:var(--teal-d);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;">
+                🛠 HERRAMIENTAS
+                <div style="flex:1;height:1px;background:var(--teal-bg);"></div>
+            </div>
 
-            <div class="home-tools-grid home-animate home-animate-4">
-
-                <!-- Dashboard -->
-                <div class="home-list-card" onclick="showScreen('dashboardScreen')" style="position:relative;overflow:hidden;border-color:rgba(99,102,241,.16);">
-                    <div class="hlc-accent" style="background:#818cf8;"></div>
-                    <div class="hlc-icon" style="background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.25);">📊</div>
+            <div>
+                <div class="home-list-card" onclick="iniciarSRS()" style="border-color:rgba(16,185,129,.25);background:#fff;border-radius:14px;margin-bottom:.5rem;">
+                    <div class="hlc-accent" style="background:#10b981;"></div>
+                    <div class="hlc-icon" style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);">🧠</div>
                     <div style="flex:1;">
-                        <div class="hlc-title">Dashboard</div>
-                        <div class="hlc-sub">Tu progreso · Rachas · Analíticas</div>
-                    </div>
-                    <span class="hlc-arrow">›</span>
-                </div>
-
-                <!-- SRS -->
-                <div class="home-list-card" onclick="iniciarSRS()" style="position:relative;overflow:hidden;border-color:rgba(16,185,129,.16);">
-                    <div class="hlc-accent" style="background:#34d399;"></div>
-                    <div class="hlc-icon" style="background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.25);">🧠</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Repetición Espaciada <span style="font-size:.6rem;font-weight:800;color:#34d399;">SRS</span></div>
+                        <div class="hlc-title">Repetición Espaciada <span style="font-size:.6rem;font-weight:800;color:#059669;">SRS</span></div>
                         <div class="hlc-sub">Memoriza para siempre · Algoritmo adaptativo</div>
                     </div>
-                    <span id="srsDueBadge" style="font-size:.6rem;font-weight:800;padding:.14rem .45rem;border-radius:20px;font-family:var(--font-d);background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3);margin-right:.3rem;display:none;"></span>
+                    <span id="srsDueBadge" style="font-size:.6rem;font-weight:800;padding:.14rem .45rem;border-radius:20px;font-family:var(--font-d);background:rgba(16,185,129,.15);color:#059669;border:1px solid rgba(16,185,129,.3);margin-right:.3rem;display:none;"></span>
                     <span class="hlc-arrow">›</span>
                 </div>
-
-                <!-- Flashcards -->
-                <div class="home-list-card" onclick="showScreen('flashcardsMenuScreen')" style="position:relative;overflow:hidden;border-color:rgba(168,85,247,.16);">
-                    <div class="hlc-accent" style="background:#c084fc;"></div>
-                    <div class="hlc-icon" style="background:rgba(168,85,247,.14);border:1px solid rgba(168,85,247,.25);">🃏</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Flashcards</div>
-                        <div class="hlc-sub">Tarjetas de memoria · Por tema</div>
-                    </div>
+                <div class="home-list-card" onclick="showScreen('flashcardsMenuScreen')" style="border-color:rgba(124,58,237,.20);background:#fff;border-radius:14px;margin-bottom:.5rem;">
+                    <div class="hlc-accent" style="background:#7c3aed;"></div>
+                    <div class="hlc-icon" style="background:rgba(124,58,237,.10);border:1px solid rgba(124,58,237,.22);">🃏</div>
+                    <div style="flex:1;"><div class="hlc-title">Flashcards</div><div class="hlc-sub">Tarjetas de memoria · Por tema</div></div>
                     <span class="hlc-arrow">›</span>
                 </div>
-
-                <!-- Glosario -->
-                <div class="home-list-card" onclick="showScreen('glosarioScreen')" style="position:relative;overflow:hidden;border-color:rgba(56,189,248,.16);">
-                    <div class="hlc-accent" style="background:#38bdf8;"></div>
-                    <div class="hlc-icon" style="background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.25);">📖</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Glosario Médico</div>
-                        <div class="hlc-sub">161 términos · Prefijos · Raíces</div>
-                    </div>
+                <div class="home-list-card" onclick="showScreen('glosarioScreen')" style="border-color:rgba(14,165,233,.22);background:#fff;border-radius:14px;margin-bottom:.5rem;">
+                    <div class="hlc-accent" style="background:#0ea5e9;"></div>
+                    <div class="hlc-icon" style="background:rgba(14,165,233,.10);border:1px solid rgba(14,165,233,.22);">📖</div>
+                    <div style="flex:1;"><div class="hlc-title">Glosario Médico</div><div class="hlc-sub">161 términos · Prefijos · Raíces</div></div>
                     <span class="hlc-arrow">›</span>
                 </div>
-
-                <!-- Plan -->
-                <div class="home-list-card" onclick="showScreen('planEstudioScreen')" style="position:relative;overflow:hidden;border-color:rgba(245,158,11,.16);">
-                    <div class="hlc-accent" style="background:#fbbf24;"></div>
-                    <div class="hlc-icon" style="background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.25);">📅</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Plan de Estudio</div>
-                        <div class="hlc-sub">Cronograma automático · Tu fecha de examen</div>
-                    </div>
+                <div class="home-list-card" onclick="showScreen('planEstudioScreen')" style="border-color:rgba(217,119,6,.22);background:#fff;border-radius:14px;margin-bottom:.5rem;">
+                    <div class="hlc-accent" style="background:#d97706;"></div>
+                    <div class="hlc-icon" style="background:rgba(217,119,6,.10);border:1px solid rgba(217,119,6,.22);">📅</div>
+                    <div style="flex:1;"><div class="hlc-title">Plan de Estudio</div><div class="hlc-sub">Cronograma automático · Tu fecha de examen</div></div>
                     <span class="hlc-arrow">›</span>
                 </div>
-
-                <!-- Pomodoro -->
-                <div class="home-list-card" onclick="showScreen('pomodoroScreen')" style="position:relative;overflow:hidden;border-color:rgba(239,68,68,.16);">
-                    <div class="hlc-accent" style="background:#f87171;"></div>
-                    <div class="hlc-icon" style="background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.25);">🍅</div>
-                    <div style="flex:1;">
-                        <div class="hlc-title">Pomodoro</div>
-                        <div class="hlc-sub">25 min estudio · 5 min descanso</div>
-                    </div>
+                <div class="home-list-card" onclick="showScreen('pomodoroScreen')" style="border-color:rgba(239,68,68,.20);background:#fff;border-radius:14px;margin-bottom:.5rem;">
+                    <div class="hlc-accent" style="background:#ef4444;"></div>
+                    <div class="hlc-icon" style="background:rgba(239,68,68,.10);border:1px solid rgba(239,68,68,.22);">🍅</div>
+                    <div style="flex:1;"><div class="hlc-title">Pomodoro</div><div class="hlc-sub">25 min estudio · 5 min descanso</div></div>
                     <span class="hlc-arrow">›</span>
                 </div>
-
             </div>
 
-            <!-- ── LOGROS ─────────────────────────────── -->
-            <div class="home-achievement-banner home-animate home-animate-5" onclick="navTo('logrosScreen','nav-logros')">
-                <div style="font-size:2rem;filter:drop-shadow(0 2px 10px rgba(245,158,11,0.5));">🏆</div>
+            <!-- LOGROS -->
+            <div style="background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(251,191,36,.06));border:1.5px solid rgba(245,158,11,.28);border-radius:16px;padding:1rem 1.1rem;margin-bottom:.55rem;display:flex;align-items:center;gap:.85rem;cursor:pointer;"
+                onclick="navTo('logrosScreen','nav-logros')">
+                <div style="font-size:2rem;filter:drop-shadow(0 2px 10px rgba(245,158,11,0.4));">🏆</div>
                 <div style="flex:1;">
-                    <div style="font-family:var(--font-d);font-weight:800;font-size:.9rem;color:var(--text);margin-bottom:.15rem;">Mis Logros y Estadísticas</div>
-                    <div style="font-size:.72rem;color:rgba(252,211,77,0.6);">Progreso · Rachas · Logros desbloqueados</div>
+                    <div style="font-family:'Figtree',sans-serif;font-weight:800;font-size:.88rem;color:var(--text);margin-bottom:.12rem;">Mis Logros y Estadísticas</div>
+                    <div style="font-size:.7rem;color:rgba(245,158,11,.8);">Progreso · Rachas · Logros desbloqueados</div>
                 </div>
-                <span style="color:rgba(245,158,11,0.5);font-size:1.2rem;">›</span>
+                <span style="color:rgba(245,158,11,.5);font-size:1.2rem;">›</span>
             </div>
 
-            <div class="home-list-card home-animate home-animate-5" onclick="showOnboardingAgain()" style="margin-bottom:.3rem;border-color:rgba(255,255,255,0.04);background:rgba(255,255,255,0.018);">
-                <div class="hlc-icon" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);">💡</div>
-                <div style="flex:1;">
-                    <div class="hlc-title" style="color:var(--text-2);">Ver tutorial</div>
-                    <div class="hlc-sub">Repasa las funciones de la app</div>
-                </div>
-                <span class="hlc-arrow">›</span>
-            </div>
-
-            
-            <!-- ── ACCESO ÚNICO ───────────────────────── -->
-            <p class="home-section-label home-animate home-animate-5" style="color:rgba(251,191,36,.7);letter-spacing:.12em;">
-                ⭐ ACCESO ÚNICO
-            </p>
-
-            <div class="acceso-home-card home-animate home-animate-5" onclick="showScreen('accesoUnicoScreen')">
-                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.6rem;">
-                    <span class="acceso-crown">👑</span>
-                    <div>
-                        <div class="acceso-home-title">Acceso Único</div>
-                        <div class="acceso-home-sub">Guía manual exclusiva · Solo aquí</div>
-                    </div>
-                </div>
-                <div style="font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:.55rem;">
-                    Preguntas reales de examen con respuesta oficial. Contenido exclusivo que no encontrarás en ningún otro lugar.
-                </div>
-                <div class="acceso-home-pills">
-                    <span class="acceso-home-pill">👑 Guía manual</span>
-                    <span class="acceso-home-pill">✅ Respuestas incluidas</span>
-                    <span class="acceso-home-pill">🔒 Solo aquí</span>
-                </div>
-            </div>
-
-            <!-- UAEMEX banner en home -->
-            <p class="home-section-label home-animate home-animate-6" style="color:rgba(139,92,246,.8);letter-spacing:.1em;margin-top:.3rem;">
+            <!-- UAEMEX -->
+            <div style="font-family:'Figtree',sans-serif;font-size:.72rem;font-weight:800;color:rgba(124,58,237,.85);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;margin-top:.4rem;">
                 🎓 UAEMEX 2026
-            </p>
-            <div class="home-list-card home-animate home-animate-6"
+                <div style="flex:1;height:1px;background:rgba(124,58,237,.15);"></div>
+            </div>
+
+            <div class="home-list-card"
                 onclick="showScreen('uaemexScreen');setTimeout(function(){if(typeof renderUAEMEXScreen==='function')renderUAEMEXScreen();},80)"
-                style="border-color:rgba(139,92,246,.22);background:rgba(139,92,246,.05);margin-bottom:.65rem;">
-                <div class="hlc-accent" style="background:#8b5cf6;"></div>
-                <div class="hlc-icon" style="background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.28);">🎓</div>
+                style="border-color:rgba(124,58,237,.22);background:#fff;border-radius:14px;margin-bottom:.65rem;">
+                <div class="hlc-accent" style="background:#7c3aed;"></div>
+                <div class="hlc-icon" style="background:rgba(124,58,237,.10);border:1px solid rgba(124,58,237,.22);">🎓</div>
                 <div style="flex:1;">
                     <div class="hlc-title">Simulacro EXANI-II UAEMEX 2026</div>
                     <div class="hlc-sub">Profe Cristian · 55 preguntas · Comprensión, Redacción y Matemáticas</div>
@@ -1706,8 +1690,91 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 <span class="hlc-arrow">›</span>
             </div>
 
-            <div class="home-footer-quote home-animate home-animate-6">Para todos sale el sol ☀️</div>
-        </div>
+            <div style="text-align:center;padding:1.2rem 0 .5rem;font-size:.72rem;color:var(--teal);font-weight:700;letter-spacing:.05em;">Para todos sale el sol ☀️</div>
+
+        </div><!-- /padding wrapper -->
+        </div><!-- /homeScreen -->
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PREMEDICINA HUB — Módulo completo                      -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div id="premedicinaScreen" class="screen" style="background:var(--bg);min-height:100dvh;padding-bottom:80px;">
+
+            <!-- Header teal -->
+            <div style="background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 100%);padding:1.1rem 1rem 1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:-30px;right:-30px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.1);pointer-events:none;"></div>
+                <div style="display:flex;align-items:center;gap:.75rem;">
+                    <button onclick="navTo('homeScreen','nav-home')" style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">←</button>
+                    <div style="width:42px;height:42px;background:rgba(255,255,255,.22);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🏥</div>
+                    <div style="flex:1;">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:-.02em;">Premedicina</div>
+                        <div style="font-size:.68rem;color:rgba(255,255,255,.75);margin-top:.05rem;">EXANI-II · Módulo completo</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,.2);border-radius:20px;padding:.22rem .7rem;flex-shrink:0;">
+                        <span style="font-size:.6rem;font-weight:800;color:#fff;letter-spacing:.04em;">10 MÓDULOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding:.9rem .95rem 0;">
+                <div style="font-size:.72rem;font-weight:800;color:var(--teal-d);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;">
+                    Elige cómo estudiar
+                    <div style="flex:1;height:1px;background:var(--teal-bg);"></div>
+                </div>
+
+                <!-- Clases Teóricas -->
+                <div onclick="navTo('clasesScreen','nav-clases');setTimeout(function(){if(typeof cargarModulos==='function')cargarModulos();},80)"
+                    style="background:#fff;border:2px solid var(--teal-bdr);border-radius:18px;padding:1rem 1.1rem;margin-bottom:.65rem;display:flex;align-items:center;gap:.85rem;cursor:pointer;box-shadow:var(--sh-m);transition:all .18s;">
+                    <div style="width:52px;height:52px;background:linear-gradient(135deg,var(--teal),var(--teal-d));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;box-shadow:0 4px 12px var(--teal-glow);">📚</div>
+                    <div style="flex:1;">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1rem;font-weight:900;color:var(--text);margin-bottom:.15rem;">Clases Teóricas</div>
+                        <div style="font-size:.72rem;color:var(--teal-d);font-weight:600;margin-bottom:.4rem;">Temario completo · 10 módulos oficiales</div>
+                        <div style="display:flex;gap:.3rem;flex-wrap:wrap;">
+                            <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid var(--teal-bdr);">Sistema Respiratorio</span>
+                            <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid var(--teal-bdr);">Cardiovascular</span>
+                            <span style="font-size:.58rem;background:var(--teal-bg);color:var(--teal-d);padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid var(--teal-bdr);">+8 más</span>
+                        </div>
+                    </div>
+                    <span style="color:var(--teal);font-size:1.4rem;">›</span>
+                </div>
+
+                <!-- Clases en Video -->
+                <div onclick="showScreen('clasesV2Screen')"
+                    style="background:#fff;border:2px solid rgba(220,38,38,.22);border-radius:18px;padding:1rem 1.1rem;margin-bottom:.65rem;display:flex;align-items:center;gap:.85rem;cursor:pointer;box-shadow:var(--sh-m);transition:all .18s;">
+                    <div style="width:52px;height:52px;background:linear-gradient(135deg,#ef4444,#b91c1c);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;box-shadow:0 4px 12px rgba(220,38,38,.3);">▶️</div>
+                    <div style="flex:1;">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1rem;font-weight:900;color:var(--text);margin-bottom:.15rem;">Clases en Video</div>
+                        <div style="font-size:.72rem;color:#dc2626;font-weight:600;margin-bottom:.4rem;">Playlist YouTube · 34 clases</div>
+                        <div style="display:flex;gap:.3rem;flex-wrap:wrap;">
+                            <span style="font-size:.58rem;background:#fef2f2;color:#b91c1c;padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid rgba(220,38,38,.22);">Explicaciones visuales</span>
+                            <span style="font-size:.58rem;background:#fef2f2;color:#b91c1c;padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid rgba(220,38,38,.22);">Acceso YouTube</span>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;">
+                        <span style="background:#ef4444;color:#fff;font-size:.6rem;font-weight:800;padding:.18rem .55rem;border-radius:20px;">V2</span>
+                        <span style="color:#dc2626;font-size:1.4rem;">›</span>
+                    </div>
+                </div>
+
+                <!-- Simuladores Premedicina -->
+                <div onclick="showScreen('simuladoresScreen');setTimeout(function(){if(typeof renderSimuladoresLobby==='function')renderSimuladoresLobby();},60);"
+                    style="background:#fff;border:2px solid var(--blue-bdr);border-radius:18px;padding:1rem 1.1rem;margin-bottom:.65rem;display:flex;align-items:center;gap:.85rem;cursor:pointer;box-shadow:var(--sh-m);transition:all .18s;">
+                    <div style="width:52px;height:52px;background:linear-gradient(135deg,var(--blue),var(--blue-d));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;box-shadow:0 4px 12px var(--blue-glow);">🎯</div>
+                    <div style="flex:1;">
+                        <div style="font-family:'Figtree',sans-serif;font-size:1rem;font-weight:900;color:var(--text);margin-bottom:.15rem;">Simuladores Premedicina</div>
+                        <div style="font-size:.72rem;color:var(--blue-d);font-weight:600;margin-bottom:.4rem;">Nuestros volúmenes · Explicaciones por opción</div>
+                        <div style="display:flex;gap:.3rem;flex-wrap:wrap;">
+                            <span style="font-size:.58rem;background:var(--blue-bg);color:var(--blue-d);padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid var(--blue-bdr);">Vol. 1 · Vol. 2 · Vol. 3</span>
+                            <span style="font-size:.58rem;background:var(--blue-bg);color:var(--blue-d);padding:.15rem .5rem;border-radius:20px;font-weight:700;border:1px solid var(--blue-bdr);">EXANI-II oficial</span>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;">
+                        <span style="background:var(--blue);color:#fff;font-size:.6rem;font-weight:800;padding:.18rem .55rem;border-radius:20px;">NUEVO</span>
+                        <span style="color:var(--blue);font-size:1.4rem;">›</span>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /premedicinaScreen -->
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!-- ACCESO ÚNICO — Guía manual exclusiva                   -->
@@ -2315,6 +2382,21 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 <button class="btn btn-secondary" onclick="navTo('homeScreen','nav-home')" style="margin-top:1rem;max-width:200px;">← Volver</button>
             </div>
 
+            <!-- Simuladores destacado -->
+            <div onclick="showScreen('simuladoresScreen');setTimeout(function(){if(typeof renderSimuladoresLobby==='function')renderSimuladoresLobby();},60);"
+                style="background:linear-gradient(135deg,rgba(79,142,247,.16),rgba(62,207,237,.1));border:1.5px solid rgba(79,142,247,.35);border-radius:18px;padding:1.1rem 1.2rem;cursor:pointer;margin-bottom:.6rem;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 32px var(--blue-glow)'"
+                onmouseout="this.style.transform='';this.style.boxShadow=''">
+                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--teal));"></div>
+                <div style="display:flex;align-items:center;gap:.9rem;">
+                    <div style="font-size:2rem;">🎯</div>
+                    <div style="flex:1;">
+                        <div style="font-family:var(--font-d);font-weight:900;color:#fff;font-size:.98rem;margin-bottom:.18rem;">Simuladores Premedicina</div>
+                        <div style="font-size:.72rem;color:rgba(180,200,255,.7);">48 preguntas con explicaciones detalladas por opción</div>
+                    </div>
+                    <div style="background:var(--blue-bg);padding:.28rem .7rem;border-radius:20px;font-size:.65rem;font-weight:800;color:var(--blue-l);border:1px solid var(--blue-bdr);">NUEVO</div>
+                </div>
+            </div>
             <!-- UAEMEX destacado -->
             <div onclick="showScreen('uaemexScreen');setTimeout(function(){if(typeof renderUAEMEXScreen==='function')renderUAEMEXScreen();},80)"
                 style="background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(91,127,255,.1));border:1.5px solid rgba(139,92,246,.35);border-radius:18px;padding:1.1rem 1.2rem;cursor:pointer;margin-bottom:1rem;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;"
@@ -2604,6 +2686,32 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 </div>
             </div>
             <div id="uaemexContent"></div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PANTALLA: SIMULADORES PREMEDICINA                      -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div id="simuladoresScreen" class="screen">
+            <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(79,142,247,.16),rgba(91,127,255,.1));border:1.5px solid rgba(79,142,247,.3);border-radius:22px;padding:1.3rem 1.15rem 1.15rem;margin-bottom:1rem;">
+                <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--blue),var(--teal),var(--violet));border-radius:22px 22px 0 0;"></div>
+                <div style="position:absolute;top:-35px;right:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,247,.2) 0%,transparent 70%);pointer-events:none;"></div>
+                <div style="display:flex;align-items:center;gap:.85rem;">
+                    <button onclick="navTo('homeScreen','nav-home')" style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--text-3);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">←</button>
+                    <div style="width:46px;height:46px;background:linear-gradient(135deg,var(--blue),var(--blue-d));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 16px var(--blue-glow);flex-shrink:0;">🎯</div>
+                    <div>
+                        <div style="font-family:var(--font-d);font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:-.02em;">Simuladores Premedicina</div>
+                        <div style="font-size:.7rem;color:rgba(180,200,255,.65);">EXANI-II · Con explicaciones por opción</div>
+                    </div>
+                </div>
+            </div>
+            <div id="simuladoresContent"></div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PANTALLA: QUIZ DEL SIMULACRO                           -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div id="simulacroQuizScreen" class="screen">
+            <div id="simulacroQuizContent" style="padding-bottom:1.5rem;"></div>
         </div>
     </div>
 
@@ -3469,6 +3577,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     <script src="acceso-unico.js"></script>
     <script src="batalla.js"></script>
     <script src="repaso.js"></script>
+    <script src="simulacro-premedicina-v1.js"></script>
+    <script src="simulacro-premedicina-v2.js"></script>
+    <script src="simulacro-premedicina-v3.js"></script>
+    <script src="simulacros.js"></script>
     <script src="simulacro-uaemex-2026.js"></script>
     <script src="uaemex.js"></script>
     <script src="screen-init.js"></script>
@@ -3678,14 +3790,12 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
     // ── INIT SETTINGS ON LOAD ────────────────────────────────────
     window.addEventListener('DOMContentLoaded', () => {
-        // Apply saved theme
-        const savedTheme = localStorage.getItem('mp_theme') || 'dark';
+        // Apply saved theme — default LIGHT si no hay preferencia guardada
+        const savedTheme = localStorage.getItem('mp_theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         // Apply saved sound
         const soundOn = localStorage.getItem('mp_sound') !== '0';
         if (window.CONFIG && CONFIG.SOUNDS) CONFIG.SOUNDS.enabled = soundOn;
-        // Apply saved repaso mode
-        // Repaso mode init handled by repaso.js
     });
 
     // Repaso mode logic moved to repaso.js

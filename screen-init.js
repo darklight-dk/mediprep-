@@ -40,6 +40,10 @@
                 tryCargarModulos();
                 break;
 
+            case 'simuladoresScreen':
+                if (typeof renderSimuladoresLobby === 'function') renderSimuladoresLobby();
+                break;
+
             case 'uaemexScreen':
                 tryRenderUAEMEX();
                 break;
