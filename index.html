@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -12,966 +12,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <title>MediPrep Smart · EXANI-II</title>
-    <style>
-/* ════════════════════════════════════════════════════════════════
-   EXANIMADO — Paleta oficial
-   Colores: Teal var(--teal-l) · Negro #1a1a2e · Blanco #fff
-   Fondo app: #f0f9f8
-════════════════════════════════════════════════════════════════ */
-:root {
-  /* ── BACKGROUNDS ── */
-  --bg:          #dff0ef;
-  --bg-1:        #ffffff;
-  --surface:     rgba(255,255,255,0.97);
-  --card:        #ffffff;
-  --card-2:      #eef8f7;
-  --glass:       rgba(255,255,255,0.9);
-  --glass-h:     rgba(255,255,255,0.98);
-  --border:      rgba(0,140,125,0.20);
-  --border-m:    rgba(0,140,125,0.35);
-  --border-h:    rgba(0,140,125,0.52);
-
-  /* ── BRAND TEAL ── */
-  --teal:        #3AADA9;
-  --teal-l:      #5BBCB8;
-  --teal-d:      #1e9490;
-  --teal-glow:   rgba(58,173,169,0.32);
-  --teal-bg:     rgba(58,173,169,0.12);
-  --teal-bdr:    rgba(58,173,169,0.32);
-
-  /* ── BLUE — azul claro original ── */
-  --blue:        #4F8EF7;
-  --blue-l:      #7AABFF;
-  --blue-d:      #2D6FE0;
-  --blue-glow:   rgba(79,142,247,0.28);
-  --blue-bg:     rgba(79,142,247,0.10);
-  --blue-bdr:    rgba(79,142,247,0.28);
-
-  /* ── OTROS COLORES ── */
-  --gold:        #d97706;
-  --gold-l:      #f59e0b;
-  --gold-glow:   rgba(217,119,6,0.22);
-  --gold-bg:     rgba(217,119,6,0.10);
-
-  --rose:        #e11d48;
-  --rose-glow:   rgba(225,29,72,0.2);
-  --rose-bg:     rgba(225,29,72,0.09);
-  --rose-bdr:    rgba(225,29,72,0.26);
-
-  --violet:      #7c3aed;
-  --violet-bg:   rgba(124,58,237,0.09);
-  --sky:         #0ea5e9;
-  --amber:       #d97706;
-
-  /* ── TEXTO ── */
-  --text:        #0a1628;
-  --text-2:      #1e3a38;
-  --text-3:      #3d6e6a;
-  --text-dim:    #6a9a96;
-
-  /* ── TIPOGRAFÍA ── */
-  --font:        'Figtree', system-ui, sans-serif;
-  --font-d:      'Manrope', system-ui, sans-serif;
-  --mono:        'JetBrains Mono', monospace;
-
-  --r-xs: 6px; --r-sm: 10px; --r: 14px;
-  --r-lg: 18px; --r-xl: 24px; --r-2xl: 32px;
-
-  --sh:    0 2px 6px rgba(0,80,70,0.12), 0 1px 3px rgba(0,80,70,0.08);
-  --sh-m:  0 4px 18px rgba(0,80,70,0.14), 0 1px 4px rgba(0,80,70,0.09);
-  --sh-lg: 0 10px 36px rgba(0,80,70,0.16), 0 2px 8px rgba(0,80,70,0.09);
-  --sh-xl: 0 20px 52px rgba(0,80,70,0.18);
-}
-
-/* Dark mode — verdaderamente oscuro */
-[data-theme="dark"] {
-  --bg:      #070B18;
-  --bg-1:    #0B1020;
-  --card:    #0F1628;
-  --card-2:  #121B30;
-  --glass:   rgba(255,255,255,0.05);
-  --glass-h: rgba(255,255,255,0.09);
-  --border:  rgba(255,255,255,0.08);
-  --border-m:rgba(255,255,255,0.14);
-  --border-h:rgba(255,255,255,0.24);
-  --teal:    #00D4AA; --teal-l:#33DDBC; --teal-d:#00B890;
-  --teal-glow:rgba(0,212,170,0.28); --teal-bg:rgba(0,212,170,0.10); --teal-bdr:rgba(0,212,170,0.28);
-  --blue:    #4F8EF7; --blue-l:#7AABFF; --blue-d:#2D6FE0;
-  --blue-glow:rgba(79,142,247,0.28); --blue-bg:rgba(79,142,247,0.10); --blue-bdr:rgba(79,142,247,0.28);
-  --gold:    #F5A623; --gold-l:#FFCA6A; --gold-glow:rgba(245,166,35,0.26); --gold-bg:rgba(245,166,35,0.09);
-  --rose:    #FF5C7A; --rose-glow:rgba(255,92,122,0.24); --rose-bg:rgba(255,92,122,0.09); --rose-bdr:rgba(255,92,122,0.26);
-  --violet:  #9B6DFF; --violet-bg:rgba(155,109,255,0.10);
-  --text:    #EDF1FF; --text-2:#B8C2E0; --text-3:#6B7899; --text-dim:#323C58;
-  --sh:    0 2px 12px rgba(0,0,0,0.45);
-  --sh-m:  0 6px 24px rgba(0,0,0,0.55);
-  --sh-lg: 0 12px 40px rgba(0,0,0,0.65);
-  --sh-xl: 0 20px 64px rgba(0,0,0,0.75);
-}
-
-/* ── RESET ─────────────────────────────────────────────── */
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box;
-  -webkit-user-select:none; user-select:none;
-  -webkit-tap-highlight-color:transparent; }
-input,textarea { -webkit-user-select:text; user-select:text; }
-html { scroll-behavior:smooth; }
-::selection { background:rgba(79,142,247,0.32); color:#fff; }
-
-/* ── BODY ──────────────────────────────────────────────── */
-body {
-  font-family:var(--font); background:var(--bg); color:var(--text);
-  min-height:100dvh; letter-spacing:-0.004em;
-  padding-bottom:72px; overflow-x:hidden; overflow-y:auto;
-  transition:background .3s, color .3s;
-}
-[data-theme="dark"] body,
-body[data-theme="dark"] {
-  background-image:
-    radial-gradient(ellipse 90% 40% at 15% -5%, rgba(79,142,247,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 35% at 88% 88%, rgba(155,109,255,0.09) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 5% 68%, rgba(0,212,170,0.06) 0%, transparent 50%);
-}
-body:not([data-theme="light"])::after { display:none; }
-::-webkit-scrollbar { width:3px; height:3px; }
-::-webkit-scrollbar-track { background:transparent; }
-::-webkit-scrollbar-thumb { background:rgba(91,188,184,0.35); border-radius:99px; }
-
-/* ── AURORA ────────────────────────────────────────────── */
-.aurora-orb { position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; }
-.aurora-1 { width:380px; height:380px; background:radial-gradient(circle,rgba(79,142,247,0.17) 0%,transparent 70%); top:-110px; left:-70px; animation:aF1 22s ease-in-out infinite; }
-.aurora-2 { width:280px; height:280px; background:radial-gradient(circle,rgba(155,109,255,0.13) 0%,transparent 70%); bottom:90px; right:-55px; animation:aF2 28s ease-in-out infinite; }
-.aurora-3 { width:220px; height:220px; background:radial-gradient(circle,rgba(0,212,170,0.09) 0%,transparent 70%); top:44%; left:32%; animation:aF3 34s ease-in-out infinite; }
-[data-theme="light"] .aurora-orb { display:none; }
-@keyframes aF1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(48px,65px) scale(1.1)} 66%{transform:translate(-28px,22px) scale(.92)} }
-@keyframes aF2 { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-50px,-38px) scale(1.14)} 70%{transform:translate(20px,30px) scale(.88)} }
-@keyframes aF3 { 0%,100%{transform:translate(0,0) scale(1);opacity:.6} 50%{transform:translate(38px,-44px) scale(1.2);opacity:.38} }
-
-/* ── HEADER ────────────────────────────────────────────── */
-.header {
-  position:sticky; top:0; z-index:900;
-  background:#ffffff;
-  backdrop-filter:blur(20px) saturate(1.5);
-  -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  border-bottom:1.5px solid rgba(91,188,184,0.2);
-  padding:.72rem 1.1rem;
-  display:flex; align-items:center; justify-content:space-between;
-  box-shadow:0 2px 12px rgba(0,100,90,0.07);
-  transition:background .3s;
-}
-[data-theme="dark"] .header {
-  background:rgba(7,11,24,0.92);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 1px 0 rgba(255,255,255,0.02), 0 4px 20px rgba(0,0,0,0.45);
-}
-.header::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2.5px;
-  background:linear-gradient(90deg, transparent, var(--teal) 30%, var(--teal-l) 60%, transparent);
-  opacity:.8;
-}
-.logo { display:flex; align-items:center; gap:.58rem; cursor:pointer; }
-.logo-icon {
-  width:34px; height:34px; border-radius:10px; flex-shrink:0;
-  background:linear-gradient(135deg, var(--blue), var(--blue-d));
-  display:flex; align-items:center; justify-content:center; font-size:16px;
-  box-shadow:0 0 0 1px rgba(79,142,247,0.45), 0 0 14px var(--blue-glow);
-  animation:logoPulse 4s ease-in-out infinite;
-}
-@keyframes logoPulse {
-  0%,100%{ box-shadow:0 0 0 1px rgba(79,142,247,0.4), 0 0 14px rgba(79,142,247,0.28); }
-  50%    { box-shadow:0 0 0 1px rgba(79,142,247,0.7), 0 0 26px rgba(79,142,247,0.48); }
-}
-.logo-text {
-  font-family:var(--font-d); font-size:1.05rem; font-weight:800; letter-spacing:-.03em;
-  background:linear-gradient(135deg, #B8D0FF 0%, var(--blue-l) 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  display:flex; align-items:center; gap:.4rem;
-}
-[data-theme="light"] .logo-text {
-  background:linear-gradient(135deg, var(--blue-d), var(--blue));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-.pill {
-  background:var(--blue-bg); color:var(--blue-l);
-  padding:.1rem .4rem; border-radius:5px;
-  font-size:.5rem; font-weight:800; letter-spacing:.07em;
-  text-transform:uppercase; font-family:var(--font-d);
-  border:1px solid var(--blue-bdr);
-  -webkit-text-fill-color:var(--blue-l);
-}
-.header-stat {
-  display:flex; align-items:center; gap:.42rem;
-  background:var(--glass); border:1px solid var(--border);
-  border-radius:20px; padding:.26rem .72rem;
-  font-size:.74rem; font-weight:700; color:var(--text-2);
-}
-#headerXP { font-size:.64rem; font-weight:700; color:var(--gold);
-  display:flex; align-items:center; gap:.28rem; cursor:pointer; }
-.header-right { display:flex; align-items:center; gap:.42rem; }
-.settings-btn {
-  width:34px; height:34px; border-radius:10px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--glass); border:1px solid var(--border);
-  color:var(--text-3); font-size:.95rem; cursor:pointer; transition:all .2s;
-}
-.settings-btn:hover { background:var(--blue-bg); border-color:var(--blue-bdr); color:var(--blue-l); transform:rotate(45deg); }
-.hamburger-btn {
-  width:34px; height:34px; border-radius:10px; flex-shrink:0;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
-  cursor:pointer; border:1px solid var(--border); background:var(--glass); transition:all .18s;
-}
-.hamburger-btn:hover { background:var(--blue-bg); border-color:var(--blue-bdr); }
-.hamburger-btn span { display:block; width:15px; height:1.5px; border-radius:2px; background:var(--text-3); transition:all .2s; }
-.hamburger-btn span:nth-child(2) { width:11px; }
-.hamburger-btn:hover span { width:15px; background:var(--blue-l); }
-
-/* ── BOTTOM NAV ────────────────────────────────────────── */
-.bottom-nav {
-  position:fixed; bottom:0; left:0; right:0; z-index:900;
-  background:rgba(255,255,255,0.97);
-  backdrop-filter:blur(20px) saturate(1.5);
-  -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  border-top:1.5px solid rgba(91,188,184,0.2);
-  display:grid; grid-template-columns:repeat(5,1fr);
-  padding:0 .2rem env(safe-area-inset-bottom,.35rem);
-  box-shadow:0 -2px 16px rgba(0,100,90,0.08);
-  transition:background .3s;
-}
-[data-theme="dark"] .bottom-nav {
-  background:rgba(7,11,24,0.96);
-  border-top:1px solid var(--border);
-  box-shadow:0 -8px 28px rgba(0,0,0,0.5);
-}
-.nav-item {
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding:.5rem .2rem .6rem; cursor:pointer; border:none; background:transparent;
-  color:#a0aec0; font-family:var(--font); gap:.16rem;
-  min-height:58px; position:relative; transition:color .2s;
-}
-.nav-icon { font-size:1.2rem; line-height:1; transition:transform .28s cubic-bezier(.34,1.56,.64,1), filter .2s; }
-.nav-label { font-size:.55rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; line-height:1; }
-.nav-item.active { color:var(--teal-d); }
-.nav-item.active .nav-icon { transform:translateY(-3px) scale(1.18); filter:drop-shadow(0 0 7px var(--teal-glow)); }
-.nav-item.active::before {
-  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
-  width:28px; height:2.5px;
-  background:linear-gradient(90deg, transparent, var(--teal), transparent);
-  border-radius:0 0 4px 4px;
-}
-.nav-item.active::after {
-  content:''; position:absolute; top:.38rem;
-  width:36px; height:36px; border-radius:50%;
-  background:radial-gradient(circle, var(--teal-bg) 0%, transparent 70%);
-  pointer-events:none;
-}
-.nav-item:active .nav-icon { transform:scale(.86); }
-
-/* ── LAYOUT ────────────────────────────────────────────── */
-.container { max-width:840px; margin:0 auto; padding:1rem .9rem 1.25rem; position:relative; z-index:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.screen { display:none; }
-.screen.active { display:block; opacity:1; animation:screenIn .28s cubic-bezier(.22,1,.36,1) both; }
-@keyframes screenIn { from{opacity:0.01;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-.page-header { display:flex; align-items:center; gap:.8rem; margin-bottom:1.4rem; }
-.back-btn {
-  width:36px; height:36px; border-radius:10px;
-  background:var(--glass); border:1px solid var(--border);
-  color:var(--text-3); font-size:1.05rem; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:all .2s; flex-shrink:0;
-}
-.back-btn:hover { background:var(--blue-bg); color:var(--blue-l); border-color:var(--blue-bdr); box-shadow:0 0 10px var(--blue-glow); }
-.page-title { font-family:var(--font-d); font-size:1.42rem; font-weight:800; letter-spacing:-.035em; color:var(--text); }
-
-/* ── GENERIC CARD ──────────────────────────────────────── */
-.card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--r-lg); padding:1.35rem;
-  box-shadow:var(--sh-m); position:relative; overflow:hidden;
-  transition:box-shadow .25s, transform .2s, border-color .2s;
-}
-[data-theme="light"] .card::before { background:none; }
-.card-hover { cursor:pointer; }
-.card-hover:hover { transform:translateY(-3px) scale(1.004); border-color:var(--blue-bdr); box-shadow:0 0 32px var(--blue-glow), var(--sh-lg); }
-.card-hover:active { transform:scale(.97); }
-
-/* ══════════════════════════════════════════════════════════
-   HOME SCREEN
-══════════════════════════════════════════════════════════ */
-
-/* ── DAILY MISSION CARD ────────────────────────────────── */
-.daily-card, .home-daily {
-  border-radius:var(--r-xl); padding:1.25rem 1.3rem; margin-bottom:1rem;
-  position:relative; overflow:hidden; cursor:pointer;
-  background:linear-gradient(135deg, rgba(79,142,247,0.16) 0%, rgba(62,207,237,0.1) 50%, rgba(0,212,170,0.07) 100%);
-  border:1.5px solid rgba(79,142,247,0.28);
-  box-shadow:0 6px 28px rgba(79,142,247,0.14);
-  transition:transform .22s cubic-bezier(.34,1.56,.64,1), border-color .2s, box-shadow .22s;
-}
-.daily-card::before, .home-daily::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2.5px;
-  background:linear-gradient(90deg, var(--blue), var(--teal), var(--violet));
-}
-.daily-card::after, .home-daily::after {
-  content:''; position:absolute; top:-50%; right:-15%;
-  width:220px; height:220px; border-radius:50%;
-  background:radial-gradient(circle, rgba(79,142,247,0.18) 0%, transparent 65%);
-  pointer-events:none;
-}
-.daily-card:hover, .home-daily:hover { transform:translateY(-3px); border-color:rgba(79,142,247,.5); box-shadow:0 10px 36px rgba(79,142,247,0.22); }
-.daily-card:active, .home-daily:active { transform:scale(.98); }
-.daily-card-eyebrow { display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
-.daily-card-eyebrow span { font-size:.62rem; font-weight:700; color:var(--teal-l); letter-spacing:.08em; text-transform:uppercase; }
-.daily-card-title { font-family:var(--font-d); font-size:1.25rem; font-weight:800; letter-spacing:-.025em; line-height:1.25; margin-bottom:.45rem; }
-.daily-card-footer { display:flex; align-items:center; justify-content:space-between; }
-.daily-card-cta { font-size:.72rem; color:rgba(150,185,255,.75); font-weight:500; }
-
-/* ── HOME STATS ────────────────────────────────────────── */
-.home-stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-bottom:1rem; }
-.hstat {
-  background:var(--card-2); border:1px solid var(--border);
-  border-radius:var(--r-lg); padding:.8rem .5rem;
-  text-align:center; position:relative; overflow:hidden;
-  transition:border-color .2s, transform .22s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:var(--sh);
-}
-.hstat:hover { border-color:var(--border-m); transform:translateY(-2px); }
-.hstat-v { font-family:var(--font-d); font-size:1.5rem; font-weight:800; line-height:1; letter-spacing:-.04em; margin-bottom:.18rem; }
-.hstat-l { font-size:.56rem; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:.07em; }
-.hstat-bar { position:absolute; bottom:0; left:0; height:2.5px; border-radius:0 99px 99px 0; transition:width 1.2s cubic-bezier(.22,1,.36,1); }
-
-/* ── HOME SECTION LABEL ────────────────────────────────── */
-.home-section-label {
-  font-size:.56rem; font-weight:800; color:var(--text-dim);
-  letter-spacing:.14em; text-transform:uppercase; margin:0 0 .65rem;
-  display:flex; align-items:center; gap:.5rem;
-}
-.home-section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-/* ── HOME 2-COL STUDY CARDS ────────────────────────────── */
-.home-study-grid { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:.7rem; }
-.hcard {
-  border-radius:var(--r-lg); padding:1.1rem 1rem 1rem; cursor:pointer;
-  position:relative; overflow:hidden;
-  transition:transform .24s cubic-bezier(.34,1.56,.64,1), box-shadow .22s, border-color .2s;
-  display:flex; flex-direction:column; gap:.3rem; min-height:120px;
-}
-.hcard:active { transform:scale(.96); }
-.hcard-glow { position:absolute; top:-30%; right:-20%; width:130px; height:130px; border-radius:50%; pointer-events:none; opacity:.55; }
-.hcard-icon { font-size:1.6rem; line-height:1; position:relative; z-index:1; filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
-.hcard-title { font-family:var(--font-d); font-size:.9rem; font-weight:800; color:#fff; line-height:1.25; position:relative; z-index:1; }
-.hcard-sub { font-size:.68rem; font-weight:500; line-height:1.35; position:relative; z-index:1; opacity:.75; }
-.hcard-tag { display:inline-flex; align-items:center; font-size:.55rem; font-weight:800; padding:.11rem .42rem; border-radius:20px; align-self:flex-start; font-family:var(--font-d); letter-spacing:.03em; position:relative; z-index:1; margin-top:auto; }
-
-.hcard-indigo { background:linear-gradient(148deg, rgba(79,142,247,0.22), rgba(45,111,224,0.15)); border:1.5px solid rgba(79,142,247,0.32); box-shadow:0 4px 22px rgba(79,142,247,0.14); }
-.hcard-indigo:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(79,142,247,0.24); border-color:rgba(79,142,247,.65); }
-.hcard-indigo .hcard-glow { background:radial-gradient(circle, rgba(79,142,247,0.42) 0%, transparent 70%); }
-.hcard-indigo .hcard-sub { color:#A8C6FF; }
-.hcard-indigo .hcard-tag { background:rgba(79,142,247,0.22); color:#C8DCFF; }
-
-.hcard-amber { background:linear-gradient(148deg, rgba(245,166,35,0.22), rgba(200,120,0,0.15)); border:1.5px solid rgba(245,166,35,0.32); box-shadow:0 4px 22px rgba(245,166,35,0.13); }
-.hcard-amber:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(245,166,35,0.22); border-color:rgba(245,166,35,.65); }
-.hcard-amber .hcard-glow { background:radial-gradient(circle, rgba(245,166,35,0.42) 0%, transparent 70%); }
-.hcard-amber .hcard-sub { color:#FFD580; }
-.hcard-amber .hcard-tag { background:rgba(245,166,35,0.22); color:#FFE8A0; }
-
-.hcard-cyan { background:linear-gradient(148deg, rgba(62,207,237,0.22), rgba(0,170,210,0.15)); border:1.5px solid rgba(62,207,237,0.3); box-shadow:0 4px 22px rgba(62,207,237,0.12); }
-.hcard-cyan:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(62,207,237,0.22); border-color:rgba(62,207,237,.65); }
-.hcard-cyan .hcard-glow { background:radial-gradient(circle, rgba(62,207,237,0.4) 0%, transparent 70%); }
-.hcard-cyan .hcard-sub { color:#A0EAF8; }
-.hcard-cyan .hcard-tag { background:rgba(62,207,237,0.2); color:#C0F2FC; }
-
-.hcard-rose { background:linear-gradient(148deg, rgba(255,92,122,0.22), rgba(200,20,60,0.15)); border:1.5px solid rgba(255,92,122,0.3); box-shadow:0 4px 22px rgba(255,92,122,0.12); }
-.hcard-rose:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(255,92,122,0.22); border-color:rgba(255,92,122,.65); }
-.hcard-rose .hcard-glow { background:radial-gradient(circle, rgba(255,92,122,0.4) 0%, transparent 70%); }
-.hcard-rose .hcard-sub { color:#FFB0C0; }
-.hcard-rose .hcard-tag { background:rgba(255,92,122,0.2); color:#FFCCD5; }
-
-.hcard-emerald { background:linear-gradient(148deg, rgba(0,212,170,0.22), rgba(0,160,130,0.15)); border:1.5px solid rgba(0,212,170,0.3); box-shadow:0 4px 22px rgba(0,212,170,0.12); }
-.hcard-emerald:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(0,212,170,0.22); border-color:rgba(0,212,170,.65); }
-.hcard-emerald .hcard-glow { background:radial-gradient(circle, rgba(0,212,170,0.4) 0%, transparent 70%); }
-.hcard-emerald .hcard-sub { color:#80F0D8; }
-.hcard-emerald .hcard-tag { background:rgba(0,212,170,0.2); color:#A0F6E4; }
-
-.hcard-violet { background:linear-gradient(148deg, rgba(155,109,255,0.22), rgba(110,55,220,0.15)); border:1.5px solid rgba(155,109,255,0.3); box-shadow:0 4px 22px rgba(155,109,255,0.12); }
-.hcard-violet:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 38px rgba(155,109,255,0.22); border-color:rgba(155,109,255,.65); }
-.hcard-violet .hcard-glow { background:radial-gradient(circle, rgba(155,109,255,0.4) 0%, transparent 70%); }
-.hcard-violet .hcard-sub { color:#D0B8FF; }
-.hcard-violet .hcard-tag { background:rgba(155,109,255,0.2); color:#E4D4FF; }
-
-.hcard-gold { background:linear-gradient(148deg, rgba(245,166,35,0.25), rgba(200,100,0,0.14)); border:1.5px solid rgba(245,166,35,0.38); box-shadow:0 4px 26px rgba(245,166,35,0.2); }
-.hcard-gold:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 14px 40px rgba(245,166,35,0.36); border-color:rgba(245,166,35,.75); }
-.hcard-gold .hcard-glow { background:radial-gradient(circle, rgba(245,166,35,0.55) 0%, transparent 70%); }
-.hcard-gold .hcard-sub { color:#FFE085; }
-.hcard-gold .hcard-tag { background:rgba(245,166,35,0.22); color:#FFF0A8; }
-.hcard-gold .hcard-title { background:linear-gradient(135deg,#FFD060,#FFE8A0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-
-/* ── HOME LIST CARDS — nuevo diseño ────────────────────── */
-.home-list-card {
-  display:flex; align-items:center; gap:.8rem;
-  padding:.82rem .95rem .82rem 1rem;
-  border-radius:var(--r-lg);
-  border:1px solid var(--border);
-  background:var(--card);
-  cursor:pointer; margin-bottom:.42rem;
-  transition:border-color .2s, background .2s, transform .18s, box-shadow .2s;
-  position:relative; overflow:hidden;
-  box-shadow:var(--sh);
-}
-[data-theme="light"] .home-list-card { box-shadow:var(--sh); }
-.home-list-card:hover {
-  border-color:var(--teal-bdr);
-  background:var(--card-2);
-  transform:translateX(4px);
-  box-shadow:0 4px 16px rgba(0,100,90,.1);
-}
-.home-list-card:active { transform:scale(.98); }
-.hlc-accent { position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; }
-.hlc-icon {
-  width:40px; height:40px; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; flex-shrink:0;
-}
-.hlc-title { font-family:var(--font-d); font-weight:700; color:var(--text); font-size:.84rem; line-height:1.3; }
-.hlc-sub { font-size:.67rem; color:var(--text-3); margin-top:.05rem; }
-.hlc-arrow { color:var(--text-dim); font-size:.95rem; flex-shrink:0; transition:transform .2s, color .2s; }
-.home-list-card:hover .hlc-arrow { transform:translateX(2px); color:var(--text-3); }
-
-/* ── HOME ACHIEVEMENT BANNER ───────────────────────────── */
-.home-achievement-banner {
-  display:flex; align-items:center; gap:.9rem; padding:.95rem 1.1rem;
-  border-radius:var(--r-lg);
-  background:linear-gradient(135deg, rgba(245,166,35,0.12), rgba(255,160,0,0.07));
-  border:1px solid rgba(245,166,35,0.22); cursor:pointer; margin-bottom:.65rem;
-  transition:border-color .2s, transform .2s, box-shadow .2s;
-  position:relative; overflow:hidden; box-shadow:var(--sh);
-}
-.home-achievement-banner:hover { border-color:rgba(245,166,35,.45); transform:translateY(-2px); box-shadow:0 8px 28px rgba(245,166,35,0.12); }
-.home-achievement-banner:active { transform:scale(.98); }
-
-/* ── WRONG ALERT ───────────────────────────────────────── */
-.wrong-alert {
-  display:flex; align-items:center; gap:.8rem; padding:.8rem 1rem;
-  border-radius:var(--r); background:rgba(255,92,122,.07); border:1.5px solid rgba(255,92,122,.24);
-  cursor:pointer; margin-bottom:1rem;
-  transition:border-color .2s, background .2s;
-  animation:wrongPulse 3s ease-in-out infinite;
-}
-.wrong-alert:hover { background:rgba(255,92,122,.12); border-color:rgba(255,92,122,.48); }
-@keyframes wrongPulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,92,122,0)} 50%{box-shadow:0 0 0 4px rgba(255,92,122,0.07)} }
-
-/* ── ARENA HERO ────────────────────────────────────────── */
-.arena-hero {
-  border-radius:var(--r-xl); padding:1.1rem 1.15rem; margin-bottom:.6rem; cursor:pointer;
-  position:relative; overflow:hidden;
-  background:linear-gradient(135deg, rgba(255,92,122,0.18), rgba(175,20,50,0.12), rgba(245,166,35,0.08));
-  border:1.5px solid rgba(255,92,122,0.32);
-  box-shadow:0 4px 26px rgba(255,92,122,0.14);
-  transition:transform .24s cubic-bezier(.34,1.56,.64,1), box-shadow .24s, border-color .2s;
-}
-.arena-hero:hover { transform:translateY(-4px); box-shadow:0 12px 38px rgba(255,92,122,0.26); border-color:rgba(255,92,122,.65); }
-.arena-hero:active { transform:scale(.97); }
-.arena-hero-glow { position:absolute; top:-35%; right:-12%; width:180px; height:180px; background:radial-gradient(circle, rgba(255,92,122,0.22) 0%, transparent 70%); pointer-events:none; }
-.arena-hero-row { display:flex; align-items:center; gap:.8rem; }
-.arena-hero-icon { font-size:2rem; filter:drop-shadow(0 0 12px rgba(255,92,122,0.7)); animation:pulse 2.2s ease-in-out infinite; flex-shrink:0; }
-.arena-hero-name { font-family:var(--font-d); font-weight:800; font-size:1rem; color:white; margin-bottom:.16rem; }
-.arena-hero-sub { font-size:.72rem; color:rgba(255,165,175,.75); line-height:1.3; }
-.arena-hero-chevron { color:rgba(255,92,122,.5); font-size:1.2rem; flex-shrink:0; }
-
-/* ── ARENA XP BAR ──────────────────────────────────────── */
-.arena-xp-bar {
-  background:var(--card-2); border:1px solid rgba(255,92,122,0.2); border-radius:var(--r);
-  padding:.7rem .95rem; margin-bottom:.6rem; cursor:pointer;
-  transition:border-color .2s, box-shadow .2s, transform .2s;
-}
-.arena-xp-bar:hover { border-color:rgba(255,92,122,.5); box-shadow:0 4px 18px rgba(255,92,122,.12); transform:translateY(-1px); }
-.arena-xp-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:.32rem; }
-.arena-xp-lvl { font-size:.68rem; font-weight:700; color:var(--text-3); }
-.arena-xp-val { font-size:.64rem; color:var(--text-dim); font-family:var(--mono); }
-.arena-xp-track { height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
-.arena-xp-fill {
-  height:100%; background:linear-gradient(90deg,#FF5C7A,#F97316,#FFCA6A);
-  border-radius:99px; transition:width 1.2s cubic-bezier(.22,1,.36,1);
-  box-shadow:0 0 8px rgba(255,92,122,0.5);
-}
-.arena-xp-fill::after { content:''; position:absolute; right:0; top:0; width:8px; height:100%; background:rgba(255,255,255,.5); border-radius:99px; filter:blur(2px); }
-
-.home-footer-quote { text-align:center; padding:.55rem 0 .2rem; color:var(--text-dim); font-size:.7rem; font-style:italic; }
-
-/* ── HOME ANIMATIONS ───────────────────────────────────── */
-@keyframes slideUp { from{opacity:0.01;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
-.home-animate { animation:slideUp .42s cubic-bezier(.22,1,.36,1) both; opacity:1; }
-.home-animate-1 { animation-delay:.04s; }
-.home-animate-2 { animation-delay:.09s; }
-.home-animate-3 { animation-delay:.15s; }
-.home-animate-4 { animation-delay:.2s; }
-.home-animate-5 { animation-delay:.26s; }
-.home-animate-6 { animation-delay:.32s; }
-
-.live-dot { width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block; animation:livePing 2s ease infinite; }
-@keyframes livePing { 0%{box-shadow:0 0 0 0 rgba(0,212,170,0.7)} 70%{box-shadow:0 0 0 7px rgba(0,212,170,0)} 100%{box-shadow:0 0 0 0 rgba(0,212,170,0)} }
-
-/* ══════════════════════════════════════════════════════════
-   QUIZ SCREEN
-══════════════════════════════════════════════════════════ */
-.quiz-header {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--r-lg); padding:.88rem 1.2rem; margin-bottom:1rem;
-  display:flex; justify-content:space-between; align-items:center;
-  box-shadow:var(--sh); gap:.5rem; flex-wrap:wrap;
-}
-.quiz-progress { font-family:var(--font-d); font-weight:800; font-size:.86rem; color:var(--text-2); }
-.quiz-timer { font-family:var(--mono); font-size:.88rem; font-weight:600; color:var(--gold); background:var(--gold-bg); border:1px solid rgba(245,166,35,.25); border-radius:20px; padding:.25rem .78rem; }
-.quiz-timer.urgent { color:var(--rose); background:var(--rose-bg); border-color:var(--rose-bdr); }
-.quiz-repaso-btn { display:flex; align-items:center; gap:.32rem; padding:.25rem .68rem; border-radius:20px; background:var(--glass); border:1px solid var(--border); font-size:.66rem; font-weight:700; color:var(--text-3); cursor:pointer; transition:all .18s; font-family:var(--font); }
-.quiz-repaso-btn:hover { background:var(--teal-bg); border-color:var(--teal-bdr); color:var(--teal-l); }
-.quiz-repaso-btn.active { background:var(--teal-bg); border-color:var(--teal-bdr); color:var(--teal-l); box-shadow:0 0 10px var(--teal-glow); }
-
-.progress-track { height:4px; background:var(--border); border-radius:99px; overflow:hidden; margin-bottom:1rem; }
-.progress-fill { height:100%; background:linear-gradient(90deg, var(--blue), var(--teal)); border-radius:99px; transition:width .4s cubic-bezier(.4,0,.2,1); box-shadow:0 0 14px var(--blue-glow); }
-
-.question-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:var(--r-xl); padding:1.75rem 1.55rem; margin-bottom:1rem;
-  box-shadow:var(--sh-lg); position:relative; overflow:hidden;
-}
-.question-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--blue), var(--teal), var(--violet)); }
-.question-label { font-size:.65rem; font-weight:800; color:var(--blue-l); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.72rem; font-family:var(--font-d); }
-.question-text { font-family:var(--font-d); font-size:1.04rem; font-weight:700; line-height:1.65; margin-bottom:1.3rem; color:var(--text); letter-spacing:-.015em; }
-
-.options { display:flex; flex-direction:column; gap:.55rem; }
-.option {
-  padding:.88rem 1rem; background:var(--glass);
-  border:1.5px solid var(--border); border-radius:var(--r);
-  cursor:pointer; transition:all .18s cubic-bezier(.4,0,.2,1);
-  display:flex; align-items:center; gap:.72rem;
-  font-weight:600; font-size:.86rem; color:var(--text-2);
-  position:relative; overflow:hidden;
-}
-.option:hover { border-color:var(--blue-bdr); color:var(--text); background:var(--blue-bg); }
-.option:active { transform:scale(.99); }
-.option.selected { border-color:var(--blue); background:var(--blue-bg); color:var(--text); }
-.option.correct  { border-color:var(--teal); background:var(--teal-bg); color:var(--teal-l); box-shadow:0 0 0 1px var(--teal-bdr); }
-.option.incorrect{ border-color:var(--rose); background:var(--rose-bg); color:#FFB0BA; box-shadow:0 0 0 1px var(--rose-bdr); }
-.option.disabled { pointer-events:none; opacity:.6; }
-.option-letter { width:28px; height:28px; flex-shrink:0; background:rgba(255,255,255,.07); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--font-d); font-weight:800; font-size:.74rem; transition:background .18s, color .18s; }
-.option.selected  .option-letter { background:var(--blue); color:#fff; }
-.option.correct   .option-letter { background:var(--teal); color:#fff; }
-.option.incorrect .option-letter { background:var(--rose); color:#fff; }
-.option:hover::before,.option.correct::before,.option.incorrect::before,.option.selected::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; }
-.option:hover::before    { background:var(--blue-l); }
-.option.correct::before  { background:var(--teal); }
-.option.incorrect::before{ background:var(--rose); }
-.option.selected::before { background:var(--blue); }
-
-/* REPASO HINT */
-@keyframes repasoCorrectGlow { 0%{box-shadow:0 0 0 0 rgba(0,212,170,0)} 40%{box-shadow:0 0 0 6px rgba(0,212,170,0.32)} 100%{box-shadow:0 0 12px 3px rgba(0,212,170,0.28)} }
-@keyframes repasoHintPulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,212,170,0),0 0 8px rgba(0,212,170,0.2)} 50%{box-shadow:0 0 0 5px rgba(0,212,170,0.12),0 0 18px rgba(0,212,170,0.4)} }
-.option.repaso-hint { border-color:var(--teal) !important; background:var(--teal-bg) !important; animation:repasoCorrectGlow .5s ease forwards,repasoHintPulse 2s ease-in-out .5s infinite !important; }
-.option.repaso-hint .option-letter { background:var(--teal) !important; color:#fff !important; box-shadow:0 0 12px var(--teal-glow); }
-
-.explanation { background:var(--teal-bg); border:1px solid var(--teal-bdr); border-left:3px solid var(--teal); border-radius:0 var(--r) var(--r) 0; padding:.88rem 1.05rem; margin-top:.8rem; animation:explainIn .26s ease both; }
-@keyframes explainIn { from{opacity:0;transform:translateY(-5px)} to{opacity:1;transform:translateY(0)} }
-
-/* ── BUTTONS ───────────────────────────────────────────── */
-.btn { flex:1; padding:.86rem 1.3rem; border:none; border-radius:var(--r); font-size:.88rem; font-weight:700; cursor:pointer; transition:all .2s; font-family:var(--font-d); letter-spacing:-.01em; display:inline-flex; align-items:center; justify-content:center; gap:.4rem; position:relative; overflow:hidden; }
-.btn-primary { background:linear-gradient(135deg, var(--teal), var(--teal-d)); color:#fff; box-shadow:0 4px 14px var(--teal-glow), 0 1px 0 rgba(255,255,255,.1) inset; }
-.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 26px var(--teal-glow); }
-.btn-primary:active { transform:scale(.98); }
-.btn-primary:disabled { opacity:.38; cursor:not-allowed; transform:none; }
-.btn-gold { background:linear-gradient(135deg, var(--gold), #C47A00); color:#0A0800; font-weight:800; box-shadow:0 4px 14px var(--gold-glow); }
-.btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 26px rgba(245,166,35,.38); }
-.btn-secondary { background:var(--glass); border:1px solid var(--border); color:var(--text-2); }
-.btn-secondary:hover { background:var(--glass-h); color:var(--text); border-color:var(--border-m); }
-.btn-emerald { background:linear-gradient(135deg, var(--teal), #007A60); color:#fff; box-shadow:0 4px 14px var(--teal-glow); }
-.btn-emerald:hover { transform:translateY(-2px); box-shadow:0 8px 26px rgba(0,212,170,.33); }
-.quiz-actions { display:flex; gap:.55rem; }
-
-/* ── BADGES ────────────────────────────────────────────── */
-.ac-badge,.badge-chip { display:inline-flex; align-items:center; font-size:.58rem; font-weight:800; padding:.13rem .46rem; border-radius:20px; align-self:flex-start; font-family:var(--font-d); letter-spacing:.02em; }
-.badge-indigo  { background:var(--blue-bg);   color:var(--blue-l); }
-.badge-gold    { background:var(--gold-bg);   color:var(--gold-l); }
-.badge-emerald { background:var(--teal-bg);   color:var(--teal-l); }
-.badge-rose    { background:var(--rose-bg);   color:#FFB0BA; }
-.badge-violet  { background:var(--violet-bg); color:var(--violet); }
-
-/* ── MODAL ─────────────────────────────────────────────── */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.82); backdrop-filter:blur(10px); z-index:9999; align-items:center; justify-content:center; }
-.modal-overlay.active { display:flex; }
-.modal-box { background:var(--card-2); border:1px solid var(--border-m); border-radius:var(--r-xl); padding:1.8rem; max-width:360px; width:92%; box-shadow:var(--sh-xl); animation:modalIn .26s cubic-bezier(.34,1.56,.64,1) both; }
-@keyframes modalIn { from{opacity:0;transform:scale(.85) translateY(-14px)} to{opacity:1;transform:scale(1) translateY(0)} }
-.modal-icon    { font-size:38px; text-align:center; margin-bottom:.62rem; }
-.modal-title   { font-family:var(--font-d); font-size:1.22rem; font-weight:800; color:var(--gold); text-align:center; margin-bottom:.52rem; }
-.modal-message { color:var(--text-3); text-align:center; line-height:1.65; margin-bottom:1.35rem; font-size:.84rem; }
-.modal-buttons { display:flex; gap:.55rem; }
-.modal-btn { flex:1; padding:.78rem 1rem; border:none; border-radius:var(--r); font-size:.86rem; font-weight:700; cursor:pointer; transition:all .2s; font-family:var(--font-d); }
-.modal-btn-cancel  { background:var(--glass); border:1px solid var(--border); color:var(--text-2); }
-.modal-btn-cancel:hover { background:var(--glass-h); }
-.modal-btn-confirm { background:linear-gradient(135deg,var(--gold),#C47A00); color:#0A0800; font-weight:800; }
-.modal-btn-confirm:hover { transform:translateY(-2px); box-shadow:0 8px 22px var(--gold-glow); }
-
-/* ── ACTIVATION SCREEN ─────────────────────────────────── */
-.activation-wrap { max-width:440px; margin:3rem auto; text-align:center; }
-.activation-orb { width:78px; height:78px; border-radius:22px; margin:0 auto 1.4rem; background:linear-gradient(135deg,var(--blue),var(--blue-d)); display:flex; align-items:center; justify-content:center; font-size:36px; animation:orbPulse 3s ease-in-out infinite; }
-@keyframes orbPulse { 0%,100%{box-shadow:0 0 0 1px rgba(79,142,247,.5),0 0 40px var(--blue-glow)} 50%{box-shadow:0 0 0 2px rgba(79,142,247,.8),0 0 60px rgba(79,142,247,.38)} }
-
-/* ── INPUT ─────────────────────────────────────────────── */
-input[type="text"] { font-family:var(--font-d); width:100%; padding:.88rem 1.05rem; background:var(--glass); border:1.5px solid var(--border); border-radius:var(--r); color:var(--text); font-size:.96rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; transition:border-color .2s, box-shadow .2s; }
-input[type="text"]:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-glow); }
-input[type="text"]::placeholder { color:var(--text-dim); text-transform:none; letter-spacing:0; }
-
-/* ── DIVIDER ───────────────────────────────────────────── */
-.divider { display:flex; align-items:center; gap:.7rem; margin:1.2rem 0; }
-.divider::before,.divider::after { content:''; flex:1; height:1px; background:var(--border); }
-.divider-text { font-size:.68rem; font-weight:700; color:var(--text-3); letter-spacing:.05em; white-space:nowrap; }
-
-/* ── TOASTS ────────────────────────────────────────────── */
-#toastContainer { position:fixed; bottom:90px; left:50%; transform:translateX(-50%); z-index:9999; display:flex; flex-direction:column; align-items:center; gap:.38rem; pointer-events:none; }
-.toast { background:rgba(10,14,30,0.97); border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(20px); border-radius:99px; padding:.5rem 1.1rem; font-size:.78rem; font-weight:600; color:var(--text); box-shadow:0 4px 20px rgba(0,0,0,.55); animation:toastIn .3s cubic-bezier(.34,1.56,.64,1) both; white-space:nowrap; }
-[data-theme="light"] .toast { background:rgba(10,16,50,0.95); }
-.toast.out { animation:toastOut .2s ease both; }
-
-/* ── SHIMMER ───────────────────────────────────────────── */
-@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
-.shimmer-text { background:linear-gradient(90deg,var(--blue-l) 0%,var(--teal) 40%,var(--violet) 60%,var(--blue-l) 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s linear infinite; }
-
-/* ── GRADIENT NUMBERS ──────────────────────────────────── */
-.grad-num { font-family:var(--font-d); font-weight:800; letter-spacing:-.04em; line-height:1; }
-.grad-indigo  { background:linear-gradient(135deg,#B8D0FF,var(--blue-l)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.grad-gold    { background:linear-gradient(135deg,var(--gold),#FFD280);   -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.grad-emerald { background:linear-gradient(135deg,var(--teal-l),#80F0D8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.grad-rose    { background:linear-gradient(135deg,#FFB0BA,var(--rose));    -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.kinetic { transition:transform .26s cubic-bezier(.34,1.56,.64,1), box-shadow .26s ease, border-color .2s; }
-.kinetic:hover  { transform:translateY(-5px) scale(1.01); }
-.kinetic:active { transform:scale(.96) translateY(0); }
-
-/* ── HEATMAP ───────────────────────────────────────────── */
-.heatmap-grid { display:grid; grid-template-columns:repeat(14,1fr); gap:3px; }
-.hmap-cell { aspect-ratio:1; border-radius:3px; transition:transform .15s; }
-.hmap-cell:hover { transform:scale(1.4); }
-
-/* ── SCORE CARD ────────────────────────────────────────── */
-.score-card { background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(62,207,237,.06)); border:1px solid rgba(79,142,247,.22); border-radius:var(--r-xl); padding:2.4rem; text-align:center; margin-bottom:1.2rem; position:relative; overflow:hidden; box-shadow:0 0 60px rgba(79,142,247,.08),var(--sh-lg); }
-.score-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--violet)); }
-.score-number { font-family:var(--font-d); font-size:4.5rem; font-weight:800; letter-spacing:-.07em; line-height:1; background:linear-gradient(135deg,#B8D0FF 0%,var(--teal) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.3rem; }
-.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; }
-.stat-card { background:var(--card-2); border:1px solid var(--border); border-radius:var(--r-lg); padding:1rem; text-align:center; }
-.stat-value { font-family:var(--font-d); font-size:1.65rem; font-weight:800; letter-spacing:-.04em; margin-bottom:.2rem; }
-.stat-label { font-size:.64rem; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:.05em; }
-
-/* ── ACTION CARDS ──────────────────────────────────────── */
-.action-grid { display:grid; grid-template-columns:1fr 1fr; gap:.55rem; margin-bottom:1rem; }
-.action-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:1.1rem .95rem; cursor:pointer; position:relative; overflow:hidden; transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,border-color .2s; box-shadow:var(--sh); display:flex; flex-direction:column; gap:.4rem; }
-.action-card:hover { transform:translateY(-5px) scale(1.01); }
-.action-card:active { transform:scale(.96); }
-.ac-span2 { grid-column:1/-1; flex-direction:row; align-items:center; padding:1.1rem 1.3rem; gap:1rem; }
-.ac-icon { font-size:1.65rem; line-height:1; flex-shrink:0; filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
-.ac-title { font-family:var(--font-d); font-size:.92rem; font-weight:700; color:var(--text); line-height:1.3; }
-.ac-sub { font-size:.72rem; color:var(--text-3); line-height:1.4; }
-.ac-indigo { border-color:rgba(79,142,247,.16); }
-.ac-indigo:hover { border-color:rgba(79,142,247,.5); box-shadow:0 10px 34px rgba(79,142,247,.16); }
-.ac-gold   { border-color:rgba(245,166,35,.16); }
-.ac-gold:hover   { border-color:rgba(245,166,35,.5); box-shadow:0 10px 34px rgba(245,166,35,.13); }
-.ac-emerald{ border-color:rgba(0,212,170,.16); }
-.ac-emerald:hover{ border-color:rgba(0,212,170,.5); box-shadow:0 10px 34px rgba(0,212,170,.13); }
-.ac-rose   { border-color:rgba(255,92,122,.16); }
-.ac-rose:hover   { border-color:rgba(255,92,122,.5); box-shadow:0 10px 34px rgba(255,92,122,.13); }
-.mode-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.72rem; }
-.mode-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:1.5rem 1.35rem; text-align:center; cursor:pointer; transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .2s,box-shadow .22s; position:relative; overflow:hidden; box-shadow:var(--sh); }
-.mode-card:hover { transform:translateY(-5px) scale(1.012); border-color:var(--blue-bdr); box-shadow:0 0 38px var(--blue-glow),var(--sh-lg); }
-.mode-card:active { transform:scale(.97); }
-.mode-icon { font-size:36px; margin-bottom:.65rem; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
-.mode-title { font-family:var(--font-d); font-size:1rem; font-weight:700; letter-spacing:-.015em; margin-bottom:.28rem; color:var(--text); line-height:1.3; }
-.mode-description { color:var(--text-3); font-size:.78rem; line-height:1.45; }
-.mode-count { color:var(--blue-l); font-weight:700; font-size:.74rem; margin-top:.2rem; }
-
-/* ── ONBOARDING ────────────────────────────────────────── */
-.onboarding-wrapper { display:flex; flex-direction:column; min-height:calc(100vh - 180px); max-height:calc(100vh - 180px); max-width:480px; margin:0 auto; padding:1rem .9rem .85rem; justify-content:space-between; overflow:hidden; }
-.onboarding-slides { position:relative; flex:1; min-height:0; display:flex; align-items:center; overflow:hidden; touch-action:pan-y; }
-.onboarding-slide { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 1.5rem; opacity:0; visibility:hidden; transform:translateX(40px); transition:opacity .36s,transform .36s cubic-bezier(.22,1,.36,1),visibility 0s .36s; pointer-events:none; z-index:1; }
-.onboarding-slide.active { opacity:1; visibility:visible; transform:translateX(0); transition:opacity .36s,transform .36s cubic-bezier(.22,1,.36,1),visibility 0s 0s; pointer-events:auto; z-index:10; }
-.onb-graphic { font-size:3.5rem; margin-bottom:.8rem; filter:drop-shadow(0 4px 16px rgba(0,0,0,.4)); animation:floatOnb 3s ease-in-out infinite; }
-@keyframes floatOnb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-.onb-title { font-family:var(--font-d); font-size:1.42rem; font-weight:800; letter-spacing:-.02em; line-height:1.2; margin-bottom:.5rem; }
-.onb-text { color:var(--text-3); font-size:.78rem; line-height:1.55; margin-bottom:.6rem; max-width:340px; }
-.onb-badge { display:inline-flex; align-items:center; font-size:.62rem; font-weight:800; padding:.2rem .56rem; border-radius:20px; font-family:var(--font-d); letter-spacing:.03em; margin-top:.3rem; }
-.onb-dots { display:flex; align-items:center; justify-content:center; gap:.42rem; padding:.8rem 0; }
-.onb-dot { width:7px; height:7px; border-radius:99px; background:var(--border-m); cursor:pointer; transition:all .28s; }
-.onb-dot.active { width:22px; background:var(--blue); box-shadow:0 0 10px var(--blue-glow); }
-.onb-actions { display:flex; gap:.6rem; }
-
-/* ── DRAWER ────────────────────────────────────────────── */
-.drawer-overlay { position:fixed; inset:0; z-index:1100; background:rgba(0,0,0,0); pointer-events:none; transition:background .3s ease; }
-.drawer-overlay.open { background:rgba(0,0,0,.65); pointer-events:all; backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); }
-.drawer { position:fixed; top:0; right:0; bottom:0; width:min(82vw,310px); z-index:1200; background:var(--bg-1); border-left:1px solid var(--border); transform:translateX(100%); transition:transform .33s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; overflow:hidden; }
-[data-theme="light"] .drawer { box-shadow:-10px 0 40px rgba(0,20,80,0.1); }
-.drawer.open { transform:translateX(0); }
-.drawer::before { content:''; position:absolute; top:0; left:0; right:0; height:2.5px; background:linear-gradient(90deg,var(--teal),var(--teal-l)); }
-.drawer-header { display:flex; align-items:center; justify-content:space-between; padding:1rem 1rem .75rem; border-bottom:1px solid var(--border); flex-shrink:0; }
-.drawer-brand { display:flex; align-items:center; gap:.52rem; }
-.drawer-brand-icon { width:34px; height:34px; border-radius:10px; font-size:1.2rem; display:flex; align-items:center; justify-content:center; background:var(--teal-bg); border:1px solid var(--teal-bdr); }
-.drawer-brand-name { font-size:.9rem; font-weight:900; color:var(--text); letter-spacing:-.03em; }
-.drawer-brand-sub { font-size:.56rem; color:var(--text-dim); font-weight:600; letter-spacing:.05em; }
-.drawer-close { width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--glass); color:var(--text-3); font-size:.9rem; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .18s; }
-.drawer-close:hover { background:rgba(255,92,122,.15); color:#FF8099; border-color:var(--rose-bdr); }
-.drawer-body { flex:1; overflow-y:auto; padding:.65rem .8rem; -webkit-overflow-scrolling:touch; }
-.drawer-body::-webkit-scrollbar { width:3px; }
-.drawer-body::-webkit-scrollbar-thumb { background:rgba(79,142,247,.28); border-radius:3px; }
-.drawer-section-label { font-size:.54rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); padding:.6rem .25rem .32rem; margin-top:.28rem; }
-.drawer-item { display:flex; align-items:center; gap:.68rem; padding:.6rem .7rem; border-radius:var(--r); cursor:pointer; transition:background .18s,transform .18s; margin-bottom:.14rem; border:1px solid transparent; }
-.drawer-item:hover { background:var(--glass); border-color:var(--border); transform:translateX(3px); }
-.drawer-item:active { transform:scale(.97); }
-.drawer-item-icon { width:34px; height:34px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1rem; }
-.drawer-item-text { flex:1; }
-.drawer-item-title { font-size:.78rem; font-weight:700; color:var(--text); line-height:1.2; }
-.drawer-item-sub { font-size:.6rem; color:var(--text-dim); margin-top:.03rem; }
-.drawer-item-arrow { color:var(--border-m); font-size:.88rem; transition:color .18s; }
-.drawer-item:hover .drawer-item-arrow { color:var(--text-3); }
-.drawer-about { margin:.7rem 0 .45rem; background:var(--blue-bg); border:1px solid var(--blue-bdr); border-radius:var(--r-lg); padding:1rem; }
-.drawer-about-title { font-size:.68rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--blue-l); margin-bottom:.6rem; display:flex; align-items:center; gap:.4rem; }
-.drawer-about-text { font-size:.7rem; color:var(--text-3); line-height:1.65; margin-bottom:.5rem; }
-.drawer-about-tags { display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.6rem; }
-.drawer-about-tag { font-size:.55rem; font-weight:700; padding:.15rem .46rem; border-radius:20px; background:var(--blue-bg); color:var(--blue-l); border:1px solid var(--blue-bdr); letter-spacing:.04em; }
-.drawer-footer { padding:.72rem 1rem 1rem; border-top:1px solid var(--border); flex-shrink:0; }
-.drawer-footer-text { text-align:center; font-size:.62rem; color:var(--text-dim); line-height:1.7; }
-
-/* ── FX ────────────────────────────────────────────────── */
-#fxCanvas { position:fixed; inset:0; pointer-events:none; z-index:9995; overflow:hidden; }
-#damageOverlay { position:fixed; inset:0; pointer-events:none; z-index:9990; opacity:0; background:radial-gradient(ellipse at center,rgba(255,92,122,0.35) 0%,transparent 70%); }
-#correctOverlay { position:fixed; inset:0; pointer-events:none; z-index:9990; opacity:0; background:radial-gradient(ellipse at center,rgba(0,212,170,0.25) 0%,transparent 70%); }
-
-/* ── ACHIEVEMENT POPUP ─────────────────────────────────── */
-.achievement-popup { position:fixed; bottom:-130px; right:1rem; background:var(--card-2); border:1px solid rgba(245,166,35,.38); border-radius:var(--r-lg); padding:.82rem 1.05rem; display:flex; align-items:center; gap:.65rem; max-width:285px; z-index:9998; box-shadow:var(--sh-xl); transition:bottom .4s cubic-bezier(.34,1.56,.64,1); }
-.achievement-popup.show { bottom:5.2rem; }
-.confetti-piece { position:fixed; top:-10px; pointer-events:none; z-index:9999; animation:confettiFall linear forwards; }
-@keyframes confettiFall { 0%{transform:translateY(0) rotate(0deg);opacity:1} 80%{opacity:1} 100%{transform:translateY(100vh) rotate(720deg);opacity:0} }
-
-/* ── LEVEL UP BANNER ───────────────────────────────────── */
-#arenaLevelUpBanner { position:fixed; top:70px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,rgba(245,166,35,.96),rgba(255,200,50,.9)); color:#111; padding:.56rem 1.3rem; border-radius:99px; font-weight:800; font-size:.84rem; display:none; align-items:center; gap:.5rem; z-index:9998; box-shadow:0 4px 22px var(--gold-glow); }
-
-/* ── SCORE RESULTS ─────────────────────────────────────── */
-#scoreEmoji { filter:drop-shadow(0 0 22px rgba(245,166,35,.55)); animation:trophyBounce .7s cubic-bezier(.34,1.56,.64,1) both; }
-#finalScore { font-family:var(--font-d); font-size:3.8rem; font-weight:800; letter-spacing:-.06em; line-height:1; background:linear-gradient(135deg,#B8D0FF,var(--teal),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; margin:.5rem 0 .2rem; }
-.hero-title { font-family:var(--font-d); font-size:1.9rem; font-weight:800; letter-spacing:-.025em; line-height:1.15; margin-bottom:.38rem; }
-.hero-sub { color:var(--text-3); font-size:.84rem; font-weight:500; line-height:1.4; }
-
-/* ── SETTINGS PANEL ────────────────────────────────────── */
-.settings-overlay { display:none; position:fixed; inset:0; z-index:1300; background:rgba(0,0,0,.7); backdrop-filter:blur(8px); align-items:flex-end; justify-content:center; padding:0 0 env(safe-area-inset-bottom,0); }
-.settings-overlay.active { display:flex; }
-.settings-panel { width:100%; max-width:520px; background:var(--bg-1); border-radius:var(--r-2xl) var(--r-2xl) 0 0; border:1px solid var(--border); border-bottom:none; max-height:88vh; overflow-y:auto; animation:slideUpPanel .32s cubic-bezier(.22,1,.36,1) both; }
-@keyframes slideUpPanel { from{transform:translateY(100%);opacity:.8} to{transform:translateY(0);opacity:1} }
-.settings-handle { width:36px; height:4px; border-radius:99px; background:var(--border-m); margin:.72rem auto .25rem; }
-.settings-header { display:flex; align-items:center; justify-content:space-between; padding:.65rem 1.2rem; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg-1); z-index:1; }
-.settings-header h2 { font-family:var(--font-d); font-size:1rem; font-weight:800; color:var(--text); letter-spacing:-.02em; }
-.settings-close-btn { width:30px; height:30px; border-radius:8px; background:var(--glass); border:1px solid var(--border); color:var(--text-3); font-size:.9rem; display:flex; align-items:center; justify-content:center; cursor:pointer; }
-.settings-close-btn:hover { background:rgba(255,92,122,.15); color:#FF8099; }
-.settings-body { padding:.75rem 1.2rem 1.5rem; }
-.settings-section { margin-bottom:1.2rem; }
-.settings-section-title { font-size:.6rem; font-weight:800; color:var(--text-dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
-.settings-item { display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.7rem .88rem; border-radius:var(--r); background:var(--card); border:1px solid var(--border); margin-bottom:.38rem; }
-[data-theme="light"] .settings-item { box-shadow:var(--sh); }
-.settings-item-info { flex:1; min-width:0; }
-.settings-item-title { font-size:.8rem; font-weight:700; color:var(--text); }
-.settings-item-sub { font-size:.66rem; color:var(--text-3); margin-top:.04rem; }
-.toggle-switch { position:relative; width:42px; height:24px; flex-shrink:0; }
-.toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
-.toggle-slider { position:absolute; cursor:pointer; inset:0; background:var(--border-m); border-radius:99px; transition:background .25s; }
-.toggle-slider::before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:transform .25s cubic-bezier(.34,1.56,.64,1); box-shadow:0 1px 3px rgba(0,0,0,.3); }
-.toggle-switch input:checked + .toggle-slider { background:var(--teal); }
-.toggle-switch input:checked + .toggle-slider::before { transform:translateX(18px); }
-.theme-selector { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-top:.3rem; }
-.theme-option { display:flex; align-items:center; gap:.55rem; padding:.62rem .78rem; border-radius:var(--r); border:1.5px solid var(--border); cursor:pointer; transition:all .2s; background:var(--glass); font-size:.76rem; font-weight:700; color:var(--text-2); }
-.theme-option.active { border-color:var(--blue); background:var(--blue-bg); color:var(--blue-l); }
-.theme-option:hover { border-color:var(--border-m); }
-.theme-icon { font-size:1.1rem; }
-.settings-danger-btn { width:100%; padding:.7rem; border-radius:var(--r); background:var(--rose-bg); border:1px solid var(--rose-bdr); color:#FFB0BA; font-size:.8rem; font-weight:700; cursor:pointer; font-family:var(--font); transition:all .2s; }
-.settings-danger-btn:hover { background:rgba(255,92,122,.18); border-color:rgba(255,92,122,.48); }
-.settings-about { text-align:center; padding:.75rem 0 .25rem; color:var(--text-dim); font-size:.66rem; line-height:1.85; }
-.settings-about strong { color:var(--text-3); }
-
-/* ── ACCESO ÚNICO ──────────────────────────────────────── */
-@keyframes pulse-ring { 0%,100%{transform:scale(1);opacity:.6} 50%{transform:scale(1.12);opacity:.2} }
-@keyframes float-glow { 0%,100%{box-shadow:0 8px 40px rgba(245,166,35,.22),0 0 0 1px rgba(245,166,35,.15)} 50%{box-shadow:0 14px 56px rgba(245,166,35,.38),0 0 0 2px rgba(245,166,35,.28)} }
-.acceso-home-card { position:relative; overflow:hidden; cursor:pointer; border-radius:var(--r-xl); padding:1.15rem 1.05rem; background:linear-gradient(135deg,#1a1200 0%,#0d0d00 40%,#1a0a00 100%); border:1.5px solid rgba(245,166,35,.35); animation:float-glow 3s ease-in-out infinite; transition:transform .22s cubic-bezier(.34,1.56,.64,1); }
-.acceso-home-card:hover  { transform:translateY(-3px) scale(1.01); }
-.acceso-home-card:active { transform:scale(.97); }
-.acceso-home-card::before { content:''; position:absolute; inset:0; background:linear-gradient(105deg,transparent 30%,rgba(245,166,35,.07) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.5s linear infinite; pointer-events:none; }
-.acceso-home-card::after { content:'EXCLUSIVO'; position:absolute; top:0; right:0; font-size:.46rem; font-weight:900; letter-spacing:.12em; padding:.3rem .62rem; border-radius:0 var(--r-xl) 0 10px; background:linear-gradient(135deg,#F5A623,#D4880A); color:#000; font-family:var(--font-d); }
-.acceso-crown { font-size:2.3rem; line-height:1; filter:drop-shadow(0 0 12px rgba(245,166,35,.6)); animation:pulse-ring 2.5s ease-in-out infinite; display:inline-block; }
-.acceso-home-title { font-size:1.3rem; font-weight:900; letter-spacing:-.02em; line-height:1.1; background:linear-gradient(135deg,#F5A623 0%,#FFE080 50%,#D4880A 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.acceso-home-sub { font-size:.72rem; color:rgba(245,166,35,.6); font-weight:600; margin-top:.18rem; }
-.acceso-home-pill { display:inline-flex; align-items:center; gap:.28rem; font-size:.58rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .68rem; border-radius:20px; background:rgba(245,166,35,.16); color:#F5A623; border:1px solid rgba(245,166,35,.32); font-family:var(--font-d); margin-top:.6rem; }
-.acceso-home-pills { display:flex; gap:.38rem; flex-wrap:wrap; margin-top:.52rem; }
-
-/* ── MODO CLÍNICO ──────────────────────────────────────── */
-.mc-herramienta { background:var(--glass); border:1.5px solid var(--border); border-radius:var(--r); padding:.72rem .48rem; cursor:pointer; text-align:center; transition:all .2s; font-size:1.45rem; position:relative; overflow:hidden; }
-.mc-herramienta:hover:not(.usada) { border-color:var(--blue); background:var(--blue-bg); transform:translateY(-2px); box-shadow:0 4px 12px var(--blue-glow); }
-.mc-herramienta.usada { border-color:var(--teal-bdr); background:var(--teal-bg); cursor:default; }
-.mc-herramienta.usada::after { content:'✓'; position:absolute; top:4px; right:6px; color:var(--teal); font-size:.6rem; font-weight:800; }
-.mc-herramienta-label { display:block; font-size:.61rem; color:var(--text-3); margin-top:.26rem; font-weight:700; letter-spacing:.02em; }
-.mc-opcion { background:var(--glass); border:1.5px solid var(--border); border-radius:var(--r); padding:.82rem .72rem; cursor:pointer; color:var(--text-2); font-size:.86rem; font-weight:600; transition:all .2s; text-align:center; }
-.mc-opcion:hover { border-color:var(--blue); background:var(--blue-bg); }
-.mc-opcion.correcta   { border-color:var(--teal); background:var(--teal-bg); color:var(--teal-l); }
-.mc-opcion.incorrecta { border-color:var(--rose); background:var(--rose-bg); color:#FFB0BA; }
-.mc-hallazgo { background:var(--blue-bg); border-left:3px solid var(--blue); border-radius:0 var(--r-sm) var(--r-sm) 0; padding:.48rem .72rem; font-size:.8rem; color:var(--text-2); animation:slideInRight .3s ease; }
-.mc-vital-slot { background:var(--glass); border:1px solid var(--border); border-radius:var(--r-sm); padding:.58rem .48rem; text-align:center; min-height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:all .4s; }
-.mc-vital-slot.revelado { border-color:var(--teal-bdr); background:var(--teal-bg); animation:vitalsAppear .4s ease; }
-.mc-vital-icono { font-size:1.05rem; }
-.mc-vital-label { font-size:.58rem; color:var(--text-3); margin:.08rem 0; text-transform:uppercase; letter-spacing:.5px; }
-.mc-vital-valor { font-size:.82rem; font-weight:700; font-family:var(--mono); }
-.mc-vital-oculto { font-size:.68rem; color:var(--text-dim); }
-
-/* ── BATALLA / ARENA ───────────────────────────────────── */
-.arena-mode-card { border-radius:var(--r-lg); padding:1.15rem; cursor:pointer; position:relative; overflow:hidden; transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s; margin-bottom:.6rem; display:flex; align-items:center; gap:1rem; }
-.arena-mode-card:active { transform:scale(.97); }
-.arena-mode-card:hover  { transform:translateY(-3px) scale(1.01); }
-.batalla-opt { transition:all .18s ease !important; }
-.batalla-opt:hover:not(:disabled) { border-color:rgba(79,142,247,0.45) !important; background:var(--blue-bg) !important; transform:translateX(3px); }
-
-/* ── ACCESO ÚNICO (internas) ───────────────────────────── */
-.acceso-screen-header { position:relative; overflow:hidden; background:linear-gradient(135deg,#120d00,#0d0800,#160c00); border-bottom:1px solid rgba(245,166,35,.2); padding:1.35rem 1rem 1.05rem; text-align:center; }
-.acceso-screen-header::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,#F5A623,#FFE080,#F5A623,transparent); }
-.acceso-q-card { position:relative; overflow:hidden; background:rgba(245,166,35,.04); border:1px solid rgba(245,166,35,.14); border-radius:var(--r-lg); margin-bottom:.82rem; }
-.acceso-q-card:hover { border-color:rgba(245,166,35,.28); background:rgba(245,166,35,.07); }
-.acceso-q-number { font-size:.56rem; font-weight:900; letter-spacing:.1em; color:#F5A623; font-family:var(--font-d); background:rgba(245,166,35,.12); border-bottom:1px solid rgba(245,166,35,.12); padding:.38rem .82rem; display:flex; align-items:center; gap:.4rem; }
-.acceso-q-text { font-size:.8rem; color:var(--text); line-height:1.6; padding:.72rem .82rem .48rem; font-weight:600; }
-.acceso-q-options { padding:.1rem .82rem .72rem; display:flex; flex-direction:column; gap:.38rem; }
-.acceso-opt { display:flex; align-items:center; gap:.62rem; padding:.52rem .68rem; border-radius:10px; font-size:.76rem; color:var(--text-3); border:1px solid transparent; transition:background .15s; }
-.acceso-opt.correct { background:rgba(0,212,170,.1); border-color:var(--teal-bdr); color:var(--teal-l); font-weight:700; }
-.acceso-opt.wrong { color:rgba(255,255,255,.25); text-decoration:line-through; }
-.acceso-opt-letter { width:22px; height:22px; border-radius:7px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:.63rem; font-weight:900; font-family:var(--font-d); background:rgba(255,255,255,.06); border:1px solid var(--border); color:var(--text-2); }
-.acceso-opt.correct .acceso-opt-letter { background:rgba(0,212,170,.2); border-color:var(--teal-bdr); color:#4ade80; }
-.au-lobby { display:flex; flex-direction:column; gap:.55rem; }
-.au-cat-card { position:relative; overflow:hidden; display:flex; align-items:center; gap:.85rem; padding:.82rem .88rem; border-radius:var(--r-lg); border:1px solid var(--au-border,var(--border)); background:var(--au-bg,var(--glass)); cursor:pointer; transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,border-color .18s; }
-.au-cat-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px; background:var(--au-accent,#fff); }
-.au-cat-card:hover { transform:translateX(4px); box-shadow:4px 0 24px rgba(0,0,0,.2); }
-.au-cat-card:active { transform:scale(.97); }
-.au-cat-icon { width:44px; height:44px; border-radius:13px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.35rem; background:var(--au-bg); border:1px solid var(--au-border); transition:transform .28s cubic-bezier(.34,1.56,.64,1); }
-.au-cat-card:hover .au-cat-icon { transform:scale(1.1) rotate(-5deg); }
-.au-cat-body { flex:1; min-width:0; }
-.au-cat-title { font-size:.83rem; font-weight:800; color:var(--text); line-height:1.2; }
-.au-cat-sub { font-size:.64rem; color:var(--text-dim); margin-top:.07rem; }
-.au-cat-pill { font-size:.56rem; font-weight:800; padding:.14rem .48rem; border-radius:20px; font-family:var(--font-d); background:var(--au-bg); color:var(--au-accent); border:1px solid var(--au-border); }
-.au-cat-arrow { color:var(--border-m); font-size:.95rem; transition:color .18s,transform .22s; }
-.au-cat-card:hover .au-cat-arrow { color:var(--au-accent); transform:translateX(3px); }
-.au-book-header { position:sticky; top:0; z-index:50; background:rgba(7,11,24,.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:.62rem .82rem; display:flex; align-items:center; gap:.65rem; }
-[data-theme="light"] .au-book-header { background:rgba(255,255,255,.95); }
-.au-book-back { width:32px; height:32px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--glass); border:1px solid var(--border); color:var(--text-2); font-size:.95rem; cursor:pointer; transition:background .18s,color .18s; }
-.au-book-back:hover { background:rgba(245,166,35,.15); color:#F5A623; }
-.au-book-title-wrap { flex:1; min-width:0; }
-.au-book-cat-name { font-size:.8rem; font-weight:800; color:var(--text); line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.au-book-progress-text { font-size:.6rem; color:var(--text-dim); }
-.au-book-counter { font-size:.7rem; font-weight:800; font-family:var(--font-d); padding:.24rem .62rem; border-radius:20px; background:rgba(245,166,35,.12); color:#F5A623; border:1px solid rgba(245,166,35,.25); flex-shrink:0; }
-.au-progress-bar { height:3px; background:var(--border); }
-.au-progress-fill { height:100%; background:linear-gradient(90deg,#F5A623,#D4880A); border-radius:0 2px 2px 0; transition:width .4s cubic-bezier(.22,1,.36,1); }
-.au-book-page { flex:1; padding:1rem .82rem 6rem; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.au-opt { display:flex; align-items:flex-start; gap:.68rem; padding:.68rem .78rem; border-radius:var(--r); margin-bottom:.48rem; border:1px solid var(--border); background:var(--glass); cursor:pointer; transition:background .18s,border-color .18s,transform .15s; }
-.au-opt:hover { background:var(--glass-h); border-color:var(--border-m); transform:translateX(3px); }
-.au-opt.selected-correct { background:var(--teal-bg); border-color:var(--teal-bdr); animation:correctBounce .4s cubic-bezier(.34,1.56,.64,1); }
-.au-opt.selected-wrong { background:var(--rose-bg); border-color:var(--rose-bdr); }
-.au-opt.reveal-correct { background:rgba(0,212,170,.07); border-color:var(--teal-bdr); }
-.au-opt.disabled { pointer-events:none; }
-@keyframes correctBounce { 0%{transform:scale(1)} 50%{transform:scale(1.03) translateX(5px)} 100%{transform:scale(1)} }
-.au-opt-letter { width:25px; height:25px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:900; font-family:var(--font-d); background:var(--glass); border:1px solid var(--border); color:var(--text-2); transition:background .18s,color .18s; }
-.au-opt.selected-correct .au-opt-letter { background:rgba(0,212,170,.25); border-color:var(--teal-bdr); color:#4ade80; }
-.au-opt.selected-wrong .au-opt-letter { background:var(--rose-bg); border-color:var(--rose-bdr); color:#FF8099; }
-.au-opt.reveal-correct .au-opt-letter { background:rgba(0,212,170,.15); border-color:var(--teal-bdr); color:#86efac; }
-.au-opt-text { font-size:.8rem; color:var(--text-2); line-height:1.5; flex:1; }
-.au-opt-icon { font-size:.95rem; flex-shrink:0; opacity:0; transition:opacity .2s; }
-.au-opt.selected-correct .au-opt-icon,.au-opt.selected-wrong .au-opt-icon,.au-opt.reveal-correct .au-opt-icon { opacity:1; }
-.au-explanation { display:none; margin-top:.78rem; background:rgba(245,166,35,.06); border:1px solid rgba(245,166,35,.18); border-radius:var(--r); padding:.72rem .88rem; animation:fadeSlideUp .3s ease; }
-.au-explanation.show { display:block; }
-@keyframes fadeSlideUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-.au-explanation-label { font-size:.58rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#F5A623; margin-bottom:.32rem; }
-.au-explanation-text { font-size:.76rem; color:var(--text-3); line-height:1.6; }
-.au-nav-bar { position:fixed; bottom:4.2rem; left:0; right:0; display:flex; align-items:center; gap:.65rem; padding:.58rem .82rem; background:rgba(7,11,24,.92); backdrop-filter:blur(16px); border-top:1px solid var(--border); z-index:49; }
-[data-theme="light"] .au-nav-bar { background:rgba(255,255,255,.92); }
-.au-nav-btn { flex:1; padding:.7rem; border-radius:var(--r); border:none; cursor:pointer; font-size:.8rem; font-weight:800; letter-spacing:.02em; transition:transform .18s,box-shadow .18s,opacity .18s; display:flex; align-items:center; justify-content:center; gap:.38rem; }
-.au-nav-btn:active { transform:scale(.96); }
-.au-nav-prev { background:var(--glass); color:var(--text-2); border:1px solid var(--border); }
-.au-nav-prev:hover { background:var(--glass-h); }
-.au-nav-prev:disabled { opacity:.3; pointer-events:none; }
-.au-nav-next { background:linear-gradient(135deg,#F5A623,#D4880A); color:#000; box-shadow:0 4px 14px var(--gold-glow); }
-.au-nav-next:hover { box-shadow:0 6px 22px rgba(245,166,35,.42); }
-.au-nav-next:disabled { opacity:.4; pointer-events:none; }
-.au-lobby-grid { display:grid; grid-template-columns:1fr 1fr; gap:.55rem; margin-bottom:.75rem; }
-.au-lobby-full { grid-column:1/-1; }
-.au-page-nav { display:flex; gap:.62rem; margin-top:1.15rem; padding-bottom:4rem; }
-.au-page-nav-btn { flex:1; padding:.7rem; border-radius:var(--r); border:none; cursor:pointer; font-size:.8rem; font-weight:800; display:flex; align-items:center; justify-content:center; gap:.38rem; transition:transform .18s,box-shadow .18s; }
-.au-page-nav-btn:active { transform:scale(.96); }
-.au-page-nav-prev { background:var(--glass); color:var(--text-2); border:1px solid var(--border); }
-.au-page-nav-prev:hover { background:var(--glass-h); }
-.au-page-nav-prev:disabled { opacity:.3; pointer-events:none; }
-.au-page-nav-next { background:linear-gradient(135deg,#F5A623,#D4880A); color:#000; box-shadow:0 4px 14px var(--gold-glow); }
-
-/* ── RESPONSIVE ────────────────────────────────────────── */
-@media (min-width:1024px) {
-  body { padding-bottom:0; }
-  .bottom-nav { display:none; }
-  .container { max-width:1160px; padding:2rem 2.5rem 2.5rem; }
-  .hero-title { font-size:3rem; }
-  .action-grid { grid-template-columns:repeat(4,1fr); gap:1rem; }
-  .ac-span2 { grid-column:span 2; }
-  .mode-grid { grid-template-columns:repeat(3,1fr); }
-  .quiz-header { padding:1.2rem 1.5rem; }
-  .question-card { padding:2.4rem 2.2rem; }
-  .header { padding:.9rem 2rem; }
-  .settings-panel { border-radius:var(--r-xl); margin-bottom:2rem; }
-  .settings-overlay { align-items:center; }
-}
-@media (max-width:768px) {
-  .container { padding:.75rem .82rem .95rem; }
-  .question-card { padding:1.45rem 1.15rem; }
-  .question-text { font-size:1rem; }
-  .option { padding:.82rem .92rem; font-size:.84rem; }
-  .btn { padding:.82rem .95rem; font-size:.84rem; }
-  .score-card { padding:1.7rem; }
-  .score-number { font-size:3.2rem; }
-}
-@media (max-width:480px) {
-  .onboarding-wrapper { min-height:calc(100vh - 200px); max-height:calc(100vh - 200px); padding:.82rem; }
-  .onb-title { font-size:1.28rem; }
-  .onb-text { font-size:.76rem; }
-  .stats-grid { grid-template-columns:1fr; }
-  .quiz-header { flex-direction:column; gap:.38rem; padding:.72rem .95rem; text-align:center; }
-  .score-number { font-size:2.8rem; }
-}
-
-/* ── ALL ANIMATIONS ────────────────────────────────────── */
-@keyframes pulse      { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(1.02)} }
-@keyframes shake      { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(7px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(5px)} }
-@keyframes slideInRight { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
-@keyframes toastIn    { from{opacity:0;transform:translateY(12px) scale(.9)} to{opacity:1;transform:translateY(0) scale(1)} }
-@keyframes toastOut   { from{opacity:1} to{opacity:0;transform:translateY(-8px)} }
-@keyframes comboPop   { 0%{opacity:0;transform:scale(.7) translateY(6px)} 60%{opacity:1;transform:scale(1.08) translateY(-2px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
-@keyframes trophyBounce { 0%{transform:scale(0) rotate(-15deg);opacity:0} 60%{transform:scale(1.2) rotate(5deg);opacity:1} 80%{transform:scale(.95) rotate(-2deg)} 100%{transform:scale(1) rotate(0)} }
-@keyframes fadeInUp   { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
-@keyframes vitalsAppear { from{opacity:0;transform:scale(.8)} to{opacity:1;transform:scale(1)} }
-@keyframes modalPop   { from{opacity:0;transform:scale(.85) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
-@keyframes arenaShake { 0%,100%{transform:translateX(0)} 15%{transform:translateX(calc(var(--shake-i,8px) * -1))} 30%{transform:translateX(var(--shake-i,8px))} 45%{transform:translateX(calc(var(--shake-i,8px) * -.6))} 60%{transform:translateX(calc(var(--shake-i,8px) * .6))} 75%{transform:translateX(calc(var(--shake-i,8px) * -.3))} 90%{transform:translateX(calc(var(--shake-i,8px) * .3))} }
-@keyframes timerPulse { 0%,100%{opacity:1} 50%{opacity:.45} }
-@keyframes damageFlash { 0%{opacity:0} 15%{opacity:1} 100%{opacity:0} }
-@keyframes correctFlash { 0%{opacity:0} 20%{opacity:1} 100%{opacity:0} }
-@keyframes resultReveal { from{opacity:0;transform:scale(.94) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
-@keyframes confettiParticle { 0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1} 80%{opacity:1} 100%{transform:translate(var(--vx),calc(var(--vy) + 300px)) rotate(var(--rot)) scale(.5);opacity:0} }
-.animate-shake { animation:shake .5s ease-in-out; }
-
-/* ── PERFORMANCE ───────────────────────────────────────── */
-* { touch-action:pan-y; }
-input,textarea,select,button { touch-action:manipulation; }
-.aurora-1 { will-change:transform; }
-#batallaContent { overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
-#batallaScreen > div { overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; min-height:calc(100dvh - 68px); padding-bottom:5rem; }
-#batallaScreen.active { animation:none !important; }
-button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
-#batallaTimerBar.urgent { animation:timerPulse .4s ease infinite; }
-#abandonModal[style*="flex"] { display:flex !important; }
-</style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
         <!-- AURORA BACKGROUND ORBS -->
-    <div class="aurora-orb aurora-1"></div>
-    <div class="aurora-orb aurora-2"></div>
-    <div class="aurora-orb aurora-3"></div>
-    <!-- FX OVERLAYS (particles, damage, correct flashes) -->
+                <!-- FX OVERLAYS (particles, damage, correct flashes) -->
     <div id="fxCanvas"></div>
     <div id="damageOverlay"></div>
     <div id="correctOverlay"></div>
@@ -1240,18 +285,18 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
     <div class="container">
         <!-- PANTALLA DE ACTIVACIÓN (PRIMERA PANTALLA - BLOQUEADA) -->
-        <div id="activationScreen" class="screen">
-            <div class="activation-wrap">
+        <div id="activationScreen" class="screen" style="background:var(--bg);min-height:100dvh;">
+            <div class="activation-wrap" style="padding:2rem 1.2rem 3rem;">
 
                 <!-- ── HEADER LOGO ─────────────────────────── -->
-                <div style="text-align:center;margin-bottom:1.8rem;">
+                <div style="text-align:center;margin-bottom:1.8rem;padding-top:.5rem;">
                     <div style="display:inline-flex;align-items:center;justify-content:center;
-                                width:72px;height:72px;border-radius:22px;font-size:2.2rem;
-                                background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(139,92,246,.18));
-                                border:1.5px solid rgba(99,102,241,.35);margin-bottom:1rem;
-                                box-shadow:0 8px 32px rgba(99,102,241,.2);">🧬</div>
-                    <h1 style="font-size:1.65rem;font-weight:900;color:#fff;letter-spacing:-.03em;margin:0 0 .3rem;">
-                        MediPrep <span style="color:var(--blue-l);">Smart</span>
+                                width:76px;height:76px;border-radius:22px;font-size:2.2rem;
+                                background:linear-gradient(135deg,var(--teal-bg),rgba(58,173,169,.2));
+                                border:2px solid var(--teal-bdr);margin-bottom:1rem;
+                                box-shadow:0 8px 28px var(--teal-glow);">🧬</div>
+                    <h1 style="font-size:1.65rem;font-weight:900;color:var(--text);letter-spacing:-.03em;margin:0 0 .3rem;">
+                        Exani<span style="color:var(--teal);">Mado</span>
                     </h1>
                     <p style="font-size:.78rem;color:var(--text-3);margin:0;letter-spacing:.02em;">
                         Preparación EXANI-II · Premedicina
@@ -1259,37 +304,36 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 </div>
 
                 <!-- ── PRICE CARD ──────────────────────────── -->
-                <div style="background:linear-gradient(135deg,rgba(99,102,241,.14),rgba(139,92,246,.1));
-                            border:1.5px solid rgba(99,102,241,.28);border-radius:20px;
-                            padding:1.25rem 1.2rem;margin-bottom:1.4rem;position:relative;overflow:hidden;">
-                    <!-- glow -->
+                <div style="background:#fff;border:2px solid var(--teal-bdr);border-radius:20px;
+                            padding:1.25rem 1.2rem;margin-bottom:1.4rem;position:relative;overflow:hidden;
+                            box-shadow:var(--sh-m);">
                     <div style="position:absolute;top:-30px;right:-30px;width:100px;height:100px;
-                                background:radial-gradient(circle,rgba(139,92,246,.25),transparent 70%);
+                                background:radial-gradient(circle,var(--teal-bg),transparent 70%);
                                 pointer-events:none;"></div>
 
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
                         <div>
                             <div style="font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-                                        color:var(--blue-l);margin-bottom:.25rem;">Acceso Completo</div>
-                            <div style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1;">
+                                        color:var(--teal-d);margin-bottom:.25rem;">Acceso Completo</div>
+                            <div style="font-size:2rem;font-weight:900;color:var(--text);letter-spacing:-.04em;line-height:1;">
                                 $50 <span style="font-size:.9rem;font-weight:600;color:var(--text-3);">MXN</span>
                             </div>
                             <div style="font-size:.7rem;color:var(--text-dim);margin-top:.2rem;">Pago único · Acceso permanente</div>
                         </div>
                         <div style="text-align:right;">
-                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:rgba(16,185,129,.15);
-                                        border:1px solid rgba(16,185,129,.3);border-radius:20px;color:#34d399;margin-bottom:.4rem;">
+                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:rgba(16,185,129,.12);
+                                        border:1px solid rgba(16,185,129,.28);border-radius:20px;color:#059669;margin-bottom:.4rem;">
                                 ✓ Sin mensualidades
                             </div>
-                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:rgba(99,102,241,.15);
-                                        border:1px solid rgba(99,102,241,.3);border-radius:20px;color:var(--blue-l);">
+                            <div style="font-size:.62rem;font-weight:700;padding:.25rem .6rem;background:var(--teal-bg);
+                                        border:1px solid var(--teal-bdr);border-radius:20px;color:var(--teal-d);">
                                 ✓ Siempre actualizado
                             </div>
                         </div>
                     </div>
 
                     <!-- Feature grid -->
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;">
                         <div style="display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--text-2);">
                             <span style="font-size:.95rem;">🎯</span> Simulacros EXANI-II
                         </div>
@@ -1318,19 +362,19 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                           width:100%;padding:.9rem;border-radius:14px;margin-bottom:1rem;
                           background:linear-gradient(135deg,#25d366,#128c7e);
                           color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.01em;
-                          text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.25);
+                          text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.28);
                           transition:transform .18s,box-shadow .18s;"
-                   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(37,211,102,.35)'"
-                   onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(37,211,102,.25)'">
+                   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(37,211,102,.38)'"
+                   onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(37,211,102,.28)'">
                     <span style="font-size:1.1rem;">💬</span>
                     Obtener acceso por WhatsApp
                 </a>
 
                 <!-- ── DIVIDER ─────────────────────────────── -->
                 <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
-                    <span style="font-size:.68rem;color:var(--text-dim);font-weight:600;letter-spacing:.06em;">YA TENGO CÓDIGO</span>
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+                    <div style="flex:1;height:1px;background:var(--border);"></div>
+                    <span style="font-size:.68rem;color:var(--text-dim);font-weight:700;letter-spacing:.08em;">YA TENGO CÓDIGO</span>
+                    <div style="flex:1;height:1px;background:var(--border);"></div>
                 </div>
 
                 <!-- ── INPUT ──────────────────────────────────── -->
@@ -1342,33 +386,34 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                                placeholder="Ingresa tu código de acceso"
                                style="width:100%;box-sizing:border-box;
                                       padding:.82rem .9rem .82rem 2.6rem;
-                                      background:rgba(11,14,26,0.85);
-                                      border:1.5px solid rgba(255,255,255,.1);
-                                      border-radius:14px;color:#fff;font-size:.9rem;
+                                      background:#fff;
+                                      border:2px solid var(--border-m);
+                                      border-radius:14px;color:var(--text);font-size:.9rem;
                                       outline:none;transition:border-color .18s,box-shadow .18s;
-                                      font-family:var(--font-d);letter-spacing:.03em;"
-                               onfocus="this.style.borderColor='rgba(99,102,241,.55)';this.style.boxShadow='0 0 0 3px rgba(99,102,241,.12)'"
-                               onblur="this.style.borderColor='rgba(255,255,255,.1)';this.style.boxShadow='none'"
+                                      font-family:var(--font-d);letter-spacing:.03em;
+                                      box-shadow:var(--sh);"
+                               onfocus="this.style.borderColor='var(--teal)';this.style.boxShadow='0 0 0 3px var(--teal-bg)'"
+                               onblur="this.style.borderColor='var(--border-m)';this.style.boxShadow='var(--sh)'"
                                onkeydown="if(event.key==='Enter') activateLicense()">
                     </div>
                 </div>
 
                 <!-- Error msg -->
                 <div id="activationError"
-                     style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);
+                     style="display:none;background:rgba(225,29,72,.08);border:1px solid rgba(225,29,72,.25);
                             border-radius:10px;padding:.6rem .85rem;margin-bottom:.75rem;
-                            color:#f87171;font-size:.78rem;font-weight:600;text-align:center;">
+                            color:var(--rose);font-size:.78rem;font-weight:600;text-align:center;">
                 </div>
 
                 <!-- ── ACTIVATE BUTTON ─────────────────────── -->
                 <button id="activateBtn" onclick="activateLicense()"
-                        style="width:100%;padding:.85rem;border-radius:14px;border:none;cursor:pointer;
-                               background:linear-gradient(135deg,#6366f1,#8b5cf6);
+                        style="width:100%;padding:.88rem;border-radius:14px;border:none;cursor:pointer;
+                               background:linear-gradient(135deg,var(--teal),var(--teal-d));
                                color:#fff;font-size:.92rem;font-weight:800;letter-spacing:.02em;
-                               box-shadow:0 6px 20px rgba(99,102,241,.3);
+                               box-shadow:0 6px 20px var(--teal-glow);
                                transition:transform .18s,box-shadow .18s,opacity .18s;"
-                        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(99,102,241,.45)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(99,102,241,.3)'"
+                        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px var(--teal-glow)'"
+                        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px var(--teal-glow)'"
                         onmousedown="this.style.transform='scale(.97)'"
                         onmouseup="this.style.transform='translateY(-2px)'">
                     Activar Acceso
@@ -1888,15 +933,15 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <div class="page-header" style="margin-bottom:1.5rem;">
                 <button class="back-btn" onclick="goHome()">←</button>
                 <div>
-                    <h2 style="margin:0;font-size:1.4rem;color:white;">Repaso de Incorrectas</h2>
-                    <p style="margin:0.25rem 0 0;color:#94a3b8;font-size:0.85rem;">Refuerza lo que fallaste 💪</p>
+                    <h2 style="margin:0;font-size:1.4rem;color:var(--text);">Repaso de Incorrectas</h2>
+                    <p style="margin:0.25rem 0 0;color:var(--text-3);font-size:0.85rem;">Refuerza lo que fallaste 💪</p>
                 </div>
             </div>
 
             <div id="wrongBankEmpty" style="text-align:center;padding:3rem 1rem;display:none;">
                 <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
-                <h3 style="color:white;margin-bottom:0.5rem;">¡Todo perfecto!</h3>
-                <p style="color:#94a3b8;font-size:0.9rem;">No tienes preguntas incorrectas pendientes</p>
+                <h3 style="color:var(--text);margin-bottom:0.5rem;">¡Todo perfecto!</h3>
+                <p style="color:var(--text-3);font-size:0.9rem;">No tienes preguntas incorrectas pendientes</p>
             </div>
 
             <div id="wrongBankList" style="display:flex;flex-direction:column;gap:0.85rem;"></div>
@@ -1930,7 +975,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <div id="logrosSubtitulo" style="font-family:var(--font-d);font-size:1.3rem;font-weight:800;color:#fbbf24;margin-bottom:1rem;text-shadow:0 2px 8px rgba(245,158,11,0.3);">0 / 36 Logros</div>
                     
                     <!-- Barra de progreso -->
-                    <div style="background:rgba(30,41,59,0.6);height:10px;border-radius:20px;overflow:hidden;margin-bottom:0.5rem;">
+                    <div style="background:var(--card);height:10px;border-radius:20px;overflow:hidden;margin-bottom:0.5rem;">
                         <div id="progressBar" style="background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b);height:100%;width:0%;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 12px rgba(245,158,11,0.6);"></div>
                     </div>
                     
@@ -2002,46 +1047,46 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <div style="background:linear-gradient(135deg,#be185d 0%,#ec4899 50%,#f43f5e 100%);border-radius:20px;padding:2rem;text-align:center;margin-bottom:1.5rem;">
                 <div style="font-size:2.5rem;margin-bottom:0.5rem;">🎮</div>
-                <h1 style="color:white;font-size:2rem;font-weight:800;margin:0;">Juegos</h1>
+                <h1 style="color:var(--text);font-size:2rem;font-weight:800;margin:0;">Juegos</h1>
                 <p style="color:rgba(255,255,255,0.8);margin:0.5rem 0 0;font-size:0.95rem;">Aprende conceptos médicos de forma divertida</p>
             </div>
 
             <!-- TARJETA: SIGNOS VS SÍNTOMAS -->
-            <div onclick="iniciarJuegoSignos()" style="background:rgba(30,41,59,0.8);border:1px solid rgba(236,72,153,0.4);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;" onmouseover="this.style.borderColor='#ec4899';this.style.background='rgba(236,72,153,0.1)'" onmouseout="this.style.borderColor='rgba(236,72,153,0.4)';this.style.background='rgba(30,41,59,0.8)'">
+            <div onclick="iniciarJuegoSignos()" style="background:var(--card);border:1px solid rgba(236,72,153,0.4);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;" onmouseover="this.style.borderColor='#ec4899';this.style.background='rgba(236,72,153,0.1)'" onmouseout="this.style.borderColor='rgba(236,72,153,0.4)';this.style.background='var(--card)'">
                 <div style="background:linear-gradient(135deg,#be185d,#ec4899);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🃏</div>
                 <div>
-                    <div style="font-weight:700;font-size:1.1rem;color:white;">Signos vs Síntomas</div>
-                    <div style="color:#94a3b8;font-size:0.9rem;margin-top:0.2rem;">83 tarjetas · ¿Es signo o síntoma? Voltea y descúbrelo</div>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--text);">Signos vs Síntomas</div>
+                    <div style="color:var(--text-3);font-size:0.9rem;margin-top:0.2rem;">83 tarjetas · ¿Es signo o síntoma? Voltea y descúbrelo</div>
                 </div>
                 <div style="margin-left:auto;color:#ec4899;font-size:1.3rem;">▶</div>
             </div>
 
             <!-- TARJETA: DIAGNÓSTICO CLÍNICO -->
-            <div onclick="iniciarJuegoDiagnostico()" style="background:rgba(30,41,59,0.8);border:1px solid rgba(245,158,11,0.4);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;" onmouseover="this.style.borderColor='#f59e0b';this.style.background='rgba(245,158,11,0.1)'" onmouseout="this.style.borderColor='rgba(245,158,11,0.4)';this.style.background='rgba(30,41,59,0.8)'">
+            <div onclick="iniciarJuegoDiagnostico()" style="background:var(--card);border:1px solid rgba(245,158,11,0.4);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;" onmouseover="this.style.borderColor='#f59e0b';this.style.background='rgba(245,158,11,0.1)'" onmouseout="this.style.borderColor='rgba(245,158,11,0.4)';this.style.background='var(--card)'">
                 <div style="background:linear-gradient(135deg,#b45309,#f59e0b);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🏥</div>
                 <div>
-                    <div style="font-weight:700;font-size:1.1rem;color:white;">Diagnóstico Clínico</div>
-                    <div style="color:#94a3b8;font-size:0.9rem;margin-top:0.2rem;">60 casos · Lee los signos vitales y diagnostica al paciente</div>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--text);">Diagnóstico Clínico</div>
+                    <div style="color:var(--text-3);font-size:0.9rem;margin-top:0.2rem;">60 casos · Lee los signos vitales y diagnostica al paciente</div>
                 </div>
                 <div style="margin-left:auto;color:#f59e0b;font-size:1.3rem;">▶</div>
             </div>
 
             <!-- TARJETA: MODO CLÍNICO -->
-            <div onclick="iniciarModoClinico()" style="background:rgba(30,41,59,0.8);border:1px solid rgba(20,184,166,0.5);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='#14b8a6';this.style.background='rgba(20,184,166,0.1)'" onmouseout="this.style.borderColor='rgba(20,184,166,0.5)';this.style.background='rgba(30,41,59,0.8)'">
-                <div style="position:absolute;top:6px;right:10px;background:linear-gradient(135deg,#0891b2,#14b8a6);color:white;font-size:0.6rem;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:1px;">NUEVO</div>
+            <div onclick="iniciarModoClinico()" style="background:var(--card);border:1px solid rgba(20,184,166,0.5);border-radius:16px;padding:1.5rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:1.25rem;margin-bottom:1rem;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='#14b8a6';this.style.background='rgba(20,184,166,0.1)'" onmouseout="this.style.borderColor='rgba(20,184,166,0.5)';this.style.background='var(--card)'">
+                <div style="position:absolute;top:6px;right:10px;background:linear-gradient(135deg,#0891b2,#14b8a6);color:var(--text);font-size:0.6rem;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:1px;">NUEVO</div>
                 <div style="background:linear-gradient(135deg,#0e7490,#14b8a6);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🔬</div>
                 <div>
-                    <div style="font-weight:700;font-size:1.1rem;color:white;">Modo Clínico</div>
-                    <div style="color:#94a3b8;font-size:0.9rem;margin-top:0.2rem;">Examina al paciente con tus herramientas y llega al diagnóstico</div>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--text);">Modo Clínico</div>
+                    <div style="color:var(--text-3);font-size:0.9rem;margin-top:0.2rem;">Examina al paciente con tus herramientas y llega al diagnóstico</div>
                 </div>
                 <div style="margin-left:auto;color:#14b8a6;font-size:1.3rem;">▶</div>
             </div>
 
             <!-- PRÓXIMAMENTE -->
-            <div style="background:rgba(30,41,59,0.5);border:1px solid rgba(100,116,139,0.2);border-radius:16px;padding:1.5rem;display:flex;align-items:center;gap:1.25rem;opacity:0.5;">
+            <div style="background:var(--card);border:1px solid rgba(100,116,139,0.2);border-radius:16px;padding:1.5rem;display:flex;align-items:center;gap:1.25rem;opacity:0.5;">
                 <div style="background:rgba(100,116,139,0.3);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;">🧠</div>
                 <div>
-                    <div style="font-weight:700;font-size:1.1rem;color:#94a3b8;">Memoria Anatómica</div>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--text-3);">Memoria Anatómica</div>
                     <div style="color:#64748b;font-size:0.9rem;margin-top:0.2rem;">En desarrollo · Empareja estructura con función</div>
                 </div>
             </div>
@@ -2054,16 +1099,16 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <!-- Header -->
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer;padding:0;">←</button>
+                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:var(--text-3);font-size:1.5rem;cursor:pointer;padding:0;">←</button>
                 <div style="text-align:center;">
                     <div id="mcCategoria" style="color:#14b8a6;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Consultorio</div>
-                    <div id="mcProgreso" style="color:#94a3b8;font-size:0.85rem;">Caso 1 / 60</div>
+                    <div id="mcProgreso" style="color:var(--text-3);font-size:0.85rem;">Caso 1 / 60</div>
                 </div>
                 <div id="mcPuntos" style="background:rgba(20,184,166,0.15);border:1px solid rgba(20,184,166,0.3);padding:0.3rem 0.8rem;border-radius:20px;color:#14b8a6;font-weight:700;font-size:0.9rem;">⭐ 0</div>
             </div>
 
             <!-- Barra de progreso -->
-            <div style="background:rgba(30,41,59,0.8);border-radius:4px;height:4px;margin-bottom:1.25rem;overflow:hidden;">
+            <div style="background:var(--card);border-radius:4px;height:4px;margin-bottom:1.25rem;overflow:hidden;">
                 <div id="mcBarraProgreso" style="height:100%;background:linear-gradient(90deg,#14b8a6,#06b6d4);width:0%;transition:width 0.5s ease;border-radius:4px;"></div>
             </div>
 
@@ -2073,7 +1118,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <div id="mcAvatarPaciente" style="font-size:2.5rem;line-height:1;filter:drop-shadow(0 0 8px rgba(20,184,166,0.4));">🧑‍🦱</div>
                     <div>
                         <div style="font-size:0.7rem;color:#14b8a6;font-weight:700;letter-spacing:1px;text-transform:uppercase;">PACIENTE EN CONSULTA</div>
-                        <div id="mcPacienteTexto" style="color:#e2e8f0;font-size:0.92rem;line-height:1.5;margin-top:0.2rem;">Cargando caso...</div>
+                        <div id="mcPacienteTexto" style="color:var(--text);font-size:0.92rem;line-height:1.5;margin-top:0.2rem;">Cargando caso...</div>
                     </div>
                 </div>
             </div>
@@ -2091,7 +1136,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <!-- Herramientas médicas -->
             <div style="margin-bottom:1rem;">
-                <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:0.6rem;text-transform:uppercase;">Usa tus herramientas — examina al paciente</div>
+                <div style="font-size:0.75rem;color:var(--text-3);font-weight:600;letter-spacing:1px;margin-bottom:0.6rem;text-transform:uppercase;">Usa tus herramientas — examina al paciente</div>
                 <div id="mcHerramientas" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;">
                     <!-- Se llena dinámicamente -->
                 </div>
@@ -2099,7 +1144,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <!-- Log de hallazgos -->
             <div id="mcHallazgosContainer" style="display:none;margin-bottom:1rem;">
-                <div style="font-size:0.75rem;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:0.5rem;text-transform:uppercase;">📋 Hallazgos del examen</div>
+                <div style="font-size:0.75rem;color:var(--text-3);font-weight:600;letter-spacing:1px;margin-bottom:0.5rem;text-transform:uppercase;">📋 Hallazgos del examen</div>
                 <div id="mcHallazgosLog" style="display:flex;flex-direction:column;gap:0.4rem;max-height:180px;overflow-y:auto;"></div>
             </div>
 
@@ -2111,8 +1156,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <!-- Explicación -->
             <div id="mcExplicacion" style="display:none;background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.3);border-radius:14px;padding:1rem;margin-top:0.75rem;">
-                <div id="mcExplicacionTexto" style="color:#e2e8f0;font-size:0.9rem;line-height:1.6;"></div>
-                <button id="mcSiguienteBtn" onclick="mcSiguienteCaso()" style="margin-top:1rem;width:100%;padding:0.85rem;background:linear-gradient(135deg,#0e7490,#14b8a6);border:none;border-radius:12px;color:white;font-weight:700;font-size:1rem;cursor:pointer;">Siguiente caso →</button>
+                <div id="mcExplicacionTexto" style="color:var(--text);font-size:0.9rem;line-height:1.6;"></div>
+                <button id="mcSiguienteBtn" onclick="mcSiguienteCaso()" style="margin-top:1rem;width:100%;padding:0.85rem;background:linear-gradient(135deg,#0e7490,#14b8a6);border:none;border-radius:12px;color:var(--text);font-weight:700;font-size:1rem;cursor:pointer;">Siguiente caso →</button>
             </div>
         </div>
 
@@ -2121,13 +1166,13 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <div id="juegoDiagnosticoScreen" class="screen">
             <!-- Header -->
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer;padding:0;">←</button>
+                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:var(--text-3);font-size:1.5rem;cursor:pointer;padding:0;">←</button>
                 <div style="text-align:center;">
                     <div id="diagCategoria" style="color:#f59e0b;font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Infeccioso</div>
-                    <div id="diagProgreso" style="color:#94a3b8;font-size:0.85rem;">Caso 1 / 15</div>
+                    <div id="diagProgreso" style="color:var(--text-3);font-size:0.85rem;">Caso 1 / 15</div>
                 </div>
                 <div style="text-align:right;">
-                    <div style="color:#94a3b8;font-size:0.8rem;">Racha</div>
+                    <div style="color:var(--text-3);font-size:0.8rem;">Racha</div>
                     <div id="diagRacha" style="color:#eab308;font-weight:700;font-size:1.1rem;">🔥 0</div>
                 </div>
             </div>
@@ -2138,17 +1183,17 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             </div>
 
             <!-- Caso del paciente -->
-            <div style="background:linear-gradient(135deg,rgba(30,41,59,0.9),rgba(15,23,42,0.9));border:1px solid rgba(245,158,11,0.25);border-radius:16px;padding:1.25rem;margin-bottom:1rem;">
+            <div style="background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid rgba(245,158,11,0.25);border-radius:16px;padding:1.25rem;margin-bottom:1rem;">
                 <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
                     <span style="font-size:1.2rem;">🧑‍⚕️</span>
                     <span style="color:#f59e0b;font-weight:700;font-size:0.85rem;letter-spacing:0.5px;">CASO CLÍNICO</span>
                 </div>
-                <p id="diagPaciente" style="color:#e2e8f0;font-size:0.92rem;line-height:1.6;margin:0;"></p>
+                <p id="diagPaciente" style="color:var(--text);font-size:0.92rem;line-height:1.6;margin:0;"></p>
             </div>
 
             <!-- Signos Vitales — la parte estrella -->
-            <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(100,116,139,0.2);border-radius:16px;padding:1rem;margin-bottom:1rem;">
-                <div style="color:#94a3b8;font-size:0.78rem;font-weight:600;letter-spacing:1px;margin-bottom:0.75rem;">📊 SIGNOS VITALES</div>
+            <div style="background:var(--card-2);border:1px solid rgba(100,116,139,0.2);border-radius:16px;padding:1rem;margin-bottom:1rem;">
+                <div style="color:var(--text-3);font-size:0.78rem;font-weight:600;letter-spacing:1px;margin-bottom:0.75rem;">📊 SIGNOS VITALES</div>
                 <div id="diagVitales" style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;"></div>
             </div>
 
@@ -2156,14 +1201,14 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <div id="diagOpciones" style="display:grid;gap:0.6rem;margin-bottom:0.75rem;"></div>
 
             <!-- Botón siguiente -->
-            <button id="diagBtnSiguiente" onclick="siguienteDiagnostico()" style="display:none;width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#b45309,#f59e0b);color:white;font-size:1rem;font-weight:700;cursor:pointer;">
+            <button id="diagBtnSiguiente" onclick="siguienteDiagnostico()" style="display:none;width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#b45309,#f59e0b);color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;">
                 Siguiente caso →
             </button>
 
             <!-- Explicación -->
             <div id="diagExplicacion" style="display:none;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:1rem;margin-top:0.75rem;">
                 <div style="color:#10b981;font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">💡 Razonamiento clínico</div>
-                <p id="diagExplicacionTexto" style="color:#94a3b8;font-size:0.88rem;line-height:1.6;margin:0;"></p>
+                <p id="diagExplicacionTexto" style="color:var(--text-3);font-size:0.88rem;line-height:1.6;margin:0;"></p>
             </div>
         </div>
 
@@ -2171,22 +1216,22 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <div id="diagResultadoScreen" class="screen">
             <div style="text-align:center;padding:2rem 1rem;">
                 <div id="diagResultadoEmoji" style="font-size:4rem;margin-bottom:1rem;">🏆</div>
-                <h2 style="color:white;font-size:1.8rem;font-weight:800;margin:0 0 0.5rem;">¡Diagnósticos completados!</h2>
+                <h2 style="color:var(--text);font-size:1.8rem;font-weight:800;margin:0 0 0.5rem;">¡Diagnósticos completados!</h2>
                 <div id="diagResultadoPuntos" style="color:#f59e0b;font-size:3rem;font-weight:800;margin:1rem 0;">0 / 15</div>
-                <div id="diagResultadoMsg" style="color:#94a3b8;font-size:1rem;margin-bottom:2rem;"></div>
-                <div style="background:rgba(30,41,59,0.8);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div id="diagResultadoMsg" style="color:var(--text-3);font-size:1rem;margin-bottom:2rem;"></div>
+                <div style="background:var(--card);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                     <div>
                         <div style="color:#10b981;font-size:2rem;font-weight:800;" id="diagCorrectasTotal">0</div>
-                        <div style="color:#94a3b8;font-size:0.85rem;">Correctos</div>
+                        <div style="color:var(--text-3);font-size:0.85rem;">Correctos</div>
                     </div>
                     <div>
                         <div style="color:#ef4444;font-size:2rem;font-weight:800;" id="diagIncorrectasTotal">0</div>
-                        <div style="color:#94a3b8;font-size:0.85rem;">Incorrectos</div>
+                        <div style="color:var(--text-3);font-size:0.85rem;">Incorrectos</div>
                     </div>
                 </div>
                 <div style="display:grid;gap:0.75rem;">
-                    <button onclick="iniciarJuegoDiagnostico()" style="width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#b45309,#f59e0b);color:white;font-size:1rem;font-weight:700;cursor:pointer;">🔄 Jugar de nuevo</button>
-                    <button onclick="showScreen('juegosScreen')" style="width:100%;padding:1rem;border-radius:14px;border:1px solid rgba(100,116,139,0.3);background:transparent;color:#94a3b8;font-size:1rem;font-weight:600;cursor:pointer;">← Volver a Juegos</button>
+                    <button onclick="iniciarJuegoDiagnostico()" style="width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#b45309,#f59e0b);color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;">🔄 Jugar de nuevo</button>
+                    <button onclick="showScreen('juegosScreen')" style="width:100%;padding:1rem;border-radius:14px;border:1px solid rgba(100,116,139,0.3);background:transparent;color:var(--text-3);font-size:1rem;font-weight:600;cursor:pointer;">← Volver a Juegos</button>
                 </div>
             </div>
         </div>
@@ -2196,13 +1241,13 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <div id="juegoSignosScreen" class="screen">
             <!-- Header -->
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
-                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer;padding:0;">←</button>
+                <button onclick="showScreen('juegosScreen')" style="background:transparent;border:none;color:var(--text-3);font-size:1.5rem;cursor:pointer;padding:0;">←</button>
                 <div style="text-align:center;">
                     <div id="juegoCategoria" style="color:#ec4899;font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Cardiovascular</div>
-                    <div id="juegoProgreso" style="color:#94a3b8;font-size:0.85rem;">Tarjeta 1 / 83</div>
+                    <div id="juegoProgreso" style="color:var(--text-3);font-size:0.85rem;">Tarjeta 1 / 83</div>
                 </div>
                 <div style="text-align:right;">
-                    <div style="color:#94a3b8;font-size:0.8rem;">Racha</div>
+                    <div style="color:var(--text-3);font-size:0.8rem;">Racha</div>
                     <div id="juegoRacha" style="color:#eab308;font-weight:700;font-size:1.1rem;">🔥 0</div>
                 </div>
             </div>
@@ -2218,14 +1263,14 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 <div id="tarjetaContenedor" style="position:relative;min-height:280px;">
 
                     <!-- FRENTE -->
-                    <div id="tarjetaFrente" style="background:linear-gradient(135deg,rgba(30,41,59,0.95),rgba(15,23,42,0.95));border:2px solid rgba(236,72,153,0.3);border-radius:20px;padding:2rem;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.25s ease,opacity 0.25s ease;transform-origin:center;">
+                    <div id="tarjetaFrente" style="background:linear-gradient(135deg,var(--card),var(--card-2));border:2px solid rgba(236,72,153,0.3);border-radius:20px;padding:2rem;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.25s ease,opacity 0.25s ease;transform-origin:center;">
                         <div>
                             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;">
                                 <span id="frenteCat" style="background:rgba(236,72,153,0.15);color:#ec4899;font-size:0.75rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:999px;letter-spacing:0.5px;">Cardiovascular</span>
-                                <span style="color:#475569;font-size:0.8rem;" id="hintVoltear">¿Signo o síntoma? 👇</span>
+                                <span style="color:var(--text-3);font-size:0.8rem;" id="hintVoltear">¿Signo o síntoma? 👇</span>
                             </div>
-                            <div id="frentetermino" style="font-size:1.9rem;font-weight:800;color:white;margin:1rem 0 0.75rem;line-height:1.2;">Taquicardia</div>
-                            <div id="frenteDesc" style="color:#94a3b8;font-size:0.95rem;line-height:1.6;">Frecuencia cardíaca mayor a 100 lpm, medible con estetoscopio o monitor.</div>
+                            <div id="frentetermino" style="font-size:1.9rem;font-weight:800;color:var(--text);margin:1rem 0 0.75rem;line-height:1.2;">Taquicardia</div>
+                            <div id="frenteDesc" style="color:var(--text-3);font-size:0.95rem;line-height:1.6;">Frecuencia cardíaca mayor a 100 lpm, medible con estetoscopio o monitor.</div>
                         </div>
                         <div style="display:flex;gap:0.5rem;align-items:center;margin-top:1.25rem;opacity:0.5;">
                             <div style="width:6px;height:6px;border-radius:50%;background:#ec4899;"></div>
@@ -2251,7 +1296,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             </div>
 
             <!-- BOTÓN SIGUIENTE (aparece tras responder) -->
-            <button id="btnSiguienteTarjeta" onclick="siguienteTarjeta()" style="display:none;width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#be185d,#ec4899);color:white;font-size:1rem;font-weight:700;cursor:pointer;">
+            <button id="btnSiguienteTarjeta" onclick="siguienteTarjeta()" style="display:none;width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#be185d,#ec4899);color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;">
                 Siguiente tarjeta →
             </button>
 
@@ -2265,24 +1310,24 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <div id="juegoResultadoScreen" class="screen">
             <div style="text-align:center;padding:2rem 1rem;">
                 <div id="juegoResultadoEmoji" style="font-size:4rem;margin-bottom:1rem;">🏆</div>
-                <h2 style="color:white;font-size:1.8rem;font-weight:800;margin:0 0 0.5rem;">¡Partida completada!</h2>
+                <h2 style="color:var(--text);font-size:1.8rem;font-weight:800;margin:0 0 0.5rem;">¡Partida completada!</h2>
                 <div id="juegoResultadoPuntos" style="color:#ec4899;font-size:3rem;font-weight:800;margin:1rem 0;">0 / 83</div>
-                <div id="juegoResultadoMsg" style="color:#94a3b8;font-size:1rem;margin-bottom:2rem;"></div>
+                <div id="juegoResultadoMsg" style="color:var(--text-3);font-size:1rem;margin-bottom:2rem;"></div>
 
-                <div style="background:rgba(30,41,59,0.8);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div style="background:var(--card);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                     <div>
                         <div style="color:#10b981;font-size:2rem;font-weight:800;" id="juegoCorrectasTotal">0</div>
-                        <div style="color:#94a3b8;font-size:0.85rem;">Correctas</div>
+                        <div style="color:var(--text-3);font-size:0.85rem;">Correctas</div>
                     </div>
                     <div>
                         <div style="color:#ef4444;font-size:2rem;font-weight:800;" id="juegoIncorrectasTotal">0</div>
-                        <div style="color:#94a3b8;font-size:0.85rem;">Incorrectas</div>
+                        <div style="color:var(--text-3);font-size:0.85rem;">Incorrectas</div>
                     </div>
                 </div>
 
                 <div style="display:grid;gap:0.75rem;">
-                    <button onclick="iniciarJuegoSignos()" style="width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#be185d,#ec4899);color:white;font-size:1rem;font-weight:700;cursor:pointer;">🔄 Jugar de nuevo</button>
-                    <button onclick="showScreen('juegosScreen')" style="width:100%;padding:1rem;border-radius:14px;border:2px solid rgba(100,116,139,0.3);background:transparent;color:#94a3b8;font-size:1rem;font-weight:600;cursor:pointer;">← Volver a Juegos</button>
+                    <button onclick="iniciarJuegoSignos()" style="width:100%;padding:1rem;border-radius:14px;border:none;background:linear-gradient(135deg,#be185d,#ec4899);color:var(--text);font-size:1rem;font-weight:700;cursor:pointer;">🔄 Jugar de nuevo</button>
+                    <button onclick="showScreen('juegosScreen')" style="width:100%;padding:1rem;border-radius:14px;border:2px solid rgba(100,116,139,0.3);background:transparent;color:var(--text-3);font-size:1rem;font-weight:600;cursor:pointer;">← Volver a Juegos</button>
                 </div>
             </div>
         </div>
@@ -2301,25 +1346,25 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
             <!-- BANNER QUIZ FLASH -->
             <div style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); border-radius: 20px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
-                <h1 style="color: white; font-size: 2.2rem; font-weight: 800; margin: 0; letter-spacing: -0.5px;">Quiz Flash</h1>
+                <h1 style="color: var(--text); font-size: 2.2rem; font-weight: 800; margin: 0; letter-spacing: -0.5px;">Quiz Flash</h1>
             </div>
 
             <!-- CONFIG CARD -->
-            <div style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.2); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background: #fff; border: 1.5px solid var(--border-m); border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--sh-m);">
 
                 <!-- Tiempo info -->
                 <div style="background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.4); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
                     <div style="background: #fb923c; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">⏱️</div>
                     <div>
-                        <div style="font-weight: 700; color: white;">5 minutos totales</div>
-                        <div style="color: #94a3b8; font-size: 0.85rem;">+5s por acierto · -10s por error</div>
+                        <div style="font-weight: 700; color: var(--text);">5 minutos totales</div>
+                        <div style="color: var(--text-3); font-size: 0.85rem;">+5s por acierto · -10s por error</div>
                     </div>
                 </div>
 
                 <!-- Tema -->
                 <div style="margin-bottom: 1.25rem;">
-                    <label style="display: block; font-weight: 700; color: white; margin-bottom: 0.6rem; font-size: 1rem;">Tema</label>
-                    <select id="quizTema" style="width: 100%; padding: 0.85rem 1rem; background: rgba(15,23,42,0.9); border: 1.5px solid rgba(100,116,139,0.4); border-radius: 12px; color: white; font-size: 1rem; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%2394a3b8%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.5rem;">
+                    <label style="display: block; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; font-size: 1rem;">Tema</label>
+                    <select id="quizTema" style="width: 100%; padding: 0.85rem 1rem; background: var(--card-2); border: 1.5px solid var(--border-m); border-radius: 12px; color: var(--text); font-size: 1rem; cursor: pointer; appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%2394a3b8%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.5rem;">
                         <option value="todos">🎯 Todos los temas</option>
                         <option value="comprension">📖 Comprensión Lectora</option>
                         <option value="redaccion">✍️ Redacción Indirecta</option>
@@ -2330,7 +1375,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
                 <!-- Dificultad -->
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; font-weight: 700; color: white; margin-bottom: 0.6rem; font-size: 1rem;">Dificultad</label>
+                    <label style="display: block; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; font-size: 1rem;">Dificultad</label>
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem;">
                         <button onclick="selectDificultad('facil')" id="dif-facil"
                             style="padding: 0.75rem 0.5rem; border-radius: 12px; border: 2px solid rgba(16,185,129,0.5); background: rgba(16,185,129,0.15); color: #10b981; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;">
@@ -2348,27 +1393,27 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 </div>
 
                 <!-- Botón Comenzar -->
-                <button onclick="startQuizFlash()" style="width: 100%; padding: 1.1rem; background: linear-gradient(135deg, #7c3aed, #a855f7); border: none; border-radius: 14px; color: white; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.75rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                <button onclick="startQuizFlash()" style="width: 100%; padding: 1.1rem; background: linear-gradient(135deg, var(--teal), var(--teal-d)); border: none; border-radius: 14px; color: var(--text); font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.75rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
                     ▶ Comenzar Quiz
                 </button>
             </div>
 
             <!-- MODOS RÁPIDOS -->
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
-                <div onclick="quickMode('rapido')" style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.2); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
+                <div onclick="quickMode('rapido')" style="background: #fff; border: 1.5px solid var(--border-m); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: var(--sh);" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
                     <div style="background: linear-gradient(135deg, #3b82f6, #06b6d4); width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 0.75rem;">⚡</div>
-                    <div style="font-weight: 700; color: white; margin-bottom: 0.25rem;">Rápido</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem;">10 preguntas</div>
+                    <div style="font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Rápido</div>
+                    <div style="color: var(--text-3); font-size: 0.8rem;">10 preguntas</div>
                 </div>
-                <div onclick="quickMode('adaptativo')" style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.2); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
+                <div onclick="quickMode('adaptativo')" style="background: #fff; border: 1.5px solid var(--border-m); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: var(--sh);" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
                     <div style="background: linear-gradient(135deg, #f59e0b, #fb923c); width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 0.75rem;">🏆</div>
-                    <div style="font-weight: 700; color: white; margin-bottom: 0.25rem;">Adaptativo</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem;">Tu nivel</div>
+                    <div style="font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Adaptativo</div>
+                    <div style="color: var(--text-3); font-size: 0.8rem;">Tu nivel</div>
                 </div>
-                <div onclick="quickMode('efectivo')" style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.2); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
+                <div onclick="quickMode('efectivo')" style="background: #fff; border: 1.5px solid var(--border-m); border-radius: 16px; padding: 1.25rem 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: var(--sh);" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='rgba(100,116,139,0.2)'">
                     <div style="background: linear-gradient(135deg, #10b981, #14b8a6); width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 0.75rem;">🎯</div>
-                    <div style="font-weight: 700; color: white; margin-bottom: 0.25rem;">Efectivo</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem;">Aprende más</div>
+                    <div style="font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Efectivo</div>
+                    <div style="color: var(--text-3); font-size: 0.8rem;">Aprende más</div>
                 </div>
             </div>
 
@@ -2377,8 +1422,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <!-- SECCIÓN: EXÁMENES -->
         <div id="examenesScreen" class="screen">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="font-size: 2rem; color: #fb923c; margin-bottom: 0.5rem;">🎯 Exámenes Simulacro</h2>
-                <p style="color: #94a3b8;">Al finalizar verás tus errores con explicación</p>
+                <h2 style="font-size: 1.6rem; font-family: var(--font-d); font-weight: 900; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -.02em;">🎯 Exámenes</h2>
+                <p style="color: var(--text-3); font-size: .82rem;">Al finalizar verás tus errores con explicación</p>
                 <button class="btn btn-secondary" onclick="navTo('homeScreen','nav-home')" style="margin-top:1rem;max-width:200px;">← Volver</button>
             </div>
 
@@ -2392,7 +1437,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <div style="font-size:2rem;">🎯</div>
                     <div style="flex:1;">
                         <div style="font-family:var(--font-d);font-weight:900;color:#fff;font-size:.98rem;margin-bottom:.18rem;">Simuladores Premedicina</div>
-                        <div style="font-size:.72rem;color:rgba(180,200,255,.7);">48 preguntas con explicaciones detalladas por opción</div>
+                        <div style="font-size:.72rem;color:var(--blue-d);">48 preguntas con explicaciones detalladas por opción</div>
                     </div>
                     <div style="background:var(--blue-bg);padding:.28rem .7rem;border-radius:20px;font-size:.65rem;font-weight:800;color:var(--blue-l);border:1px solid var(--blue-bdr);">NUEVO</div>
                 </div>
@@ -2407,48 +1452,12 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <div style="font-size:2.2rem;">🎓</div>
                     <div style="flex:1;">
                         <div style="font-family:var(--font-d);font-weight:900;color:#fff;font-size:.98rem;margin-bottom:.18rem;">Simulacro UAEMEX 2026</div>
-                        <div style="font-size:.72rem;color:rgba(200,180,255,.7);">Profe Cristian · 55 preguntas · 3 secciones</div>
+                        <div style="font-size:.72rem;color:var(--teal-d);">Profe Cristian · 55 preguntas · 3 secciones</div>
                     </div>
                     <div style="background:rgba(139,92,246,.25);padding:.28rem .7rem;border-radius:20px;font-size:.65rem;font-weight:800;color:#c4b5fd;">NUEVO</div>
                 </div>
             </div>
 
-            <div class="mode-grid">
-                <div class="mode-card" onclick="startExam('completo')" style="border: 2px solid #fb923c;">
-                    <div class="mode-icon">🎓</div>
-                    <div class="mode-title">Examen Completo</div>
-                    <div class="mode-description">Simulacro completo · Todas las áreas del EXANI-II</div>
-                    <div class="mode-count">⏱️ ~140 minutos</div>
-                </div>
-
-                <div class="mode-card" onclick="startExam('medicina')">
-                    <div class="mode-icon">🏥</div>
-                    <div class="mode-title">Examen de Premedicina</div>
-                    <div class="mode-description">Solo área de Premedicina · Con revisión de errores</div>
-                    <div class="mode-count">⏱️ ~89 minutos</div>
-                </div>
-
-                <div class="mode-card" onclick="startExam('comprension')">
-                    <div class="mode-icon">📖</div>
-                    <div class="mode-title">Examen de Comprensión</div>
-                    <div class="mode-description">30 preguntas</div>
-                    <div class="mode-count">⏱️ ~30 minutos</div>
-                </div>
-
-                <div class="mode-card" onclick="startExam('redaccion')">
-                    <div class="mode-icon">✍️</div>
-                    <div class="mode-title">Examen de Redacción</div>
-                    <div class="mode-description">30 preguntas</div>
-                    <div class="mode-count">⏱️ ~30 minutos</div>
-                </div>
-
-                <div class="mode-card" onclick="startExam('matematicas')">
-                    <div class="mode-icon">🔢</div>
-                    <div class="mode-title">Examen de Matemáticas</div>
-                    <div class="mode-description">30 preguntas</div>
-                    <div class="mode-count">⏱️ ~30 minutos</div>
-                </div>
-            </div>
         </div>
 
         <!-- SECCIÓN: CLASES -->
@@ -2456,34 +1465,34 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         <div id="clasesScreen" class="screen">
 
             <!-- HERO HEADER -->
-            <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(139,92,246,.18) 0%,rgba(91,127,255,.12) 50%,rgba(16,185,129,.07) 100%);border:1.5px solid rgba(139,92,246,.3);border-radius:22px;padding:1.4rem 1.2rem 1.2rem;margin-bottom:1.1rem;">
+            <div style="position:relative;overflow:hidden;background:var(--teal-bg);border:1.5px solid var(--teal-bdr);border-radius:22px;padding:1.4rem 1.2rem 1.2rem;margin-bottom:1.1rem;">
                 <!-- top accent -->
-                <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#8b5cf6,#5B7FFF,#00C896);border-radius:22px 22px 0 0;"></div>
+                <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--teal-d),var(--teal));border-radius:22px 22px 0 0;"></div>
                 <!-- glow orb -->
-                <div style="position:absolute;top:-40px;right:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.25) 0%,transparent 70%);pointer-events:none;"></div>
+                <div style="position:absolute;top:-40px;right:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,var(--teal-bg) 0%,transparent 70%);pointer-events:none;"></div>
 
                 <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:1rem;">
                     <button onclick="navTo('homeScreen','nav-home')" style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--text-3);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;" onmouseover="this.style.background='rgba(139,92,246,.2)';this.style.color='#c4b5fd'" onmouseout="this.style.background='rgba(255,255,255,.07)';this.style.color='var(--text-3)'">←</button>
-                    <div style="width:48px;height:48px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 16px rgba(139,92,246,.4);flex-shrink:0;">🏥</div>
+                    <div style="width:48px;height:48px;background:linear-gradient(135deg,var(--teal),var(--teal-d));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 16px var(--teal-glow);flex-shrink:0;">🏥</div>
                     <div style="flex:1;">
                         <div style="font-family:var(--font-d);font-size:1.2rem;font-weight:900;color:#fff;letter-spacing:-.02em;">Premedicina</div>
-                        <div style="font-size:.72rem;color:rgba(196,181,253,.7);">EXANI-II · Temario completo</div>
+                        <div style="font-size:.72rem;color:var(--teal-d);">EXANI-II · Temario completo</div>
                     </div>
                 </div>
 
                 <!-- Stats row -->
                 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;">
-                    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:.7rem .4rem;text-align:center;">
-                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:#c4b5fd;" id="clasesStatModulos">10</div>
-                        <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.04em;">Módulos</div>
+                    <div style="background:var(--teal-bg);border:1px solid var(--teal-bdr);border-radius:12px;padding:.7rem .4rem;text-align:center;">
+                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:var(--teal-d);" id="clasesStatModulos">10</div>
+                        <div style="font-size:.58rem;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;">Módulos</div>
                     </div>
-                    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:.7rem .4rem;text-align:center;">
-                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:#818cf8;" id="clasesStatLecciones">—</div>
-                        <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.04em;">Lecciones</div>
+                    <div style="background:var(--teal-bg);border:1px solid var(--teal-bdr);border-radius:12px;padding:.7rem .4rem;text-align:center;">
+                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:var(--blue-d);" id="clasesStatLecciones">—</div>
+                        <div style="font-size:.58rem;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;">Lecciones</div>
                     </div>
-                    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:.7rem .4rem;text-align:center;">
-                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:#6ee7b7;" id="progresoGlobal">0%</div>
-                        <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.04em;">Completado</div>
+                    <div style="background:var(--teal-bg);border:1px solid var(--teal-bdr);border-radius:12px;padding:.7rem .4rem;text-align:center;">
+                        <div style="font-family:var(--font-d);font-size:1.3rem;font-weight:900;color:var(--teal-d);" id="progresoGlobal">0%</div>
+                        <div style="font-size:.58rem;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;">Completado</div>
                     </div>
                 </div>
             </div>
@@ -2500,12 +1509,12 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
         <!-- Pantalla de Lecciones dentro de un módulo -->
         <div id="leccionesScreen" class="screen">
-            <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
+            <div style="background: var(--card); border: 1.5px solid var(--teal-bdr); padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: var(--sh-m);">
                 <button class="back-btn" onclick="navTo('clasesScreen','nav-clases');setTimeout(function(){if(typeof cargarModulos==='function')cargarModulos();},80)" style="margin-bottom:1rem;">←</button>
-                <h2 id="moduloTitulo" style="color: #8b5cf6; font-size: 1.5rem; margin-bottom: 0.5rem;">Módulo</h2>
-                <p id="moduloDescripcion" style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6;"></p>
-                <div style="background: rgba(139,92,246,0.2); border-radius: 8px; height: 8px; margin-top: 1rem; overflow: hidden;">
-                    <div id="moduloProgresoBarra" style="background: linear-gradient(90deg, #8b5cf6 0%, #6d28d9 100%); height: 100%; width: 0%; transition: width 0.3s;"></div>
+                <h2 id="moduloTitulo" style="color: var(--teal-d); font-size: 1.5rem; margin-bottom: 0.5rem;">Módulo</h2>
+                <p id="moduloDescripcion" style="color: var(--text-3); font-size: 0.9rem; line-height: 1.6;"></p>
+                <div style="background: var(--teal-bg); border-radius: 8px; height: 8px; margin-top: 1rem; overflow: hidden;">
+                    <div id="moduloProgresoBarra" style="background: linear-gradient(90deg, var(--teal) 0%, var(--teal-d) 100%); height: 100%; width: 0%; transition: width 0.3s;"></div>
                 </div>
             </div>
 
@@ -2520,21 +1529,21 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <div style="max-width: 800px; margin: 0 auto;">
                 <button class="back-btn" onclick="volverALecciones()" style="margin-bottom:1rem;">←</button>
 
-                <div style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(109,40,217,0.1)); border: 2px solid #8b5cf6; border-radius: 16px; padding: 2rem; margin-bottom: 2rem;">
+                <div style="background: var(--teal-bg); border: 2px solid var(--teal-bdr); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📚</div>
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-d) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📚</div>
                         <div style="flex: 1;">
                             <h2 id="leccionTitulo" style="color: #8b5cf6; font-size: 1.5rem;">Título de la lección</h2>
-                            <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <div style="color: var(--text-3); font-size: 0.9rem; margin-top: 0.25rem;">
                                 <span>⏱️</span> <span id="leccionTiempo">2 min</span>
-                                <span id="leccionNumero" style="margin-left: 1rem; color: #8b5cf6;"></span>
+                                <span id="leccionNumero" style="margin-left: 1rem; color: var(--teal-d);"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Contenido de la lección -->
-                <div id="leccionContenido" style="background: rgba(30,41,59,0.5); border-radius: 16px; padding: 2rem; line-height: 1.8; color: #cbd5e1;">
+                <div id="leccionContenido" style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; line-height: 1.8; color: var(--text-2);">
                     <!-- Se carga dinámicamente -->
                 </div>
 
@@ -2553,7 +1562,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                                 <span style="font-size:1.5rem;">🏅</span>
                                 <div>
                                     <div style="color:#6ee7b7;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;">Tu nota en evaluación</div>
-                                    <div id="notaModuloTexto" style="color:#f1f5f9;font-weight:800;font-size:1.1rem;"></div>
+                                    <div id="notaModuloTexto" style="color:var(--text);font-weight:800;font-size:1.1rem;"></div>
                                 </div>
                             </div>
                             <button onclick="iniciarEvaluacionModulo()" style="background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);color:#6ee7b7;padding:0.45rem 0.9rem;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer;">
@@ -2568,21 +1577,21 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     </div>
 
                     <!-- Ir a Evaluación (solo última lección si tiene evaluación) -->
-                    <button id="btnEvaluacion" onclick="iniciarEvaluacionModulo()" style="display:none; width:100%; background:linear-gradient(135deg,#10b981 0%,#059669 100%); color:white; border:none; padding:1rem; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; align-items:center; justify-content:center; gap:0.75rem;">
+                    <button id="btnEvaluacion" onclick="iniciarEvaluacionModulo()" style="display:none; width:100%; background:linear-gradient(135deg,#10b981 0%,#059669 100%); color:var(--text); border:none; padding:1rem; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; align-items:center; justify-content:center; gap:0.75rem;">
                         📝 Iniciar Evaluación del módulo
                     </button>
 
                     <!-- Fila Volver al temario -->
-                    <button onclick="volverALecciones()" style="width: 100%; background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.3); color: #94a3b8; padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <button onclick="volverALecciones()" style="width: 100%; background: var(--card); border: 1px solid rgba(100,116,139,0.3); color: var(--text-3); padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                         ← Volver al temario
                     </button>
 
                     <!-- Fila Anterior / Siguiente -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <button id="btnAnterior" onclick="navegarLeccion(-1)" style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.3); color: #94a3b8; padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <button id="btnAnterior" onclick="navegarLeccion(-1)" style="background: var(--card); border: 1px solid rgba(100,116,139,0.3); color: var(--text-3); padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                             ← Anterior
                         </button>
-                        <button id="btnSiguiente" onclick="navegarLeccion(1)" style="background: rgba(30,41,59,0.8); border: 1px solid rgba(100,116,139,0.3); color: #94a3b8; padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <button id="btnSiguiente" onclick="navegarLeccion(1)" style="background: var(--card); border: 1px solid rgba(100,116,139,0.3); color: var(--text-3); padding: 0.9rem; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                             Siguiente →
                         </button>
                     </div>
@@ -2817,22 +1826,16 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             </div>
             <!-- Búsqueda -->
             <div style="position:relative;margin-bottom:0.75rem;">
-                <span style="position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:#475569;font-size:0.95rem;">🔍</span>
+                <span style="position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:var(--text-3);font-size:0.95rem;">🔍</span>
                 <input id="glosarioInput" type="text" placeholder="Buscar término, sinónimo o categoría..." oninput="buscarGlosario(this.value)"
-                    style="width:100%;padding:0.7rem 2.6rem 0.7rem 2.4rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
+                    style="width:100%;padding:0.7rem 2.6rem 0.7rem 2.4rem;background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:12px;color:var(--text);font-size:0.9rem;outline:none;box-sizing:border-box;"
                     onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
                 <button id="glosarioClearBtn" onclick="limpiarBusquedaGlosario()" title="Limpiar búsqueda"
-                    style="display:none;position:absolute;right:0.7rem;top:50%;transform:translateY(-50%);background:rgba(100,116,139,0.2);border:none;border-radius:50%;width:22px;height:22px;color:#94a3b8;font-size:0.75rem;cursor:pointer;line-height:1;padding:0;transition:all 0.15s;"
+                    style="display:none;position:absolute;right:0.7rem;top:50%;transform:translateY(-50%);background:rgba(100,116,139,0.2);border:none;border-radius:50%;width:22px;height:22px;color:var(--text-3);font-size:0.75rem;cursor:pointer;line-height:1;padding:0;transition:all 0.15s;"
                     onmouseover="this.style.background='rgba(239,68,68,0.25)';this.style.color='#fca5a5'"
                     onmouseout="this.style.background='rgba(100,116,139,0.2)';this.style.color='#94a3b8'">✕</button>
             </div>
-            <script>
-                // Mostrar/ocultar botón X según haya texto
-                document.getElementById('glosarioInput').addEventListener('input', function() {
-                    const btn = document.getElementById('glosarioClearBtn');
-                    if (btn) btn.style.display = this.value ? 'block' : 'none';
-                });
-            </script>
+            <script src="glosario-ui.js"></script>
             <!-- Búsquedas recomendadas -->
             <div id="glosarioRecomendadas" style="display:flex;flex-wrap:wrap;gap:.38rem;margin-bottom:.6rem;"></div>
             <!-- Categorías -->
@@ -2858,14 +1861,14 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
             <div style="background:rgba(13,17,31,0.8);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:1.25rem;margin-bottom:1.25rem;">
                 <div style="font-size:0.72rem;font-weight:700;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;">⚙️ Configurar</div>
                 <div style="margin-bottom:1rem;">
-                    <label style="display:block;font-size:0.82rem;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;">📅 Fecha del examen</label>
+                    <label style="display:block;font-size:0.82rem;color:var(--text-3);font-weight:600;margin-bottom:0.4rem;">📅 Fecha del examen</label>
                     <input type="date" id="planFechaExamen"
-                        style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;"
+                        style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:var(--text);font-size:0.9rem;outline:none;box-sizing:border-box;"
                         onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
                 </div>
                 <div style="margin-bottom:1rem;">
-                    <label style="display:block;font-size:0.82rem;color:#94a3b8;font-weight:600;margin-bottom:0.4rem;">⏱️ Horas de estudio por día</label>
-                    <select id="planHorasDia" style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#f1f5f9;font-size:0.9rem;outline:none;box-sizing:border-box;">
+                    <label style="display:block;font-size:0.82rem;color:var(--text-3);font-weight:600;margin-bottom:0.4rem;">⏱️ Horas de estudio por día</label>
+                    <select id="planHorasDia" style="width:100%;padding:0.75rem;background:rgba(6,8,15,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:var(--text);font-size:0.9rem;outline:none;box-sizing:border-box;">
                         <option value="1">1 hora</option>
                         <option value="1.5">1.5 horas</option>
                         <option value="2" selected>2 horas</option>
@@ -2874,7 +1877,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                         <option value="6">6 horas</option>
                     </select>
                 </div>
-                <button onclick="generarPlanEstudio()" style="width:100%;padding:0.9rem;background:linear-gradient(135deg,#6366f1,#4338ca);border:none;border-radius:12px;color:white;font-weight:700;font-size:1rem;cursor:pointer;">
+                <button onclick="generarPlanEstudio()" style="width:100%;padding:0.9rem;background:linear-gradient(135deg,#6366f1,#4338ca);border:none;border-radius:12px;color:var(--text);font-weight:700;font-size:1rem;cursor:pointer;">
                     ✨ Generar mi plan
                 </button>
             </div>
@@ -2910,8 +1913,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                             transform="rotate(-90 100 100)" style="transition:stroke-dasharray 1s linear,stroke 0.5s;filter:drop-shadow(0 0 8px rgba(239,68,68,0.5));"/>
                     </svg>
                     <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                        <div id="pomodoroTime" style="font-family:var(--mono);font-size:3rem;font-weight:700;color:#f1f5f9;letter-spacing:-2px;">25:00</div>
-                        <div style="font-size:0.7rem;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:1px;">minutos</div>
+                        <div id="pomodoroTime" style="font-family:var(--mono);font-size:3rem;font-weight:700;color:var(--text);letter-spacing:-2px;">25:00</div>
+                        <div style="font-size:0.7rem;color:var(--text-3);font-weight:600;text-transform:uppercase;letter-spacing:1px;">minutos</div>
                     </div>
                 </div>
 
@@ -2922,8 +1925,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
 
                 <!-- Controles -->
                 <div style="display:flex;gap:0.75rem;justify-content:center;margin-bottom:1.5rem;">
-                    <button onclick="resetPomodoro()" style="padding:0.75rem 1.2rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#94a3b8;font-weight:600;cursor:pointer;font-size:0.9rem;">↺ Reset</button>
-                    <button id="pomodoroBtnStart" onclick="togglePomodoro()" style="padding:0.75rem 2rem;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;border-radius:12px;color:white;font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 4px 16px rgba(239,68,68,0.35);">▶ Iniciar</button>
+                    <button onclick="resetPomodoro()" style="padding:0.75rem 1.2rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:var(--text-3);font-weight:600;cursor:pointer;font-size:0.9rem;">↺ Reset</button>
+                    <button id="pomodoroBtnStart" onclick="togglePomodoro()" style="padding:0.75rem 2rem;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;border-radius:12px;color:var(--text);font-weight:700;cursor:pointer;font-size:1rem;box-shadow:0 4px 16px rgba(239,68,68,0.35);">▶ Iniciar</button>
                     <button onclick="setPomodoroMode(5,'break')" style="padding:0.75rem 1.2rem;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#34d399;font-weight:600;cursor:pointer;font-size:0.9rem;">☕ 5 min</button>
                 </div>
 
@@ -3122,7 +2125,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
      (flotante, visible en todas las pantallas)  -->
     <!-- ══════════════════════════════════════════════════════════ -->
     <button id="pomodoroFab" onclick="showScreen('pomodoroScreen')"
-        style="position:fixed;bottom:80px;right:16px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;color:white;font-size:1.2rem;cursor:pointer;z-index:800;box-shadow:0 4px 16px rgba(239,68,68,0.4);display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        style="position:fixed;bottom:80px;right:16px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#dc2626);border:none;color:var(--text);font-size:1.2rem;cursor:pointer;z-index:800;box-shadow:0 4px 16px rgba(239,68,68,0.4);display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
         title="Pomodoro Timer"
         onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         🍅
@@ -3131,27 +2134,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- Script para actualizar FAB pomodoro y SRS badge          -->
     <!-- ══════════════════════════════════════════════════════════ -->
-    <script>
-    // Actualizar badge SRS en home
-    function updateNewFeaturesBadges() {
-        // SRS due count
-        const srsData = JSON.parse(localStorage.getItem('mediprep_srs_cards') || '[]');
-        const now = new Date();
-        const due = srsData.filter(c => new Date(c.nextReview) <= now).length;
-        const badge = document.getElementById('srsDueBadge');
-        if (badge) {
-            badge.textContent = due > 0 ? due + ' hoy' : '✓ Al día';
-            badge.style.background = due > 0 ? 'rgba(239,68,68,0.2)' : 'rgba(16,185,129,0.2)';
-            badge.style.color = due > 0 ? '#fca5a5' : '#6ee7b7';
-        }
-    }
-
-    // Círculo SVG manejado por pomodoro.js
-
-    window.addEventListener('load', () => {
-        setTimeout(updateNewFeaturesBadges, 500);
-    });
-    </script>
+    <script src="nuevas-funciones.js"></script>
 
     <!-- AQUÍ SE CARGAN LAS PREGUNTAS DESDE ARCHIVOS EXTERNOS -->
     <script src="evaluacion-conceptos-salud.js"></script>
@@ -3210,15 +2193,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     <script src="pomodoro.js"></script>
 
     <!-- PWA: Service Worker para modo offline -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(() => console.log('[MediPrep] Modo offline activo ✅'))
-                    .catch(() => console.log('[MediPrep] SW no disponible'));
-            });
-        }
-    </script>
+    <script src="sw-register.js"></script>
 
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- PANTALLA: CLASES V2 — lista colapsable tipo módulos      -->
@@ -3243,7 +2218,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                             <div id="cv2Titulo" style="font-family:var(--font-d);font-size:0.9rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></div>
                             <div id="cv2Numero" style="font-size:0.7rem;color:rgba(255,150,150,0.75);margin-top:0.1rem;"></div>
                         </div>
-                        <button onclick="cv2CerrarPlayer()" style="flex-shrink:0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:#94a3b8;padding:0.35rem 0.7rem;border-radius:8px;cursor:pointer;font-size:0.72rem;font-weight:600;">&#x2715; Cerrar</button>
+                        <button onclick="cv2CerrarPlayer()" style="flex-shrink:0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:var(--text-3);padding:0.35rem 0.7rem;border-radius:8px;cursor:pointer;font-size:0.72rem;font-weight:600;">&#x2715; Cerrar</button>
                     </div>
                 </div>
 
@@ -3260,8 +2235,8 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <!-- Aviso + botón YouTube prominente -->
                     <div style="background:rgba(15,15,25,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:0.85rem 1rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.85rem;">
                         <div style="flex:1;min-width:0;">
-                            <div style="font-size:0.75rem;font-weight:700;color:#94a3b8;">¿No carga el video?</div>
-                            <div style="font-size:0.65rem;color:#475569;margin-top:0.1rem;">Algunos videos solo se ven en YouTube</div>
+                            <div style="font-size:0.75rem;font-weight:700;color:var(--text-3);">¿No carga el video?</div>
+                            <div style="font-size:0.65rem;color:var(--text-3);margin-top:0.1rem;">Algunos videos solo se ven en YouTube</div>
                         </div>
                         <a id="cv2YTLinkAlt" href="#" target="_blank" rel="noopener"
                             style="flex-shrink:0;display:inline-flex;align-items:center;gap:0.5rem;background:#dc2626;color:#fff;font-weight:700;font-size:0.8rem;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;white-space:nowrap;">
@@ -3272,7 +2247,7 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                     <!-- Prev / Next -->
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;">
                         <button id="cv2BtnPrev" onclick="cv2Navegar(-1)"
-                            style="padding:0.75rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#cbd5e1;font-size:0.82rem;font-weight:600;cursor:pointer;">
+                            style="padding:0.75rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:var(--text-2);font-size:0.82rem;font-weight:600;cursor:pointer;">
                             &#8592; Anterior
                         </button>
                         <button id="cv2BtnNext" onclick="cv2Navegar(1)"
@@ -3289,12 +2264,12 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
                 <!-- Cabecera clicable -->
                 <div onclick="cv2ToggleLista()" style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.1rem;cursor:pointer;user-select:none;">
                     <div>
-                        <div style="font-family:var(--font-d);font-size:0.88rem;font-weight:700;color:#e2e8f0;">Clases del temario</div>
+                        <div style="font-family:var(--font-d);font-size:0.88rem;font-weight:700;color:var(--text);">Clases del temario</div>
                         <div style="font-size:0.68rem;color:#dc2626;margin-top:0.1rem;">Youtube</div>
                     </div>
                     <div style="display:flex;align-items:center;gap:0.6rem;">
                         <span style="background:rgba(220,38,38,0.25);border-radius:20px;padding:0.2rem 0.6rem;font-size:0.65rem;font-weight:700;color:#fca5a5;">34 clases</span>
-                        <span id="cv2Arrow" style="color:#94a3b8;font-size:0.9rem;transition:transform 0.2s;">&#x25BE;</span>
+                        <span id="cv2Arrow" style="color:var(--text-3);font-size:0.9rem;transition:transform 0.2s;">&#x25BE;</span>
                     </div>
                 </div>
 
@@ -3306,272 +2281,15 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
         </div>
     </div>
 
-    <script>
-    // ─── CLASES V2 ────────────────────────────────────────────────
-    const CV2_VIDEOS = [
-        { id: 'XAqRuQqqQI8', titulo: 'Salud y Enfermedad' },
-        { id: 'xkVfvVRgtGQ', titulo: 'Triada Ecológica' },
-        { id: 'Q_yTm4CNvwo', titulo: 'Cadena Epidemiológica' },
-        { id: 'Shx6ejAUrT0', titulo: 'Historia Natural de la Enfermedad' },
-        { id: '3pKPNYdaoOY', titulo: 'Modelo de Leavell y Clark' },
-        { id: '6JvgUq9jmuw', titulo: 'Signos y Síntomas' },
-        { id: 'CyhIYczKHYM', titulo: 'Anatomía y Fisiología' },
-        { id: 'OCcQAsQ-sgs', titulo: 'Planos Anatómicos' },
-        { id: 'cvlxycd1T34', titulo: 'Terminología Médica' },
-        { id: 'BKzZY8LioMA', titulo: 'Sistema Nervioso' },
-        { id: 'MsobsfyDZfU', titulo: 'Sistema Endocrino' },
-        { id: 'TPnYH38mJUw', titulo: 'Sistema Inmunológico' },
-        { id: 'FbKEZnVBBDo', titulo: 'Sistema Linfático' },
-        { id: 'bmjs4FK64Co', titulo: 'Sistema Tegumentario' },
-        { id: 'MDkv4x_ImyY', titulo: 'Sistema Músculo Esquelético' },
-        { id: 'zhG3drIlT6I', titulo: 'Sistema Cardiovascular' },
-        { id: '66v0ROMNMCg', titulo: 'Aparato Respiratorio' },
-        { id: 'aowBfn0mHtc', titulo: 'Aparato Digestivo' },
-        { id: 'm2mUu2A8PkE', titulo: 'Aparato Urinario' },
-        { id: 'LrBeLYrI4pk', titulo: 'Aparato Reproductor' },
-        { id: 'k7gbC-1z4-w', titulo: 'Estructura y Función Celular' },
-        { id: 'fLyOcJj7DjY', titulo: 'Tipos de Células' },
-        { id: '13zZ5kFZ5c4', titulo: 'Tipos de Reacciones Metabólicas' },
-        { id: 'noP2jvwSDUI', titulo: 'Productos de la Glucólisis' },
-        { id: 'tdxen_subXU', titulo: 'Productos del Ciclo de Krebs' },
-        { id: '7h9A8gZrVls', titulo: 'Mecanismos Genéticos' },
-        { id: 'IMRFXaw-JFA', titulo: 'Material Genético Humano' },
-        { id: 'y260XG5GmsQ', titulo: 'Hongos, Parásitos, Virus y Bacterias' },
-        { id: 'eUa4fFqUJuM', titulo: 'Tipos de Transporte' },
-        { id: 'D6R7jfPsSQg', titulo: 'Tipos de Transporte Membranal' },
-        { id: 'w5J2HUqA1PU', titulo: 'Biomoléculas' },
-        { id: 'INWUSVeD5tM', titulo: 'Grupos Farmacológicos' },
-        { id: 'F5oBWXiI8wE', titulo: 'Ramas de la Farmacología' },
-        { id: 'A9Ak0HGERJc', titulo: 'Tipos de Solución' },
-    ];
-
-    let cv2Index = -1;
-    let cv2ListaAbierta = false;
-    let cv2ListaRenderizada = false;
-
-    function cv2ToggleLista() {
-        cv2ListaAbierta = !cv2ListaAbierta;
-        const lista = document.getElementById('cv2Lista');
-        const arrow = document.getElementById('cv2Arrow');
-        if (lista) lista.style.display = cv2ListaAbierta ? 'block' : 'none';
-        if (arrow) arrow.style.transform = cv2ListaAbierta ? 'rotate(180deg)' : '';
-        if (cv2ListaAbierta && !cv2ListaRenderizada) cv2RenderLista();
-    }
-
-    function cv2Salir() {
-        const iframe = document.getElementById('cv2Iframe');
-        if (iframe) iframe.src = '';
-        cv2Index = -1;
-        const panel = document.getElementById('cv2PlayerPanel');
-        if (panel) panel.style.display = 'none';
-        goHome();
-    }
-
-    function cv2CerrarPlayer() {
-        const iframe = document.getElementById('cv2Iframe');
-        if (iframe) iframe.src = '';
-        cv2Index = -1;
-        const panel = document.getElementById('cv2PlayerPanel');
-        if (panel) panel.style.display = 'none';
-        cv2ResaltarLista();
-    }
-
-    function cv2IrA(idx) {
-        if (idx < 0 || idx >= CV2_VIDEOS.length) return;
-        cv2Index = idx;
-        const v = CV2_VIDEOS[idx];
-        const ytURL = 'https://www.youtube.com/watch?v=' + v.id;
-
-        // Mostrar panel y scrollear arriba
-        const panel = document.getElementById('cv2PlayerPanel');
-        if (panel) {
-            panel.style.display = 'block';
-            setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-        }
-
-        // Cargar iframe
-        const iframe = document.getElementById('cv2Iframe');
-        if (iframe) {
-            iframe.style.display = 'block';
-            iframe.src = 'https://www.youtube.com/embed/' + v.id + '?rel=0&modestbranding=1&playsinline=1&autoplay=1';
-
-            // Detectar error 153 (embed bloqueado): si a los 4s el iframe no carga nada visible,
-            // escuchamos el mensaje de error de YT
-            iframe.onload = null;
-        }
-
-        // Links de YouTube
-        const link2 = document.getElementById('cv2YTLinkAlt');
-        if (link2) link2.href = ytURL;
-
-        // Info
-        document.getElementById('cv2Titulo').textContent = v.titulo;
-        document.getElementById('cv2Numero').textContent = 'Clase ' + (idx + 1) + ' de ' + CV2_VIDEOS.length;
-
-        // Botones
-        document.getElementById('cv2BtnPrev').style.opacity = idx === 0 ? '0.35' : '1';
-        document.getElementById('cv2BtnNext').style.opacity = idx >= CV2_VIDEOS.length - 1 ? '0.35' : '1';
-
-        cv2ResaltarLista();
-    }
-
-    function cv2Navegar(dir) {
-        const newIdx = cv2Index + dir;
-        if (newIdx >= 0 && newIdx < CV2_VIDEOS.length) cv2IrA(newIdx);
-    }
-
-    function cv2ResaltarLista() {
-        document.querySelectorAll('[data-cv2idx]').forEach(el => {
-            const i = parseInt(el.dataset.cv2idx);
-            const active = i === cv2Index;
-            el.style.background = active ? 'rgba(220,38,38,0.18)' : 'transparent';
-            const circle = el.querySelector('.cv2c');
-            if (circle) {
-                circle.style.background = active ? 'rgba(220,38,38,0.3)' : 'rgba(255,255,255,0.06)';
-                circle.style.color = active ? '#fca5a5' : '#64748b';
-            }
-            const tit = el.querySelector('.cv2t');
-            if (tit) tit.style.color = active ? '#fca5a5' : '#cbd5e1';
-        });
-    }
-
-    function cv2RenderLista() {
-        const cont = document.getElementById('cv2Lista');
-        if (!cont) return;
-        cv2ListaRenderizada = true;
-        cont.innerHTML = '';
-        CV2_VIDEOS.forEach((v, i) => {
-            const div = document.createElement('div');
-            div.dataset.cv2idx = i;
-            div.onclick = () => cv2IrA(i);
-            div.style.cssText = 'display:flex;align-items:center;gap:0.7rem;padding:0.65rem 0.75rem;border-radius:10px;cursor:pointer;transition:background 0.15s;';
-            div.innerHTML =
-                '<div class="cv2c" style="width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;">' +
-                    '<span style="font-size:0.68rem;font-weight:800;">' + (i+1) + '</span>' +
-                '</div>' +
-                '<div class="cv2t" style="font-size:0.8rem;font-weight:600;color:#cbd5e1;flex:1;transition:color 0.15s;">' + v.titulo + '</div>' +
-                '<span style="color:#475569;font-size:0.75rem;">&#x25B6;</span>';
-            cont.appendChild(div);
-        });
-    }
-
-    // Detener video al cambiar de pantalla
-    const _cv2OrigShow = window.showScreen;
-    window.showScreen = function(id) {
-        if (id !== 'clasesV2Screen') {
-            const iframe = document.getElementById('cv2Iframe');
-            if (iframe && iframe.src) iframe.src = '';
-        }
-        if (_cv2OrigShow) _cv2OrigShow(id);
-        // Renderizado directo — no depender de screen-init chain
-        if (id === 'clasesScreen') {
-            setTimeout(function() {
-                if (typeof cargarModulos === 'function') cargarModulos();
-            }, 50);
-        }
-        if (id === 'uaemexScreen') {
-            setTimeout(function() {
-                if (typeof renderUAEMEXScreen === 'function') renderUAEMEXScreen();
-            }, 50);
-        }
-    };
-    </script>
+    <script src="clases-v2.js"></script>
 
     <!-- ════════════════════════════════════════════════════════════ -->
     <!-- MEGA UPDATE SCRIPTS                                         -->
     <!-- ════════════════════════════════════════════════════════════ -->
-    <script>
-
-    // ── GLOBAL TOAST SYSTEM ──────────────────────────────────────
-    function showToast(msg, duration = 2500) {
-        const tc = document.getElementById('toastContainer');
-        if (!tc) return;
-        const t = document.createElement('div');
-        t.className = 'toast';
-        t.textContent = msg;
-        tc.appendChild(t);
-        setTimeout(() => {
-            t.classList.add('out');
-            setTimeout(() => t.remove(), 300);
-        }, duration);
-    }
-
-    // ── ARENA MENU REFRESH ───────────────────────────────────────
-    function refreshArenaMenu() {
-        const lvl = Arena.getLevel();
-        const total = Arena.getTotalXP();
-        const pct = Math.min((total / lvl.max) * 100, 100);
-
-        const displayEl  = document.getElementById('arenaLevelDisplay');
-        const bigEl      = document.getElementById('arenaLevelBig');
-        const xpCountEl  = document.getElementById('arenaXPCount');
-        const xpBarEl    = document.getElementById('arenaXPBar');
-        const xpHeaderEl = document.getElementById('headerXPVal');
-
-        if (displayEl) displayEl.textContent = `Nivel ${lvl.level} — ${lvl.name}`;
-        if (bigEl)     bigEl.innerHTML = `<span style="color:${lvl.color};">⚔️ Nivel ${lvl.level} — ${lvl.name}</span>`;
-        if (xpCountEl) xpCountEl.textContent = `${total} / ${lvl.max} XP`;
-        if (xpBarEl)   { setTimeout(() => xpBarEl.style.width = pct + '%', 100); }
-        if (xpHeaderEl) xpHeaderEl.textContent = `Nv.${lvl.level}`;
-
-        // Best score
-        const best = parseInt(localStorage.getItem('mediprep_arena_best') || '0');
-        const bestEl = document.getElementById('arenaBestScore');
-        if (bestEl && best > 0) {
-            bestEl.innerHTML = `<span style="font-size:.7rem;color:var(--text-3);">Mejor puntuación</span><br><span style="font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:var(--gold);">${best.toLocaleString()} pts</span>`;
-        }
-
-        // Sync home XP bar & level badge too
-        if (typeof syncArenaUI === 'function') syncArenaUI();
-    }
-
-    // ── UPDATE HEADER XP + HOME BAR ON LOAD ─────────────────────
-    function syncArenaUI() {
-        if (typeof Arena === 'undefined') return;
-        const lvl   = Arena.getLevel();
-        const total = Arena.getTotalXP();
-        const pct   = Math.min((total / lvl.max) * 100, 100);
-
-        // Header badge
-        const hv = document.getElementById('headerXPVal');
-        if (hv) hv.textContent = 'Nv.' + lvl.level;
-
-        // Home arena badge (in hero card)
-        const hb = document.getElementById('homeArenaLvlBadge');
-        if (hb) hb.textContent = lvl.icon + ' Nv.' + lvl.level;
-
-        // Home XP mini-bar
-        const ll = document.getElementById('homeArenaLvlLabel');
-        const lx = document.getElementById('homeArenaXPLabel');
-        const lf = document.getElementById('homeArenaXPFill');
-        if (ll) ll.textContent = lvl.icon + ' Nv.' + lvl.level + ' — ' + lvl.name;
-        if (lx) lx.textContent = total + ' / ' + lvl.max + ' XP';
-        if (lf) setTimeout(() => { lf.style.width = pct + '%'; }, 200);
-    }
-
-    window.addEventListener('load', () => {
-        setTimeout(syncArenaUI, 800);
-    });
-
-    </script>
+    <script src="toast.js"></script>
 
     
-    <script>
-    function openAbandonModal() {
-      var m = document.getElementById('abandonModal');
-      if (m) { m.style.display = 'flex'; }
-    }
-    function closeAbandonModal() {
-      var m = document.getElementById('abandonModal');
-      if (m) { m.style.display = 'none'; }
-    }
-    function confirmAbandon() {
-      closeAbandonModal();
-      clearInterval(Arena._timer);
-      Arena._answered = true;
-      navTo('homeScreen', 'nav-home');
-    }
-    </script>
+    <script src="abandon-modal.js"></script>
 
     <script src="preguntas-acceso-unico.js"></script>
     <script src="acceso-unico.js"></script>
@@ -3706,146 +2424,10 @@ button { -webkit-tap-highlight-color:transparent; transform:translateZ(0); }
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- SETTINGS JS                                              -->
     <!-- ══════════════════════════════════════════════════════════ -->
-    <script>
-    // ── SETTINGS MANAGEMENT ──────────────────────────────────────
-
-    function openSettings() {
-        const overlay = document.getElementById('settingsOverlay');
-        if (overlay) overlay.classList.add('active');
-        loadSettingsUI();
-    }
-    function closeSettings() {
-        const overlay = document.getElementById('settingsOverlay');
-        if (overlay) overlay.classList.remove('active');
-    }
-    function handleSettingsOverlayClick(e) {
-        if (e.target === document.getElementById('settingsOverlay')) closeSettings();
-    }
-    function loadSettingsUI() {
-        const theme   = localStorage.getItem('mp_theme') || 'dark';
-        const sound   = localStorage.getItem('mp_sound') !== '0';
-        const repaso  = localStorage.getItem('mp_repaso') === '1';
-        const explain = localStorage.getItem('mp_autoexplain') !== '0';
-        const haptic  = localStorage.getItem('mp_haptic') !== '0';
-        // Theme buttons
-        document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('active'));
-        const tEl = document.getElementById('theme-' + theme);
-        if (tEl) tEl.classList.add('active');
-        // Toggles
-        const stEl = document.getElementById('soundToggle');
-        const rtEl = document.getElementById('repasoModeToggle');
-        const aeEl = document.getElementById('autoExplainToggle');
-        const hEl  = document.getElementById('hapticToggle');
-        if (stEl) stEl.checked = sound;
-        if (rtEl) rtEl.checked = repaso;
-        if (aeEl) aeEl.checked = explain;
-        if (hEl)  hEl.checked  = haptic;
-        window.repasoMode = repaso;
-    }
-    function setTheme(t) {
-        localStorage.setItem('mp_theme', t);
-        document.documentElement.setAttribute('data-theme', t);
-        document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('active'));
-        const tEl = document.getElementById('theme-' + t);
-        if (tEl) tEl.classList.add('active');
-        showToast(t === 'dark' ? '🌙 Modo oscuro activado' : '☀️ Modo claro activado');
-    }
-    function toggleSoundSetting(on) {
-        localStorage.setItem('mp_sound', on ? '1' : '0');
-        if (window.CONFIG && CONFIG.SOUNDS) CONFIG.SOUNDS.enabled = on;
-        showToast(on ? '🔊 Sonido activado' : '🔇 Sonido desactivado');
-    }
-    function setRepasoMode(on) {
-        if (window.Repaso) {
-            window.Repaso.set(on);
-        } else {
-            localStorage.setItem('mp_repaso', on ? '1' : '0');
-        }
-        showToast(on ? '📖 Modo Repaso activado' : '⚡ Modo normal activado');
-    }
-    function setAutoExplain(on) {
-        localStorage.setItem('mp_autoexplain', on ? '1' : '0');
-    }
-    function setHaptic(on) {
-        localStorage.setItem('mp_haptic', on ? '1' : '0');
-    }
-    function toggleQuizRepasoMode() {
-        const newVal = window.Repaso ? !window.Repaso.isActive() : false;
-        setRepasoMode(newVal);
-    }
-    function confirmClearAllData() {
-        closeSettings();
-        setTimeout(() => {
-            mostrarModal('🗑️ Borrar todo el progreso', '¿Estás seguro? Se eliminarán TODAS tus estadísticas, logros, XP y progreso. Esta acción no se puede deshacer.', [
-                {texto:'Cancelar', clase:'modal-btn-cancel', accion:cerrarModal},
-                {texto:'Borrar todo', clase:'modal-btn-confirm', accion:() => {
-                    localStorage.clear();
-                    cerrarModal();
-                    showToast('🗑️ Datos eliminados');
-                    setTimeout(() => location.reload(), 800);
-                }}
-            ]);
-        }, 300);
-    }
-
-    // ── INIT SETTINGS ON LOAD ────────────────────────────────────
-    window.addEventListener('DOMContentLoaded', () => {
-        // Apply saved theme — default LIGHT si no hay preferencia guardada
-        const savedTheme = localStorage.getItem('mp_theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        // Apply saved sound
-        const soundOn = localStorage.getItem('mp_sound') !== '0';
-        if (window.CONFIG && CONFIG.SOUNDS) CONFIG.SOUNDS.enabled = soundOn;
-    });
-
-    // Repaso mode logic moved to repaso.js
-    </script>
+    <script src="settings.js"></script>
 
     <!-- ── REPASO MODE CSS: glow on correct answer ── -->
-    <style>
-    /* Pulse-glow animation for correct answer in repaso mode */
-    @keyframes repasoCorrectGlow {
-        0%   { box-shadow: 0 0 0 0   rgba(0,200,150,0);   border-color: var(--teal); }
-        30%  { box-shadow: 0 0 0 6px rgba(0,200,150,0.35); border-color: var(--teal); }
-        60%  { box-shadow: 0 0 18px 4px rgba(0,200,150,0.5); border-color: var(--teal-l); }
-        100% { box-shadow: 0 0 12px 2px rgba(0,200,150,0.3); border-color: var(--teal); }
-    }
-    @keyframes repasoCorrectBg {
-        0%   { background: rgba(0,200,150,0.06); }
-        50%  { background: rgba(0,200,150,0.22); }
-        100% { background: rgba(0,200,150,0.12); }
-    }
-    /* REPASO HINT — correct answer shown before answering */
-    .option.repaso-hint {
-        border-color: var(--teal) !important;
-        background: rgba(0,200,150,0.08) !important;
-        animation: repasoCorrectGlow 0.6s ease forwards !important;
-    }
-    .option.repaso-hint .option-letter {
-        background: var(--teal) !important;
-        color: #fff !important;
-        box-shadow: 0 0 12px rgba(0,200,150,0.65);
-    }
-    /* Subtle pulsing so it feels like a "hint" glow */
-    @keyframes repasoHintPulse {
-        0%,100% { box-shadow: 0 0 0 0 rgba(0,200,150,0.0), 0 0 8px rgba(0,200,150,0.2); }
-        50%     { box-shadow: 0 0 0 5px rgba(0,200,150,0.12), 0 0 18px rgba(0,200,150,0.4); }
-    }
-    .option.repaso-hint {
-        animation: repasoCorrectGlow 0.5s ease forwards, repasoHintPulse 2s ease-in-out 0.5s infinite !important;
-    }
 
-    /* Quiz repaso toggle — active state styling */
-    .quiz-repaso-btn.active {
-        background: rgba(0,200,150,0.12) !important;
-        border-color: rgba(0,200,150,0.45) !important;
-        color: var(--teal-l) !important;
-        box-shadow: 0 0 10px rgba(0,200,150,0.2);
-    }
-    </style>
-
-    <script>
-    </script>
 
 </body>
 </html>

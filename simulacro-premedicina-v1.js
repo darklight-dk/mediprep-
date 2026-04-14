@@ -95,7 +95,7 @@ var SIMULACRO_PREMEDICINA_V1 = {
           exp_correcta:'TA 140/90 mmHg corresponde a HIPERTENSIÓN ETAPA 2 (normal: <120/80 mmHg). Es el único valor anormal del caso clínico.',
           exp_incorrectas:['37°C es la TEMPERATURA NORMAL (rango 36.5–37.5°C oral). No hay fiebre ni hipotermia.','20 respiraciones/min está dentro del rango NORMAL para adultos (12–20 rpm). Está en el límite superior pero dentro de la normalidad.'] },
 
-        { n:15, imagen:'pendiente-planos-anatomicos', // imagen por proporcionar
+        { n:15, imagen:'pendiente-planos-anatomicos.jpg',
           pregunta:'Relacione el plano anatómico con su representación:\n1. Transversal  /  2. Frontal  /  3. Sagital',
           opciones:['1b, 2a, 3c','1c, 2b, 3a','1a, 2b, 3c'], correcta:2,
           exp_correcta:'• Plano TRANSVERSAL (horizontal/axial): divide el cuerpo en parte superior e inferior.\n• Plano FRONTAL (coronal): divide el cuerpo en parte anterior y posterior.\n• Plano SAGITAL: divide el cuerpo en mitades derecha e izquierda.',
